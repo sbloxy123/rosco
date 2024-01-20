@@ -11,6 +11,7 @@ export default defineConfig({
   projectId: "vjrrsvsn",
   dataset: "production",
   basePath: "/studio",
+  CORS: ["https://rosco-liard.vercel.app"],
   plugins: [deskTool(), visionTool()],
 
   schema: {
