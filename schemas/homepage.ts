@@ -1,0 +1,287 @@
+import { FaHome } from "react-icons/fa";
+
+const homepage = {
+  name: "homepage",
+  title: "Homepage",
+  type: "document",
+  icon: FaHome,
+  fields: [
+    {
+      name: "heroHeading",
+      title: "Hero Heading",
+      type: "array",
+      of: [{ type: "block" }],
+    },
+    {
+      name: "heroText",
+      title: "Hero Text",
+      type: "array",
+      of: [{ type: "block" }],
+    },
+    {
+      name: "heroButtonText",
+      title: "Hero Button Text",
+      description: "Text shown on Hero CTA",
+      type: "string",
+    },
+    {
+      name: "heroImage",
+      title: "Hero Image",
+      type: "image",
+      description: "Upload a Hero image",
+      options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt",
+          type: "string",
+          description:
+            "describe what is in the image let search engines know what is being shown",
+        },
+      ],
+    },
+
+    // ==== ABOUT SECTION ==== //
+    {
+      name: "introSection",
+      title: "Introduction Section",
+      type: "document",
+      fields: [
+        {
+          name: "introImage",
+          title: "Intro Image",
+          type: "image",
+          description: "Upload an image for the introduction section",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              description:
+                "describe what is in the image let search engines know what is being shown",
+            },
+          ],
+        },
+        {
+          name: "introSubheading",
+          title: "Intro Subheading",
+          type: "string",
+        },
+        {
+          name: "introHeading",
+          title: "Intro Heading",
+          type: "string",
+        },
+        {
+          name: "introText",
+          title: "Introduction Text",
+          type: "array",
+          of: [{ type: "block" }],
+        },
+        {
+          name: "aboutUsButton",
+          title: "About Us Button",
+          description: "Text shown on About Us button",
+          type: "string",
+        },
+      ],
+    },
+    // === SERVICES SECTION === //
+    {
+      name: "servicesSection",
+      title: "Services Section",
+      type: "document",
+      fields: [
+        {
+          name: "servicesSubheading",
+          title: "Services Subheading",
+          type: "string",
+        },
+        {
+          name: "servicesHeading",
+          title: "Services Heading",
+          type: "string",
+        },
+        {
+          name: "servicesLinkTitle",
+          title: "Link Title",
+          type: "string",
+        },
+      ],
+    },
+    // === MAILING LIST CTS === //
+    {
+      name: "mailingListCta",
+      title: "Mailing List CTA",
+      type: "document",
+      fields: [
+        {
+          name: "mailingListHeading",
+          title: "Mailing List Heading",
+          type: "string",
+        },
+        {
+          name: "mailingListText",
+          title: "Mailing List Text",
+          type: "string",
+        },
+        {
+          name: "mailingListPlaceholder",
+          title: "Input Placeholder Text",
+          type: "string",
+        },
+        {
+          name: "mailingListButtonText",
+          title: "Button Text",
+          description: "Text shown on mailing list CTA button",
+          type: "string",
+        },
+      ],
+    },
+    // === LATEST PROJECTS === //
+    {
+      name: "projectsSection",
+      title: "Latest Projects Section",
+      type: "document",
+      fields: [
+        {
+          name: "projectsSubheading",
+          title: "Projects Subheading",
+          type: "string",
+        },
+        {
+          name: "projectsHeading",
+          title: "Projects Heading",
+          type: "string",
+        },
+        {
+          name: "projectsButtonText",
+          title: "Button Text",
+          description: "Text shown on projects button",
+          type: "string",
+        },
+      ],
+    },
+    // === TOT Promo === //
+    {
+      name: "totPromo",
+      title: "Trick of the Trade's Promotion",
+      type: "document",
+      fields: [
+        {
+          name: "promoMessage",
+          title: "Promotion Message",
+          type: "string",
+        },
+      ],
+    },
+    // === Testimonials === //
+    {
+      name: "testimonialsSection",
+      title: "Testimonials",
+      type: "document",
+      fields: [
+        {
+          name: "testimonialsSectionTitle",
+          title: "Testimonials Section Title",
+          description: "Enter a title for the testimonial section",
+          type: "string",
+        },
+        {
+          name: "testimonialsList",
+          title: "Testimonials",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "name",
+                  title: "Name",
+                  type: "string",
+                },
+                {
+                  name: "message",
+                  title: "Message",
+                  type: "text",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    //=== AWARDS ===//
+    {
+      name: "awardsSection",
+      title: "Awards",
+      type: "document",
+      fields: [
+        {
+          name: "awardsSectionSubTitle",
+          title: "Testimonials Sub Title",
+          type: "string",
+        },
+        {
+          name: "awardsSectionTitle",
+          title: "Awards Section Title",
+          description: "Enter a title for the Awards section",
+          type: "string",
+        },
+        {
+          name: "awardsList",
+          title: "Awards",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "awardDate",
+                  title: "Award Date",
+                  type: "string",
+                },
+                {
+                  name: "awardTitle",
+                  title: "Award Title",
+                  type: "string",
+                  description:
+                    "add '\\n' to the text where you want it to return on a new line",
+                },
+                {
+                  name: "awardLogo",
+                  title: "Award Logo",
+                  type: "image",
+                  description: "Upload a Hero image",
+                  fields: [
+                    {
+                      name: "alt",
+                      title: "Alt",
+                      type: "string",
+                      description:
+                        "describe what is in the image let search engines know what is being shown",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+
+  // Include the common "Page" schema
+  extends: "page",
+
+  preview: {
+    prepare(value: Record<string, any>) {
+      return {
+        title: value.title || "Homepage Content", // adjust as needed based on your fields
+      };
+    },
+  },
+};
+
+export default homepage;
