@@ -41,15 +41,6 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
       }}
     >
       {data.map((elm, index) => {
-        const {
-          _id,
-          coverImage,
-          description,
-          serviceSummary,
-          serviceTitle,
-          slug,
-        } = elm;
-
         return (
           <SwiperSlide key={index}>
             <ServiceImageLink service={elm} index={index} />
