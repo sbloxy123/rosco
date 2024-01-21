@@ -12,7 +12,7 @@ export default async function Home() {
     <main>
       <Hero />
       <IntroSection />
-      {/* <ServiceImageLinkSwiper /> */}
+      <ServiceImageLinkSwiper />
       <MailingListCta />
       <LatestProjects />
       <TotPromo />
