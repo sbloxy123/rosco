@@ -21,8 +21,9 @@ import ProjectSlide from "../ProjectSlide";
 export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
   return (
     <Swiper
-      spaceBetween={0}
-      slidesPerView={1}
+      spaceBetween={10}
+      slidesPerView={10}
+      direction="vertical"
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
       wrapperClass="service-swiper pb-14"
@@ -32,9 +33,10 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
         el: ".swiper-scrollbar",
       }}
       breakpoints={{
-        450: {
+        512: {
           spaceBetween: 10,
           slidesPerView: "auto",
+          direction: "horizontal",
         },
       }}
     >

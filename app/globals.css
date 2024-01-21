@@ -144,6 +144,11 @@ p {
     margin-top: 0;
   }
 }
+.service-swiper {
+  .swiper-slide {
+    height: auto !important;
+  }
+}
 
 @media all and (min-width: 512px) {
   .service-swiper {
@@ -179,7 +184,7 @@ p {
 .swiper-scrollbar-drag {
   height: 100%;
   border-radius: 50px;
-  background: #6015ef;
+  background: #6015ef !important;
   display: none;
 }
 
