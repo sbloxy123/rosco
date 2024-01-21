@@ -1,7 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar, Pagination, Navigation } from "swiper/modules";
+import { Scrollbar, Pagination, Navigation, Mousewheel } from "swiper/modules";
 import "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,12 +22,17 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
   return (
     <Swiper
       spaceBetween={10}
-      slidesPerView={10}
+      slidesPerView={4}
       direction="vertical"
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
       wrapperClass="service-swiper pb-14"
-      modules={[Scrollbar]}
+      modules={[Scrollbar, Mousewheel]}
+      mousewheel={{
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true,
+      }}
       scrollbar={{
         hide: false,
         el: ".swiper-scrollbar",

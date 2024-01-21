@@ -52,7 +52,7 @@ export default async function ServiceImageLinkSwiper() {
           );
         })}
       </div> */}
-      <div className=" h-auto  xsmall:h-full">
+      <div className="w-fit mx-auto xsmall:w-full xsmall:h-full">
         <ServiceSwiper data={services} />
       </div>
 
