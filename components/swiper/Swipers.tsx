@@ -22,7 +22,7 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
   return (
     <Swiper
       spaceBetween={10}
-      slidesPerView={4}
+      slidesPerView="auto"
       direction="vertical"
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}

@@ -41,7 +41,7 @@ export default async function ServiceImageLinkSwiper() {
           </div>
         );
       })}
-      {/* <div className="flex flex-col justify-center gap-[16px] visible xsmall:invisible xsmall:h-0">
+      <div className="flex flex-col justify-center gap-[16px] visible xsmall:invisible xsmall:h-0">
         {services.map((service, index) => {
           return (
             <ServiceImageLink
@@ -51,8 +51,8 @@ export default async function ServiceImageLinkSwiper() {
             />
           );
         })}
-      </div> */}
-      <div className="w-fit mx-auto xsmall:w-full xsmall:h-full">
+      </div>
+      <div className="invisible xsmall:visible h-0 w-fit mx-auto xsmall:w-full xsmall:h-full">
         <ServiceSwiper data={services} />
       </div>
 
