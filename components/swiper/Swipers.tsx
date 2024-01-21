@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, Pagination, Navigation } from "swiper/modules";
+import "swiper/react";
 import "swiper/css";
 import ServiceImageLink from "../ServiceImageLink";
 import Image from "next/image";
