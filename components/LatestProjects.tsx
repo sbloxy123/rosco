@@ -28,7 +28,7 @@ export default async function LatestProjects() {
           );
         })}
 
-        <div className="small:w-[90%] small:h-[512px] small:m-auto relative bg-theme-dark small:max-w-[1120px] small:flex small:items-center small:px-[2%]">
+        <div className="small:w-[90%] small:h-fit small:m-auto relative bg-theme-dark small:max-w-[1120px] small:flex small:items-center small:px-[0%]">
           <ProjectsSwiper data={projects} />
           <div className="absolute top-[calc(87vw-30px)] xsmall:top-[calc(50vw-15px)] left-0 px-[50px] w-full z-20 flex justify-between items-center small:top-auto small:bottom-[calc(-11vw-30px)] small:px-[120px]">
             <div className="w-0 small:w-1/3"></div>

@@ -57,8 +57,8 @@ export default async function IntroSection() {
                     width="372"
                     height="372"
                     stroke="url(#paint0_linear_62_2866)"
-                    stroke-opacity="0.5"
-                    stroke-width="40"
+                    strokeOpacity="0.5"
+                    strokeWidth="40"
                     className="mix-blend-color-dodge"
                   />
                   <defs>
@@ -137,8 +137,8 @@ export default async function IntroSection() {
                       width="372"
                       height="372"
                       stroke="url(#paint0_linear_62_2866)"
-                      stroke-opacity="0.5"
-                      stroke-width="40"
+                      strokeOpacity="0.5"
+                      strokeWidth="40"
                       className="mix-blend-color-dodge"
                     />
                     <defs>

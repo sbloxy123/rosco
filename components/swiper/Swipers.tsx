@@ -64,7 +64,7 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
 export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
   return (
     <Swiper
-      spaceBetween={0}
+      spaceBetween={40}
       slidesPerView={1}
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}

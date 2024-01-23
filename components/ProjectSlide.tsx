@@ -41,16 +41,16 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
         </div>
       </div> */}
 
-      <div className="w-full px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%]  small:py-25 small:pr-16 small:pl-[2%] ">
-        <div className="relative w-full mx-auto aspect-square xsmall:aspect-[690/451] ">
-          <div className="absolute -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] w-[112%] h-[112%]">
+      <div className="w-full px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%] small:py-25 small:pl-[2%] small:pt-[2.2%] small:pb-[2.1%] small:pr-[2.6%] order-1">
+        <div className="relative w-full mx-auto aspect-square xsmall:aspect-[690/451] small:aspect-[567/456]">
+          <div className="absolute w-[112%] h-[112%] -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] small:-left-[5.4%]">
             <svg
               width="100%"
               height="100%"
               viewBox="0 0 389 412"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="block xsmall:hidden xsmall:opacity-0"
+              className="block xsmall:hidden xsmall:opacity-0 small:hidden"
             >
               <rect
                 x="20"
@@ -58,8 +58,8 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                 width="372"
                 height="372"
                 stroke="url(#paint0_linear_62_2866)"
-                stroke-opacity="0.5"
-                stroke-width="40"
+                strokeOpacity="0.5"
+                strokeWidth="40"
                 className="mix-blend-color-dodge"
               />
               <defs>
@@ -83,7 +83,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
               height="100%"
               viewBox="0 0 731 510"
               fill="none"
-              className="hidden xsmall:block"
+              className="hidden xsmall:block small:hidden"
               xmlns="http://www.w3.org/2000/svg"
             >
               <rect
@@ -119,11 +119,11 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                 "--image-url": `url(${getCroppedImageSrc(project.image)})`,
               } as React.CSSProperties
             }
-            className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] cursor-pointer group"
+            className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] small:aspect-[567/456] cursor-pointer group"
           >
             <div className="bg-opacity-5 bg-cover absolute top-0 left-0 bg-gradient-to-l from-black to-white mix-blend-multiply opacity-[0.7] w-full h-full"></div>
 
-            <div className="absolute -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] w-[112%] h-[112%]">
+            <div className="absolute w-[112%] h-[112%] -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] small:-left-[5.4%]">
               <svg
                 width="100%"
                 height="100%"
@@ -138,8 +138,8 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                   width="372"
                   height="372"
                   stroke="url(#paint0_linear_62_2866)"
-                  stroke-opacity="0.5"
-                  stroke-width="40"
+                  strokeOpacity="0.5"
+                  strokeWidth="40"
                   className="mix-blend-color-dodge"
                 />
                 <defs>
@@ -164,7 +164,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                 height="100%"
                 viewBox="0 0 731 510"
                 fill="none"
-                className="hidden xsmall:block"
+                className="hidden xsmall:block small:hidden"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <rect
@@ -192,6 +192,40 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                   </linearGradient>
                 </defs>
               </svg>
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 623 512"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="hidden small:block"
+              >
+                <rect
+                  x="28"
+                  y="28"
+                  width="567"
+                  height="456"
+                  stroke="url(#paint0_linear_1601_4743)"
+                  stroke-opacity="0.5"
+                  stroke-width="56"
+                  className="mix-blend-color-dodge "
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_1601_4743"
+                    x1="618.864"
+                    y1="14.6487"
+                    x2="15.1537"
+                    y2="401.655"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop offset="0.161927" stop-color="#4804F8" />
+                    <stop offset="0.375" stop-color="#FF4A1D" />
+                    <stop offset="0.635417" stop-color="#F9BA17" />
+                    <stop offset="0.978225" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
           </div>
         </div>
@@ -199,13 +233,13 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
 
       {/* <p>here is the image url: {project.image.image}</p> */}
       {/* <Image src={project.image?.image} alt={project.image?.alt} /> */}
-      <div className="relative small:flex small:justify-between">
+      <div className="relative small:flex small:justify-between xsmall:px-[8%] small:px-[15px] order-0">
         <div className="small:min-w-[80px]">
-          <h3 className="uppercase px-[15px] pt-[2.7rem] mb-8 small:absolute small:top-[65px] small:-left-[28px] small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0">
+          <h3 className="uppercase px-[15px] pt-[2.7rem] mb-8 xsmall:px-0 small:absolute small:top-[65px] small:-left-[28px] small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0">
             project 0{index + 1}
           </h3>
         </div>
-        <div className="px-[15px] small:pr-[50px]">
+        <div className="px-[15px] xsmall:px-0 small:pr-[50px]">
           <h2 className="pb-16">{project.projectTitle}</h2>
           <p>{project.projectSummary}</p>
           <div className="mt-20 mx-[15px] xsmall:w-fit xsmall:ml-0">
