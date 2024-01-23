@@ -26,7 +26,7 @@ export default async function Testimonials() {
                 <div className="hidden">
                   {/* put in for flex to act differently. may be able to remove */}
                 </div>
-                <div className="testimonial-pagination h-10 w-[40%] z-30 flex gap-3 items-center xsmall:absolute xsmall:right-0 xsmall:bottom-0 xsmall:pl-[5%] xsmall:w-fit xsmall:mr-[5%] small:mx-auto small:left-0"></div>
+                <div className="testimonial-pagination h-10 w-[40%] z-30 flex gap-3 items-center xsmall:absolute xsmall:right-0 xsmall:bottom-0 xsmall:pl-[5%] xsmall:w-fit xsmall:mr-[5%] small:mx-auto small:left-0 small:ml-[13px]"></div>
                 {/* reference for projects navigation - added h-full to parent absolute container. then see classes used to position */}
                 <div className="flex gap-4 xsmall:-rotate-90 xsmall:absolute xsmall:top-1/2 xsmall:right-0 small:rotate-0 small:pr-[5%]">
                   <SwiperArrowPrev swiperDivName="prev-testimonial" />

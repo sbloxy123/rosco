@@ -50,7 +50,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
               viewBox="0 0 389 412"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="block xsmall:hidden xsmall:opacity-0 small:hidden"
+              className="block xsmall:hidden small:hidden"
             >
               <rect
                 x="20"
@@ -107,6 +107,40 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                   <stop offset="0.161927" stopColor="#4804F8" />
                   <stop offset="0.741249" stopColor="#FF4A1D" />
                   <stop offset="0.838542" stopColor="#F9BA17" />
+                  <stop offset="0.978225" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 623 512"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="hidden small:block"
+            >
+              <rect
+                x="28"
+                y="28"
+                width="567"
+                height="456"
+                stroke="url(#paint0_linear_1601_4743)"
+                stroke-opacity="0.5"
+                stroke-width="56"
+                className="mix-blend-color-dodge "
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_1601_4743"
+                  x1="618.864"
+                  y1="14.6487"
+                  x2="15.1537"
+                  y2="401.655"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0.161927" stopColor="#4804F8" />
+                  <stop offset="0.375" stopColor="#FF4A1D" />
+                  <stop offset="0.635417" stopColor="#F9BA17" />
                   <stop offset="0.978225" stopOpacity="0" />
                 </linearGradient>
               </defs>
@@ -219,10 +253,10 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                     y2="401.655"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop offset="0.161927" stop-color="#4804F8" />
-                    <stop offset="0.375" stop-color="#FF4A1D" />
-                    <stop offset="0.635417" stop-color="#F9BA17" />
-                    <stop offset="0.978225" stop-opacity="0" />
+                    <stop offset="0.161927" stopColor="#4804F8" />
+                    <stop offset="0.375" stopColor="#FF4A1D" />
+                    <stop offset="0.635417" stopColor="#F9BA17" />
+                    <stop offset="0.978225" stopOpacity="0" />
                   </linearGradient>
                 </defs>
               </svg>

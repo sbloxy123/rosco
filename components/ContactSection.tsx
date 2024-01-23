@@ -71,7 +71,7 @@ export default async function ContactSection() {
                     {content.contactUs.contactNumber}
                   </h4>
                 </div>
-                <div className="flex flex-col gap-5 mt-16 xsmall:flex-row xsmall:justify-center">
+                <div className="flex flex-col gap-5 mt-16 xsmall:flex-row xsmall:justify-center small:justify-start small:pl-14">
                   <div className="w-176px">
                     <ButtonLink
                       theme="light"
