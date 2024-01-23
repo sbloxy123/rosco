@@ -134,6 +134,23 @@ export type projectType = {
   image: {
     alt: string;
     image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
   };
 };
 export type TotPromoType = {
@@ -165,5 +182,17 @@ export type awardsType = {
         image: string;
       };
     }>;
+  };
+};
+export type contactType = {
+  _id: string;
+  contactUs: {
+    title: string;
+    message: string;
+    address: string;
+    contactNumber: string;
+    emailAddress: string;
+    phoneButtonText: string;
+    emailButtonText: string;
   };
 };

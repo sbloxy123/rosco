@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { General, Email } from "./IconSvgs";
+import { General, Email, Phone } from "./IconSvgs";
 
 const ButtonLink = ({
   destination,
@@ -25,7 +25,7 @@ const ButtonLink = ({
     btnType = <General fill={fill} />;
   }
   if (ctaType == "phone") {
-    btnType = <General fill={fill} />;
+    btnType = <Phone fill={fill} />;
   }
   if (ctaType == "none") {
     btnType = ``;
@@ -34,7 +34,7 @@ const ButtonLink = ({
   return (
     <Link
       href={`${destination}`}
-      className={`flex justify-center items-center border-solid border-2 ${borderClass} ${typeClass} py-4 px-8 w-full xsmall:w-fit xsmall:mx-auto small:ml-0 gap-6 small:pl-5 small:pr-7 small:gap-4 `}
+      className={`flex justify-center items-center border-solid border-2 ${borderClass} ${typeClass} py-4 px-8 w-full min-w-[176px] xsmall:mx-auto small:ml-0 gap-6 small:pl-5 small:pr-7 small:gap-4 `}
     >
       {btnType}
       <h5 className="uppercase text-center">{text}</h5>

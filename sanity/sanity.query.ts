@@ -164,7 +164,27 @@ export async function getAllProjects() {
       "slug": slug.current,
       projectSummary,
       projectBtnText,
-      image {alt, "image": asset->url},
+      image {
+        alt,
+        "image": asset->url,
+        asset {
+          _ref
+        },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
     }`
   );
 }
@@ -204,6 +224,21 @@ export async function getAwards() {
           awardLogo {alt, "image": asset->url},
         }
       }
+    }`
+  );
+}
+export async function getContactContent() {
+  return client.fetch(
+    groq`*[_type == "homepage"] {
+        contactUs {
+          title,
+          message,
+          address,
+          contactNumber,
+          emailAddress,
+          phoneButtonText,
+          emailButtonText
+        }
     }`
   );
 }

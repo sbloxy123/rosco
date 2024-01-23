@@ -6,6 +6,7 @@ import LatestProjects from "@/components/LatestProjects";
 import TotPromo from "@/components/TotPromo";
 import Testimonials from "@/components/Testimonials";
 import AwardsSection from "@/components/AwardsSection";
+import ContactSection from "@/components/ContactSection";
 
 export default async function Home() {
   return (
@@ -18,6 +19,7 @@ export default async function Home() {
       <TotPromo />
       <Testimonials />
       <AwardsSection />
+      <ContactSection />
     </main>
   );
 }

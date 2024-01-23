@@ -270,6 +270,55 @@ const homepage = {
         },
       ],
     },
+    // CONTACT US SECTION
+    {
+      name: "contactUs",
+      title: "Contact Us Section",
+      type: "document",
+      fields: [
+        {
+          name: "title",
+          title: "Contact Section Title",
+          type: "string",
+        },
+        {
+          name: "message",
+          title: "Contact Section Message",
+          type: "text",
+        },
+        {
+          name: "address",
+          title: "Address",
+          type: "string",
+        },
+        {
+          name: "contactNumber",
+          title: "Contact Number",
+          description:
+            "to be shown on contact form while also updating the contact number linked to the button",
+          type: "string",
+        },
+        {
+          name: "emailAddress",
+          title: "Email Address",
+          description:
+            "to be linked to the email address linked to email button",
+          type: "string",
+        },
+        {
+          name: "phoneButtonText",
+          title: "Phone Button Text",
+          description: "text to appear on 'Phone Us' button",
+          type: "string",
+        },
+        {
+          name: "emailButtonText",
+          title: "Email Button Text",
+          description: "text to appear on 'Email Us' button",
+          type: "string",
+        },
+      ],
+    },
   ],
 
   // Include the common "Page" schema

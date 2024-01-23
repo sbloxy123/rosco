@@ -60,7 +60,7 @@ export default async function ServiceImageLinkSwiper() {
         return (
           <div
             key={heading.servicesSection.servicesHeading}
-            className="mt-10 m-auto px-[5%] xsmall:px-0"
+            className="mt-10 m-auto px-[5%] xsmall:px-0 xsmall:w-[229px] xsmall:mx-auto"
           >
             <ButtonLink
               theme="dark"

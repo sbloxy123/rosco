@@ -158,7 +158,7 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
               <SwiperSlide key={innerIndex}>
                 <div
                   key={index}
-                  className="aspect-[255/345] max-w-[255px] flex justify-center items-center flex-col gap-8 bg-theme-purple text-white text-center my-4"
+                  className="aspect-[255/345] w-[90%] xsmall:w-auto max-w-[255px] flex justify-center items-center flex-col gap-8 bg-theme-purple text-white text-center my-4"
                 >
                   <div className="relative h-[150px] w-full mb-4">
                     <Image

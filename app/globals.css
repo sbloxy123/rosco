@@ -18,6 +18,9 @@ h1 {
   font-size: clamp(3.2rem, 3.8vw, 4rem);
   font-weight: 600;
   letter-spacing: 0.06em;
+  @media all and (max-width: 350px) {
+    font-size: clamp(2.7rem, 9vw, 3.2rem);
+  }
 }
 h2 {
   font-size: 3.2rem;
@@ -75,10 +78,6 @@ p {
   width: 100%;
 }
 
-.play-image {
-  width: 100%;
-}
-
 .inner-border-container {
   position: absolute;
   top: 0;
@@ -129,10 +128,20 @@ p {
   /* border-width: 20px; */
   border-image-source: linear-gradient(
     220deg,
-    rgba(72, 4, 248, 0.5) 0%,
-    rgba(255, 74, 29, 0.5) 30%,
-    rgba(249, 186, 23, 0.5) 70%,
-    transparent 75%
+    rgba(72, 4, 248, 1) 16.19%,
+    rgba(255, 74, 29, 1) 54.12%,
+    rgba(249, 186, 23, 1) 83.85%,
+    transparent 97.82%
+  );
+}
+.inner-border-element-2 {
+  width: calc(100% - 30px);
+  border-image-source: linear-gradient(
+    220deg,
+    rgba(72, 4, 248, 1) 16.19%,
+    rgba(255, 74, 29, 1) 37.5%,
+    rgba(249, 186, 23, 1) 53.54%,
+    transparent 97.82%
   );
 }
 

@@ -12,11 +12,11 @@ function Navbar() {
       <header className="bg-theme_white-900 tracking-[0.06em]">
         <div className="max-w-screen-large mx-auto px-[5%] large:px-0 py-8">
           <div className="flex items-center justify-between h-20 xsmall:px-10">
-            <div className="w-[172px] xsmall:w-full">
+            <div className="max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/">
                 <svg
-                  width="211"
-                  height="32"
+                  width="100%"
+                  height="auto"
                   viewBox="0 0 211 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

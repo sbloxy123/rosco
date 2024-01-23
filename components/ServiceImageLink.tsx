@@ -13,8 +13,8 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
   service,
   index,
 }) => {
-  const imageUrl = "your-image-url";
-  const customStyle = { "--image-url": imageUrl } as React.CSSProperties;
+  // const imageUrl = "your-image-url";
+  // const customStyle = { "--image-url": imageUrl } as React.CSSProperties;
 
   return (
     <div

@@ -7,10 +7,13 @@ export default function Footer() {
   return (
     <footer className="py-20">
       <div className="px-[5%]">
-        <Link href="/">
+        <Link
+          href="/"
+          className="mx-auto w-fit block max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full"
+        >
           <svg
-            width="211"
-            height="32"
+            width="100%"
+            height="auto"
             viewBox="0 0 211 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

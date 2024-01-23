@@ -22,7 +22,7 @@ export default async function Testimonials() {
               <div className="pt-10 w-full xsmall:w-[75%]">
                 <TestimonialSwiper data={testimonials} />
               </div>
-              <div className="absolute bottom-10 left-0 px-[50px] w-full h-full z-20 flex justify-between items-end">
+              <div className="absolute bottom-10 left-0 px-[5%] xsmall:px-[50px] w-full h-full z-20 flex justify-between items-end">
                 <div className="hidden">
                   {/* put in for flex to act differently. may be able to remove */}
                 </div>
