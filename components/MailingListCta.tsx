@@ -16,9 +16,9 @@ export default async function MailingListCta() {
         } = content.mailingListCta;
 
         return (
-          <div
+          <section
             key={content.mailingListCta._id}
-            className="bg-theme-purple px-10 py-20 flex flex-col items-center justify-center text-center small:flex-row small:justify-between small:text-left small:max-w-[1121px] small:mx-auto small:pt-[36px] small:pb-[28px] small:my-[80px] small:px-[64px]"
+            className="bg-theme-purple px-10 py-20 my-32 flex flex-col items-center justify-center text-center small:flex-row small:justify-between small:text-left small:max-w-[1121px] small:mx-auto small:pt-[36px] small:pb-[28px] small:my-[80px] small:px-[64px]"
           >
             <div className="small:w-[356px]">
               <h3 className="text-white uppercase pb-10 small:pb-6">
@@ -31,7 +31,7 @@ export default async function MailingListCta() {
               placeholder={mailingListPlaceholder}
               buttonText={mailingListButtonText}
             />
-          </div>
+          </section>
         );
       })}
     </div>

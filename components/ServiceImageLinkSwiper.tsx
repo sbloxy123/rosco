@@ -5,12 +5,10 @@ import {
 import type { serviceType, serviceSectionType } from "@/types";
 import ServicesBgTexture from "../app/assets/images/layout/dot_graphic-top-left.png";
 import Image from "next/image";
-
-import MainBtn from "./MainBtn";
-import service from "@/schemas/services";
 import ButtonLink from "./common/ButtonLink";
 import { ServiceSwiper } from "./swiper/Swipers";
 import ServiceImageLink from "./ServiceImageLink";
+import BgDots from "./assets/BgDots";
 
 export default async function ServiceImageLinkSwiper() {
   const services: serviceType[] = await getServiceLinks();
@@ -19,13 +17,16 @@ export default async function ServiceImageLinkSwiper() {
 
   return (
     <section className="relative p-8 px-0 small:pl-10 bg-theme-off-white mt-20">
-      <Image
+      <div className="absolute top-0 left-0 h-[100%] w-auto small:bottom-0 small:transform small:scale-y-[-1]">
+        <BgDots />
+      </div>
+      {/* <Image
         src={ServicesBgTexture}
         width={525}
         height={800}
         alt="Dotted background texture"
         className="absolute top-0 left-0 w-[525px] h-auto -z-10"
-      />
+      /> */}
       {serviceSectionHeadings.map((heading) => {
         return (
           <div
@@ -52,8 +53,11 @@ export default async function ServiceImageLinkSwiper() {
           );
         })}
       </div>
-      <div className="invisible xsmall:visible h-0 w-fit mx-auto xsmall:w-full xsmall:h-full">
+      <div className="invisible xsmall:visible h-0 w-fit mb-24 mx-auto xsmall:w-full xsmall:h-full">
         <ServiceSwiper data={services} />
+        <div className="relative pt-14 pb-12 v-[70vw]">
+          <div className="swiper-scrollbar left-0"></div>
+        </div>
       </div>
 
       {serviceSectionHeadings.map((heading) => {

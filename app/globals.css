@@ -285,3 +285,8 @@ p {
 .phones-container {
   aspect-ratio: 887 / 583;
 }
+
+.dots_g {
+  opacity: 5e-2;
+  clip-path: url(#SVGID_00000076605383410517914500000006904510927106359959_);
+}

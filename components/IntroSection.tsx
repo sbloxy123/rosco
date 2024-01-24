@@ -1,35 +1,13 @@
 import { getCroppedImageSrc, getIntro } from "@/sanity/sanity.query";
 import type { introType } from "@/types";
 import { PortableText } from "@portabletext/react";
-import IntroBgTexture from "../app/assets/images/layout/dot_graphic.png";
-import Image from "next/image";
 import ButtonLink from "./common/ButtonLink";
-// import bg from '../app/assets/images/'
 
 export default async function IntroSection() {
   const intro: introType[] = await getIntro();
 
   return (
     <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%]  small:py-25 small:pr-16 small:pl-[2%]  text-white overflow-hidden">
-      {/* <IntroBgTexture /> */}
-
-      {/* <div
-        className="relative top-0 right-0 w-[525px] h-[808px]"
-        style={{
-          background: `url(${IntroBgTexture.src}) no-repeat`,
-          mixBlendMode: "darken", // Fixing the mixBlendMode property
-        }}
-      ></div> */}
-      {/* <div className="absolute top-0 right-0 w-[525px] h-auto z-10 mix-blend-darken bg-theme-dark"> */}
-      <Image
-        src={IntroBgTexture}
-        width={525}
-        height={800}
-        alt="Dotted background texture"
-        className="absolute top-0 right-0 w-[525px] h-auto -z-10 "
-      />
-      {/* </div> */}
-
       {intro.map((content) => {
         const croppedImage = getCroppedImageSrc(
           content.introSection.introImage

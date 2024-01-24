@@ -20,7 +20,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
       key={project._id}
       className="text-white z-20 small:flex small:items-center"
     >
-      {/* <div className="relative play-image order-1"> */}
+      {/* <div classNameName="relative play-image order-1"> */}
       {/* border */}
       {/* <div className="projects-inner-border-container absolute small:hidden">
           <div className="projects-inner-border-element"></div>
@@ -125,8 +125,8 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                 width="567"
                 height="456"
                 stroke="url(#paint0_linear_1601_4743)"
-                stroke-opacity="0.5"
-                stroke-width="56"
+                strokeOpacity="0.5"
+                strokeWidth="56"
                 className="mix-blend-color-dodge "
               />
               <defs>
@@ -240,8 +240,8 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                   width="567"
                   height="456"
                   stroke="url(#paint0_linear_1601_4743)"
-                  stroke-opacity="0.5"
-                  stroke-width="56"
+                  strokeOpacity="0.5"
+                  strokeWidth="56"
                   className="mix-blend-color-dodge "
                 />
                 <defs>

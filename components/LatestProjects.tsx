@@ -3,15 +3,23 @@ import type { projectsSectionType, projectType } from "@/types";
 import { ProjectsSwiper } from "./swiper/Swipers";
 import ButtonLink from "./common/ButtonLink";
 import { SwiperArrowNext, SwiperArrowPrev } from "./common/SwiperArrows";
+import BgDots from "./assets/BgDots";
 
 export default async function LatestProjects() {
   const projectsSection: projectsSectionType[] = await getProjectsSection();
   const projects: projectType[] = await getAllProjects();
 
   return (
-    <section>
+    <section className="relative">
       <div className="relative">
-        <div className=" h-[410px] absolute -z-10 top-0 left-0 w-full small:h-1/2 bg-theme-off-white"></div>
+        <div className="h-[410px] absolute -z-10 top-0 left-0 w-full small:h-1/2 bg-theme-off-white overflow-hidden">
+          <div className="absolute top-0 left-0 h-[200%] w-auto hidden small:block">
+            <BgDots />
+          </div>
+          <div className="absolute top-0 right-0 w-full h-auto small:h-[200%] small:w-auto transform scale-x-[-1]">
+            <BgDots />
+          </div>
+        </div>
 
         {projectsSection.map((content) => {
           const { projectsHeading, projectsSubheading } =

@@ -53,7 +53,7 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
         );
       })}
 
-      <div className="swiper-scrollbar"></div>
+      {/* <div className="swiper-scrollbar"></div> */}
       {/* <div className="swiper-scrollbar" style={dynamicStyles}></div> */}
     </Swiper>
   );
