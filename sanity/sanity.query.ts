@@ -17,8 +17,10 @@ export function urlFor(source: String) {
 export const getCroppedImageSrc = (image: SanityImageQueryResult) => {
   const imageRef = image.asset._ref;
   const crop = image.crop;
+
   // get the image's og dimensions
   const { width, height } = getImageDimensions(imageRef);
+
   if (Boolean(crop)) {
     // compute the cropped image's area
     const croppedWidth = Math.floor(width * (1 - (crop.right + crop.left)));
@@ -240,5 +242,67 @@ export async function getContactContent() {
           emailButtonText
         }
     }`
+  );
+}
+
+export async function getAboutPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage"] {
+      _id,
+      title,
+      aboutPage {
+        _id,
+        pageHeading,
+        pageImage {
+          alt,
+        "image": asset->url,
+        asset {
+          _ref
+        },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
+        btnText,
+        introHeading,
+        introText,
+
+        introBgImage{
+        alt,
+        "image": asset->url,
+        asset {
+          _ref
+        },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
+        featureText,
+        contentArea
+      }
+    }
+    `
   );
 }

@@ -196,3 +196,59 @@ export type contactType = {
     emailButtonText: string;
   };
 };
+interface Asset {
+  url: string;
+}
+export type aboutPageType = {
+  aboutPage: {
+    _id: string;
+    pageHeading: string;
+    pageImage: {
+      alt: string;
+      image: string;
+      asset: {
+        _ref: string;
+      };
+      crop: {
+        _type: "sanity.imageCrop";
+        bottom: number;
+        left: number;
+        right: number;
+        top: number;
+      };
+      hotspot: {
+        _type: "sanity.imageHotspot";
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+      };
+    };
+    btnText: string;
+    introHeading: string;
+    introText: any[]; // Adjust the type based on your actual data structure
+    introBgImage: {
+      alt: string;
+      image: string;
+      asset: {
+        _ref: string;
+      };
+      crop: {
+        _type: "sanity.imageCrop";
+        bottom: number;
+        left: number;
+        right: number;
+        top: number;
+      };
+      hotspot: {
+        _type: "sanity.imageHotspot";
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+      };
+    };
+    featureText: any[]; // Adjust the type based on your actual data structure
+    contentArea: any[]; // Adjust the type based on your actual data structure
+  };
+};
