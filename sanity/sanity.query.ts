@@ -274,10 +274,8 @@ export async function getAboutPageContent() {
           y
         }
       },
-        btnText,
         introHeading,
         introText,
-
         introBgImage{
         alt,
         "image": asset->url,
@@ -301,6 +299,60 @@ export async function getAboutPageContent() {
       },
         featureText,
         contentArea
+      }
+    }
+    `
+  );
+}
+export async function getServicesPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage" && defined(ServicesPage)] {
+      ServicesPage {
+        pageHeading,
+        pageImage {
+              alt,
+            "image": asset->url,
+            asset {
+              _ref
+            },
+            crop {
+              _type,
+              bottom,
+              left,
+              top,
+              right
+            },
+            hotspot {
+              _type,
+              height,
+              width,
+              x,
+              y
+            }
+          },
+          introBgImage{
+            alt,
+            "image": asset->url,
+            asset {
+              _ref
+            },
+            crop {
+              _type,
+              bottom,
+              left,
+              top,
+              right
+            },
+            hotspot {
+              _type,
+              height,
+              width,
+              x,
+              y
+            }
+          },
+        introHeading,
+        introText
       }
     }
     `
