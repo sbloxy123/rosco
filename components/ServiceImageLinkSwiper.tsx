@@ -16,27 +16,20 @@ export default async function ServiceImageLinkSwiper() {
     await getServicesSectionTitles();
 
   return (
-    <section className="relative p-8 px-0 small:pl-10 bg-theme-off-white mt-20">
-      <div className="absolute top-0 left-0 h-[100%] w-auto small:bottom-0 small:transform small:scale-y-[-1]">
+    <section className="relative bg-theme-off-white mt-section-gap mb-[6rem] xsmall:pb-[6rem] small:pb-[5.6rem] small:mb-[5.5rem]">
+      <div className="absolute top-0 w-[115%] h-auto left-[-10%] xsmall:left-0 xsmall:h-full xsmall:w-auto small:bottom-0 small:transform small:scale-y-[-1]">
         <BgDots />
       </div>
-      {/* <Image
-        src={ServicesBgTexture}
-        width={525}
-        height={800}
-        alt="Dotted background texture"
-        className="absolute top-0 left-0 w-[525px] h-auto -z-10"
-      /> */}
       {serviceSectionHeadings.map((heading) => {
         return (
           <div
             key={heading.servicesSection.servicesHeading}
             className="text-theme-dark"
           >
-            <h3 className="uppercase pb-2 pt-[2.7rem] text-center ">
+            <h3 className="uppercase pb-2 pt-[7rem] xsmall:pt-[7.5rem] text-center ">
               {heading.servicesSection.servicesSubheading}
             </h3>
-            <h2 className="text-center py-8">
+            <h2 className="text-center pb-[5rem] pt-[4rem] xsmall:pt-[3.5rem]">
               {heading.servicesSection.servicesHeading}
             </h2>
           </div>
@@ -53,9 +46,9 @@ export default async function ServiceImageLinkSwiper() {
           );
         })}
       </div>
-      <div className="invisible xsmall:visible h-0 w-fit mb-24 mx-auto xsmall:w-full xsmall:h-full">
+      <div className="invisible mb-0 h-0 w-fit  mx-auto xsmall:visible xsmall:w-full xsmall:h-full xsmall:mb-[0] small:pl-layout-small">
         <ServiceSwiper data={services} />
-        <div className="relative pt-14 pb-12 v-[70vw]">
+        <div className="relative h-[5rem] mx-[5%] small:h-[7rem] small:mx-0 small:mr-[clamp(8rem,11.1vw,16rem)]">
           <div className="swiper-scrollbar left-0"></div>
         </div>
       </div>
@@ -64,7 +57,7 @@ export default async function ServiceImageLinkSwiper() {
         return (
           <div
             key={heading.servicesSection.servicesHeading}
-            className="mt-10 m-auto px-[5%] xsmall:px-0 xsmall:w-[229px] xsmall:mx-auto"
+            className="mt-[4rem] m-auto px-[5%] xsmall:px-0 xsmall:mt-[5rem] xsmall:w-[229px] xsmall:mx-auto small:mt-[6.5rem]"
           >
             <ButtonLink
               theme="dark"

@@ -25,9 +25,9 @@ export default async function InnerHero({
         return (
           <div
             key={content.aboutPage._id}
-            className="small:flex small:justify-between small:mr-0 small:ml-auto small:py-10 small:items-center"
+            className="small:flex small:justify-between small:mr-0 small:ml-auto small:pb-[80px] small:items-center small:mt-[40px]"
           >
-            <div className="text-center py-20 max-w-[323px] mx-auto xsmall:text-left xsmall:ml-32 xsmall:max-w-[505px] xsmall:py-24 small:py-0">
+            <div className="text-center pt-[2.4rem] xsmall:pb-[6.6rem] max-w-[323px] mx-auto xsmall:text-left xsmall:ml-32 xsmall:max-w-[505px] small:py-0">
               <h3 className="uppercase font-semibold">{sectionTitle}</h3>
               <h1 className="py-8">{title}</h1>
               <div className="w-full mx-auto pt-8 xsmall:w-fit xsmall:ml-0">

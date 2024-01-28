@@ -26,10 +26,10 @@ export default async function LatestProjects() {
             content.projectsSection;
           return (
             <div key={content._id}>
-              <h3 className="uppercase pt-[2.7rem] text-center text-theme-dark">
+              <h3 className="uppercase pt-[7rem] text-center text-theme-dark">
                 {projectsSubheading}
               </h3>
-              <h2 className="text-center py-10 text-theme-dark">
+              <h2 className="text-center pt-[4rem] pb-[5rem] xsmall:pb-[6.5rem] text-theme-dark">
                 {projectsHeading}
               </h2>
             </div>

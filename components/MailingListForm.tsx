@@ -44,7 +44,7 @@ export default function MailingListForm({
           theme == "dark"
             ? "bg-theme-dark bg-opacity-[6%] text-center"
             : "bg-white bg-opacity-20"
-        }  text-white rounded-sm w-full uppercase text-[14.5px] tracking-[0.06em] xsmall:w-[323px]`}
+        }  text-white rounded-sm w-full uppercase font-headings text-[14.5px] tracking-[0.06em] xsmall:w-[323px]`}
         style={{}}
       />
       <button
@@ -53,7 +53,7 @@ export default function MailingListForm({
           theme == "dark"
             ? "text-white bg-theme-purple"
             : "text-theme-purple bg-white"
-        }  rounded-sm cursor-pointer p-4 uppercase text-[14.5px] tracking-[0.06em] xsmall:w-[114px]`}
+        }  rounded-sm cursor-pointer font-headings p-4 uppercase text-[14.5px] tracking-[0.06em] xsmall:w-[114px]`}
       >
         {buttonText}
       </button>

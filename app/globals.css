@@ -77,6 +77,15 @@ p {
 .nav-link:hover:after {
   width: 100%;
 }
+.nav-search-form > div::before {
+  background: url("/assets/images/Icons.png");
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  content: "";
+}
 
 .inner-border-container {
   position: absolute;
@@ -178,6 +187,8 @@ p {
   background: rgba(47, 48, 71, 0.08);
   border-radius: 50px;
   display: none;
+  left: 0 !important;
+  width: 100% !important;
 }
 .award-scrollbar {
   display: block;
@@ -199,11 +210,13 @@ p {
 
 .project-pagination,
 .testimonial-pagination {
+  gap: 0 !important;
   .swiper-pagination-bullet {
     height: 12px;
     width: 12px;
     background: transparent;
     border: 1.45px solid #fff;
+    opacity: 1;
     border-radius: 50%;
   }
   .swiper-pagination-bullet-active {
@@ -216,6 +229,7 @@ p {
 .testimonial-pagination {
   .swiper-pagination-bullet {
     border: 1.45px solid #6015ef;
+    opacity: 1;
   }
   .swiper-pagination-bullet-active {
     background: #6015ef;
@@ -242,7 +256,7 @@ p {
 
 @media all and (min-width: 512px) {
   .swiper-scrollbar {
-    width: calc(100vw - 30px);
+    width: 100%;
     margin-inline: auto;
     display: block;
   }
@@ -257,7 +271,7 @@ p {
 @media all and (min-width: 1024px) {
   .swiper-scrollbar,
   .award-scrollbar {
-    width: 70vw;
+    /* width: 70vw; */
     margin-right: auto;
     margin-left: 0;
   }

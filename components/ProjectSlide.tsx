@@ -4,6 +4,7 @@ import type { projectType } from "@/types";
 import ButtonLink from "./common/ButtonLink";
 import Image from "next/image";
 import { getCroppedImageSrc } from "@/sanity/sanity.query";
+import BgDots from "./assets/BgDots";
 
 type ProjectSlideProps = {
   project: projectType;
@@ -18,28 +19,32 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
   return (
     <div
       key={project._id}
-      className="text-white z-20 small:flex small:items-center"
+      className="relative text-white z-20 small:flex small:items-center"
     >
-      {/* <div classNameName="relative play-image order-1"> */}
-      {/* border */}
-      {/* <div className="projects-inner-border-container absolute small:hidden">
-          <div className="projects-inner-border-element"></div>
-        </div> */}
-      {/*  */}
-      {/* <div className="relative aspect-[35/37] xsmall:aspect-[70/45] small:aspect-[56/45] small:w-[567px] h-auto">
-          <div
-            style={
-              {
-                "--image-url": `url(${project.image.image})`,
-              } as React.CSSProperties
-            }
-            className="project-img relative bg-[image:var(--image-url)] bg-cover mx-auto group saturate-0 small:saturate-100 small:w-full small:h-full"
-          >
-            {" "}
-            <div className="bg-opacity-5 bg-cover absolute top-0 left-0 bg-gradient-to-l from-black to-white mix-blend-multiply opacity-[0.7] w-full h-full small:hidden"></div>
-          </div>
-        </div>
-      </div> */}
+      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
+        <BgDots />
+      </div>
+      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
+        <BgDots />
+      </div>
+      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
+        <BgDots />
+      </div>
+      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
+        <BgDots />
+      </div>
+      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
+        <BgDots />
+      </div>
+      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
+        <BgDots />
+      </div>
+      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
+        <BgDots />
+      </div>
+      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
+        <BgDots />
+      </div>
 
       <div className="w-full px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%] small:py-25 small:pl-[2%] small:pt-[2.2%] small:pb-[2.1%] small:pr-[2.6%] order-1">
         <div className="relative w-full mx-auto aspect-square xsmall:aspect-[690/451] small:aspect-[567/456]">
@@ -153,7 +158,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                 "--image-url": `url(${getCroppedImageSrc(project.image)})`,
               } as React.CSSProperties
             }
-            className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] small:aspect-[567/456] cursor-pointer group"
+            className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] small:aspect-[567/456] cursor-pointer group small:min-w-[522px]"
           >
             <div className="bg-opacity-5 bg-cover absolute top-0 left-0 bg-gradient-to-l from-black to-white mix-blend-multiply opacity-[0.7] w-full h-full"></div>
 
@@ -264,16 +269,16 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
           </div>
         </div>
       </div>
-
       {/* <p>here is the image url: {project.image.image}</p> */}
       {/* <Image src={project.image?.image} alt={project.image?.alt} /> */}
-      <div className="relative small:flex small:justify-between xsmall:px-[8%] small:px-[15px] order-0">
+      <div className="relative small:flex small:justify-between xsmall:px-[8%] small:pl-[clamp(2rem,2vw,5rem)] small:w-[clamp(358px,36vw,648px)] small:pr-[1.5rem] order-0 small-min-h-[400px]">
         <div className="small:min-w-[80px]">
-          <h3 className="uppercase px-[15px] pt-[2.7rem] mb-8 xsmall:px-0 small:absolute small:top-[65px] small:-left-[28px] small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0">
+          <h3 className="uppercase px-[15px] font-body pt-[2.7rem] mb-8 xsmall:px-0 small:absolute small:top-[65px] small:-left-0 small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0">
             project 0{index + 1}
           </h3>
         </div>
-        <div className="px-[15px] xsmall:px-0 small:pr-[50px]">
+
+        <div className="px-[15px] xsmall:px-0 small:w-[365px] small:pr-[clamp(20px,0vw,50px)]">
           <h2 className="pb-16">{project.projectTitle}</h2>
           <p>{project.projectSummary}</p>
           <div className="mt-20 mx-[15px] xsmall:w-fit xsmall:ml-0">

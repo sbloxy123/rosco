@@ -11,6 +11,7 @@ const BgDots = () => {
       xmlSpace="preserve"
       width="auto"
       height="100%"
+      preserveAspectRatio="xMidYMin slice"
     >
       <defs>
         <path id="SVGID_1_" d="M.3.5h283.8v446.1H.3z" />

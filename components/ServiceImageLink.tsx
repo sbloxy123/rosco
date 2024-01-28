@@ -23,7 +23,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
           "--image-url": `url(${service.coverImage.image})`,
         } as React.CSSProperties
       }
-      className="relative bg-[image:var(--image-url)] bg-cover w-[90vw] xsmall:w-[359px] mx-auto xsmall:px-0 max-w-[359px] aspect-[359/464] overflow-hidden cursor-pointer group"
+      className="relative bg-[image:var(--image-url)] bg-cover w-[90vw] xsmall:w-[359px] mx-auto xsmall:px-0 max-w-[359px] aspect-[359/464] xsmall:aspect-[340/468] overflow-hidden cursor-pointer group"
     >
       <div className="absolute top-0 left-0 bg-theme-dark opacity-50  w-full h-full"></div>
       <div className="absolute top-0 left-0 bg-theme-dark mix-blend-color  w-full h-full"></div>

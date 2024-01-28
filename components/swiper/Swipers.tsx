@@ -26,7 +26,7 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
       direction="vertical"
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
-      wrapperClass="service-swiper pb-14"
+      wrapperClass="service-swiper"
       modules={[Scrollbar, Mousewheel]}
       mousewheel={{
         forceToAxis: true,
@@ -192,7 +192,9 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
           })}
         </div>
       ))}
-      <div className="award-scrollbar"></div>
+      <div className="relative h-[5rem] mx-[5%] small:h-[7rem] small:mx-0 small:mr-[clamp(8rem,11.1vw,16rem)]">
+        <div className="award-scrollbar"></div>
+      </div>
     </Swiper>
   );
 };

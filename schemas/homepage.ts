@@ -9,8 +9,7 @@ const homepage = {
     {
       name: "heroHeading",
       title: "Hero Heading",
-      type: "array",
-      of: [{ type: "block" }],
+      type: "string",
     },
     {
       name: "heroText",

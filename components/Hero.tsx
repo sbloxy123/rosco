@@ -9,24 +9,48 @@ export default async function Hero() {
   const hero: heroType[] = await getHero();
 
   return (
-    <section className="tablet:px-16 px-6 py-10">
+    <section className="">
       {hero &&
         hero.map((content) => {
+          let titleWithLineBreaks = content.heroHeading;
+
+          // Check if heroHeading is a string and includes the newline character
+          if (
+            typeof titleWithLineBreaks === "string" &&
+            titleWithLineBreaks.includes("\\n")
+          ) {
+            titleWithLineBreaks = titleWithLineBreaks.split("\\n");
+          }
           return (
             <div
               key={content._id}
-              className="hero__content grid grid-cols-1 small:grid-cols-2 align-middle items-center gap-10 justify-between py-4 max-w-screen-large lg:m-auto text-theme-dark"
+              className="hero__content grid grid-cols-1 small:grid-cols-2 align-middle items-center gap-10 justify-between py-4 pb-0 mb-section-gap max-w-screen-large small:mx-auto text-theme-dark small:mt-[90px]"
             >
-              <div className="w-full order-last small:order-first">
-                <div className="w-full pb-12 relative pl-0 xsmall:px-20">
-                  <h1 className="absolute -top-[0%] -left-5 hidden xsmall:block xsmall:-translate-x-[35%] small:-translate-x-[31%] w-fit h-auto">
+              <div className="w-full order-last small:order-first px-[5%] small:px-0">
+                <div className="w-full pb-12 relative pl-0 xsmall:px-20 small:pl-layout-small small:pr-0">
+                  <h1 className="absolute -top-[0%] -left-5 hidden xsmall:block xsmall:-translate-x-[4.5vw] small:-translate-x-0 w-fit h-auto">
                     01
                   </h1>
-                  <PortableText value={content.heroHeading} />
+                  <div className="">
+                    {Array.isArray(titleWithLineBreaks) ? (
+                      titleWithLineBreaks.map((line, index) => (
+                        <h1
+                          key={index}
+                          className="font-semibold small:text-[clamp(3.2rem,2.8vw,4rem)]"
+                        >
+                          {line}
+                        </h1>
+                      ))
+                    ) : (
+                      <h1>yep{content.heroHeading}</h1>
+                    )}
+                  </div>
                 </div>
-                <div className="pl-0 xsmall:px-20">
-                  <PortableText value={content.heroText} />
-                  <div className="mt-8 mx-auto xsmall:w-fit xsmall:ml-0">
+                <div className="pl-0 xsmall:px-20 xsmall:pr-10 small:pl-layout-small small:pr-0 small:pb-40px">
+                  <div className="small:max-w-[542px]">
+                    <PortableText value={content.heroText} />
+                  </div>
+                  <div className="mt-[3.5rem] mx-auto xsmall:w-fit xsmall:ml-0">
                     <ButtonLink
                       destination="/about"
                       text={content.heroButtonText}
@@ -36,7 +60,7 @@ export default async function Hero() {
                   </div>
                 </div>
               </div>
-              <div className="hero-image relative object-cover">
+              <div className="hero-image relative object-cover max-w-[755px] mx-auto small:mx-0">
                 <Image
                   src={content.heroImage.image}
                   width={400}

@@ -25,7 +25,7 @@ export type SanityImageQueryResult = {
 // hero
 export type heroType = {
   _id: string;
-  heroHeading: PortableTextBlock[];
+  heroHeading: string | string[];
   heroText: PortableTextBlock[];
   heroButtonText: string;
   heroImage: {

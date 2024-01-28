@@ -7,7 +7,7 @@ export default async function AwardsSection() {
   const awards: awardsType[] = await getAwards();
 
   return (
-    <section className="relative p-8 px-0 small:pl-10 bg-theme-off-white mt-20">
+    <section className="relative p-8 px-0 small:pl-10 bg-theme-off-white mt-section-gap">
       {awards.map((award) => {
         return (
           <div key={award._id} className="py-12">
@@ -19,7 +19,9 @@ export default async function AwardsSection() {
                 {award.awardsSection.awardsSectionTitle}
               </h2>
             </div>
-            <AwardsSwiper data={awards} />
+            <div className="small:pl-layout-small">
+              <AwardsSwiper data={awards} />
+            </div>
           </div>
         );
       })}

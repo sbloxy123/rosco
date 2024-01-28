@@ -2,12 +2,24 @@ import { getCroppedImageSrc, getIntro } from "@/sanity/sanity.query";
 import type { introType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import ButtonLink from "./common/ButtonLink";
+import BgDots from "./assets/BgDots";
 
 export default async function IntroSection() {
   const intro: introType[] = await getIntro();
 
   return (
-    <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%]  small:py-25 small:pr-16 small:pl-[2%]  text-white overflow-hidden">
+    <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%]  small:py-[100px] small:pr-16 small:pl-0 text-white overflow-hidden">
+      {/* top left dots */}
+      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto ">
+        <BgDots />
+      </div>
+      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto ">
+        <BgDots />
+      </div>
+      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto ">
+        <BgDots />
+      </div>
+
       {intro.map((content) => {
         const croppedImage = getCroppedImageSrc(
           content.introSection.introImage
@@ -172,15 +184,15 @@ export default async function IntroSection() {
                 </div>
               </div>
             </div>
-            <div className="small:max-w-[90%] small:pl-20">
-              <h3 className="uppercase pb-10 pt-[2.7rem]">
+            <div className="small:max-w-[90%] small:pl-[70px]">
+              <h3 className="uppercase pb-14 pt-[2.7rem]">
                 {content.introSection.introSubheading}
               </h3>
               <h2 className="pb-20">{content.introSection.introHeading}</h2>
-              <div className="pr-2 xsmall:w-[90%] small:w-[clamp(445px,43vw,525px)]">
+              <div className="pr-2 xsmall:w-[90%] small:w-[clamp(445px,43vw,525px)] small:pr-0">
                 <PortableText value={content.introSection.introText} />
               </div>
-              <div className="mt-20 mx-[15px] xsmall:w-fit xsmall:ml-0">
+              <div className="mt-16 mx-[15px] xsmall:w-fit xsmall:ml-0">
                 <ButtonLink
                   destination="/about"
                   text={content.introSection.aboutUsButton}

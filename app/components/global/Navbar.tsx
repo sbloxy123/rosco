@@ -8,10 +8,10 @@ import Logo from "../../icons/logo.svg";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="z-30">
+    <div className="z-30 small:fixed top-0 left-0 w-full bg-white">
       <header className="bg-theme_white-900 tracking-[0.06em]">
-        <div className="max-w-screen-large mx-auto px-[5%] large:px-0 py-8">
-          <div className="flex items-center justify-between h-20 xsmall:px-10">
+        <div className="max-w-screen-large mx-auto py-8 ">
+          <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
             <div className="max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/">
                 <svg
@@ -86,7 +86,7 @@ function Navbar() {
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
-                  <ul className="flex items-center gap-x-8 uppercase font-normal font-sans text-[1.45rem]">
+                  <ul className="flex items-center justify-between w-[40vw] max-w-[575px] uppercase font-normal font-sans text-theme-dark text-[1.45rem]">
                     <li>
                       <Link
                         href="/"
@@ -139,6 +139,18 @@ function Navbar() {
                 </nav>
               </div>
             </div>
+            <form
+              className="nav-search-form relative flex flex-col justify-center w-20 gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:w-full xsmall:flex-row small:w-fit "
+              // onSubmit={handleSubmit}
+            >
+              <input
+                type="email"
+                placeholder="Search"
+                // value={email}
+                // onChange={handleInput}
+                className="p-4 bg-theme-dark bg-opacity-[6%] text-center text-white rounded-sm w-full  text-[14.5px] tracking-[0.06em] xsmall:w-[323px] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px]"
+              />
+            </form>
 
             {/* == MOBILE MENU OPEN/CLOSE  */}
             <div className="-mr-2 flex small:hidden">

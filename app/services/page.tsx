@@ -42,25 +42,25 @@ export default async function About() {
                   )})`,
                 } as React.CSSProperties
               }
-              className="relative w-full h-full bg-[image:var(--image-url)] bg-cover aspect-[393/624] xsmall:aspect-[744/416] small:aspect-[1440/504] my-20 overflow-hidden"
+              className="relative w-full h-full bg-[image:var(--image-url)] bg-cover  mb-20 overflow-hidden my-[56px] xsmall:my-[80px]"
             >
-              <div className="hidden small:block absolute top-0 left-0 h-[200%] w-auto mix-blend-multiply">
+              <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
                 <BgDots />
               </div>
-              <div className="hidden small:block absolute top-0 left-0 h-[200%] w-auto mix-blend-multiply">
+              <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
                 <BgDots />
               </div>
-              <div className="hidden small:block absolute top-0 left-0 h-[200%] w-auto mix-blend-multiply">
+              <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
                 <BgDots />
               </div>
 
-              <div className="absolute bottom-0 right-0 h-[200%] w-auto mix-blend-multiply rotate-180">
+              <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
                 <BgDots />
               </div>
-              <div className="absolute bottom-0 right-0 h-[200%] w-auto mix-blend-multiply rotate-180">
+              <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
                 <BgDots />
               </div>
-              <div className="absolute bottom-0 right-0 h-[200%] w-auto mix-blend-multiply rotate-180">
+              <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
                 <BgDots />
               </div>
 
@@ -83,6 +83,22 @@ export default async function About() {
                 </ul>
               </div>
             </div>
+
+            {services.map((service, index) => {
+              return (
+                <div key={index}>
+                  {/*
+                        todo:
+                          setup component to show 1 service
+                          make sure data is in schema
+                          pass in data using props
+                          setup types
+                          use gradient border as a clip path to the title?
+
+                         */}
+                </div>
+              );
+            })}
             {/* </div> */}
             {/* </div> */}
           </div>
