@@ -40,7 +40,7 @@ export default async function LatestProjects() {
           <ProjectsSwiper data={projects} />
           <div className="absolute top-[calc(87vw-30px)] xsmall:top-[calc(50vw-15px)] left-0 px-[50px] w-full z-20 flex justify-between items-center small:top-auto small:bottom-[calc(-11vw-30px)] small:px-[120px]">
             <div className="w-0 small:w-1/3"></div>
-            <div className="project-pagination h-10 w-[40%] z-30 flex gap-3 items-center xsmall:translate-y-[2vw] small:-translate-y-[7vw] small:w-1/3 small:justify-center"></div>
+            <div className="project-pagination h-[7rem] w-[40%] z-30 flex gap-3 items-center xsmall:translate-y-[2vw] small:-translate-y-[7vw] small:w-1/3 small:justify-center"></div>
             <div className="flex gap-4 xsmall:rotate-90 xsmall:-translate-y-[20vw] xsmall:translate-x-9 small:rotate-0 small:w-1/3 small:justify-end">
               <SwiperArrowPrev swiperDivName="prev-project" />
               <SwiperArrowNext swiperDivName="next-project" />

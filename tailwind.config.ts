@@ -39,6 +39,7 @@ const config: Config = {
       },
       margin: {
         "section-gap": "80px",
+        "layout-small": "clamp(8rem,11.1vw,16rem)",
       },
     },
   },
