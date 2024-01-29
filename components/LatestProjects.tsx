@@ -1,6 +1,6 @@
 import { getProjectsSection, getAllProjects } from "@/sanity/sanity.query";
 import type { projectsSectionType, projectType } from "@/types";
-import { ProjectsSwiper } from "./swiper/Swipers";
+import { ProjectsPaginationSwiper, ProjectsSwiper } from "./swiper/Swipers";
 import ButtonLink from "./common/ButtonLink";
 import { SwiperArrowNext, SwiperArrowPrev } from "./common/SwiperArrows";
 import BgDots from "./assets/BgDots";
@@ -36,18 +36,33 @@ export default async function LatestProjects() {
           );
         })}
 
-        <div className="small:w-[90%] small:h-fit small:m-auto relative bg-theme-dark small:max-w-[1120px] small:flex small:items-center small:px-[0%]">
-          <ProjectsSwiper data={projects} />
-          <div className="absolute top-[calc(87vw-30px)] xsmall:top-[calc(50vw-15px)] left-0 px-[50px] w-full z-20 flex justify-between items-center small:top-auto small:bottom-[calc(-11vw-30px)] small:px-[120px]">
-            <div className="w-0 small:w-1/3"></div>
-            <div className="project-pagination h-[7rem] w-[40%] z-30 flex gap-3 items-center xsmall:translate-y-[2vw] small:-translate-y-[7vw] small:w-1/3 small:justify-center"></div>
-            <div className="flex gap-4 xsmall:rotate-90 xsmall:-translate-y-[20vw] xsmall:translate-x-9 small:rotate-0 small:w-1/3 small:justify-end">
-              <SwiperArrowPrev swiperDivName="prev-project" />
-              <SwiperArrowNext swiperDivName="next-project" />
-            </div>
+        <div className="relative small:w-[90%] small:h-fit small:m-auto bg-theme-dark small:max-w-[1120px] small:flex small:items-center small:px-[0%] overflow-hidden">
+          {/* top left dots */}
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
+            <BgDots />
           </div>
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
+            <BgDots />
+          </div>
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
+            <BgDots />
+          </div>
+
+          {/* bottom right dots */}
+          <div className="absolute bottom-0 right-0 w-full h-auto mix-blend-multiply rotate-180 xsmall:hidden">
+            <BgDots />
+          </div>
+          <div className="absolute bottom-0 right-0 w-full h-auto mix-blend-multiply rotate-180 xsmall:hidden">
+            <BgDots />
+          </div>
+          <div className="absolute bottom-0 right-0 w-full h-auto mix-blend-multiply rotate-180 xsmall:hidden">
+            <BgDots />
+          </div>
+
+          <ProjectsSwiper data={projects} />
         </div>
-        {/* <div className="project-pagination h-10 w-full z-30 gap-3 items-center small:flex"></div> */}
+        {/* <div className="project-pagination-outer h-[5.6rem] w-full pb-[4rem] z-30 flex gap-3 items-center small:justify-center"></div> */}
+        <ProjectsPaginationSwiper data={projects} />
 
         {projectsSection.map((content) => {
           return (

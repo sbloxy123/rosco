@@ -1,4 +1,5 @@
 "use client";
+import SwiperCore from "swiper/core";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, Pagination, Navigation, Mousewheel } from "swiper/modules";
@@ -17,6 +18,8 @@ import type {
   awardsType,
 } from "@/types";
 import ProjectSlide from "../ProjectSlide";
+import { SwiperArrowNext, SwiperArrowPrev } from "../common/SwiperArrows";
+import { useRef } from "react";
 
 export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
   return (
@@ -62,13 +65,24 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
 // PROJECTS SWIPER
 
 export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
+  const projectsSwiperRef = useRef<SwiperCore | null>(null);
+  const projectsPaginationSwiperRef = useRef<SwiperCore | null>(null);
+
+  const handleProjectsSwiperSlideChange = () => {
+    if (projectsPaginationSwiperRef.current) {
+      projectsPaginationSwiperRef.current.slideTo(
+        projectsSwiperRef.current?.realIndex ?? 0
+      );
+    }
+  };
+
   return (
     <Swiper
       spaceBetween={40}
       slidesPerView={1}
-      // onSlideChange={() => console.log("slide change")}
+      onSlideChange={handleProjectsSwiperSlideChange}
       // onSwiper={(swiper) => console.log(swiper)}
-      wrapperClass="pb-14 small:pb-0"
+      wrapperClass="pb-14 small:pb-0 relative"
       modules={[Pagination, Navigation]}
       pagination={{
         el: ".project-pagination",
@@ -76,6 +90,9 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
       navigation={{
         nextEl: ".next-project",
         prevEl: ".prev-project",
+      }}
+      onSwiper={(swiper) => {
+        projectsSwiperRef.current = swiper;
       }}
     >
       {data.map((elm, index) => {
@@ -88,6 +105,44 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
       })}
 
       {/* <div className="swiper-scrollbar"></div> */}
+      <div className="absolute top-0 left-0 w-full aspect-square xsmall:aspect-[690/451] small:aspect-[567/456] small:min-w-[522px]">
+        <div className="absolute w-full h-fit top-auto bottom-0 left-0 z-20 px-[4rem] flex justify-between items-center xsmall:h-full ">
+          <div className="w-0 small:w-1/3"></div>
+
+          <div className="project-pagination h-[5.6rem] w-[40%] pb-[4rem] z-30 flex gap-3 items-center xsmall:absolute xsmall:right-0 xsmall:bottom-0 xsmall:mb-[4%] xsmall:pl-[5%] xsmall:w-fit xsmall:justify-start xsmall:mx-[5%] small:w-1/3 small:justify-center small:mb-0 small:mx-0 small:px-0 small:hidden"></div>
+
+          <div className="relative flex gap-4 pb-[4rem] xsmall:rotate-90 xsmall:absolute xsmall:right-0 xsmall:mr-[7%] small:rotate-0 small:w-1/3 small:justify-end">
+            <SwiperArrowPrev swiperDivName="prev-project" />
+            <SwiperArrowNext swiperDivName="next-project" />
+          </div>
+        </div>
+      </div>
+    </Swiper>
+  );
+};
+
+export const ProjectsPaginationSwiper = ({ data }: { data: projectType[] }) => {
+  const projectsPaginationSwiperRef = useRef<SwiperCore | null>(null);
+  return (
+    <Swiper
+      // onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => {
+        projectsPaginationSwiperRef.current = swiper;
+      }}
+      wrapperClass=""
+      modules={[Pagination]}
+      pagination={{
+        el: ".project-pagination-outer",
+      }}
+    >
+      {data.map((elm, index) => {
+        return (
+          <SwiperSlide key={index}>
+            <div>{elm.projectTitle}</div>
+          </SwiperSlide>
+        );
+      })}
+      <div className="project-pagination-outer h-[5.6rem] w-full pb-[4rem] z-30 flex gap-3 items-center small:justify-center"></div>
     </Swiper>
   );
 };
@@ -130,7 +185,7 @@ export const TestimonialSwiper = ({ data }: { data: testimonialsType[] }) => {
 export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
   return (
     <Swiper
-      spaceBetween={10}
+      spaceBetween={18}
       slidesPerView="auto"
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
@@ -142,7 +197,7 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
       }}
       breakpoints={{
         1024: {
-          spaceBetween: 20,
+          spaceBetween: 18,
           slidesPerView: "auto",
         },
       }}
@@ -158,7 +213,7 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
               <SwiperSlide key={innerIndex}>
                 <div
                   key={index}
-                  className="aspect-[255/345] w-[90%] xsmall:w-auto max-w-[255px] flex justify-center items-center flex-col gap-8 bg-theme-purple text-white text-center my-4"
+                  className="aspect-[255/345] w-auto px-[5%] xsmall:px-0 xsmall:w-auto max-w-[255px] flex justify-center items-center flex-col gap-8 bg-theme-purple text-white text-center my-4"
                 >
                   <div className="relative h-[150px] w-full mb-4">
                     <Image

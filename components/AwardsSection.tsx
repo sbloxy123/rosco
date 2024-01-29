@@ -7,10 +7,10 @@ export default async function AwardsSection() {
   const awards: awardsType[] = await getAwards();
 
   return (
-    <section className="relative p-8 px-0 small:pl-10 bg-theme-off-white mt-section-gap">
+    <section className="relative px-0 mt-section-gap">
       {awards.map((award) => {
         return (
-          <div key={award._id} className="py-12">
+          <div key={award._id} className="py-[3rem]">
             <div className="text-center text-theme-dark px-[5%]">
               <h3 className="uppercase">
                 {award.awardsSection.awardsSectionSubTitle}

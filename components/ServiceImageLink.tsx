@@ -29,7 +29,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
       <div className="absolute top-0 left-0 bg-theme-dark mix-blend-color  w-full h-full"></div>
       <div className="absolute top-0 left-0 bg-theme-dark mix-blend-soft-light saturate-100 w-full h-full"></div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 text-white w-full -translate-y-[94px]">
-        <p className="text-[1.6rem] tracking-[0.24em] text-center h-7 pb-16 font-semibold">
+        <p className="text-[1.6rem] tracking-[0.24em] text-center h-7 pb-[5.4rem] font-semibold">
           0{index + 1}
         </p>
         <h2 className="text-[2.4rem] font-semibold text-center w-full tracking-[0.24em] px-10 h-7 uppercase">

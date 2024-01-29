@@ -193,7 +193,7 @@ p {
 .award-scrollbar {
   display: block;
   width: calc(100vw - 30px);
-  margin-inline: 5%;
+  /* margin-inline: 5%; */
   .swiper-scrollbar-drag {
     height: 100%;
     border-radius: 50px;
@@ -209,7 +209,8 @@ p {
 }
 
 .project-pagination,
-.testimonial-pagination {
+.testimonial-pagination,
+.project-pagination-outer {
   gap: 0 !important;
   .swiper-pagination-bullet {
     height: 12px;
@@ -235,6 +236,17 @@ p {
     background: #6015ef;
   }
 }
+
+.project-pagination-outer {
+  .swiper-pagination-bullet {
+    border: 1.45px solid #6015ef;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active {
+    background: #6015ef;
+  }
+}
+
 .next-testimonial,
 .prev-testimonial {
   background: #6015ef;

@@ -16,10 +16,14 @@ export default async function ServiceImageLinkSwiper() {
     await getServicesSectionTitles();
 
   return (
-    <section className="relative bg-theme-off-white mt-section-gap mb-[6rem] xsmall:pb-[6rem] small:pb-[5.6rem] small:mb-[5.5rem]">
-      <div className="absolute top-0 w-[115%] h-auto left-[-10%] xsmall:left-0 xsmall:h-full xsmall:w-auto small:bottom-0 small:transform small:scale-y-[-1]">
+    <section className="relative bg-theme-off-white mt-section-gap mb-[6rem] xsmall:pb-[6rem] small:pb-[5.6rem] small:mb-[5.5rem] overflow-hidden">
+      {/* <div className="absolute top-0 w-[115%] h-auto left-[-10%] xsmall:left-0 xsmall:h-full xsmall:w-auto small:bottom-0 small:transform small:scale-y-[-1]">
+        <BgDots />
+      </div> */}
+      <div className="absolute top-0 left-0 w-[clamp(350px,48vw,450px)] h-auto small:transform small:scale-y-[-1] small:bottom-0">
         <BgDots />
       </div>
+
       {serviceSectionHeadings.map((heading) => {
         return (
           <div

@@ -5,6 +5,7 @@ import ButtonLink from "./common/ButtonLink";
 import Image from "next/image";
 import { getCroppedImageSrc } from "@/sanity/sanity.query";
 import BgDots from "./assets/BgDots";
+import { SwiperArrowNext, SwiperArrowPrev } from "./common/SwiperArrows";
 
 type ProjectSlideProps = {
   project: projectType;
@@ -21,31 +22,6 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
       key={project._id}
       className="relative text-white z-20 small:flex small:items-center"
     >
-      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
-        <BgDots />
-      </div>
-      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
-        <BgDots />
-      </div>
-      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
-        <BgDots />
-      </div>
-      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
-        <BgDots />
-      </div>
-      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
-        <BgDots />
-      </div>
-      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
-        <BgDots />
-      </div>
-      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
-        <BgDots />
-      </div>
-      <div className="hidden xsmall:block absolute top-o left-0 w-[40%] h-auto mix-blend-multiply">
-        <BgDots />
-      </div>
-
       <div className="w-full px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%] small:py-25 small:pl-[2%] small:pt-[2.2%] small:pb-[2.1%] small:pr-[2.6%] order-1">
         <div className="relative w-full mx-auto aspect-square xsmall:aspect-[690/451] small:aspect-[567/456]">
           <div className="absolute w-[112%] h-[112%] -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] small:-left-[5.4%]">
@@ -273,7 +249,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
       {/* <Image src={project.image?.image} alt={project.image?.alt} /> */}
       <div className="relative small:flex small:justify-between xsmall:px-[8%] small:pl-[clamp(2rem,2vw,5rem)] small:w-[clamp(358px,36vw,648px)] small:pr-[1.5rem] order-0 small-min-h-[400px]">
         <div className="small:min-w-[80px]">
-          <h3 className="uppercase px-[15px] font-body pt-[2.7rem] mb-8 xsmall:px-0 small:absolute small:top-[65px] small:-left-0 small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0">
+          <h3 className="uppercase px-[15px] font-body tracking-[0.12em] pt-[2.7rem] mb-8 xsmall:px-0 small:absolute small:top-[65px] small:-left-0 small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0">
             project 0{index + 1}
           </h3>
         </div>
