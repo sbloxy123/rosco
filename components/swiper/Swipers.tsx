@@ -1,6 +1,6 @@
 "use client";
-import SwiperCore from "swiper/core";
 
+import SwiperCore from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, Pagination, Navigation, Mousewheel } from "swiper/modules";
 import "swiper/react";
@@ -31,14 +31,15 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
       // onSwiper={(swiper) => console.log(swiper)}
       wrapperClass="service-swiper"
       modules={[Scrollbar, Mousewheel]}
-      mousewheel={{
-        forceToAxis: true,
-        sensitivity: 1,
-        releaseOnEdges: true,
-      }}
+      // mousewheel={{
+      //   forceToAxis: true,
+      //   sensitivity: 1,
+      //   releaseOnEdges: true,
+      // }}
+      free-mode={true}
       scrollbar={{
         hide: false,
-        el: ".swiper-scrollbar",
+        el: ".services-swiper-scrollbar",
       }}
       breakpoints={{
         512: {

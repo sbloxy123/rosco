@@ -181,7 +181,7 @@ p {
   }
 }
 
-.swiper-scrollbar,
+.services-swiper-scrollbar,
 .award-scrollbar {
   height: 3px;
   background: rgba(47, 48, 71, 0.08);
@@ -247,8 +247,8 @@ p {
   }
 }
 
-.next-testimonial,
-.prev-testimonial {
+.next-testimonial:not(.swiper-button-disabled),
+.prev-testimonial:not(.swiper-button-disabled) {
   background: #6015ef;
   transition: background 350ms ease;
   svg {
@@ -257,7 +257,9 @@ p {
     }
   }
 }
-.swiper-button-disabled {
+
+.next-testimonial,
+.prev-testimonial {
   background: #fff;
   svg {
     path {
@@ -265,9 +267,19 @@ p {
     }
   }
 }
+.next-project,
+.prev-project {
+  transition: background 350ms ease;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.next-project:not(.swiper-button-disabled),
+.prev-project:not(.swiper-button-disabled) {
+  background: rgba(255, 255, 255, 1);
+}
 
 @media all and (min-width: 512px) {
-  .swiper-scrollbar {
+  .services-swiper-scrollbar {
     width: 100%;
     margin-inline: auto;
     display: block;
@@ -278,10 +290,11 @@ p {
     border-radius: 50px;
     background: #6015ef;
     display: block;
+    /* width: 16.67% !important; */
   }
 }
 @media all and (min-width: 1024px) {
-  .swiper-scrollbar,
+  .services-swiper-scrollbar,
   .award-scrollbar {
     /* width: 70vw; */
     margin-right: auto;

@@ -15,6 +15,15 @@ export default async function ServiceImageLinkSwiper() {
   const serviceSectionHeadings: serviceSectionType[] =
     await getServicesSectionTitles();
 
+  let scrollbarThumbWidth;
+
+  // Get the total number of slides
+  const totalSlides = services.length;
+  // Calculate the width percentage for the scrollbar thumb
+  const thumbWidthPercentage = 100 / totalSlides;
+
+  scrollbarThumbWidth = `${thumbWidthPercentage.toFixed(2)}%`;
+
   return (
     <section className="relative bg-theme-off-white mt-section-gap mb-[6rem] xsmall:pb-[6rem] small:pb-[5.6rem] small:mb-[5.5rem] overflow-hidden">
       {/* <div className="absolute top-0 w-[115%] h-auto left-[-10%] xsmall:left-0 xsmall:h-full xsmall:w-auto small:bottom-0 small:transform small:scale-y-[-1]">
@@ -53,7 +62,11 @@ export default async function ServiceImageLinkSwiper() {
       <div className="invisible mb-0 h-0 w-fit  mx-auto xsmall:visible xsmall:w-full xsmall:h-full xsmall:mb-[0] small:pl-layout-small">
         <ServiceSwiper data={services} />
         <div className="relative h-[5rem] mx-[5%] small:h-[7rem] small:mx-0 small:mr-[clamp(8rem,11.1vw,16rem)]">
-          <div className="swiper-scrollbar left-0"></div>
+          <div className="services-swiper-scrollbar absolute bottom-0 left-0">
+            <div
+              className={`swiper-scrollbar-drag w-${scrollbarThumbWidth}`}
+            ></div>
+          </div>
         </div>
       </div>
 
