@@ -72,7 +72,7 @@ export default async function About() {
                 <ul className="pt-10 small:max-w-[500px] mx-auto">
                   {services.map((service, index) => {
                     return (
-                      <li key={index} className="pt-2">
+                      <li key={service._id} className="pt-2">
                         <h4 className="uppercase text-[2rem] font-bold tracking-[0.24em]">
                           <span className="hidden xsmall:inline pr-4">–</span>
                           {service.serviceTitle}
@@ -84,10 +84,8 @@ export default async function About() {
               </div>
             </div>
 
-            {services.map((service, index) => {
-              return (
-                <div key={index}>
-                  {/*
+            {/* {services.map((service, index) => { */}
+            {/*
                         todo:
                           setup component to show 1 service
                           make sure data is in schema
@@ -96,9 +94,6 @@ export default async function About() {
                           use gradient border as a clip path to the title?
 
                          */}
-                </div>
-              );
-            })}
             {/* </div> */}
             {/* </div> */}
           </div>

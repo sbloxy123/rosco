@@ -49,34 +49,34 @@ p {
   aspect-ratio: 1 / 1;
 }
 
-.nav-link {
-  text-decoration: none;
-  color: #111;
-  display: inline-block;
-  white-space: nowrap;
-  margin: 0;
-  transition: all 200ms ease-in;
+.nav__item__link {
   position: relative;
-}
-.nav-link:after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 0%;
-  content: ".";
-  color: transparent;
-  background: rgb(46, 131, 87, 1);
-  height: 2px;
-  transition: all 0.4s ease-in;
+  span {
+    opacity: 0;
+    transition: opacity 350ms ease;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -0.8rem;
+    width: 0%;
+    height: 0.2rem;
+    left: 0;
+    background: #2f3047;
+    border-radius: 25px;
+    transition: width 350ms ease;
+  }
+
+  &:hover {
+    span {
+      opacity: 1;
+    }
+    &::before {
+      width: 100%;
+    }
+  }
 }
 
-.nav-link:hover {
-  color: rgb(46, 131, 87, 1);
-}
-.nav-link:hover:after {
-  width: 100%;
-}
 .nav-search-form > div::before {
   background: url("/assets/images/Icons.png");
   position: absolute;

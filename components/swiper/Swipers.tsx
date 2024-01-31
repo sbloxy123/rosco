@@ -36,7 +36,7 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
       //   sensitivity: 1,
       //   releaseOnEdges: true,
       // }}
-      free-mode={true}
+      // free-mode={true}
       scrollbar={{
         hide: false,
         el: ".services-swiper-scrollbar",

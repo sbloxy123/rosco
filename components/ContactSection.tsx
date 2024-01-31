@@ -56,7 +56,7 @@ export default async function ContactSection() {
               </svg>{" "}
             </div>
 
-            <div className="my-24 small:flex small:justify-between small:items-center">
+            <div className="my-24 small:flex small:justify-between small:items-center max-w-[1280px] small:mx-auto">
               <div
                 key={content._id}
                 className="px-[5%] text-center small:text-left"

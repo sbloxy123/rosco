@@ -16,12 +16,14 @@ export default async function About() {
     <section>
       {aboutContent.map((content) => {
         return (
-          <InnerHero
-            sectionTitle="about us"
-            title={content.aboutPage.pageHeading}
-            image={content.aboutPage.pageImage}
-            imageAltText={content.aboutPage.pageImage.alt}
-          />
+          <div key={content.aboutPage._id}>
+            <InnerHero
+              sectionTitle="about us"
+              title={content.aboutPage.pageHeading}
+              image={content.aboutPage.pageImage}
+              imageAltText={content.aboutPage.pageImage.alt}
+            />
+          </div>
         );
       })}
       {aboutContent.map((content) => {

@@ -86,53 +86,53 @@ function Navbar() {
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
-                  <ul className="flex items-center justify-between w-[40vw] max-w-[575px] uppercase font-normal font-sans text-theme-dark text-[1.45rem]">
+                  <ul className="nav__link__list flex items-center justify-between w-[40vw] max-w-[575px] uppercase font-normal font-sans text-theme-dark text-[1.45rem]">
                     <li>
-                      <Link
-                        href="/"
-                        className="hover:text-purple-400 duration-300"
-                      >
-                        Home
+                      <Link href="/" className="">
+                        <div className="nav__item__link">
+                          <span className="font-semibold">01 </span>
+                          Home
+                        </div>
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        href="/about"
-                        className="hover:text-purple-400 duration-300"
-                      >
-                        About
+                      <Link href="/about" className="">
+                        <div className="nav__item__link">
+                          <span className="font-semibold">02 </span>
+                          About
+                        </div>
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        href="/services"
-                        className="hover:text-purple-400 duration-300"
-                      >
-                        Services
+                      <Link href="/services" className="">
+                        <div className="nav__item__link">
+                          <span className="font-semibold">03 </span>
+                          Services
+                        </div>
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        href="/projects"
-                        className="hover:text-purple-400 duration-300"
-                      >
-                        Projects
+                      <Link href="/projects" className="">
+                        <div className="nav__item__link">
+                          <span className="font-semibold">04 </span>
+                          Projects
+                        </div>
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        href="/faqs"
-                        className="hover:text-purple-400 duration-300"
-                      >
-                        FAQ's
+                      <Link href="/faqs" className="">
+                        <div className="nav__item__link">
+                          <span className="font-semibold">05 </span>
+                          FAQ's
+                        </div>
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        href="/contact"
-                        className="hover:text-purple-400 duration-300"
-                      >
-                        Contact
+                      <Link href="/contact" className="">
+                        <div className="nav__item__link">
+                          <span className="font-semibold">06 </span>
+                          Contact
+                        </div>
                       </Link>
                     </li>
                   </ul>
