@@ -36,6 +36,7 @@ export default async function InnerHero({
                   text="Get in touch"
                   destination="/contact"
                   ctaType="general"
+                  hoverEffect="fill-col"
                 />
               </div>
             </div>

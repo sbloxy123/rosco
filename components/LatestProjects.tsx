@@ -68,13 +68,14 @@ export default async function LatestProjects() {
           return (
             <div
               key={content._id}
-              className="mt-20 mx-[15px] xsmall:w-fit xsmall:mx-auto small:mt-40"
+              className="mt-20 mx-[15px] xsmall:w-fit xsmall:mx-auto small:mt-0"
             >
               <ButtonLink
                 text={content.projectsSection.projectsButtonText}
                 theme="dark"
                 destination="/projects"
                 ctaType="none"
+                hoverEffect="outline"
               />
             </div>
           );

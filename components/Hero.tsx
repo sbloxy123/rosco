@@ -56,6 +56,7 @@ export default async function Hero() {
                       text={content.heroButtonText}
                       theme="dark"
                       ctaType="general"
+                      hoverEffect="fill-col"
                     />
                   </div>
                 </div>

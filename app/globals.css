@@ -211,7 +211,7 @@ p {
 .project-pagination,
 .testimonial-pagination,
 .project-pagination-outer {
-  gap: 0 !important;
+  /* gap: 1 !important; */
   .swiper-pagination-bullet {
     height: 12px;
     width: 12px;
@@ -227,37 +227,19 @@ p {
     /* border: 1px solid #fff; */
   }
 }
-.testimonial-pagination {
-  .swiper-pagination-bullet {
-    border: 1.45px solid #6015ef;
-    opacity: 1;
-  }
-  .swiper-pagination-bullet-active {
-    background: #6015ef;
-  }
-}
-
+.testimonial-pagination,
 .project-pagination-outer {
   .swiper-pagination-bullet {
-    border: 1.45px solid #6015ef;
+    border: 1.45px solid #5003b4;
     opacity: 1;
   }
   .swiper-pagination-bullet-active {
+    border: 1.45px solid #6015ef;
     background: #6015ef;
   }
 }
 
-.next-testimonial:not(.swiper-button-disabled),
-.prev-testimonial:not(.swiper-button-disabled) {
-  background: #6015ef;
-  transition: background 350ms ease;
-  svg {
-    path {
-      fill: #fff;
-    }
-  }
-}
-
+/* testimonial nav */
 .next-testimonial,
 .prev-testimonial {
   background: #fff;
@@ -267,6 +249,19 @@ p {
     }
   }
 }
+.next-testimonial:not(.swiper-button-disabled),
+.prev-testimonial:not(.swiper-button-disabled) {
+  background: #6015ef;
+  transition: background 350ms ease;
+  cursor: pointer;
+  svg {
+    path {
+      fill: #fff;
+    }
+  }
+}
+
+/* project nav */
 .next-project,
 .prev-project {
   transition: background 350ms ease;
@@ -276,6 +271,7 @@ p {
 .next-project:not(.swiper-button-disabled),
 .prev-project:not(.swiper-button-disabled) {
   background: rgba(255, 255, 255, 1);
+  cursor: pointer;
 }
 
 @media all and (min-width: 512px) {
@@ -304,7 +300,7 @@ p {
   .award-scrollbar-drag {
     /* width: 100px; */
   }
-  .project-pagination {
+  /* .project-pagination {
     .swiper-pagination-bullet {
       height: 12px;
       width: 12px;
@@ -318,7 +314,7 @@ p {
       background: #6015ef;
       border: 1.45px solid #6015ef;
     }
-  }
+  } */
 }
 
 .phones-container {

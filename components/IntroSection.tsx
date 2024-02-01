@@ -10,13 +10,13 @@ export default async function IntroSection() {
   return (
     <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-[5.5rem] xsmall:px-[3%] xsmall:pt-[3%]  small:py-[100px] small:pr-16 small:pl-0 text-white overflow-hidden">
       {/* top left dots */}
-      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto ">
+      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto z-0 ">
         <BgDots />
       </div>
-      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto ">
+      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto z-0 ">
         <BgDots />
       </div>
-      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto ">
+      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto z-0 ">
         <BgDots />
       </div>
 
@@ -29,7 +29,7 @@ export default async function IntroSection() {
         return (
           <div
             key={content.introSection._id}
-            className="grid grid-cols-1 small:grid-cols-2 gap-10 items-center"
+            className="relative grid grid-cols-1 small:grid-cols-2 gap-10 items-center z-10"
           >
             <div className="relative w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451]">
               <div className="absolute -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] w-[112%] h-[112%]">
@@ -198,6 +198,7 @@ export default async function IntroSection() {
                   text={content.introSection.aboutUsButton}
                   theme="light"
                   ctaType="general"
+                  hoverEffect="fill-col"
                 />
               </div>
             </div>

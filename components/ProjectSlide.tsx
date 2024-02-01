@@ -263,6 +263,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
               ctaType="general"
               text="view project"
               theme="light"
+              hoverEffect="fill-col"
             />
           </div>
         </div>
