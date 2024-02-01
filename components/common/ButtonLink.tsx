@@ -51,12 +51,12 @@ const ButtonLink = ({
   return (
     <Link
       href={`${destination}`}
-      className={`block border-2 border-solid border-${color} rounded-sm text-${color} py-4 w-full  transition hover:duration-300 ${hover} group`}
+      className={`block border-2 border-solid border-${color} rounded-sm text-${color} py-5 w-full  transition hover:duration-300 ${hover} group`}
       style={{ border: `solid` }}
     >
       <div
         className={`flex justify-center items-center gap-6 mx-auto ${
-          ctaType == "email" || "phone" ? `px-[2.5rem]` : `px-12`
+          ctaType == "email" || "phone" ? `px-[2.5rem]` : `px-11`
         } min-w-[176px]`}
       >
         {btnType}
