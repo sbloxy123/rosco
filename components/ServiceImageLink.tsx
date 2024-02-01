@@ -44,6 +44,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
             text="find out more"
             destination={`/services/${service.slug}`}
             ctaType="general"
+            hoverEffect="fill-white"
           />
         </div>
 
