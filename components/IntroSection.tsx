@@ -110,7 +110,7 @@ export default async function IntroSection() {
                     )})`,
                   } as React.CSSProperties
                 }
-                className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] cursor-pointer group"
+                className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] group"
               >
                 <div className="absolute -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] w-[112%] h-[112%]">
                   <svg

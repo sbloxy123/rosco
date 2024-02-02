@@ -148,7 +148,7 @@ function Navbar() {
                 placeholder="Search"
                 // value={email}
                 // onChange={handleInput}
-                className="p-4 bg-theme-dark bg-opacity-[6%] text-center text-white rounded-sm w-full  text-[14.5px] tracking-[0.06em] xsmall:w-[323px] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px]"
+                className="p-4 bg-theme-dark bg-opacity-[6%] text-center text-theme-dark rounded-sm w-full  text-[14.5px] tracking-[0.06em] xsmall:w-[323px] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px]"
               />
             </form>
 

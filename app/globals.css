@@ -77,6 +77,10 @@ p {
   }
 }
 
+.button__link {
+  border: solid;
+}
+
 .nav-search-form > div::before {
   background: url("/assets/images/Icons.png");
   position: absolute;

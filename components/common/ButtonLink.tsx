@@ -16,7 +16,7 @@ const ButtonLink = ({
   hoverEffect: "outline" | "fill-col" | "fill-white";
 }) => {
   const color = theme == "dark" ? `theme-dark` : `white`;
-  const fill = theme == "dark" ? `fill-theme-dark` : `fill-[#fff]`;
+  const fill = theme == "dark" ? `fill-theme-dark` : `fill-white`;
   // const borderClass = `border-[${color}]`;
   // const typeClass = `text-[${color}]`;
 
@@ -27,10 +27,10 @@ const ButtonLink = ({
     hover = `hover:border-[#6015EF] hover:text-[#6015EF]`;
     svgHover = `group-hover:fill-[#6015EF]`;
   } else if (hoverEffect == "fill-col") {
-    hover = `hover:bg-[#6015EF] hover:border-[#6015EF] hover:text-[#fff]`;
-    svgHover = `group-hover:fill-[#fff]`;
+    hover = `hover:bg-[#6015EF] hover:border-[#6015EF] hover:text-white`;
+    svgHover = `group-hover:fill-white`;
   } else if (hoverEffect == "fill-white") {
-    hover = `hover:bg-[#fff] hover:border-[#fff] hover:text-[#2F3047]`;
+    hover = `hover:bg-white hover:border-white hover:text-[#2F3047]`;
     svgHover = `group-hover:fill-[#2F3047]`;
   } else {
     hover = ``;
@@ -47,12 +47,11 @@ const ButtonLink = ({
   } else if (ctaType == "none") {
     btnType = ``;
   }
-
+  // changed border through global css as tailwind uses border-style which wasnt working so changed.
   return (
     <Link
       href={`${destination}`}
-      className={`block border-2 border-solid border-${color} rounded-sm text-${color} py-5 w-full  transition hover:duration-300 ${hover} group`}
-      style={{ border: `solid` }}
+      className={`button__link block border-2 border-solid border-${color} rounded-sm text-${color} py-5 w-full  transition hover:duration-300 ${hover} group`}
     >
       <div
         className={`flex justify-center items-center gap-6 mx-auto ${

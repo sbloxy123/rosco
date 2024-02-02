@@ -72,7 +72,7 @@ export default async function ContactSection() {
                   </h4>
                 </div>
                 <div className="flex flex-col gap-5 mt-16 xsmall:flex-row xsmall:justify-center small:justify-start small:pl-14">
-                  <div className="max-w-[176px]">
+                  <div className="xsmall:max-w-[176px]">
                     <ButtonLink
                       theme="light"
                       destination={content.contactUs.contactNumber}
@@ -81,7 +81,7 @@ export default async function ContactSection() {
                       hoverEffect="fill-col"
                     />
                   </div>
-                  <div className="max-w-[176px]">
+                  <div className="xsmall:max-w-[176px]">
                     <ButtonLink
                       theme="light"
                       destination={content.contactUs.emailAddress}
