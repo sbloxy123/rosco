@@ -28,7 +28,7 @@ export default async function Hero() {
             >
               <div className="w-full order-last small:order-first px-[5%] small:px-0">
                 <div className="w-full pb-12 relative pl-0 xsmall:px-20 small:pl-layout-small small:pr-0">
-                  <h1 className="absolute -top-[0%] -left-5 hidden xsmall:block xsmall:-translate-x-[4.5vw] small:-translate-x-0 w-fit h-auto">
+                  <h1 className="absolute -top-[0%] -left-5 hidden xsmall:block xsmall:-translate-x-[4.5vw] small:-translate-x-0 w-fit h-auto font-body">
                     01
                   </h1>
                   <div className="">

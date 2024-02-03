@@ -6,7 +6,7 @@ import GraphicLogo from "../components/assets/GraphicLogo";
 
 const PhoneGraphic = () => {
   return (
-    <div className="absolute w-[118vw] h-auto -ml-[9vw] top-0 left-0 object-contain xsmall:relative xsmall:w-[80vw] xsmall:-ml-0 xsmall:mx-auto small:w-[40vw] small:h-auto">
+    <div className="absolute w-[118vw] h-auto -ml-[9vw] top-0 left-0 object-contain xsmall:relative xsmall:w-[80vw] xsmall:-ml-0 xsmall:mx-auto small:w-[40vw] small:h-auto small:max-w-[404px]">
       <Image
         priority
         src={phones}
