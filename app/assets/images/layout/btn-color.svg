@@ -6,7 +6,7 @@
 <stop offset="0.213542" stop-color="#4532D1"/>
 <stop offset="0.526042" stop-color="#CB425C"/>
 <stop offset="0.677083" stop-color="#F9BA17"/>
-<stop offset="0.885417" stop-color="#D9D9D9" stop-opacity="0"/>
+<stop offset="0.885417" stop-color="#D9D9D9" stopOpacity="0"/>
 </linearGradient>
 </defs>
 </svg>

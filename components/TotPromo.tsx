@@ -7,7 +7,7 @@ import { getTotPromo } from "@/sanity/sanity.query";
 export default async function TotPromo() {
   const totPromo: TotPromoType[] = await getTotPromo();
   return (
-    <div className="relative bg-theme-dark mt-20 w-full">
+    <div className="relative bg-theme-dark w-full">
       <div className="absolute top-0 left-0 w-full h-full">
         <TotBackgrounds />
       </div>
@@ -31,7 +31,7 @@ export default async function TotPromo() {
                     width="362.507"
                     height="18.4014"
                     fill="url(#paint0_radial_50_170)"
-                    fill-opacity="0.4"
+                    fillOpacity="0.4"
                   />
                   <defs>
                     <radialGradient
@@ -43,7 +43,7 @@ export default async function TotPromo() {
                       gradientTransform="translate(181.253 9.20069) rotate(90) scale(9.20069 181.253)"
                     >
                       <stop />
-                      <stop offset="1" stop-opacity="0" />
+                      <stop offset="1" stopOpacity="0" />
                     </radialGradient>
                   </defs>
                 </svg>
@@ -65,7 +65,7 @@ export default async function TotPromo() {
                     width="362.507"
                     height="18.4014"
                     fill="url(#paint0_radial_50_170--2)"
-                    fill-opacity="0.4"
+                    fillOpacity="0.4"
                   />
                   <defs>
                     <radialGradient
@@ -77,7 +77,7 @@ export default async function TotPromo() {
                       gradientTransform="translate(181.253 9.20069) rotate(90) scale(9.20069 181.253)"
                     >
                       <stop />
-                      <stop offset="1" stop-opacity="0" />
+                      <stop offset="1" stopOpacity="0" />
                     </radialGradient>
                   </defs>
                 </svg>

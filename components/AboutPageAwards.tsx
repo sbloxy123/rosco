@@ -7,10 +7,10 @@ export default async function AboutPageAwards() {
   const awards: awardsType[] = await getAwards();
 
   return (
-    <section className="relative p-8 px-0">
+    <section className="relative px-0">
       {awards.map((award) => {
         return (
-          <div key={award._id} className="py-12">
+          <div key={award._id} className="">
             <div className="small:hidden">
               <AwardsSwiper data={awards} />
             </div>

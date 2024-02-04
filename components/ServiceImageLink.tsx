@@ -25,7 +25,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
       }
       className="relative bg-[image:var(--image-url)] bg-cover w-[90vw] xsmall:w-[359px] mx-auto xsmall:px-0 max-w-[359px] aspect-[359/464] xsmall:aspect-[340/468] overflow-hidden cursor-pointer group"
     >
-      <div className="opacity-0 transition-opacity duration-500 absolute top-0 left-0 w-full h-full bg-theme-purple group-hover:opacity-100 z-30">
+      <div className="opacity-0 transition-opacity duration-500 absolute top-0 left-0 w-full h-full bg-theme-purple group-hover:opacity-100 z-30 group-hover:ease-in">
         <div className="absolute top-[42%] left-1/2 transform -translate-x-1/2 text-white w-full -translate-y-[94px]">
           <p className="text-[1.6rem] tracking-[0.24em] text-center h-7 pb-[6rem] font-semibold">
             0{index + 1}

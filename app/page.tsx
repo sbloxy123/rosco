@@ -13,12 +13,20 @@ export default async function Home() {
     <main>
       <Hero />
       <IntroSection />
-      <ServiceImageLinkSwiper />
-      <MailingListCta />
+      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+        <ServiceImageLinkSwiper />
+      </div>
+      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+        <MailingListCta />
+      </div>
       <LatestProjects />
-      <TotPromo />
+      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+        <TotPromo />
+      </div>
       <Testimonials />
-      <AwardsSection />
+      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+        <AwardsSection />
+      </div>
       <ContactSection />
     </main>
   );

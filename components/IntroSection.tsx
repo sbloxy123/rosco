@@ -8,8 +8,11 @@ export default async function IntroSection() {
   const intro: introType[] = await getIntro();
 
   return (
-    <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-[5.5rem] xsmall:px-[3%] xsmall:pt-[3%]  small:py-[11rem] small:pr-16 small:pl-0 text-white overflow-hidden">
+    <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-[5.5rem] xsmall:px-[3%] xsmall:pt-[3%]  small:py-[clamp(4rem,7.8vw,11rem)] small:pr-16 small:pl-0 text-white overflow-hidden">
       {/* top left dots */}
+      <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto z-0 ">
+        <BgDots />
+      </div>
       <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto z-0 ">
         <BgDots />
       </div>

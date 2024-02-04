@@ -38,7 +38,9 @@ const config: Config = {
         "layout-small": "clamp(8rem,11.1vw,16rem)", // Define your custom padding size here
       },
       margin: {
-        "section-gap": "80px",
+        "section-gap": "64px",
+        "section-gap-xsmall": "72px",
+        "section-gap-small": "80px",
         "layout-small": "clamp(8rem,11.1vw,16rem)",
       },
       border: {

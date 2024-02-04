@@ -192,7 +192,7 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
       slidesPerView="auto"
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
-      wrapperClass="award-swiper pl-[5%] small:pl-0 pb-14"
+      wrapperClass="award-swiper pl-[5%] pb-[5rem] xsmall:pb-[4.5rem] small:pb-[7.5rem] small:pl-0"
       modules={[Scrollbar]}
       scrollbar={{
         hide: false,

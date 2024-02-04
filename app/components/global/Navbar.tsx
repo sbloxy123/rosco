@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <div className="z-30 small:fixed top-0 left-0 w-full bg-white">
       <header className="bg-theme_white-900 tracking-[0.06em]">
-        <div className="max-w-screen-large mx-auto py-8 ">
+        <div className="max-w-screen-large mx-auto py-[2.7rem] ">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
             <div className="max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/">
