@@ -5,8 +5,8 @@ import MailingListForm from "../../../components/MailingListForm";
 
 export default function Footer() {
   return (
-    <footer className="pb-[14rem] pt-[10rem] xsmall:pb-[17rem] xsmall:pt-[11.5rem] small:pb-[15rem] small:pt-[9rem]">
-      <div className="px-layout-small">
+    <footer className="pb-[14rem] pt-[10rem] xsmall:pb-[17rem] xsmall:pt-[11.5rem] small:pb-[15rem] small:pt-[9rem]  small:max-w-[1121px] small:mx-auto">
+      <div className="">
         <Link
           href="/"
           className="mx-auto w-fit block max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full small:hidden"

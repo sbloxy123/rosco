@@ -25,6 +25,31 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
       }
       className="relative bg-[image:var(--image-url)] bg-cover w-[90vw] xsmall:w-[359px] mx-auto xsmall:px-0 max-w-[359px] aspect-[359/464] xsmall:aspect-[340/468] overflow-hidden cursor-pointer group"
     >
+      <div className="opacity-0 transition-opacity duration-500 absolute top-0 left-0 w-full h-full bg-theme-purple group-hover:opacity-100 z-30">
+        <div className="absolute top-[42%] left-1/2 transform -translate-x-1/2 text-white w-full -translate-y-[94px]">
+          <p className="text-[1.6rem] tracking-[0.24em] text-center h-7 pb-[6rem] font-semibold">
+            0{index + 1}
+          </p>
+          <h2 className="text-[2rem] font-semibold text-center w-full tracking-[0.24em] px-10 uppercase">
+            {service.serviceTitle}
+          </h2>
+          <p className="text-center pt-6 px-[10%]">
+            add this text option to CMS and some meore text to fill the
+            container
+          </p>
+        </div>
+        <div className="w-fit absolute bottom-[8%] left-0 right-0 mx-auto">
+          <ButtonLink
+            bgColor="white"
+            theme="light"
+            text="find out more"
+            destination={`/services/${service.slug}`}
+            ctaType="general"
+            hoverEffect="fill-white"
+          />
+        </div>
+      </div>
+
       <div className="absolute top-0 left-0 bg-theme-dark opacity-50  w-full h-full"></div>
       <div className="absolute top-0 left-0 bg-theme-dark mix-blend-color  w-full h-full"></div>
       <div className="absolute top-0 left-0 bg-theme-dark mix-blend-soft-light saturate-100 w-full h-full"></div>

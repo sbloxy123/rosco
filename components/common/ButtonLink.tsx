@@ -5,13 +5,15 @@ import { General, Email, Phone } from "./IconSvgs";
 const ButtonLink = ({
   destination,
   text,
+  bgColor,
   theme,
   ctaType,
   hoverEffect,
 }: {
   destination: string;
   text: string;
-  theme: "dark" | "light";
+  bgColor?: string;
+  theme: "dark" | "light" | "white";
   ctaType: "general" | "email" | "phone" | "none";
   hoverEffect: "outline" | "fill-col" | "fill-white";
 }) => {
@@ -51,7 +53,9 @@ const ButtonLink = ({
   return (
     <Link
       href={`${destination}`}
-      className={`button__link block border-2 border-solid border-${color} rounded-sm text-${color} py-5 w-full  transition hover:duration-300 ${hover} group`}
+      className={`button__link block border-2 border-solid border-${color} rounded-sm ${
+        bgColor == "white" ? `text-theme-purple bg-white` : `text-${color}`
+      } py-5 w-full bg-${bgColor} transition hover:duration-300 ${hover} group`}
     >
       <div
         className={`flex justify-center items-center gap-6 mx-auto ${
