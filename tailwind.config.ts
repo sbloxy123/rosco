@@ -44,6 +44,9 @@ const config: Config = {
       border: {
         "solid-fix": "solid",
       },
+      content: {
+        // searchIcon: 'url("../app/assets/images/search.png")',
+      },
     },
   },
 };

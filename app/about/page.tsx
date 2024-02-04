@@ -4,6 +4,8 @@ import InnerHero from "@/components/InnerHero";
 import MailingListCta from "@/components/MailingListCta";
 import ServiceImageLinkSwiper from "@/components/ServiceImageLinkSwiper";
 import TotPromo from "@/components/TotPromo";
+import LatestProjects from "@/components/LatestProjects";
+
 import BgDots from "@/components/assets/BgDots";
 import { getCroppedImageSrc, getAboutPageContent } from "@/sanity/sanity.query";
 import type { aboutPageType } from "@/types";
@@ -82,6 +84,7 @@ export default async function About() {
 
             <ServiceImageLinkSwiper />
             <TotPromo />
+            <LatestProjects />
             <MailingListCta />
             <ContactSection />
           </div>

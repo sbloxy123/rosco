@@ -39,7 +39,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                 width="372"
                 height="372"
                 stroke="url(#paint0_linear_62_2866)"
-                strokeOpacity="0.5"
+                strokeOpacity="0.25"
                 strokeWidth="40"
                 className="mix-blend-color-dodge"
               />
@@ -106,7 +106,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
                 width="567"
                 height="456"
                 stroke="url(#paint0_linear_1601_4743)"
-                strokeOpacity="0.5"
+                strokeOpacity="0.25"
                 strokeWidth="56"
                 className="mix-blend-color-dodge "
               />

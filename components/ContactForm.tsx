@@ -28,7 +28,7 @@ export default async function ContactForm() {
           id="email"
           type="email"
           placeholder="you@company.com"
-          className="border bg-white rounded-sm px-4 py-2 w-full h-[4.6rem]"
+          className="border bg-white rounded-sm px-4 py-2 w-full h-[4.6rem] text-theme-dark"
         />
       </div>
       <div className="text-[1.4rem]">
@@ -46,7 +46,7 @@ export default async function ContactForm() {
             id="phone"
             type="tel"
             placeholder=""
-            className="border-none outline-none w-full px-2 h-[4.6rem]"
+            className="border-none outline-none w-full px-2 h-[4.6rem] text-theme-dark"
           />
         </div>
       </div>

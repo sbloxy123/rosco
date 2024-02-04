@@ -140,15 +140,51 @@ function Navbar() {
               </div>
             </div>
             <form
-              className="nav-search-form relative flex flex-col justify-center w-20 gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:w-full xsmall:flex-row small:w-fit "
+              className="nav-search-form relative flex flex-col justify-center w-20 gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:w-full xsmall:flex-row small:w-fit"
               // onSubmit={handleSubmit}
             >
+              <div className="absolute top-0 left-0 h-full w-auto">
+                <button className="h-full aspect-square flex justify-center items-center opacity-30">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.97495 15.25C7.73388 15.25 6.52067 14.882 5.48875 14.1925C4.45683 13.503 3.65255 12.523 3.17761 11.3764C2.70267 10.2297 2.5784 8.96805 2.82053 7.75082C3.06265 6.53359 3.66028 5.41549 4.53786 4.53792C5.41543 3.66035 6.53353 3.06271 7.75076 2.82059C8.96799 2.57847 10.2297 2.70273 11.3763 3.17767C12.5229 3.65261 13.5029 4.45689 14.1924 5.48881C14.8819 6.52073 15.25 7.73394 15.25 8.97502C15.25 9.79906 15.0876 10.615 14.7723 11.3764C14.4569 12.1377 13.9947 12.8294 13.4121 13.4121C12.8294 13.9948 12.1376 14.457 11.3763 14.7724C10.615 15.0877 9.799 15.25 8.97495 15.25ZM8.97495 3.95835C7.98605 3.95835 7.01935 4.25159 6.1971 4.801C5.37486 5.35041 4.73399 6.1313 4.35556 7.04493C3.97712 7.95856 3.8781 8.96389 4.07103 9.9338C4.26395 10.9037 4.74016 11.7946 5.43942 12.4939C6.13868 13.1931 7.0296 13.6693 7.9995 13.8623C8.96941 14.0552 9.97474 13.9562 10.8884 13.5777C11.802 13.1993 12.5829 12.5584 13.1323 11.7362C13.6817 10.914 13.975 9.94726 13.975 8.95835C13.975 7.63227 13.4482 6.3605 12.5105 5.42281C11.5728 4.48513 10.301 3.95835 8.97495 3.95835Z"
+                      fill="#231F20"
+                    />
+                    <path
+                      d="M16.6667 17.2917C16.5846 17.2921 16.5032 17.276 16.4273 17.2446C16.3515 17.2131 16.2827 17.1668 16.225 17.1083L12.7833 13.6667C12.6729 13.5482 12.6128 13.3915 12.6157 13.2296C12.6186 13.0677 12.6841 12.9132 12.7987 12.7987C12.9132 12.6841 13.0677 12.6186 13.2296 12.6157C13.3915 12.6128 13.5482 12.6729 13.6667 12.7833L17.1083 16.225C17.2254 16.3422 17.2911 16.5011 17.2911 16.6667C17.2911 16.8323 17.2254 16.9912 17.1083 17.1083C17.0506 17.1668 16.9818 17.2131 16.906 17.2446C16.8302 17.276 16.7488 17.2921 16.6667 17.2917Z"
+                      fill="#231F20"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="absolute top-0 right-0 h-full w-auto">
+                <button className="h-full aspect-square flex justify-center items-center opacity-30">
+                  <svg
+                    width="10"
+                    height="16"
+                    viewBox="0 0 10 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.74134 11.459H5.25801C6.49134 11.459 7.48301 10.434 7.48301 9.16732V3.00065C7.48301 1.73398 6.48301 0.708984 5.25801 0.708984H4.74134C3.50801 0.708984 2.51634 1.73398 2.51634 3.00065V9.15898C2.51634 10.4257 3.51634 11.4507 4.74134 11.4507V11.459ZM3.76634 3.00065C3.76634 2.42565 4.20801 1.95898 4.74134 1.95898H5.25801C5.79967 1.95898 6.23301 2.42565 6.23301 3.00065V9.15898C6.23301 9.73398 5.79134 10.2007 5.25801 10.2007H4.74134C4.19967 10.2007 3.76634 9.73398 3.76634 9.15898V3.00065ZM9.79134 5.82565V9.35065C9.79134 11.6923 7.94134 13.5923 5.62467 13.709V15.2923C5.62467 15.634 5.34134 15.9173 4.99967 15.9173C4.65801 15.9173 4.37467 15.634 4.37467 15.2923V13.709C2.05801 13.5923 0.208008 11.6923 0.208008 9.35065V5.82565C0.208008 5.48398 0.491341 5.20065 0.833008 5.20065C1.17467 5.20065 1.45801 5.48398 1.45801 5.82565V9.35065C1.45801 11.0757 2.86634 12.484 4.59968 12.484H5.40801C7.14134 12.484 8.54967 11.0757 8.54967 9.35065V5.82565C8.54967 5.48398 8.83301 5.20065 9.17467 5.20065C9.51634 5.20065 9.79967 5.48398 9.79967 5.82565H9.79134Z"
+                      fill="#2F3047"
+                    />
+                  </svg>
+                </button>
+              </div>
               <input
                 type="email"
                 placeholder="Search"
                 // value={email}
                 // onChange={handleInput}
-                className="p-4 bg-theme-dark bg-opacity-[6%] text-center text-theme-dark rounded-sm w-full  text-[14.5px] tracking-[0.06em] xsmall:w-[323px] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px]"
+                className="p-4 bg-theme-dark bg-opacity-[6%] text-left pl-16 text-theme-dark rounded-sm w-full  text-[14.5px] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px]"
               />
             </form>
 
@@ -227,6 +263,7 @@ function Navbar() {
                     <Link
                       href="/"
                       className="hover:text-purple-400 duration-300"
+                      onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
                         <span>01</span>
@@ -238,6 +275,7 @@ function Navbar() {
                     <Link
                       href="/about"
                       className="hover:text-purple-400 duration-300"
+                      onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
                         <span>02</span>
@@ -249,6 +287,7 @@ function Navbar() {
                     <Link
                       href="/services"
                       className="hover:text-purple-400 duration-300"
+                      onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
                         <span>03</span>
@@ -260,6 +299,7 @@ function Navbar() {
                     <Link
                       href="/projects"
                       className="hover:text-purple-400 duration-300"
+                      onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
                         <span>04</span>
@@ -271,6 +311,7 @@ function Navbar() {
                     <Link
                       href="/FAQs"
                       className="hover:text-purple-400 duration-300"
+                      onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
                         <span>05</span>
@@ -282,6 +323,7 @@ function Navbar() {
                     <Link
                       href="/contact"
                       className="hover:text-purple-400 duration-300"
+                      onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
                         <span>06</span>

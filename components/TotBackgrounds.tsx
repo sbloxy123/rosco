@@ -40,25 +40,25 @@ const TotBackgrounds = () => {
         priority
         src={texLeft}
         alt="texture"
-        className="z-10 absolute top-0 -left-[50%] h-full w-auto hidden small:-left-[10%] small:block"
+        className="z-10 absolute top-0 -left-[50%] h-full w-auto hidden small:-left-[10%] small:block medium:left-0"
       />
       <Image
         priority
         src={texLeft}
         alt="texture"
-        className="z-10 absolute top-0 -left-[50%] h-full w-auto hidden small:-left-[10%] small:block"
+        className="z-10 absolute top-0 -left-[50%] h-full w-auto hidden small:-left-[10%] small:block medium:left-0"
       />
       <Image
         priority
         src={smBottomRight}
         alt="texture"
-        className="z-10 absolute bottom-0 -right-0 h-[45%] small:h-[65%] w-auto hidden xsmall:block"
+        className="z-10 absolute bottom-0 -right-0 h-[45%] small:h-[65%] w-auto hidden xsmall:block medium:h-full"
       />
       <Image
         priority
         src={smBottomRight}
         alt="texture"
-        className="z-10 absolute bottom-0 -right-0 h-[45%] small:h-[65%] w-auto hidden xsmall:block"
+        className="z-10 absolute bottom-0 -right-0 h-[45%] small:h-[65%] w-auto hidden xsmall:block medium:h-full"
       />
     </div>
   );

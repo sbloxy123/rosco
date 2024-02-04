@@ -38,15 +38,22 @@ export default async function LatestProjects() {
 
         <div className="relative small:w-[90%] small:h-fit small:m-auto bg-theme-dark small:max-w-[1120px] small:flex small:items-center small:px-[0%] overflow-hidden">
           {/* top left dots */}
-          <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[51%] small:w-[42%] mix-blend-multiply">
+            <BgDots />
+          </div>
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[51%] small:w-[42%] mix-blend-multiply">
+            <BgDots />
+          </div>
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[51%] small:w-[42%] mix-blend-multiply">
+            <BgDots />
+          </div>
+
+          {/* <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
             <BgDots />
           </div>
           <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
             <BgDots />
-          </div>
-          <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
-            <BgDots />
-          </div>
+          </div> */}
 
           {/* bottom right dots */}
           <div className="absolute bottom-0 right-0 w-full h-auto mix-blend-multiply rotate-180 xsmall:hidden">
