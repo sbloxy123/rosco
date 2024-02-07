@@ -352,3 +352,59 @@ p {
     height: calc(100% - 56px);
   }
 }
+
+/* projects animation */
+
+.project__container {
+  .project__image {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  .counter__container {
+    overflow: hidden;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+  }
+  .project__counter {
+    /* opacity: 0; */
+    position: relative;
+    top: 13%;
+    max-width: 68px;
+    min-width: 68px;
+    transform: translateX(-70%) rotate(90deg);
+    transition: opacity 600ms ease 300ms,
+      transform 650ms cubic-bezier(1, -0.04, 0.84, 0.8) 300ms;
+  }
+  .project__text {
+    top: 13%;
+    transform: translateY(-81%);
+    opacity: 0;
+    transition: opacity 600ms ease 300ms,
+      transform 650ms cubic-bezier(1, -0.04, 0.84, 0.8) 300ms;
+  }
+  .project__btn {
+    opacity: 0;
+    transform: translateY(260%);
+    transition: opacity 600ms ease 300ms,
+      transform 650ms cubic-bezier(1, -0.04, 0.84, 0.8) 300ms;
+  }
+}
+.swiper-slide-active {
+  .project__image {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 600ms ease 300ms,
+      transform 650ms cubic-bezier(1, -0.04, 0.84, 0.8) 300ms;
+  }
+  .project__counter {
+    transform: translateX(-28%) rotate(90deg);
+    opacity: 1;
+  }
+  .project__text {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .project__btn {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

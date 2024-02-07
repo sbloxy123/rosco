@@ -20,10 +20,10 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
   return (
     <div
       key={project._id}
-      className="relative text-white z-20 small:flex small:items-center"
+      className="project__container relative text-white z-20 small:flex small:items-center"
     >
-      <div className="w-full px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%] small:py-25 small:pl-[2%] small:pt-[2.2%] small:pb-[2.1%] small:pr-[2.6%] order-1">
-        <div className="relative w-full mx-auto aspect-square xsmall:aspect-[690/451] small:aspect-[567/456]">
+      <div className="project__image w-full px-[4%] pt-[5%] pb-20 xsmall:px-[3%] xsmall:pt-[3%] small:py-25 small:pl-[2%] small:pt-[2.2%] small:pb-[2.1%] small:pr-[2.6%] order-1">
+        <div className=" relative w-full mx-auto aspect-square xsmall:aspect-[690/451] small:aspect-[567/456]">
           <div className="absolute w-[112%] h-[112%] -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] small:-left-[5.4%]">
             <svg
               width="100%"
@@ -247,17 +247,19 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
       </div>
       {/* <p>here is the image url: {project.image.image}</p> */}
       {/* <Image src={project.image?.image} alt={project.image?.alt} /> */}
-      <div className="relative small:flex small:justify-between xsmall:px-[8%] small:pl-[clamp(2rem,2vw,5rem)] small:w-[clamp(358px,36vw,648px)] small:pr-[1.5rem] order-0 small-min-h-[400px]">
-        <div className="small:min-w-[80px]">
-          <h3 className="uppercase px-[15px] font-body tracking-[0.12em] pt-[2.7rem] mb-8 xsmall:px-0 small:absolute small:top-[65px] small:-left-0 small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0 small:ml-[-3%]">
+      <div className="relative small:flex small:justify-between xsmall:px-[8%] small:pl-[clamp(2rem,3vw,5rem)] small:w-[clamp(358px,36vw,648px)] small:pr-[1.5rem] order-0 small-min-h-[400px]">
+        <div className="counter__container small:min-w-[60px]">
+          <h3 className="project__counter uppercase px-[15px] font-body tracking-[0.12em] pt-[2.7rem] mb-8 xsmall:px-0 small:absolute small:top-[65px] small:-left-0 small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0 small:ml-[-3%]">
             project 0{index + 1}
           </h3>
         </div>
 
         <div className="px-[15px] xsmall:px-0 small:w-[365px] small:pr-[clamp(20px,0vw,50px)]">
-          <h2 className="pb-[4rem]">{project.projectTitle}</h2>
-          <p>{project.projectSummary}</p>
-          <div className="mt-[3.2rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
+          <div className="project__text">
+            <h2 className="pb-[4rem]">{project.projectTitle}</h2>
+            <p>{project.projectSummary}</p>
+          </div>
+          <div className="project__btn mt-[3.2rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
             <ButtonLink
               destination={`projects/{project.slug}`}
               ctaType="general"

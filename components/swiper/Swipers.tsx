@@ -99,6 +99,8 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
         nextEl: ".next-project",
         prevEl: ".prev-project",
       }}
+      speed={0} // Set speed to 0 to remove transitions
+      effect="fade" // or 'slide'
       onSwiper={(swiper) => {
         projectsSwiperRef.current = swiper;
       }}
