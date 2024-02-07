@@ -24,7 +24,7 @@ export default async function Home() {
         <TotPromo />
       </div>
       <Testimonials />
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <div className="mt-[10rem] my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <AwardsSection />
       </div>
       <ContactSection />

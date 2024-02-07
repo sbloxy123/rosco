@@ -8,7 +8,7 @@ import Logo from "../../icons/logo.svg";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="z-30 small:fixed top-0 left-0 w-full bg-white">
+    <div className="z-50 small:fixed top-0 left-0 w-full bg-white">
       <header className="bg-theme_white-900 tracking-[0.06em]">
         <div className="max-w-screen-large mx-auto py-[2.7rem] ">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
@@ -86,7 +86,7 @@ function Navbar() {
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
-                  <ul className="nav__link__list flex items-center justify-between w-[40vw] max-w-[575px] uppercase font-normal font-sans text-theme-dark text-[1.45rem]">
+                  <ul className="nav__link__list flex items-center justify-between w-[40vw] max-w-[575px] uppercase font-[300] font-sans text-theme-dark text-[1.45rem]">
                     <li>
                       <Link href="/" className="">
                         <div className="nav__item__link">
@@ -139,108 +139,110 @@ function Navbar() {
                 </nav>
               </div>
             </div>
-            <form
-              className="nav-search-form relative flex flex-col justify-center w-20 gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:w-full xsmall:flex-row small:w-fit"
-              // onSubmit={handleSubmit}
-            >
-              <div className="absolute top-0 left-0 h-full w-auto">
-                <button className="h-full aspect-square flex justify-center items-center opacity-30">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M8.97495 15.25C7.73388 15.25 6.52067 14.882 5.48875 14.1925C4.45683 13.503 3.65255 12.523 3.17761 11.3764C2.70267 10.2297 2.5784 8.96805 2.82053 7.75082C3.06265 6.53359 3.66028 5.41549 4.53786 4.53792C5.41543 3.66035 6.53353 3.06271 7.75076 2.82059C8.96799 2.57847 10.2297 2.70273 11.3763 3.17767C12.5229 3.65261 13.5029 4.45689 14.1924 5.48881C14.8819 6.52073 15.25 7.73394 15.25 8.97502C15.25 9.79906 15.0876 10.615 14.7723 11.3764C14.4569 12.1377 13.9947 12.8294 13.4121 13.4121C12.8294 13.9948 12.1376 14.457 11.3763 14.7724C10.615 15.0877 9.799 15.25 8.97495 15.25ZM8.97495 3.95835C7.98605 3.95835 7.01935 4.25159 6.1971 4.801C5.37486 5.35041 4.73399 6.1313 4.35556 7.04493C3.97712 7.95856 3.8781 8.96389 4.07103 9.9338C4.26395 10.9037 4.74016 11.7946 5.43942 12.4939C6.13868 13.1931 7.0296 13.6693 7.9995 13.8623C8.96941 14.0552 9.97474 13.9562 10.8884 13.5777C11.802 13.1993 12.5829 12.5584 13.1323 11.7362C13.6817 10.914 13.975 9.94726 13.975 8.95835C13.975 7.63227 13.4482 6.3605 12.5105 5.42281C11.5728 4.48513 10.301 3.95835 8.97495 3.95835Z"
-                      fill="#231F20"
-                    />
-                    <path
-                      d="M16.6667 17.2917C16.5846 17.2921 16.5032 17.276 16.4273 17.2446C16.3515 17.2131 16.2827 17.1668 16.225 17.1083L12.7833 13.6667C12.6729 13.5482 12.6128 13.3915 12.6157 13.2296C12.6186 13.0677 12.6841 12.9132 12.7987 12.7987C12.9132 12.6841 13.0677 12.6186 13.2296 12.6157C13.3915 12.6128 13.5482 12.6729 13.6667 12.7833L17.1083 16.225C17.2254 16.3422 17.2911 16.5011 17.2911 16.6667C17.2911 16.8323 17.2254 16.9912 17.1083 17.1083C17.0506 17.1668 16.9818 17.2131 16.906 17.2446C16.8302 17.276 16.7488 17.2921 16.6667 17.2917Z"
-                      fill="#231F20"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="absolute top-0 right-0 h-full w-auto">
-                <button className="h-full aspect-square flex justify-center items-center opacity-30">
-                  <svg
-                    width="10"
-                    height="16"
-                    viewBox="0 0 10 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4.74134 11.459H5.25801C6.49134 11.459 7.48301 10.434 7.48301 9.16732V3.00065C7.48301 1.73398 6.48301 0.708984 5.25801 0.708984H4.74134C3.50801 0.708984 2.51634 1.73398 2.51634 3.00065V9.15898C2.51634 10.4257 3.51634 11.4507 4.74134 11.4507V11.459ZM3.76634 3.00065C3.76634 2.42565 4.20801 1.95898 4.74134 1.95898H5.25801C5.79967 1.95898 6.23301 2.42565 6.23301 3.00065V9.15898C6.23301 9.73398 5.79134 10.2007 5.25801 10.2007H4.74134C4.19967 10.2007 3.76634 9.73398 3.76634 9.15898V3.00065ZM9.79134 5.82565V9.35065C9.79134 11.6923 7.94134 13.5923 5.62467 13.709V15.2923C5.62467 15.634 5.34134 15.9173 4.99967 15.9173C4.65801 15.9173 4.37467 15.634 4.37467 15.2923V13.709C2.05801 13.5923 0.208008 11.6923 0.208008 9.35065V5.82565C0.208008 5.48398 0.491341 5.20065 0.833008 5.20065C1.17467 5.20065 1.45801 5.48398 1.45801 5.82565V9.35065C1.45801 11.0757 2.86634 12.484 4.59968 12.484H5.40801C7.14134 12.484 8.54967 11.0757 8.54967 9.35065V5.82565C8.54967 5.48398 8.83301 5.20065 9.17467 5.20065C9.51634 5.20065 9.79967 5.48398 9.79967 5.82565H9.79134Z"
-                      fill="#2F3047"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <input
-                type="email"
-                placeholder="Search"
-                // value={email}
-                // onChange={handleInput}
-                className="p-4 bg-theme-dark bg-opacity-[6%] text-left pl-16 text-theme-dark rounded-sm w-full  text-[14.5px] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px]"
-              />
-            </form>
-
-            {/* == MOBILE MENU OPEN/CLOSE  */}
-            <div className="-mr-2 flex small:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                type="button"
-                className=" inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
+            <div className="flex gap-[1rem]">
+              <form
+                className="nav-search-form relative flex flex-col justify-center gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:flex-row small:w-fit"
+                // onSubmit={handleSubmit}
               >
-                <span className="sr-only">Open main menu</span>
-                {!isOpen ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="24"
-                    viewBox="0 0 30 24"
-                    fill="none"
-                  >
-                    <path
-                      d="M28.3337 9.91699H11.667C11.3355 9.91699 11.0175 9.78529 10.7831 9.55087C10.5487 9.31645 10.417 8.99851 10.417 8.66699C10.417 8.33547 10.5487 8.01753 10.7831 7.78311C11.0175 7.54869 11.3355 7.41699 11.667 7.41699H28.3337C28.6652 7.41699 28.9831 7.54869 29.2175 7.78311C29.452 8.01753 29.5837 8.33547 29.5837 8.66699C29.5837 8.99851 29.452 9.31645 29.2175 9.55087C28.9831 9.78529 28.6652 9.91699 28.3337 9.91699Z"
-                      fill="#2F3047"
-                    />
-                    <path
-                      d="M28.4499 3.25H1.7832C1.45168 3.25 1.13374 3.1183 0.89932 2.88388C0.664899 2.64946 0.533203 2.33152 0.533203 2C0.533203 1.66848 0.664899 1.35054 0.89932 1.11612C1.13374 0.881696 1.45168 0.75 1.7832 0.75H28.4499C28.7814 0.75 29.0993 0.881696 29.3338 1.11612C29.5682 1.35054 29.6999 1.66848 29.6999 2C29.6999 2.33152 29.5682 2.64946 29.3338 2.88388C29.0993 3.1183 28.7814 3.25 28.4499 3.25Z"
-                      fill="#2F3047"
-                    />
-                    <path
-                      d="M28.4499 16.583H1.7832C1.45168 16.583 1.13374 16.4513 0.89932 16.2169C0.664899 15.9825 0.533203 15.6645 0.533203 15.333C0.533203 15.0015 0.664899 14.6835 0.89932 14.4491C1.13374 14.2147 1.45168 14.083 1.7832 14.083H28.4499C28.7814 14.083 29.0993 14.2147 29.3338 14.4491C29.5682 14.6835 29.6999 15.0015 29.6999 15.333C29.6999 15.6645 29.5682 15.9825 29.3338 16.2169C29.0993 16.4513 28.7814 16.583 28.4499 16.583Z"
-                      fill="#2F3047"
-                    />
-                    <path
-                      d="M28.3337 23.25H11.667C11.3355 23.25 11.0175 23.1183 10.7831 22.8839C10.5487 22.6495 10.417 22.3315 10.417 22C10.417 21.6685 10.5487 21.3505 10.7831 21.1161C11.0175 20.8817 11.3355 20.75 11.667 20.75H28.3337C28.6652 20.75 28.9831 20.8817 29.2175 21.1161C29.452 21.3505 29.5837 21.6685 29.5837 22C29.5837 22.3315 29.452 22.6495 29.2175 22.8839C28.9831 23.1183 28.6652 23.25 28.3337 23.25Z"
-                      fill="#2F3047"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                )}
-              </button>
+                <div className="flex items-center gap-[1rem]">
+                  <div className="xsmall:absolute top-0 left-0 xsmall:left-[3%] h-full w-auto">
+                    <button className="h-full aspect-square flex justify-center items-center opacity-30">
+                      <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8.97495 15.25C7.73388 15.25 6.52067 14.882 5.48875 14.1925C4.45683 13.503 3.65255 12.523 3.17761 11.3764C2.70267 10.2297 2.5784 8.96805 2.82053 7.75082C3.06265 6.53359 3.66028 5.41549 4.53786 4.53792C5.41543 3.66035 6.53353 3.06271 7.75076 2.82059C8.96799 2.57847 10.2297 2.70273 11.3763 3.17767C12.5229 3.65261 13.5029 4.45689 14.1924 5.48881C14.8819 6.52073 15.25 7.73394 15.25 8.97502C15.25 9.79906 15.0876 10.615 14.7723 11.3764C14.4569 12.1377 13.9947 12.8294 13.4121 13.4121C12.8294 13.9948 12.1376 14.457 11.3763 14.7724C10.615 15.0877 9.799 15.25 8.97495 15.25ZM8.97495 3.95835C7.98605 3.95835 7.01935 4.25159 6.1971 4.801C5.37486 5.35041 4.73399 6.1313 4.35556 7.04493C3.97712 7.95856 3.8781 8.96389 4.07103 9.9338C4.26395 10.9037 4.74016 11.7946 5.43942 12.4939C6.13868 13.1931 7.0296 13.6693 7.9995 13.8623C8.96941 14.0552 9.97474 13.9562 10.8884 13.5777C11.802 13.1993 12.5829 12.5584 13.1323 11.7362C13.6817 10.914 13.975 9.94726 13.975 8.95835C13.975 7.63227 13.4482 6.3605 12.5105 5.42281C11.5728 4.48513 10.301 3.95835 8.97495 3.95835Z"
+                            fill="#231F20"
+                          />
+                          <path
+                            d="M16.6667 17.2917C16.5846 17.2921 16.5032 17.276 16.4273 17.2446C16.3515 17.2131 16.2827 17.1668 16.225 17.1083L12.7833 13.6667C12.6729 13.5482 12.6128 13.3915 12.6157 13.2296C12.6186 13.0677 12.6841 12.9132 12.7987 12.7987C12.9132 12.6841 13.0677 12.6186 13.2296 12.6157C13.3915 12.6128 13.5482 12.6729 13.6667 12.7833L17.1083 16.225C17.2254 16.3422 17.2911 16.5011 17.2911 16.6667C17.2911 16.8323 17.2254 16.9912 17.1083 17.1083C17.0506 17.1668 16.9818 17.2131 16.906 17.2446C16.8302 17.276 16.7488 17.2921 16.6667 17.2917Z"
+                            fill="#231F20"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                  <div className="xsmall:absolute top-0 right-0 h-full w-auto">
+                    <button className="h-full aspect-square flex justify-center items-center opacity-30">
+                      <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M9.74134 13.457H10.258C11.4913 13.457 12.483 12.432 12.483 11.1654V4.9987C12.483 3.73203 11.483 2.70703 10.258 2.70703H9.74134C8.50801 2.70703 7.51634 3.73203 7.51634 4.9987V11.157C7.51634 12.4237 8.51634 13.4487 9.74134 13.4487V13.457ZM8.76634 4.9987C8.76634 4.4237 9.20801 3.95703 9.74134 3.95703H10.258C10.7997 3.95703 11.233 4.4237 11.233 4.9987V11.157C11.233 11.732 10.7913 12.1987 10.258 12.1987H9.74134C9.19967 12.1987 8.76634 11.732 8.76634 11.157V4.9987ZM14.7913 7.8237V11.3487C14.7913 13.6904 12.9413 15.5904 10.6247 15.707V17.2904C10.6247 17.632 10.3413 17.9154 9.99967 17.9154C9.65801 17.9154 9.37467 17.632 9.37467 17.2904V15.707C7.05801 15.5904 5.20801 13.6904 5.20801 11.3487V7.8237C5.20801 7.48203 5.49134 7.1987 5.83301 7.1987C6.17467 7.1987 6.45801 7.48203 6.45801 7.8237V11.3487C6.45801 13.0737 7.86634 14.482 9.59968 14.482H10.408C12.1413 14.482 13.5497 13.0737 13.5497 11.3487V7.8237C13.5497 7.48203 13.833 7.1987 14.1747 7.1987C14.5163 7.1987 14.7997 7.48203 14.7997 7.8237H14.7913Z"
+                            fill="#2F3047"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                <input
+                  type="search"
+                  placeholder="Search"
+                  // value={email}
+                  // onChange={handleInput}
+                  className="p-4 hidden xsmall:block xsmall:bg-[#E6E6E7] bg-opacity-[20%] text-left pl-[4.5rem] text-theme-dark rounded-sm w-full  text-[14.5px] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
+                />
+              </form>
+
+              {/* == MOBILE MENU OPEN/CLOSE  */}
+              <div className="-mr-2 flex small:hidden">
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  type="button"
+                  className=" inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900"
+                  aria-controls="mobile-menu"
+                  aria-expanded="false"
+                >
+                  <span className="sr-only">Open main menu</span>
+                  {!isOpen ? (
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 40 40"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M33.3333 17.917H16.6667C16.3351 17.917 16.0172 17.7853 15.7828 17.5509C15.5484 17.3165 15.4167 16.9985 15.4167 16.667C15.4167 16.3355 15.5484 16.0175 15.7828 15.7831C16.0172 15.5487 16.3351 15.417 16.6667 15.417H33.3333C33.6648 15.417 33.9828 15.5487 34.2172 15.7831C34.4516 16.0175 34.5833 16.3355 34.5833 16.667C34.5833 16.9985 34.4516 17.3165 34.2172 17.5509C33.9828 17.7853 33.6648 17.917 33.3333 17.917Z"
+                        fill="#2F3047"
+                      />
+                      <path
+                        d="M33.45 11.25H6.78333C6.4518 11.25 6.13386 11.1183 5.89944 10.8839C5.66502 10.6495 5.53333 10.3315 5.53333 10C5.53333 9.66848 5.66502 9.35054 5.89944 9.11612C6.13386 8.8817 6.4518 8.75 6.78333 8.75H33.45C33.7815 8.75 34.0995 8.8817 34.3339 9.11612C34.5683 9.35054 34.7 9.66848 34.7 10C34.7 10.3315 34.5683 10.6495 34.3339 10.8839C34.0995 11.1183 33.7815 11.25 33.45 11.25Z"
+                        fill="#2F3047"
+                      />
+                      <path
+                        d="M33.45 24.583H6.78333C6.4518 24.583 6.13386 24.4513 5.89944 24.2169C5.66502 23.9825 5.53333 23.6645 5.53333 23.333C5.53333 23.0015 5.66502 22.6835 5.89944 22.4491C6.13386 22.2147 6.4518 22.083 6.78333 22.083H33.45C33.7815 22.083 34.0995 22.2147 34.3339 22.4491C34.5683 22.6835 34.7 23.0015 34.7 23.333C34.7 23.6645 34.5683 23.9825 34.3339 24.2169C34.0995 24.4513 33.7815 24.583 33.45 24.583Z"
+                        fill="#2F3047"
+                      />
+                      <path
+                        d="M33.3333 31.25H16.6667C16.3351 31.25 16.0172 31.1183 15.7828 30.8839C15.5484 30.6495 15.4167 30.3315 15.4167 30C15.4167 29.6685 15.5484 29.3505 15.7828 29.1161C16.0172 28.8817 16.3351 28.75 16.6667 28.75H33.3333C33.6648 28.75 33.9828 28.8817 34.2172 29.1161C34.4516 29.3505 34.5833 29.6685 34.5833 30C34.5833 30.3315 34.4516 30.6495 34.2172 30.8839C33.9828 31.1183 33.6648 31.25 33.3333 31.25Z"
+                        fill="#2F3047"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 40 40"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.7667 19.9999L29.1333 12.6333C29.2561 12.5188 29.3546 12.3808 29.423 12.2275C29.4913 12.0742 29.528 11.9086 29.531 11.7408C29.5339 11.573 29.5031 11.4062 29.4402 11.2506C29.3773 11.095 29.2838 10.9536 29.1651 10.8349C29.0464 10.7162 28.905 10.6226 28.7493 10.5597C28.5937 10.4969 28.427 10.466 28.2591 10.4689C28.0913 10.4719 27.9258 10.5086 27.7724 10.577C27.6191 10.6453 27.4811 10.7438 27.3667 10.8666L20 18.2333L12.6333 10.8666C12.3964 10.6458 12.083 10.5256 11.7591 10.5313C11.4353 10.537 11.1263 10.6682 10.8973 10.8972C10.6683 11.1262 10.5371 11.4352 10.5314 11.7591C10.5257 12.0829 10.6459 12.3963 10.8667 12.6333L18.2333 19.9999L10.8667 27.3666C10.6326 27.601 10.5011 27.9187 10.5011 28.2499C10.5011 28.5812 10.6326 28.8989 10.8667 29.1333C11.101 29.3673 11.4187 29.4988 11.75 29.4988C12.0812 29.4988 12.399 29.3673 12.6333 29.1333L20 21.7666L27.3667 29.1333C27.601 29.3673 27.9187 29.4988 28.25 29.4988C28.5813 29.4988 28.899 29.3673 29.1333 29.1333C29.3674 28.8989 29.4989 28.5812 29.4989 28.2499C29.4989 27.9187 29.3674 27.601 29.1333 27.3666L21.7667 19.9999Z"
+                        fill="#2F3047"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -248,25 +250,28 @@ function Navbar() {
         {/* == MOBILE NAV == */}
         <Transition
           show={isOpen}
-          enter="transition ease-out duration-300 transform"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="transition ease-in duration-100 transform"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
+          // enter="transition ease-out duration-300 transform"
+          // enterFrom="opacity-0 scale-95"
+          // enterTo="opacity-100 scale-100"
+          // leave="transition ease-in duration-100 transform"
+          // leaveFrom="opacity-100 scale-100"
+          // leaveTo="opacity-0 scale-95"
         >
           {(ref) => (
-            <nav className="small:hidden z-20" id="mobile-menu">
+            <nav
+              className="absolute top-[7rem] left-0 w-screen small:hidden z-50 h-screen bg-white"
+              id="mobile-menu"
+            >
               <div ref={ref}>
-                <ul className="px-2 py-20 space-y-1 sm:px-3 z-30 h-screen flex flex-col justify-start gap-8 items-center uppercase font-normal font-sans text-[14.5px]">
+                <ul className="absolute top-0 left-0 h-screen w-full  px-2 py-20 space-y-1 sm:px-3 z-30 flex flex-col justify-start gap-[3rem] items-center uppercase font-normal font-sans text-[2.4rem]">
                   <li>
                     <Link
                       href="/"
-                      className="hover:text-purple-400 duration-300"
+                      className=""
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
-                        <span>01</span>
+                        <span className="font-bold">01</span>
                         <span>Home</span>
                       </div>
                     </Link>
@@ -274,11 +279,11 @@ function Navbar() {
                   <li>
                     <Link
                       href="/about"
-                      className="hover:text-purple-400 duration-300"
+                      className=""
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
-                        <span>02</span>
+                        <span className="font-bold">02</span>
                         <span>About</span>
                       </div>
                     </Link>
@@ -286,11 +291,11 @@ function Navbar() {
                   <li>
                     <Link
                       href="/services"
-                      className="hover:text-purple-400 duration-300"
+                      className=""
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
-                        <span>03</span>
+                        <span className="font-bold">03</span>
                         <span>Services</span>
                       </div>
                     </Link>
@@ -298,11 +303,11 @@ function Navbar() {
                   <li>
                     <Link
                       href="/projects"
-                      className="hover:text-purple-400 duration-300"
+                      className=""
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
-                        <span>04</span>
+                        <span className="font-bold">04</span>
                         <span>Projects</span>
                       </div>
                     </Link>
@@ -310,11 +315,11 @@ function Navbar() {
                   <li>
                     <Link
                       href="/FAQs"
-                      className="hover:text-purple-400 duration-300"
+                      className=""
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
-                        <span>05</span>
+                        <span className="font-bold">05</span>
                         <span>FAQ's</span>
                       </div>
                     </Link>
@@ -322,11 +327,11 @@ function Navbar() {
                   <li>
                     <Link
                       href="/contact"
-                      className="hover:text-purple-400 duration-300"
+                      className=""
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
-                        <span>06</span>
+                        <span className="font-bold">06</span>
                         <span>Contact</span>
                       </div>
                     </Link>

@@ -358,3 +358,36 @@ export async function getServicesPageContent() {
     `
   );
 }
+export async function getProjectsPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage"] {
+       _id,
+      title,
+      ProjectsPage {
+        pageHeading,
+        pageImage {
+              alt,
+            "image": asset->url,
+            asset {
+              _ref
+            },
+            crop {
+              _type,
+              bottom,
+              left,
+              top,
+              right
+            },
+            hotspot {
+              _type,
+              height,
+              width,
+              x,
+              y
+            }
+          },
+      }
+    }
+    `
+  );
+}

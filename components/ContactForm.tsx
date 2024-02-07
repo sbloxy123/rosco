@@ -8,8 +8,8 @@ import ButtonLink from "./common/ButtonLink";
 // https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#:~:text=Once%20the%20fields,useFormState
 export default async function ContactForm() {
   return (
-    <div className="flex flex-col mr-layout-small justify-between h-[448px] w-[512px]">
-      <div className="w-full flex flex-col text-[1.4rem]">
+    <div className="flex flex-col justify-between w-full small:w-[512px] font-body">
+      <div className="w-full flex flex-col gap-[0.5rem] text-[1.4rem]">
         <label className="text-white" htmlFor="name">
           Name
         </label>
@@ -20,7 +20,7 @@ export default async function ContactForm() {
           className="border bg-white rounded-sm px-4 py-2 h-[4.6rem] text-theme-dark"
         />
       </div>
-      <div className="text-[1.4rem]">
+      <div className="flex flex-col gap-[0.5rem] pt-[2rem] text-[1.4rem]">
         <label className="text-white" htmlFor="email">
           Email
         </label>
@@ -31,7 +31,7 @@ export default async function ContactForm() {
           className="border bg-white rounded-sm px-4 py-2 w-full h-[4.6rem] text-theme-dark"
         />
       </div>
-      <div className="text-[1.4rem]">
+      <div className="flex flex-col gap-[0.5rem] pt-[2rem] text-[1.4rem]">
         <label className="text-white" htmlFor="phone">
           Phone number
         </label>
@@ -50,7 +50,7 @@ export default async function ContactForm() {
           />
         </div>
       </div>
-      <div className="text-[1.4rem]">
+      <div className="flex flex-col gap-[0.5rem] pt-[2rem] text-[1.4rem]">
         <label className="text-white " htmlFor="message">
           How can we help?
         </label>
@@ -61,7 +61,7 @@ export default async function ContactForm() {
           className="border bg-white rounded-sm px-4 py-2 w-full h-[12.6rem] text-theme-dark"
         />
       </div>
-      <div>
+      <div className="mt-[3rem]">
         <ButtonLink
           text="send your message"
           theme="light"

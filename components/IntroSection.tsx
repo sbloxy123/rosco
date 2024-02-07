@@ -188,14 +188,16 @@ export default async function IntroSection() {
               </div>
             </div>
             <div className="small:max-w-[90%] small:pl-[70px]">
-              <h3 className="uppercase pb-14 pt-[2.7rem]">
+              <h3 className="uppercase pb-[2.4rem] pt-[2.7rem] small:pt-0">
                 {content.introSection.introSubheading}
               </h3>
-              <h2 className="pb-20">{content.introSection.introHeading}</h2>
-              <div className="pr-2 xsmall:w-[90%] small:w-[clamp(445px,43vw,525px)] small:pr-0">
+              <h2 className="pb-[4.2rem]">
+                {content.introSection.introHeading}
+              </h2>
+              <div className="pr-2 xsmall:w-[90%] small:w-[clamp(445px,43vw,512px)] small:pr-0">
                 <PortableText value={content.introSection.introText} />
               </div>
-              <div className="mt-16 mx-[15px] xsmall:w-fit xsmall:ml-0">
+              <div className="mt-[3.5rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
                 <ButtonLink
                   destination="/about"
                   text={content.introSection.aboutUsButton}

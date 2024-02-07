@@ -283,6 +283,8 @@ const homepage = {
         {
           name: "message",
           title: "Contact Section Message",
+          description:
+            "add '\\n' to the text where you want it to return on a new line.  *NOTE - this only applies on screens bigger than mobile",
           type: "text",
         },
         {

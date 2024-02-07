@@ -26,14 +26,14 @@ const ButtonLink = ({
   let svgHover;
 
   if (hoverEffect == "outline") {
-    hover = `hover:border-[#6015EF] hover:text-[#6015EF]`;
+    hover = `hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px]`;
     svgHover = `group-hover:fill-[#6015EF]`;
   } else if (hoverEffect == "fill-col") {
     hover = `hover:bg-[#6015EF] hover:border-[#6015EF] hover:text-white`;
     svgHover = `group-hover:fill-white`;
   } else if (hoverEffect == "fill-white") {
-    hover = `hover:bg-white hover:border-white hover:text-[#2F3047]`;
-    svgHover = `group-hover:fill-[#2F3047]`;
+    hover = `hover:bg-white hover:border-white hover:text-[#6015EF]`;
+    svgHover = `group-hover:fill-[#6015EF]`;
   } else {
     hover = ``;
     svgHover = ``;
@@ -55,11 +55,11 @@ const ButtonLink = ({
       href={`${destination}`}
       className={`button__link block border-2 border-solid border-${color} rounded-sm ${
         bgColor == "white" ? `text-theme-purple bg-white` : `text-${color}`
-      } py-5 w-full bg-${bgColor} transition hover:duration-300 ${hover} group`}
+      } py-[1.1rem] w-full bg-${bgColor} transition hover:duration-300 ${hover} group`}
     >
       <div
         className={`flex justify-center items-center gap-6 mx-auto ${
-          ctaType == "email" || "phone" ? `px-[2.5rem]` : `px-11`
+          ctaType == "email" || "phone" ? `px-[2.2rem]` : `px-11`
         } min-w-[176px]`}
       >
         {btnType}

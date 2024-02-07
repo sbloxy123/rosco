@@ -29,7 +29,7 @@ export default async function LatestProjects() {
               <h3 className="uppercase pt-[7rem] text-center text-theme-dark">
                 {projectsSubheading}
               </h3>
-              <h2 className="text-center mx-[5%] xsmall:mx-0 pt-[4rem] pb-[5rem] xsmall:pb-[6.5rem] text-theme-dark">
+              <h2 className="text-center mx-[5%] xsmall:mx-0 pt-[2.2rem] pb-[5rem] xsmall:pb-[6.5rem] text-theme-dark">
                 {projectsHeading}
               </h2>
             </div>

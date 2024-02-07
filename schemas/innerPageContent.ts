@@ -75,6 +75,7 @@ const innerPageContent = {
           of: [{ type: "block" }],
         },
       ],
+      extends: "page",
     },
 
     {
@@ -134,6 +135,38 @@ const innerPageContent = {
           type: "text",
         },
       ],
+      extends: "page",
+    },
+
+    {
+      name: "ProjectsPage",
+      title: "Projects Page Content",
+      type: "document",
+      fields: [
+        {
+          name: "pageHeading",
+          title: "Projects Page Hero Heading",
+          description: "Heading for the Projects Page",
+          type: "string",
+        },
+        {
+          name: "pageImage",
+          title: "Projects Page Hero Image",
+          type: "image",
+          description: "Upload a Projects Hero image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              description:
+                "describe what is in the image let search engines know what is being shown",
+            },
+          ],
+        },
+      ],
+      extends: "page",
     },
   ],
 

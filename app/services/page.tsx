@@ -13,7 +13,7 @@ import {
 import type { serviceType, serviceSectionType } from "@/types";
 import BgDots from "@/components/assets/BgDots";
 
-export default async function About() {
+export default async function Services() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
   const services: serviceType[] = await getServiceLinks();
   const serviceSectionHeadings: serviceSectionType[] =
@@ -31,6 +31,7 @@ export default async function About() {
               image={content.ServicesPage.pageImage}
               sectionTitle="services"
               imageAltText={content.ServicesPage.pageImage.alt}
+              pageNumber="03"
             />
             {/* <div className=" relative my-10 w-screen aspect-[390/504] xsmall:aspect-[744/416] small:aspect-[1440/504] "> */}
             {/* <div className="absolute top-0 left-0 bg-[#6015EF] w-full h-full"> */}

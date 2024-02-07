@@ -42,10 +42,10 @@ export default async function ServiceImageLinkSwiper() {
             key={heading.servicesSection.servicesHeading}
             className="text-theme-dark"
           >
-            <h3 className="uppercase pb-2 pt-[7rem] xsmall:pt-[7.5rem] text-center ">
+            <h3 className="uppercase pt-[7rem] xsmall:pt-[7.5rem] text-center ">
               {heading.servicesSection.servicesSubheading}
             </h3>
-            <h2 className="text-center pb-[5rem] pt-[4rem] xsmall:pt-[3.5rem]">
+            <h2 className="text-center pb-[4rem] pt-[2rem] ">
               {heading.servicesSection.servicesHeading}
             </h2>
           </div>

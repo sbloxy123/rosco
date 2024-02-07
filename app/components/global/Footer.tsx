@@ -82,7 +82,7 @@ export default function Footer() {
 
         <div className="small:flex justify-between flex-row-reverse small:items-end small:gap-4">
           <div className="text-center pt-16 small:text-left">
-            <h4 className="font-normal text-[1.8rem] tracking-[0.12em] uppercase">
+            <h4 className="font-normal text-[1.8rem] tracking-[0.12em] uppercase text-theme-dark">
               Join our mailing list
             </h4>
             <div className="w-full mx-auto flex gap-4 justify-center flex-col text-center pt-10 xsmall:flex-row xsmall:w-fit">

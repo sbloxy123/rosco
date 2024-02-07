@@ -42,9 +42,9 @@ export default function MailingListForm({
         onChange={handleInput}
         className={`p-4 ${
           theme == "dark"
-            ? "bg-theme-dark bg-opacity-[6%] text-center"
-            : "bg-white bg-opacity-20"
-        }  text-theme-dark rounded-sm w-full uppercase font-headings text-[14.5px] tracking-[0.06em] xsmall:w-[290px]`}
+            ? "bg-theme-dark bg-opacity-[6%] placeholder:text-theme-dark placeholder:font-[400]"
+            : "bg-white bg-opacity-20 placeholder:text-white focus:text-theme-purple"
+        }   rounded-sm w-full uppercase font-headings text-[14.5px] tracking-[0.06em] xsmall:w-[290px]  placeholder:font-[500] placeholder:pl-[1rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out`}
         style={{}}
       />
       <button
@@ -53,7 +53,7 @@ export default function MailingListForm({
           theme == "dark"
             ? "text-white bg-theme-purple"
             : "text-theme-purple bg-white"
-        }  rounded-sm cursor-pointer font-headings p-4 uppercase text-[14.5px] tracking-[0.06em] xsmall:w-[114px]`}
+        }  rounded-sm cursor-pointer font-headings font-[600] p-4 uppercase text-[14.5px] tracking-[0.06em] xsmall:w-[114px]`}
       >
         {buttonText}
       </button>

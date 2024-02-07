@@ -15,7 +15,7 @@ export default async function AwardsSection() {
               <h3 className="uppercase">
                 {award.awardsSection.awardsSectionSubTitle}
               </h3>
-              <h2 className="py-10">
+              <h2 className="pt-[1.5rem] pb-[3rem]">
                 {award.awardsSection.awardsSectionTitle}
               </h2>
             </div>

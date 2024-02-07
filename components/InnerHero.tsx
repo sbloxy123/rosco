@@ -10,11 +10,13 @@ export default async function InnerHero({
   sectionTitle,
   imageAltText,
   image,
+  pageNumber,
 }: {
   title: string;
   sectionTitle: string;
   imageAltText: string;
   image: SanityImageQueryResult;
+  pageNumber: string;
 }) {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
 
@@ -33,7 +35,7 @@ export default async function InnerHero({
               </h3>
               <div className="w-full relative pl-0 xsmall:pl-[7.5rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] small:pl-layout-small">
                 <h1 className="absolute -top-[0%] -left-5 hidden xsmall:block xsmall:-translate-x-[0] small:-translate-x-0 w-fit h-auto font-body">
-                  02
+                  {pageNumber}
                 </h1>
                 <h1 className="pt-[3.5rem] pb-[4rem] xsmall:pt-0 xsmall:pb-0 small:w-[558px] ">
                   {title}
@@ -61,7 +63,8 @@ export default async function InnerHero({
               <div className="absolute bottom-0 left-0 w-full h-[17px]">
                 <GradientLineThick />
               </div>
-              <div className="absolute bottom-0 left-0 w-full h-[17px] hidden small:block">
+
+              <div className="absolute bottom-0 left-0 h-full w-[17px] hidden small:block">
                 <GradientLineVerticalThick />
               </div>
             </div>

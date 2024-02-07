@@ -2,7 +2,13 @@
 
 import SwiperCore from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar, Pagination, Navigation, Mousewheel } from "swiper/modules";
+import {
+  Scrollbar,
+  Pagination,
+  Navigation,
+  Mousewheel,
+  FreeMode,
+} from "swiper/modules";
 import "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -30,16 +36,17 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
       wrapperClass="service-swiper"
-      modules={[Scrollbar, Mousewheel]}
-      // mousewheel={{
-      //   forceToAxis: true,
-      //   sensitivity: 1,
-      //   releaseOnEdges: true,
-      // }}
-      // free-mode={true}
+      modules={[Scrollbar, Mousewheel, FreeMode]}
+      mousewheel={{
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true,
+      }}
+      freeMode={true}
       scrollbar={{
         hide: false,
         el: ".services-swiper-scrollbar",
+        dragSize: 200,
       }}
       breakpoints={{
         512: {
@@ -145,7 +152,7 @@ export const ProjectsPaginationSwiper = ({ data }: { data: projectType[] }) => {
           </SwiperSlide>
         );
       })}
-      <div className="project-pagination-outer hidden small:flex h-fit z-30 gap-3 items-center small:justify-center w-fit mx-auto pt-[4.6rem] pb-[5.2rem]"></div>
+      <div className="project-pagination-outer hidden small:flex h-fit z-30 gap-[0.2rem] items-center small:justify-center w-fit mx-auto pt-[4.2rem] pb-[4.8rem]"></div>
     </Swiper>
   );
 };
@@ -188,15 +195,22 @@ export const TestimonialSwiper = ({ data }: { data: testimonialsType[] }) => {
 export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
   return (
     <Swiper
-      spaceBetween={18}
+      spaceBetween={36}
       slidesPerView="auto"
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
-      wrapperClass="award-swiper pl-[5%] pb-[5rem] xsmall:pb-[4.5rem] small:pb-[7.5rem] small:pl-0"
-      modules={[Scrollbar]}
+      wrapperClass="award-swiper pl-[5%] pb-[5rem] xsmall:pb-[4.5rem] small:pb-[7rem] small:pl-0"
+      modules={[Scrollbar, Mousewheel, FreeMode]}
+      mousewheel={{
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true,
+      }}
+      freeMode={true}
       scrollbar={{
         hide: false,
         el: ".award-scrollbar",
+        dragSize: 130,
       }}
       breakpoints={{
         1024: {
@@ -250,7 +264,7 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
           })}
         </div>
       ))}
-      <div className="relative h-[5rem] mx-[5%] small:h-[7rem] small:mx-0 small:mr-[clamp(8rem,11.1vw,16rem)]">
+      <div className="relative h-[1rem] mx-[5%] small:h-[1rem] small:mx-0 small:mr-[clamp(8rem,11.1vw,16rem)]">
         <div className="award-scrollbar"></div>
       </div>
     </Swiper>

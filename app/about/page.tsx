@@ -24,6 +24,7 @@ export default async function About() {
               title={content.aboutPage.pageHeading}
               image={content.aboutPage.pageImage}
               imageAltText={content.aboutPage.pageImage.alt}
+              pageNumber="02"
             />
           </div>
         );

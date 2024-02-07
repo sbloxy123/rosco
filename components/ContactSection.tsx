@@ -3,15 +3,67 @@ import { getContactContent } from "@/sanity/sanity.query";
 import ButtonLink from "./common/ButtonLink";
 import GradientLine from "./assets/GradientLine";
 import ContactForm from "./ContactForm";
+import BgDots from "./assets/BgDots";
 
 export default async function ContactSection() {
   const contactContent: contactType[] = await getContactContent();
 
   return (
-    <section className="bg-theme-dark text-white py-20">
+    <section className="bg-theme-dark text-white py-[9rem] relative">
+      {/* bottom left */}
+      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+        <BgDots />
+      </div>
+
+      {/* bottom right */}
+      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+        <BgDots />
+      </div>
+      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+        <BgDots />
+      </div>
+
       {contactContent.map((content) => {
+        const titleWithLineBreaks = content.contactUs.message.replace(
+          /\\n/g,
+          "\n"
+        );
+        const lineWithoutBreaks = content.contactUs.message.replace(
+          /\\n/g,
+          " "
+        );
         return (
-          <div>
+          <div className="relative">
             <div className="hidden small:block ml-[-5%] w-[105%] max-h-[4px] overflow-hidden">
               <svg
                 width="100%"
@@ -56,14 +108,25 @@ export default async function ContactSection() {
               </svg>{" "}
             </div>
 
-            <div className="my-24 small:flex small:justify-between small:items-center max-w-[1280px] small:mx-auto">
+            <div className="my-24 small:flex gap-[2rem] small:justify-between small:items-center small:w-full small:px-layout-small">
               <div
                 key={content._id}
-                className="px-[5%] text-center small:text-left"
+                className="px-[5%] text-center small:text-left small:px-0"
               >
-                <div className="px-14 max-w-[450px] mx-auto">
+                <div className="px-14 max-w-[450px] mx-auto small:px-0">
                   <h2 className="">{content.contactUs.title}</h2>
-                  <p className="pt-14">{content.contactUs.message}</p>
+                  <p className="pt-14 xsmall:hidden font-semibold text-[1.4rem]">
+                    {lineWithoutBreaks}
+                  </p>
+                  <div className="pt-14 hidden xsmall:block">
+                    {titleWithLineBreaks.split("\n").map((line, index) => {
+                      return (
+                        <p key={index} className="font-semibold text-[1.4rem]">
+                          {line}
+                        </p>
+                      );
+                    })}
+                  </div>
                   <h4 className="font-semibold text-[1.8rem] pt-10 px-4 small:px-0">
                     {content.contactUs.address}
                   </h4>
@@ -71,7 +134,7 @@ export default async function ContactSection() {
                     {content.contactUs.contactNumber}
                   </h4>
                 </div>
-                <div className="flex flex-col gap-5 mt-16 xsmall:flex-row xsmall:justify-center small:justify-start small:pl-14">
+                <div className="flex flex-col gap-5 mt-16 xsmall:flex-row xsmall:justify-center small:justify-start small:pl-0">
                   <div className="xsmall:max-w-[176px]">
                     <ButtonLink
                       theme="light"
