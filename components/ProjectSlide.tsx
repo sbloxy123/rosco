@@ -254,12 +254,12 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
           </h3>
         </div>
 
-        <div className="px-[15px] xsmall:px-0 small:w-[365px] small:pr-[clamp(20px,0vw,50px)]">
+        <div className="px-[15px] pb-[5.4rem] small:pb-0 xsmall:px-0 small:w-[365px] small:pr-[clamp(20px,0vw,50px)]">
           <div className="project__text">
-            <h2 className="pb-[4rem]">{project.projectTitle}</h2>
+            <h2 className="pb-[2.5rem]">{project.projectTitle}</h2>
             <p>{project.projectSummary}</p>
           </div>
-          <div className="project__btn mt-[3.2rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
+          <div className="project__btn mt-[4rem] xsmall:mt-[3.2rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
             <ButtonLink
               destination={`projects/{project.slug}`}
               ctaType="general"

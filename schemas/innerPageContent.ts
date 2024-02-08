@@ -65,7 +65,8 @@ const innerPageContent = {
         {
           name: "featureText",
           title: "Feature text",
-          description: "Text in highlight box",
+          description:
+            "Text in highlight box. --add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies on mobile screens",
           type: "text",
         },
         {

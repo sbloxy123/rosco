@@ -38,7 +38,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
             container
           </p>
         </div>
-        <div className="w-fit absolute bottom-[8%] left-0 right-0 mx-auto">
+        <div className="w-full px-[5%] absolute bottom-[8%] left-0 right-0 mx-auto">
           <ButtonLink
             bgColor="white"
             theme="light"

@@ -22,10 +22,10 @@ export default async function MailingListCta() {
           >
             <div className="bg-theme-purple px-10 py-[4.5rem] flex flex-col items-center justify-center text-center xsmall:py-[4rem] small:flex-row small:justify-between small:text-left small:px-[64px] small:max-w-[1121px] small:mx-auto">
               <div className="small:w-[356px]">
-                <h3 className="text-white uppercase pb-10 small:pb-6">
+                <h3 className="text-white uppercase pb-[1.5rem] small:pb-6">
                   {mailingListHeading}
                 </h3>
-                <p className="text-white pb-10 small:pb-0 font-light small:pr-[1rem]">
+                <p className="text-white pb-[1.8rem] small:pb-0 font-light small:pr-[1rem]">
                   {mailingListText}
                 </p>
               </div>

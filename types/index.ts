@@ -247,7 +247,7 @@ export type aboutPageType = {
         y: number;
       };
     };
-    featureText: any[]; // Adjust the type based on your actual data structure
+    featureText: string;
     contentArea: any[]; // Adjust the type based on your actual data structure
   };
 };

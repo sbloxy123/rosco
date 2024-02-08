@@ -8,7 +8,7 @@ export default async function IntroSection() {
   const intro: introType[] = await getIntro();
 
   return (
-    <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-[5.5rem] xsmall:px-[3%] xsmall:pt-[3%]  small:py-[clamp(4rem,7.8vw,11rem)] small:pr-16 small:pl-0 text-white overflow-hidden">
+    <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-[5.5rem] xsmall:px-[3.9%] xsmall:pt-[3.9%]  small:py-[clamp(4rem,7.8vw,11rem)] small:pr-16 small:pl-0 text-white overflow-hidden">
       {/* top left dots */}
       <div className="absolute bottom-0 right-0 h-full w-auto mix-blend-multiply rotate-180 xsmall:w-[70%] xsmall:h-auto small:scale-y-[-1] small:top-0 small:bottom-auto small:w-[40%] small:h-auto z-0 ">
         <BgDots />
@@ -35,41 +35,40 @@ export default async function IntroSection() {
             className="relative grid grid-cols-1 small:grid-cols-2 gap-10 items-center z-10"
           >
             <div className="relative w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451]">
-              <div className="absolute -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] w-[112%] h-[112%]">
+              <div className="absolute -top-[4.9%] -left-[5.8%] xsmall:-left-[4.4%] xsmall:-top-[6.5%] w-[112%] h-[112%]">
                 <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 389 412"
+                  viewBox="0 0 389 408"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   className="block xsmall:hidden"
+                  preserveAspectRatio="xMidYMin meet"
                 >
                   <rect
                     x="20"
-                    y="20"
-                    width="372"
+                    y="16"
+                    width="349"
                     height="372"
-                    stroke="url(#paint0_linear_62_2866)"
-                    strokeOpacity="0.5"
-                    strokeWidth="40"
-                    className="mix-blend-color-dodge"
+                    stroke="url(#paint0_linear_17_3269)"
+                    stroke-opacity="0.5"
+                    stroke-width="40"
                   />
                   <defs>
                     <linearGradient
-                      id="paint0_linear_62_2866"
+                      id="paint0_linear_17_3269"
                       x1="383.689"
-                      y1="9.10812"
+                      y1="5.10812"
                       x2="-41.2097"
-                      y2="214.621"
+                      y2="210.621"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop offset="0.161927" stopColor="#4804F8" />
-                      <stop offset="0.375" stopColor="#FF4A1D" />
-                      <stop offset="0.635417" stopColor="#F9BA17" />
-                      <stop offset="0.978225" stopOpacity="0" />
+                      <stop offset="0.161927" stop-color="#4804F8" />
+                      <stop offset="0.375" stop-color="#FF4A1D" />
+                      <stop offset="0.635417" stop-color="#F9BA17" />
+                      <stop offset="0.978225" stop-opacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>
+
                 <svg
                   width="100%"
                   height="100%"
@@ -113,40 +112,38 @@ export default async function IntroSection() {
                     )})`,
                   } as React.CSSProperties
                 }
-                className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] group"
+                className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-[349/372] xsmall:px-0 xsmall:aspect-[690/451] group"
               >
-                <div className="absolute -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] w-[112%] h-[112%]">
+                <div className="absolute -top-[4.9%] -left-[5.8%] xsmall:-left-[4.4%] xsmall:-top-[6.5%] -small-[6.2%] w-[112%] h-[112%] small:h-[112.3%]">
                   <svg
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 389 412"
+                    viewBox="0 0 389 408"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     className="block xsmall:hidden"
+                    preserveAspectRatio="none"
                   >
                     <rect
                       x="20"
-                      y="20"
-                      width="372"
+                      y="16"
+                      width="349"
                       height="372"
-                      stroke="url(#paint0_linear_62_2866)"
-                      strokeOpacity="0.5"
-                      strokeWidth="40"
-                      className="mix-blend-color-dodge"
+                      stroke="url(#paint0_linear_17_3269)"
+                      stroke-opacity="0.5"
+                      stroke-width="40"
                     />
                     <defs>
                       <linearGradient
-                        id="paint0_linear_62_2866"
+                        id="paint0_linear_17_3269"
                         x1="383.689"
-                        y1="9.10812"
+                        y1="5.10812"
                         x2="-41.2097"
-                        y2="214.621"
+                        y2="210.621"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop offset="0.161927" stopColor="#4804F8" />
-                        <stop offset="0.375" stopColor="#FF4A1D" />
-                        <stop offset="0.635417" stopColor="#F9BA17" />
-                        <stop offset="0.978225" stopOpacity="0" />
+                        <stop offset="0.161927" stop-color="#4804F8" />
+                        <stop offset="0.375" stop-color="#FF4A1D" />
+                        <stop offset="0.635417" stop-color="#F9BA17" />
+                        <stop offset="0.978225" stop-opacity="0" />
                       </linearGradient>
                     </defs>
                   </svg>

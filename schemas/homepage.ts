@@ -225,7 +225,8 @@ const homepage = {
         {
           name: "awardsSectionTitle",
           title: "Awards Section Title",
-          description: "Enter a title for the Awards section",
+          description:
+            "add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies on mobile screens",
           type: "string",
         },
         {
@@ -246,7 +247,7 @@ const homepage = {
                   title: "Award Title",
                   type: "string",
                   description:
-                    "add '\\n' to the text where you want it to return on a new line",
+                    "add '\\n' to the text where you want text to return on a new line",
                 },
                 {
                   name: "awardLogo",
@@ -284,7 +285,7 @@ const homepage = {
           name: "message",
           title: "Contact Section Message",
           description:
-            "add '\\n' to the text where you want it to return on a new line.  *NOTE - this only applies on screens bigger than mobile",
+            "add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies on screens bigger than mobile",
           type: "text",
         },
         {

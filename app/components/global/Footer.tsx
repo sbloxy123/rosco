@@ -5,7 +5,7 @@ import MailingListForm from "../../../components/MailingListForm";
 
 export default function Footer() {
   return (
-    <footer className="pb-[14rem] pt-[10rem] xsmall:pb-[17rem] xsmall:pt-[11.5rem] small:pb-[15rem] small:pt-[9rem]  small:max-w-[1121px] small:mx-auto">
+    <footer className="pb-[14rem] pt-[10rem] px-[5%] xsmall:px-0 xsmall:pb-[17rem] xsmall:pt-[11.5rem] small:pb-[15rem] small:pt-[9rem]  small:max-w-[1121px] small:mx-auto">
       <div className="">
         <Link
           href="/"
