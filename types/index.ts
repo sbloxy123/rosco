@@ -125,6 +125,19 @@ export type projectsSectionType = {
   };
 };
 
+interface Image {
+  alt: string;
+  image: string;
+  asset: {
+    _ref: string;
+  };
+}
+
+interface BeforeAfter {
+  beforeImage: Image;
+  afterImage: Image;
+}
+
 export type projectType = {
   _id: string;
   projectTitle: string;
@@ -152,6 +165,8 @@ export type projectType = {
       y: number;
     };
   };
+  categories: string[];
+  beforeAfter: BeforeAfter;
 };
 export type TotPromoType = {
   _id: string;
@@ -308,6 +323,27 @@ export type projectsPageType = {
     _id: string;
     pageHeading: string;
     pageImage: {
+      alt: string;
+      image: string;
+      asset: {
+        _ref: string;
+      };
+      crop: {
+        _type: "sanity.imageCrop";
+        bottom: number;
+        left: number;
+        right: number;
+        top: number;
+      };
+      hotspot: {
+        _type: "sanity.imageHotspot";
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+      };
+    };
+    BgImage: {
       alt: string;
       image: string;
       asset: {

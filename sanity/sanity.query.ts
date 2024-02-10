@@ -169,9 +169,7 @@ export async function getAllProjects() {
       image {
         alt,
         "image": asset->url,
-        asset {
-          _ref
-        },
+        asset->{_ref},
         crop {
           _type,
           bottom,
@@ -187,6 +185,20 @@ export async function getAllProjects() {
           y
         }
       },
+      categories,
+      beforeAfter {
+        beforeImage {
+          alt,
+        "image": asset->url,
+        asset->{_ref},
+
+        },
+        afterImage {
+          alt,
+        "image": asset->url,
+        asset->{_ref},
+        }
+      }
     }`
   );
 }
@@ -366,26 +378,47 @@ export async function getProjectsPageContent() {
       ProjectsPage {
         pageHeading,
         pageImage {
-              alt,
-            "image": asset->url,
-            asset {
-              _ref
-            },
-            crop {
-              _type,
-              bottom,
-              left,
-              top,
-              right
-            },
-            hotspot {
-              _type,
-              height,
-              width,
-              x,
-              y
-            }
+            alt,
+          "image": asset->url,
+          asset {
+            _ref
           },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+        },
+        BgImage{
+          alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+        },
       }
     }
     `

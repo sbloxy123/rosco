@@ -37,15 +37,61 @@ const projects = {
     },
     {
       name: "image",
-      title: "Project Image",
+      title: "Homepage Project Image",
       type: "image",
-      description: "Upload an image for this project",
-      options: { hotspot: true },
+      description: "Upload an image for the swiper on the homepage",
+      // options: { hotspot: true },
       fields: [
         {
           name: "alt",
           title: "Alt",
           type: "string",
+        },
+      ],
+    },
+    {
+      title: "Categories",
+      name: "categories",
+      type: "array",
+      of: [
+        {
+          name: "category",
+          type: "string",
+        },
+      ],
+    },
+    {
+      name: "beforeAfter",
+      title: "Before / After Images",
+      type: "document",
+      fields: [
+        {
+          name: "beforeImage",
+          title: "Before image",
+          type: "image",
+          description: "Upload a BEFORE image",
+          // options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            },
+          ],
+        },
+        {
+          name: "afterImage",
+          title: "After image",
+          type: "image",
+          description: "Upload an AFTER image",
+          // options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            },
+          ],
         },
       ],
     },

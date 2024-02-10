@@ -75,8 +75,8 @@ export default async function About() {
                   width="1065"
                   height="230"
                   stroke="url(#paint0_linear_97_10568)"
-                  stroke-opacity="0.5"
-                  stroke-width="56"
+                  strokeOpacity="0.5"
+                  strokeWidth="56"
                   style={{ mixBlendMode: "color-dodge" }}
                 />
                 <defs>
@@ -108,8 +108,8 @@ export default async function About() {
                   width="1065"
                   height="230"
                   stroke="url(#paint0_linear_97_10568)"
-                  stroke-opacity="0.5"
-                  stroke-width="56"
+                  strokeOpacity="0.5"
+                  strokeWidth="56"
                   style={{ mixBlendMode: "color-dodge" }}
                 />
                 <defs>

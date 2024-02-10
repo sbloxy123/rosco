@@ -1,9 +1,11 @@
 import InnerHero from "@/components/InnerHero";
-import { getProjectsPageContent } from "@/sanity/sanity.query";
-import type { projectsPageType } from "@/types";
+import ProjectsFilter from "@/components/ProjectsFilter";
+import { getProjectsPageContent, getAllProjects } from "@/sanity/sanity.query";
+import type { projectsPageType, projectType } from "@/types";
 
 export default async function Projects() {
   const projectsContent: projectsPageType[] = await getProjectsPageContent();
+  const projects: projectType[] = await getAllProjects();
 
   return (
     <div>
@@ -20,6 +22,10 @@ export default async function Projects() {
           </div>
         );
       })}
+
+      <div className="my-section-gap">
+        <ProjectsFilter projects={projects} assets={projectsContent} />
+      </div>
     </div>
   );
 }

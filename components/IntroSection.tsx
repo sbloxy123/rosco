@@ -49,8 +49,8 @@ export default async function IntroSection() {
                     width="349"
                     height="372"
                     stroke="url(#paint0_linear_17_3269)"
-                    stroke-opacity="0.5"
-                    stroke-width="40"
+                    strokeOpacity="0.5"
+                    strokeWidth="40"
                   />
                   <defs>
                     <linearGradient
@@ -61,10 +61,10 @@ export default async function IntroSection() {
                       y2="210.621"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop offset="0.161927" stop-color="#4804F8" />
-                      <stop offset="0.375" stop-color="#FF4A1D" />
-                      <stop offset="0.635417" stop-color="#F9BA17" />
-                      <stop offset="0.978225" stop-opacity="0" />
+                      <stop offset="0.161927" stopColor="#4804F8" />
+                      <stop offset="0.375" stopColor="#FF4A1D" />
+                      <stop offset="0.635417" stopColor="#F9BA17" />
+                      <stop offset="0.978225" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -128,8 +128,8 @@ export default async function IntroSection() {
                       width="349"
                       height="372"
                       stroke="url(#paint0_linear_17_3269)"
-                      stroke-opacity="0.5"
-                      stroke-width="40"
+                      strokeOpacity="0.5"
+                      strokeWidth="40"
                     />
                     <defs>
                       <linearGradient
@@ -140,10 +140,10 @@ export default async function IntroSection() {
                         y2="210.621"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop offset="0.161927" stop-color="#4804F8" />
-                        <stop offset="0.375" stop-color="#FF4A1D" />
-                        <stop offset="0.635417" stop-color="#F9BA17" />
-                        <stop offset="0.978225" stop-opacity="0" />
+                        <stop offset="0.161927" stopColor="#4804F8" />
+                        <stop offset="0.375" stopColor="#FF4A1D" />
+                        <stop offset="0.635417" stopColor="#F9BA17" />
+                        <stop offset="0.978225" stopOpacity="0" />
                       </linearGradient>
                     </defs>
                   </svg>

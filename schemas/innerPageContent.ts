@@ -166,6 +166,22 @@ const innerPageContent = {
             },
           ],
         },
+        {
+          name: "BgImage",
+          title: "Background Image / Texture",
+          type: "image",
+          description: "Background image for each project",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              description:
+                "describe what is in the image let search engines know what is being shown",
+            },
+          ],
+        },
       ],
       extends: "page",
     },

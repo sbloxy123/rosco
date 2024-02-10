@@ -65,7 +65,7 @@ export default async function Services() {
                 <BgDots />
               </div>
 
-              <div className="text-white py-20 px-[5%] small:flex small:flex-row small:gap-10 small:items-center h-full">
+              <div className="relative text-white pt-[4rem] pb-[6.5rem] px-[5%] small:flex small:flex-row small:gap-10 small:items-center h-full">
                 <div className="small:max-w-[488px] small:mx-auto">
                   <h2>{content.ServicesPage.introHeading}</h2>
                   <p className="py-10">{content.ServicesPage.introText}</p>

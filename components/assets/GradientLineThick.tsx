@@ -23,13 +23,13 @@ export default function GradientLineThick() {
           y2="16.9993"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#D9D9D9" stopOpacity="0" />
-          <stop offset="0.15625" stop-color="#5003B4" stopOpacity="0.5" />
-          <stop offset="0.317708" stop-color="#CB425C" />
-          <stop offset="0.5" stop-color="#580BE5" />
-          <stop offset="0.708333" stop-color="#4804F8" />
-          <stop offset="0.921875" stop-color="#F9BA17" stopOpacity="0.6" />
-          <stop offset="1" stop-color="#D9D9D9" stopOpacity="0" />
+          <stop stopColor="#D9D9D9" stopOpacity="0" />
+          <stop offset="0.15625" stopColor="#5003B4" stopOpacity="0.5" />
+          <stop offset="0.317708" stopColor="#CB425C" />
+          <stop offset="0.5" stopColor="#580BE5" />
+          <stop offset="0.708333" stopColor="#4804F8" />
+          <stop offset="0.921875" stopColor="#F9BA17" stopOpacity="0.6" />
+          <stop offset="1" stopColor="#D9D9D9" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>

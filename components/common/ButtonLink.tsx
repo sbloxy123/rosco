@@ -10,7 +10,7 @@ const ButtonLink = ({
   ctaType,
   hoverEffect,
 }: {
-  destination: string;
+  destination?: string;
   text: string;
   bgColor?: string;
   theme: "dark" | "light" | "white";
