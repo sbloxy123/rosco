@@ -40,7 +40,7 @@ const projects = {
       title: "Homepage Project Image",
       type: "image",
       description: "Upload an image for the swiper on the homepage",
-      // options: { hotspot: true },
+      options: { hotspot: true },
       fields: [
         {
           name: "alt",
@@ -70,7 +70,7 @@ const projects = {
           title: "Before image",
           type: "image",
           description: "Upload a BEFORE image",
-          // options: { hotspot: true },
+          options: { hotspot: true },
           fields: [
             {
               name: "alt",
@@ -84,7 +84,7 @@ const projects = {
           title: "After image",
           type: "image",
           description: "Upload an AFTER image",
-          // options: { hotspot: true },
+          options: { hotspot: true },
           fields: [
             {
               name: "alt",
