@@ -13,6 +13,8 @@ type ProjectSlideProps = {
 };
 
 const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
+  // console.log(project.image);
+
   // console.log(project.image.image);
   const imageUrl = "your-image-url";
   const customStyle = { "--image-url": imageUrl } as React.CSSProperties;
@@ -131,7 +133,8 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
           <div
             style={
               {
-                "--image-url": `url(${getCroppedImageSrc(project.image)})`,
+                // "--image-url": `url(${getCroppedImageSrc(project.image)})`,
+                "--image-url": `url(${project.image.image})`,
               } as React.CSSProperties
             }
             className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] small:aspect-[567/456] cursor-pointer group small:min-w-[522px]"

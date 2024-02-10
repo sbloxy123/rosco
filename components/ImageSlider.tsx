@@ -128,8 +128,8 @@ export const ImageSlider = ({
               </defs>
             </svg>
           </div>
-          <div className="absolute top-[57%] left-0 right-0 mx-auto bg-white w-[0.44rem] h-[calc(100%-3.5rem)]"></div>
-          <div className="absolute bottom-[57%] left-0 right-0 mx-auto bg-white w-[0.44rem] h-[calc(100%-3.5rem)]"></div>
+          <div className="absolute top-[58%] xsmall:top-[55.9%] left-0 right-0 mx-auto bg-white w-[0.44rem] h-[calc(100%-3.5rem)]"></div>
+          <div className="absolute bottom-[58%] xsmall:bottom-[55.9%] left-0 right-0 mx-auto bg-white w-[0.44rem] h-[calc(100%-3.5rem)]"></div>
 
           <div className="absolute top-0 bottom-0 h-[7rem] w-[7rem] my-auto bg-transparent -translate-x-[46.5%] rounded-full border-[0.44rem] overflow-hidden flex justify-center items-center">
             <svg

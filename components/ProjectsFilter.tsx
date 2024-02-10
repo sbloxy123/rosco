@@ -58,34 +58,35 @@ export default async function ProjectsFilter({
         <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
           <BgDots />
         </div>
+        <div className="relative">
+          <h2 className="text-white">Latest Projects</h2>
 
-        <h2 className="text-white">Latest Projects</h2>
-
-        <div className="uppercase text-[1.6rem] font-semibold tracking[0.06em] text-white flex justify-between pt-[3.5rem] pb-[3.3rem] xsmall:pt-[5rem] small:pt-[6rem] small:pb-[4rem]">
-          <p className="">Filter by</p>
-          <div className="flex gap-[1.5rem] items-center">
-            <p>view all</p>
-            <div className="bg-white rounded-full w-[56px] h-[28px] relative">
-              <span className="w-[23.33px] aspect-square rounded-[100%] bg-theme-purple absolute left-0 top-0 bottom-0 my-auto translate-x-[2px]"></span>
+          <div className="uppercase text-[1.6rem] font-semibold tracking[0.06em] text-white flex justify-between pt-[3.5rem] pb-[3.3rem] xsmall:pt-[5rem] small:pt-[6rem] small:pb-[4rem]">
+            <p className="">Filter by</p>
+            <div className="flex gap-[1.5rem] items-center">
+              <p>view all</p>
+              <div className="bg-white rounded-full w-[56px] h-[28px] relative">
+                <span className="w-[23.33px] aspect-square rounded-[100%] bg-theme-purple absolute left-0 top-0 bottom-0 my-auto translate-x-[2px]"></span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col gap-6 xsmall:flex-row flex-wrap">
-          {categoriesArray.map((category, index) => {
-            return (
-              <div key={index} className="xsmall:w-fit">
-                <ButtonLink
-                  key={index}
-                  text={category}
-                  ctaType="none"
-                  hoverEffect="fill-col"
-                  theme="light"
-                  bgColor="black"
-                />
-              </div>
-            );
-          })}
+          <div className="flex flex-col gap-6 xsmall:flex-row flex-wrap">
+            {categoriesArray.map((category, index) => {
+              return (
+                <div key={index} className="xsmall:w-fit">
+                  <ButtonLink
+                    key={index}
+                    text={category}
+                    ctaType="none"
+                    hoverEffect="fill-col"
+                    theme="light"
+                    bgColor="black"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       <div>

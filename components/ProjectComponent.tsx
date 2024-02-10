@@ -57,6 +57,12 @@ export default async function ProjectsComponent({
           before={project.beforeAfter.beforeImage.image}
           after={project.beforeAfter.afterImage.image}
         />
+
+        <p className="pt-[4rem]">{project.projectSummary}</p>
+        <p className="pt-[3.5rem] uppercase text-[1.4rem]">
+          {project.completionTimeframe}
+        </p>
+        <p className="pt-[1.2rem] text-[1.4rem]">{project.projectLocation}</p>
       </div>
     </div>
   );

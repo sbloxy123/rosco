@@ -36,10 +36,31 @@ const projects = {
       type: "string",
     },
     {
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [
+        {
+          name: "category",
+          type: "string",
+        },
+      ],
+    },
+    {
+      name: "completionTimeframe",
+      title: "Completion Timeframe",
+      type: "string",
+    },
+    {
+      name: "projectLocation",
+      title: "Project Location",
+      type: "string",
+    },
+    {
       name: "image",
       title: "Homepage Project Image",
       type: "image",
-      description: "Upload an image for the swiper on the homepage",
+      description: "Upload an image for the image slider on the homepage",
       options: { hotspot: true },
       fields: [
         {
@@ -49,17 +70,7 @@ const projects = {
         },
       ],
     },
-    {
-      title: "Categories",
-      name: "categories",
-      type: "array",
-      of: [
-        {
-          name: "category",
-          type: "string",
-        },
-      ],
-    },
+
     {
       name: "beforeAfter",
       title: "Before / After Images",

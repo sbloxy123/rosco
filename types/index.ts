@@ -144,6 +144,8 @@ export type projectType = {
   slug: string;
   projectSummary: string;
   projectBtnText: string;
+  completionTimeframe: string;
+  projectLocation: string;
   image: {
     alt: string;
     image: string;

@@ -166,6 +166,9 @@ export async function getAllProjects() {
       "slug": slug.current,
       projectSummary,
       projectBtnText,
+      completionTimeframe,
+      projectLocation,
+      categories,
       image {
         alt,
         "image": asset->url,
@@ -185,7 +188,6 @@ export async function getAllProjects() {
           y
         }
       },
-      categories,
       beforeAfter {
         beforeImage {
           alt,
