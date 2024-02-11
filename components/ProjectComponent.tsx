@@ -51,18 +51,22 @@ export default async function ProjectsComponent({
           })}
         </div>
 
-        <h1 className="pb-[2.6rem]">{project.projectTitle}</h1>
-
-        <ImageSlider
-          before={project.beforeAfter.beforeImage.image}
-          after={project.beforeAfter.afterImage.image}
-        />
+        <h1 className="pb-[2.6rem] xsmall:hidden">{project.projectTitle}</h1>
+        <div>
+          <ImageSlider
+            before={project.beforeAfter.beforeImage.image}
+            after={project.beforeAfter.afterImage.image}
+          />
+        </div>
+        <h1 className="hidden xsmall:block">{project.projectTitle}</h1>
 
         <p className="pt-[4rem]">{project.projectSummary}</p>
-        <p className="pt-[3.5rem] uppercase text-[1.4rem]">
-          {project.completionTimeframe}
-        </p>
-        <p className="pt-[1.2rem] text-[1.4rem]">{project.projectLocation}</p>
+        <div className="">
+          <p className="pt-[3.5rem] uppercase text-[1.4rem]">
+            {project.completionTimeframe}
+          </p>
+          <p className="pt-[1.2rem] text-[1.4rem]">{project.projectLocation}</p>
+        </div>
       </div>
     </div>
   );

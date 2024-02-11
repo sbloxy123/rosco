@@ -86,51 +86,51 @@ function Navbar() {
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
-                  <ul className="nav__link__list flex items-center justify-between w-[40vw] max-w-[575px] uppercase font-[300] font-sans text-theme-dark text-[1.45rem]">
+                  <ul className="nav__link__list flex items-center justify-between w-[40vw] max-w-[575px] uppercase font-[400] font-sans text-theme-dark text-[1.4rem]">
                     <li>
                       <Link href="/" className="">
-                        <div className="nav__item__link">
-                          <span className="font-semibold">01 </span>
+                        <div className="nav__item__link pr-[0.4rem]">
+                          <span className="font-semibold px-[0.4rem]">01 </span>
                           Home
                         </div>
                       </Link>
                     </li>
                     <li>
                       <Link href="/about" className="">
-                        <div className="nav__item__link">
-                          <span className="font-semibold">02 </span>
+                        <div className="nav__item__link pr-[0.4rem]">
+                          <span className="font-semibold px-[0.4rem]">02 </span>
                           About
                         </div>
                       </Link>
                     </li>
                     <li>
                       <Link href="/services" className="">
-                        <div className="nav__item__link">
-                          <span className="font-semibold">03 </span>
+                        <div className="nav__item__link pr-[0.4rem]">
+                          <span className="font-semibold px-[0.4rem]">03 </span>
                           Services
                         </div>
                       </Link>
                     </li>
                     <li>
                       <Link href="/projects" className="">
-                        <div className="nav__item__link">
-                          <span className="font-semibold">04 </span>
+                        <div className="nav__item__link pr-[0.4rem]">
+                          <span className="font-semibold px-[0.4rem]">04 </span>
                           Projects
                         </div>
                       </Link>
                     </li>
                     <li>
                       <Link href="/faqs" className="">
-                        <div className="nav__item__link">
-                          <span className="font-semibold">05 </span>
+                        <div className="nav__item__link pr-[0.4rem]">
+                          <span className="font-semibold px-[0.4rem]">05 </span>
                           FAQ's
                         </div>
                       </Link>
                     </li>
                     <li>
                       <Link href="/contact" className="">
-                        <div className="nav__item__link">
-                          <span className="font-semibold">06 </span>
+                        <div className="nav__item__link pr-[0.4rem]">
+                          <span className="font-semibold px-[0.4rem]">06 </span>
                           Contact
                         </div>
                       </Link>
@@ -188,7 +188,7 @@ function Navbar() {
                   placeholder="Search"
                   // value={email}
                   // onChange={handleInput}
-                  className="p-4 hidden xsmall:block xsmall:bg-[#E6E6E7] bg-opacity-[20%] text-left pl-[4.5rem] text-theme-dark rounded-sm w-full  text-[14.5px] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
+                  className="p-4 hidden xsmall:block xsmall:bg-[#E6E6E7] bg-opacity-[20%] text-left pl-[4.5rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                 />
               </form>
 
@@ -282,7 +282,7 @@ function Navbar() {
                     onClick={() => setIsOpen(!isOpen)}
                   >
                     <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">02</span>
+                      <span className="font-bold px-[0.4rem]">02</span>
                       <span>About</span>
                     </div>
                   </Link>
