@@ -60,13 +60,13 @@ export default async function Hero() {
                   </div>
                 </div>
               </div>
-              <div className="hero-image relative object-cover max-w-[755px] mx-auto small:mx-0">
+              <div className="hero-image relative object-cover max-w-[645px] mx-auto small:mx-0">
                 <Image
                   src={content.heroImage.image}
                   width={400}
                   height={400}
                   alt={content.heroImage.alt}
-                  className="absolute w-[91.5%] h-full object-cover z-0 group-hover:opacity-75 m-auto"
+                  className="absolute w-full h-full object-cover z-0 group-hover:opacity-75 m-auto"
                 />
               </div>
             </div>
