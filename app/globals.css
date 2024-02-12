@@ -80,6 +80,7 @@ p {
 
 .button__link {
   border: solid;
+  border-width: 2px solid;
 }
 
 .nav-search-form > div::before {
@@ -392,6 +393,7 @@ p {
       transform 650ms cubic-bezier(1, -0.04, 0.84, 0.8) 300ms;
   }
 }
+
 .swiper-slide-active {
   .project__image {
     opacity: 1;
@@ -417,3 +419,7 @@ p {
     opacity: 1;
   }
 }
+
+/* .project-time-address > p {
+  font-size: 1.4rem !important;
+} */

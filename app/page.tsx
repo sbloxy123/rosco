@@ -13,7 +13,7 @@ export default async function Home() {
     <main>
       <Hero />
       <IntroSection />
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small ">
         <ServiceImageLinkSwiper />
       </div>
       <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">

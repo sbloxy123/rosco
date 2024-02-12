@@ -49,7 +49,7 @@ export const ImageSlider = ({
       onTouchEnd={handleMouseUp}
     >
       <div
-        className="relative object-cover w-full max-w-[500px] aspect-[357/383] overflow-hidden select-none"
+        className="relative object-cover w-full aspect-[357/383] overflow-hidden select-none xsmall:aspect-[678.8/382.65] small:aspect-[929/522]"
         onMouseMove={handleMove}
         onTouchMove={handleTouchMove}
         onMouseDown={handleMouseDown}
@@ -65,7 +65,7 @@ export const ImageSlider = ({
         />
 
         <div
-          className="absolute object-cover top-0 left-0 right-0 w-full max-w-[500px] aspect-[357/383] overflow-hidden select-none"
+          className="absolute object-cover top-0 left-0 right-0 w-full aspect-[357/383] xsmall:aspect-[681/384] small:aspect-[929/522] overflow-hidden select-none"
           style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
         >
           <Image
@@ -113,7 +113,7 @@ export const ImageSlider = ({
                   <stop
                     offset="0.15625"
                     stopColor="#5003B4"
-                    stop-opacity="0.5"
+                    stopOpacity="0.5"
                   />
                   <stop offset="0.317708" stopColor="#CB425C" />
                   <stop offset="0.5" stopColor="#580BE5" />
@@ -121,17 +121,17 @@ export const ImageSlider = ({
                   <stop
                     offset="0.921875"
                     stopColor="#F9BA17"
-                    stop-opacity="0.6"
+                    stopOpacity="0.6"
                   />
                   <stop offset="1" stopColor="#D9D9D9" stopOpacity="0" />
                 </linearGradient>
               </defs>
             </svg>
           </div>
-          <div className="absolute top-[58%] xsmall:top-[55.9%] left-0 right-0 mx-auto bg-white w-[0.44rem] h-[calc(100%-3.5rem)]"></div>
-          <div className="absolute bottom-[58%] xsmall:bottom-[55.9%] left-0 right-0 mx-auto bg-white w-[0.44rem] h-[calc(100%-3.5rem)]"></div>
 
-          <div className="absolute top-0 bottom-0 h-[7rem] w-[7rem] my-auto bg-transparent -translate-x-[46.5%] rounded-full border-[0.44rem] overflow-hidden flex justify-center items-center">
+          <div className="absolute top-0 bottom-0 h-[7rem] w-[7rem] my-auto bg-transparent -translate-x-[46.5%] rounded-full border-[0.44rem] border-white  flex justify-center items-center">
+            <div className="absolute top-[6.4rem] left-0 right-0 mx-auto bg-white w-[0.44rem] h-[250px]"></div>
+            <div className="absolute bottom-[6.4rem] left-0 right-0 mx-auto bg-white w-[0.44rem] h-[250px]"></div>
             <svg
               width="23"
               height="18"

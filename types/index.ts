@@ -169,6 +169,29 @@ export type projectType = {
   };
   categories: string[];
   beforeAfter: BeforeAfter;
+  gallery: {
+    images: {
+      alt: string;
+      image: string;
+      asset: {
+        _ref: string;
+      };
+      crop: {
+        _type: "sanity.imageCrop";
+        bottom: number;
+        left: number;
+        right: number;
+        top: number;
+      };
+      hotspot: {
+        _type: "sanity.imageHotspot";
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+      };
+    }[];
+  };
 };
 export type TotPromoType = {
   _id: string;

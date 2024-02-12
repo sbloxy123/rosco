@@ -8,7 +8,7 @@ import Logo from "../../icons/logo.svg";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="z-50 small:fixed top-0 left-0 w-full bg-white">
+    <div className=" z-50 small:fixed top-0 left-0 w-full bg-white">
       <header className="bg-theme_white-900 tracking-[0.06em]">
         <div className="max-w-screen-large mx-auto py-[2.7rem] ">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
@@ -86,10 +86,10 @@ function Navbar() {
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
-                  <ul className="nav__link__list flex items-center justify-between w-[40vw] max-w-[575px] uppercase font-[400] font-sans text-theme-dark text-[1.4rem]">
+                  <ul className="nav__link__list flex items-center justify-between w-[45vw] max-w-[645px] uppercase font-[400] font-sans text-theme-dark text-[1.4rem] small:pl-[1.9rem]">
                     <li>
                       <Link href="/" className="">
-                        <div className="nav__item__link pr-[0.4rem]">
+                        <div className="nav__item__link pr-[0.4rem] text-right">
                           <span className="font-semibold px-[0.4rem]">01 </span>
                           Home
                         </div>
@@ -97,7 +97,7 @@ function Navbar() {
                     </li>
                     <li>
                       <Link href="/about" className="">
-                        <div className="nav__item__link pr-[0.4rem]">
+                        <div className="nav__item__link pr-[0.4rem] text-right">
                           <span className="font-semibold px-[0.4rem]">02 </span>
                           About
                         </div>
@@ -105,7 +105,7 @@ function Navbar() {
                     </li>
                     <li>
                       <Link href="/services" className="">
-                        <div className="nav__item__link pr-[0.4rem]">
+                        <div className="nav__item__link pr-[0.4rem] text-right">
                           <span className="font-semibold px-[0.4rem]">03 </span>
                           Services
                         </div>
@@ -113,7 +113,7 @@ function Navbar() {
                     </li>
                     <li>
                       <Link href="/projects" className="">
-                        <div className="nav__item__link pr-[0.4rem]">
+                        <div className="nav__item__link pr-[0.4rem] text-right">
                           <span className="font-semibold px-[0.4rem]">04 </span>
                           Projects
                         </div>
@@ -121,7 +121,7 @@ function Navbar() {
                     </li>
                     <li>
                       <Link href="/faqs" className="">
-                        <div className="nav__item__link pr-[0.4rem]">
+                        <div className="nav__item__link pr-[0.4rem] text-right">
                           <span className="font-semibold px-[0.4rem]">05 </span>
                           FAQ's
                         </div>
@@ -129,7 +129,7 @@ function Navbar() {
                     </li>
                     <li>
                       <Link href="/contact" className="">
-                        <div className="nav__item__link pr-[0.4rem]">
+                        <div className="nav__item__link pr-[0.4rem] text-right">
                           <span className="font-semibold px-[0.4rem]">06 </span>
                           Contact
                         </div>
@@ -141,7 +141,7 @@ function Navbar() {
             </div>
             <div className="flex gap-[1rem]">
               <form
-                className="nav-search-form relative flex flex-col justify-center gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:flex-row small:w-fit"
+                className="nav-search-form relative flex flex-col justify-center gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:flex-row small:w-fit small:mr-0"
                 // onSubmit={handleSubmit}
               >
                 <div className="flex items-center gap-[1rem]">
@@ -188,7 +188,7 @@ function Navbar() {
                   placeholder="Search"
                   // value={email}
                   // onChange={handleInput}
-                  className="p-4 hidden xsmall:block xsmall:bg-[#E6E6E7] bg-opacity-[20%] text-left pl-[4.5rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] max-h-[48px] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
+                  className="p-4 hidden xsmall:block xsmall:bg-[rgba(230,230,231,0.3)] text-left pl-[4.5rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                 />
               </form>
 

@@ -90,8 +90,9 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
       slidesPerView={1}
       onSlideChange={handleProjectsSwiperSlideChange}
       // onSwiper={(swiper) => console.log(swiper)}
-      wrapperClass="pb-14 small:pb-0 relative"
+      wrapperClass="projects--swiper pb-14 small:pb-0 relative"
       modules={[Pagination, Navigation]}
+      simulateTouch={false}
       pagination={{
         el: ".project-pagination",
       }}

@@ -1,26 +1,69 @@
+"use client";
+import { useState, useRef } from "react";
 import type { projectType, projectsPageType } from "@/types";
-import ButtonLink from "./common/ButtonLink";
 import BgDots from "./assets/BgDots";
 import ProjectsComponent from "./ProjectComponent";
+import FilterButton from "./common/FilterButton";
+import { getAllProjects } from "@/sanity/sanity.query";
 
-export default async function ProjectsFilter({
+export default function ProjectsFilter({
   projects,
   assets,
 }: {
   projects: projectType[];
   assets: projectsPageType[];
 }) {
-  let categories = new Set();
+  const ref = useRef<HTMLInputElement>(null);
+  const [filters, setFilters] = useState<{ id: number; category: string }[]>(
+    []
+  );
 
-  projects.map((project) => {
-    project.categories.map((category) => {
+  const handleFilter = (category: string) => {
+    // Check if the category already exists in the filters array
+    const filterIndex = filters.findIndex(
+      (filter) => filter.category === category
+    );
+
+    if (filterIndex !== -1) {
+      // Remove the filter if it already exists
+      const updatedFilters = [...filters];
+      updatedFilters.splice(filterIndex, 1);
+      setFilters(updatedFilters);
+    } else {
+      // Add the filter if it doesn't exist
+      const newFilter: { id: number; category: string } = {
+        id: filters.length, // Assign a unique ID to the filter
+        category: category,
+      };
+      setFilters([...filters, newFilter]);
+    }
+  };
+
+  const handleFilterToggle = () => {
+    if (filters.length === categoriesArray.length) {
+      // If all categories are already selected, clear all filters
+      setFilters([]);
+    } else {
+      // Otherwise, populate filters with all categories
+      setFilters(
+        categoriesArray.map((category, index) => ({ id: index, category }))
+      );
+    }
+  };
+
+  let categories = new Set<string>();
+  projects.forEach((project) => {
+    project.categories.forEach((category) => {
       if (category !== "") {
         categories.add(category);
       }
     });
   });
 
-  const categoriesArray = Array.from(categories) as string[];
+  const categoriesArray = Array.from(categories);
+
+  // Store all projects once
+  const allProjects = [...projects];
 
   return (
     <div>
@@ -65,23 +108,35 @@ export default async function ProjectsFilter({
             <p className="">Filter by</p>
             <div className="flex gap-[1.5rem] items-center">
               <p>view all</p>
-              <div className="bg-white rounded-full w-[56px] h-[28px] relative">
-                <span className="w-[23.33px] aspect-square rounded-[100%] bg-theme-purple absolute left-0 top-0 bottom-0 my-auto translate-x-[2px]"></span>
+
+              <div
+                className="bg-white rounded-full w-[56px] h-[28px] relative flex justify-start items-center px-[2px] cursor-pointer"
+                onClick={() => handleFilterToggle()}
+              >
+                <span
+                  className={`w-[23.33px] aspect-square rounded-[100%] bg-theme-purple ${
+                    filters.length === categoriesArray.length
+                      ? "ml-auto"
+                      : "ml-0"
+                  }`}
+                  style={{ transition: "all 5s ease" }}
+                ></span>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-6 xsmall:flex-row flex-wrap">
             {categoriesArray.map((category, index) => {
+              const filterMatch = filters.some(
+                (filter) => filter.category === category
+              );
               return (
                 <div key={index} className="xsmall:w-fit">
-                  <ButtonLink
+                  <FilterButton
                     key={index}
                     text={category}
-                    ctaType="none"
-                    hoverEffect="fill-col"
-                    theme="light"
-                    bgColor="black"
+                    selected={filterMatch} // Pass the boolean value of filterMatch
+                    onClick={() => handleFilter(category)}
                   />
                 </div>
               );
@@ -90,22 +145,34 @@ export default async function ProjectsFilter({
         </div>
       </div>
       <div>
-        {assets.map((content) => {
-          return (
-            <div key={content.ProjectsPage._id}>
-              {projects.map((project) => {
-                return (
-                  <div key={project._id} className="mt-section-gap">
-                    <ProjectsComponent
-                      project={project}
-                      bg={content.ProjectsPage.BgImage}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+        {assets.map((content) => (
+          <div key={content.ProjectsPage._id}>
+            {assets.map((content) => (
+              <div key={content.ProjectsPage._id}>
+                {/* Map over all projects to filter based on the category */}
+                {allProjects
+                  .filter((project) =>
+                    filters.length > 0
+                      ? filters.some((filter) =>
+                          project.categories.includes(filter.category)
+                        )
+                      : true
+                  )
+                  .map((filteredProject) => (
+                    <div
+                      key={filteredProject._id}
+                      className="mt-section-gap small:mt-[325px]"
+                    >
+                      <ProjectsComponent
+                        project={filteredProject}
+                        bg={content.ProjectsPage.BgImage}
+                      />
+                    </div>
+                  ))}
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
