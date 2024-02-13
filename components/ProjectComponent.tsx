@@ -51,7 +51,7 @@ export default function ProjectsComponent({
             <div className="flex gap-[5rem] flex-wrap">
               {project.categories.map((category, index) => {
                 return (
-                  <div>
+                  <div key={index}>
                     <h3 key={index} className="uppercase pb-[2rem]">
                       {category}{" "}
                     </h3>

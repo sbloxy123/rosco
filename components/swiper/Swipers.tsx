@@ -312,7 +312,7 @@ export const FilterButtonSwiper = ({
           (filter) => filter.category === category
         );
         return (
-          <SwiperSlide style={{ width: "fit-content" }}>
+          <SwiperSlide key={index} style={{ width: "fit-content" }}>
             <div className="w-fit">
               <FilterButton
                 key={index}

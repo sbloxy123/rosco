@@ -54,14 +54,14 @@ export default async function InnerHero({
             src={getCroppedImageSrc(image)}
             className="object-cover w-full h-full"
           />
-          <div className="absolute top-0 left-0 w-full h-[17px]">
+          <div className="absolute top-0 left-0 w-full h-[1.7rem]">
             <GradientLineThick />
           </div>
-          <div className="absolute bottom-0 left-0 w-full h-[17px]">
+          <div className="absolute bottom-0 left-0 w-full h-[1.7rem]">
             <GradientLineThick />
           </div>
 
-          <div className="absolute bottom-0 left-0 h-full w-[17px] hidden small:block">
+          <div className="absolute bottom-0 left-0 h-full w-[1.7rem] hidden small:block">
             <GradientLineVerticalThick />
           </div>
         </div>
