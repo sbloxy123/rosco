@@ -1,5 +1,8 @@
+import ContactSection from "@/components/ContactSection";
 import InnerHero from "@/components/InnerHero";
+import MailingListCta from "@/components/MailingListCta";
 import ProjectsFilter from "@/components/ProjectsFilter";
+import TotPromo from "@/components/TotPromo";
 import { getProjectsPageContent, getAllProjects } from "@/sanity/sanity.query";
 import type { projectsPageType, projectType } from "@/types";
 
@@ -26,6 +29,14 @@ export default async function Projects() {
       <div className="my-section-gap">
         <ProjectsFilter projects={projects} assets={projectsContent} />
       </div>
+
+      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+        <TotPromo />
+      </div>
+      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+        <MailingListCta />
+      </div>
+      <ContactSection />
     </div>
   );
 }

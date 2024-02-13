@@ -42,7 +42,7 @@ export default function MailingListForm({
         onChange={handleInput}
         className={`p-4 ${
           theme == "dark"
-            ? "bg-theme-dark bg-opacity-[6%] placeholder:text-theme-dark placeholder:font-[400]"
+            ? "bg-theme-dark bg-opacity-[6%] placeholder:text-theme-dark placeholder:text-opacity-80 placeholder:font-[400]"
             : "bg-white bg-opacity-20 placeholder:text-white focus:text-theme-purple"
         }   rounded-sm w-full uppercase font-headings text-[14.5px] tracking-[0.06em] xsmall:w-[290px]  placeholder:font-[500] placeholder:text-center xsmall:text-left xsmall:placeholder:text-left xsmall:placeholder:pl-[1rem] h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out`}
         style={{}}

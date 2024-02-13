@@ -24,7 +24,7 @@ export default async function AboutPageAwards() {
                 return (
                   <div
                     key={innerIndex}
-                    className="aspect-[255/345] w-[90%] xsmall:w-auto max-w-[255px] flex justify-center items-center flex-col gap-8 bg-theme-purple text-white text-center my-4"
+                    className="aspect-[255/345] w-[90%] xsmall:w-auto max-w-[255px] flex justify-center items-center flex-col gap-8 bg-theme-purple text-white text-center my-4 px-[5%]"
                   >
                     <div className="relative h-[150px] w-full mb-4">
                       <Image
