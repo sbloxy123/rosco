@@ -1,6 +1,6 @@
 "use client";
 
-import SwiperCore from "swiper/core";
+import SwiperCore, { Swiper as SwiperType } from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Scrollbar,
@@ -329,6 +329,8 @@ export const FilterButtonSwiper = ({
 };
 
 import React, { useState } from "react";
+// import { Swiper } from "swiper/react";
+
 // Import Swiper React components
 
 // Import Swiper styles
@@ -372,7 +374,7 @@ export default function ProjectsImageSwiper({
     };
   }[];
 }) {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
     <>
@@ -409,7 +411,7 @@ export default function ProjectsImageSwiper({
       </Swiper>
 
       <Swiper
-        onSwiper={setThumbsSwiper}
+        onSwiper={(swiper) => setThumbsSwiper(swiper)}
         spaceBetween={0}
         slidesPerView={10}
         freeMode={true}

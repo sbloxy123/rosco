@@ -33,7 +33,7 @@ export default function ProjectsComponent({
   project: projectType;
   bg: BgImage;
 }) {
-  console.log(project);
+  // console.log(project);
 
   return (
     <div className="block relative z-0 text-white">
@@ -77,11 +77,11 @@ export default function ProjectsComponent({
               beforeImage={project.beforeAfter.beforeImage.image}
               afterImage={project.beforeAfter.afterImage.image}
             />
-
+            {/*
             {project?.gallery?.images?.map((image) => {
               console.log(image);
               return <div></div>;
-            })}
+            })} */}
 
             {/* <div className="pt-[2rem] flex gap-[1rem] xsmall:justify-end">
               {project?.gallery?.images?.map((image) => {
