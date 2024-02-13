@@ -100,7 +100,7 @@ export const ImageSlider = ({
               viewBox="0 0 22 383"
               fill="none"
               height="100%"
-              width="auto"
+              width="100%"
               preserveAspectRatio="none"
               xmlns="http://www.w3.org/2000/svg"
             >
