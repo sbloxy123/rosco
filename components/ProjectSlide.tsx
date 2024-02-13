@@ -139,7 +139,8 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
             }
             className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] small:aspect-[567/456] cursor-pointer group small:min-w-[522px]"
           >
-            <div className="bg-opacity-5 bg-cover absolute top-0 left-0 bg-gradient-to-l from-black to-white mix-blend-multiply opacity-[0.7] w-full h-full"></div>
+            {/* background linear gradient */}
+            {/* <div className="bg-opacity-5 bg-cover absolute top-0 left-0 bg-gradient-to-l from-black to-white mix-blend-multiply opacity-[0.7] w-full h-full"></div> */}
 
             <div className="absolute w-[112%] h-[112%] -top-[6%] -left-[8.4%] xsmall:-left-[4.4%] small:-left-[5.4%]">
               <svg
@@ -260,7 +261,9 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
         <div className="px-[15px] pb-[5.4rem] small:pb-0 xsmall:px-0 small:w-[365px] small:pr-[clamp(20px,0vw,50px)]">
           <div className="project__text">
             <h2 className="pb-[2.5rem]">{project.projectTitle}</h2>
-            <p>{project.projectSummary}</p>
+            <p className="line-clamp-3 xsmall:line-clamp-2 small:line-clamp-3">
+              {project.projectSummary}
+            </p>
           </div>
           <div className="project__btn mt-[4rem] xsmall:mt-[3.2rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
             <ButtonLink

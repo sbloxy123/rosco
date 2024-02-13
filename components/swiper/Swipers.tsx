@@ -26,6 +26,7 @@ import type {
 import ProjectSlide from "../ProjectSlide";
 import { SwiperArrowNext, SwiperArrowPrev } from "../common/SwiperArrows";
 import { useRef } from "react";
+import FilterButton from "../common/FilterButton";
 
 export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
   return (
@@ -273,3 +274,196 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
     </Swiper>
   );
 };
+
+export const FilterButtonSwiper = ({
+  categories,
+  filters,
+  onClick,
+}: {
+  categories: string[];
+  filters: { id: number; category: string }[];
+  onClick: (category: string) => void;
+}) => {
+  return (
+    <Swiper
+      spaceBetween={10}
+      slidesPerView="auto"
+      // onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
+      wrapperClass="filterBtn__swiper"
+      modules={[Mousewheel, FreeMode]}
+      mousewheel={{
+        forceToAxis: true,
+        sensitivity: 1,
+        releaseOnEdges: true,
+      }}
+      freeMode={true}
+      breakpoints={
+        {
+          // 1024: {
+          //   spaceBetween: 18,
+          //   slidesPerView: "auto",
+          // },
+        }
+      }
+    >
+      {categories.map((category, index) => {
+        const filterMatch = filters.some(
+          (filter) => filter.category === category
+        );
+        return (
+          <SwiperSlide style={{ width: "fit-content" }}>
+            <div className="w-fit">
+              <FilterButton
+                key={index}
+                text={category}
+                selected={filterMatch} // Pass the boolean value of filterMatch
+                onClick={() => onClick(category)} // Pass category to onClick
+              />
+            </div>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
+  );
+};
+
+import React, { useState } from "react";
+// Import Swiper React components
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+// import "./styles.css";
+
+// import required modules
+import { Thumbs } from "swiper/modules";
+import { ImageSlider } from "../ImageSlider";
+
+export default function ProjectsImageSwiper({
+  images,
+  beforeImage,
+  afterImage,
+}: {
+  beforeImage: string;
+  afterImage: string;
+  images: {
+    alt: string;
+    image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
+  }[];
+}) {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  return (
+    <>
+      <Swiper
+        style={
+          {
+            // '--swiper-navigation-color': '#fff',
+            // '--swiper-pagination-color': '#fff',
+          }
+        }
+        spaceBetween={10}
+        // navigation={true}
+        allowTouchMove={false}
+        thumbs={{ swiper: thumbsSwiper }}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="aspect-[357/383] xsmall:aspect-[678.8/382.65] small:aspect-[929/522]"
+      >
+        <SwiperSlide>
+          <ImageSlider before={beforeImage} after={afterImage} />
+        </SwiperSlide>
+        {images.map((image, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <Image
+                src={image.image}
+                fill={true}
+                alt={image.alt}
+                className="object-cover"
+              />
+              <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        spaceBetween={0}
+        slidesPerView={10}
+        freeMode={true}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="thumbMiniSwiper mt-[2rem]"
+      >
+        <SwiperSlide>
+          <div className="relative w-[52px] h-[52px] aspect-square cursor-pointer">
+            <div className="absolute top-0 bottom-0 right-0 left-0 m-auto w-[80%] h-[80%] z-10 opacity-80">
+              <svg
+                viewBox="0 0 44 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="21.7402"
+                  cy="21.7402"
+                  r="19.7402"
+                  stroke="white"
+                  stroke-width="3"
+                />
+                <path
+                  d="M28.8242 21.9836L22.9617 27.8462L22.9617 16.1211L28.8242 21.9836Z"
+                  fill="white"
+                />
+                <path
+                  d="M14.168 21.9836L20.0305 27.8462L20.0305 16.1211L14.168 21.9836Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <ImageSlider
+              before={beforeImage}
+              after={afterImage}
+              thumbnail={true}
+            />
+          </div>
+        </SwiperSlide>
+        {images.map((image, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <div className="relative min-w-[52px] min-h-[52px] aspect-square cursor-pointer">
+                <Image
+                  src={image.image}
+                  fill={true}
+                  alt={image.alt}
+                  className=""
+                />
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </>
+  );
+}

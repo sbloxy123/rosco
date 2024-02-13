@@ -5,6 +5,7 @@ import BgDots from "./assets/BgDots";
 import ProjectsComponent from "./ProjectComponent";
 import FilterButton from "./common/FilterButton";
 import { getAllProjects } from "@/sanity/sanity.query";
+import { FilterButtonSwiper } from "./swiper/Swipers";
 
 export default function ProjectsFilter({
   projects,
@@ -67,7 +68,7 @@ export default function ProjectsFilter({
 
   return (
     <div>
-      <div className="relative bg-theme-dark overflow-hidden pt-[3.7rem] pb-[5rem] px-[5%] xsmall:pt-[4.2rem] small:pt-[9rem] small:pb-[11rem] small:px-layout-small">
+      <div className="relative bg-theme-dark overflow-hidden pt-[3.7rem] pb-[5rem] px-[5%] xsmall:px-0 xsmall:pt-[4.2rem] small:pt-[9rem] small:pb-[11rem] small:px-layout-small">
         {/* top right */}
         <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
           <BgDots />
@@ -102,9 +103,11 @@ export default function ProjectsFilter({
           <BgDots />
         </div>
         <div className="relative">
-          <h2 className="text-white">Latest Projects</h2>
+          <h2 className="text-white xsmall:px-[5%] small:px-0">
+            Latest Projects
+          </h2>
 
-          <div className="uppercase text-[1.6rem] font-semibold tracking[0.06em] text-white flex justify-between pt-[3.5rem] pb-[3.3rem] xsmall:pt-[5rem] small:pt-[6rem] small:pb-[4rem]">
+          <div className="uppercase text-[1.6rem] font-semibold tracking[0.06em] text-white flex justify-between pt-[3.5rem] pb-[3.3rem] xsmall:pt-[5rem] xsmall:px-[5%] small:px-0 small:pt-[6rem] small:pb-[4rem]">
             <p className="">Filter by</p>
             <div className="flex gap-[1.5rem] items-center">
               <p>view all</p>
@@ -125,11 +128,20 @@ export default function ProjectsFilter({
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 xsmall:flex-row flex-wrap">
+          <div className="hidden xsmall:block small:hidden">
+            <FilterButtonSwiper
+              categories={categoriesArray}
+              filters={filters}
+              onClick={handleFilter}
+            />
+          </div>
+
+          <div className="flex flex-col gap-6 xsmall:hidden small:flex small:flex-row flex-wrap">
             {categoriesArray.map((category, index) => {
               const filterMatch = filters.some(
                 (filter) => filter.category === category
               );
+
               return (
                 <div key={index} className="xsmall:w-fit">
                   <FilterButton
@@ -144,6 +156,8 @@ export default function ProjectsFilter({
           </div>
         </div>
       </div>
+
+      {/* projcets */}
       <div>
         {assets.map((content) => (
           <div key={content.ProjectsPage._id}>

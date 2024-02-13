@@ -25,7 +25,7 @@ export default async function InnerHero({
       {/* {aboutContent.map((content) => { */}
       {/* // const croppedImage = getCroppedImageSrc(); */}
       {/* return ( */}
-      <div className="gap-10 max-w-[1480px] small:flex small:justify-between small:mr-0 small:ml-auto small:items-center small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
+      <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto small:items-center small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
         <div className="text-center pt-[5.5rem] xsmall:pt-[4rem] small:pt-0 xsmall:text-left max-w-[323px] mx-auto  xsmall:max-w-[580px] xsmall:ml-0 small:max-w-full">
           <h3 className="uppercase font-semibold xsmall:ml-[7.5rem] small:ml-layout-small">
             {sectionTitle}
@@ -34,7 +34,7 @@ export default async function InnerHero({
             <h1 className="absolute -top-[0%] -left-5 hidden xsmall:block xsmall:-translate-x-[0] small:-translate-x-0 w-fit h-auto font-body">
               {pageNumber}
             </h1>
-            <h1 className="pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[558px] ">
+            <h1 className="pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
               {title}
             </h1>
           </div>

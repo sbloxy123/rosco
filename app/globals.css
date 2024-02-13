@@ -59,13 +59,15 @@ p {
   &::before {
     content: "";
     position: absolute;
-    bottom: -0.8rem;
+    bottom: -1.4rem;
     width: 0%;
     height: 0.2rem;
     left: 0;
+    right: 0;
     background: #2f3047;
     border-radius: 25px;
     transition: width 350ms ease;
+    margin-inline: auto;
   }
 
   &:hover {
@@ -73,7 +75,7 @@ p {
       opacity: 1;
     }
     &::before {
-      width: 100%;
+      width: 90%;
     }
   }
 }
@@ -417,6 +419,24 @@ p {
   .project__btn {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+.filterBtn__swiper {
+  .swiper-slide:nth-child(1) {
+    margin-left: 5%;
+  }
+  .swiper-slide:nth-last-child(1) {
+    margin-right: 5%;
+  }
+}
+
+.thumbMiniSwiper {
+  .swiper-wrapper {
+    justify-content: flex-end;
+    gap: 1rem;
+    .swiper-slide {
+      width: fit-content !important;
+    }
   }
 }
 

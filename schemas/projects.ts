@@ -26,8 +26,7 @@ const projects = {
     {
       name: "projectSummary",
       title: "Project Summary",
-      description: "In a few words, summarise the project involved",
-      type: "string",
+      type: "text",
     },
     {
       name: "projectBtnText",

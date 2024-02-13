@@ -86,7 +86,7 @@ function Navbar() {
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
-                  <ul className="nav__link__list flex items-center justify-between w-[45vw] max-w-[645px] uppercase font-[400] font-sans text-theme-dark text-[1.4rem] small:pl-[1.9rem]">
+                  <ul className="nav__link__list flex items-center justify-between w-[45vw] max-w-[645px] uppercase font-[400] font-sans text-[rgba(47,48,71,90%)] text-[1.4rem] small:pl-[1.9rem]">
                     <li>
                       <Link href="/" className="">
                         <div className="nav__item__link pr-[0.4rem] text-right">
