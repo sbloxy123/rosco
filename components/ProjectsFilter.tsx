@@ -1,10 +1,9 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import type { projectType, projectsPageType } from "@/types";
 import BgDots from "./assets/BgDots";
 import ProjectsComponent from "./ProjectComponent";
 import FilterButton from "./common/FilterButton";
-import { getAllProjects } from "@/sanity/sanity.query";
 import { FilterButtonSwiper } from "./swiper/Swipers";
 
 export default function ProjectsFilter({
@@ -14,7 +13,6 @@ export default function ProjectsFilter({
   projects: projectType[];
   assets: projectsPageType[];
 }) {
-  const ref = useRef<HTMLInputElement>(null);
   const [filters, setFilters] = useState<{ id: number; category: string }[]>(
     []
   );
@@ -145,7 +143,6 @@ export default function ProjectsFilter({
               return (
                 <div key={index} className="xsmall:w-fit">
                   <FilterButton
-                    key={index}
                     text={category}
                     selected={filterMatch} // Pass the boolean value of filterMatch
                     onClick={() => handleFilter(category)}
@@ -159,32 +156,29 @@ export default function ProjectsFilter({
 
       {/* projcets */}
       <div>
-        {assets.map((content) => (
-          <div key={content.ProjectsPage._id}>
-            {assets.map((content) => (
-              <div key={content.ProjectsPage._id}>
-                {/* Map over all projects to filter based on the category */}
-                {allProjects
-                  .filter((project) =>
-                    filters.length > 0
-                      ? filters.some((filter) =>
-                          project.categories.includes(filter.category)
-                        )
-                      : true
-                  )
-                  .map((filteredProject) => (
-                    <div
-                      key={filteredProject._id}
-                      className="mt-section-gap small:mt-[325px]"
-                    >
-                      <ProjectsComponent
-                        project={filteredProject}
-                        bg={content.ProjectsPage.BgImage}
-                      />
-                    </div>
-                  ))}
-              </div>
-            ))}
+        {assets.map((content, index) => (
+          <div key={content.ProjectsPage._id + index}>
+            {/* Map over all projects to filter based on the category */}
+            {allProjects
+              .filter((project) =>
+                filters.length > 0
+                  ? filters.some((filter) =>
+                      project.categories.includes(filter.category)
+                    )
+                  : true
+              )
+              .map((filteredProject) => (
+                <div
+                  key={filteredProject._id}
+                  className="mt-section-gap small:mt-[325px]"
+                >
+                  <ProjectsComponent
+                    key={filteredProject._id}
+                    project={filteredProject}
+                    bg={content.ProjectsPage.BgImage}
+                  />
+                </div>
+              ))}
           </div>
         ))}
       </div>

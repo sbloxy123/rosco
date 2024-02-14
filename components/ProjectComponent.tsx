@@ -66,43 +66,11 @@ export default function ProjectsComponent({
 
           {/* image/s */}
           <div className="relative order-2 xsmall:pt-[3.4rem] small:order-1 small:-mt-[27rem] small:pt-0">
-            <div className="hidden">
-              <ImageSlider
-                before={project.beforeAfter.beforeImage.image}
-                after={project.beforeAfter.afterImage.image}
-              />
-            </div>
             <ProjectsImageSwiper
               images={project.gallery?.images}
               beforeImage={project.beforeAfter.beforeImage.image}
               afterImage={project.beforeAfter.afterImage.image}
             />
-            {/*
-            {project?.gallery?.images?.map((image) => {
-              console.log(image);
-              return <div></div>;
-            })} */}
-
-            {/* <div className="pt-[2rem] flex gap-[1rem] xsmall:justify-end">
-              {project?.gallery?.images?.map((image) => {
-                console.log(image);
-                return (
-                  <div
-                    className="max-w-[52px] aspect-square"
-                    key={image.asset._ref}
-                  >
-                    <Image
-                      src={image.image}
-                      alt={image.alt}
-                      width={52}
-                      height={52}
-                      className="object-cover h-full w-full"
-                    />
-                  </div>
-                );
-              })}
-            </div> */}
-
             {/* lg - project location and timeframe */}
             <div className="uppercase tracking-[0.06em] hidden small:block absolute top-[0rem] -right-[0rem] rotate-90 text-theme-dark translate-x-[clamp(117px,12vw,151px)] translate-y-[100%] ">
               <p className="text-[1.4rem]">{project.completionTimeframe}</p>

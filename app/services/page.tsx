@@ -22,7 +22,7 @@ export default async function Services() {
   return (
     <div>
       {servicesContent.map((content) => {
-        console.log(content.ServicesPage.introBgImage);
+        // console.log(content.ServicesPage.introBgImage);
 
         return (
           <div key={content.ServicesPage._id}>

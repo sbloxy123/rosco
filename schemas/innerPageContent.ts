@@ -185,6 +185,55 @@ const innerPageContent = {
       ],
       extends: "page",
     },
+    {
+      name: "FaqPage",
+      title: "FAQ Page Content",
+      type: "document",
+      fields: [
+        {
+          name: "pageHeading",
+          title: "FAQ Page Hero Heading",
+          description: "Heading for the FAQ Page",
+          type: "string",
+        },
+        {
+          name: "pageImage",
+          title: "FAQ Page Hero Image",
+          type: "image",
+          description: "Upload a FAQ Hero image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              description:
+                "describe what is in the image let search engines know what is being shown",
+            },
+          ],
+        },
+        {
+          name: "introTitle",
+          title: "FAQ Page Introduction Title",
+          description: "Heading for the FAQ Introduction",
+          type: "string",
+        },
+        {
+          name: "introMessage",
+          title: "FAQ Page Introduction Message",
+          description:
+            "Message for the FAQ Introduction --add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies on mobile screens",
+          type: "text",
+        },
+        {
+          name: "formPlaceholder",
+          title: "FAQ Search Placeholder text",
+          description: "text inside search form to prompt user",
+          type: "string",
+        },
+      ],
+      extends: "page",
+    },
   ],
 
   // Include the common "Page" schema

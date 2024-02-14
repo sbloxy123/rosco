@@ -1,6 +1,5 @@
-import { getCroppedImageSrc, getAboutPageContent } from "@/sanity/sanity.query";
-import type { SanityImageQueryResult, aboutPageType } from "@/types";
-import { PortableText } from "@portabletext/react";
+import { getCroppedImageSrc } from "@/sanity/sanity.query";
+import type { SanityImageQueryResult } from "@/types";
 import ButtonLink from "./common/ButtonLink";
 import GradientLineThick from "./assets/GradientLineThick";
 import GradientLineVerticalThick from "./assets/GradientLineVerticalThick";
@@ -18,13 +17,8 @@ export default async function InnerHero({
   image: SanityImageQueryResult;
   pageNumber: string;
 }) {
-  // const aboutContent: aboutPageType[] = await getAboutPageContent();
-
   return (
-    <section className="">
-      {/* {aboutContent.map((content) => { */}
-      {/* // const croppedImage = getCroppedImageSrc(); */}
-      {/* return ( */}
+    <section>
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto small:items-center small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
         <div className="text-center pt-[5.5rem] xsmall:pt-[4rem] small:pt-0 xsmall:text-left max-w-[323px] mx-auto  xsmall:max-w-[580px] xsmall:ml-0 small:max-w-full">
           <h3 className="uppercase font-semibold xsmall:ml-[7.5rem] small:ml-layout-small">
@@ -66,8 +60,6 @@ export default async function InnerHero({
           </div>
         </div>
       </div>
-      {/* ); */}
-      {/* })} */}
     </section>
   );
 }
