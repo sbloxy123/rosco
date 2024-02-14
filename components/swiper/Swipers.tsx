@@ -288,8 +288,6 @@ export const FilterButtonSwiper = ({
     <Swiper
       spaceBetween={10}
       slidesPerView="auto"
-      // onSlideChange={() => console.log("slide change")}
-      // onSwiper={(swiper) => console.log(swiper)}
       wrapperClass="filterBtn__swiper"
       modules={[Mousewheel, FreeMode]}
       mousewheel={{
@@ -298,21 +296,14 @@ export const FilterButtonSwiper = ({
         releaseOnEdges: true,
       }}
       freeMode={true}
-      breakpoints={
-        {
-          // 1024: {
-          //   spaceBetween: 18,
-          //   slidesPerView: "auto",
-          // },
-        }
-      }
     >
       {categories.map((category, index) => {
         const filterMatch = filters.some(
           (filter) => filter.category === category
         );
+
         return (
-          <SwiperSlide key={index} style={{ width: "fit-content" }}>
+          <SwiperSlide key={category} style={{ width: "fit-content" }}>
             <div className="w-fit">
               <FilterButton
                 key={index}
@@ -329,17 +320,10 @@ export const FilterButtonSwiper = ({
 };
 
 import React, { useState } from "react";
-// import { Swiper } from "swiper/react";
-
-// Import Swiper React components
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-
-// import "./styles.css";
 
 // import required modules
 import { Thumbs } from "swiper/modules";
@@ -379,14 +363,7 @@ export default function ProjectsImageSwiper({
   return (
     <>
       <Swiper
-        style={
-          {
-            // '--swiper-navigation-color': '#fff',
-            // '--swiper-pagination-color': '#fff',
-          }
-        }
         spaceBetween={10}
-        // navigation={true}
         allowTouchMove={false}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
@@ -432,7 +409,7 @@ export default function ProjectsImageSwiper({
                   cy="21.7402"
                   r="19.7402"
                   stroke="white"
-                  stroke-width="3"
+                  strokeWidth="3"
                 />
                 <path
                   d="M28.8242 21.9836L22.9617 27.8462L22.9617 16.1211L28.8242 21.9836Z"

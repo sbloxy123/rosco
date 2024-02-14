@@ -447,3 +447,60 @@ export async function getProjectsPageContent() {
     `
   );
 }
+
+export async function getFaqPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage"] {
+       _id,
+      FaqPage {
+        pageHeading,
+        pageImage {
+            alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+        },
+        BgImage{
+          alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+        },
+        introTitle,
+        introMessage,
+        formPlaceholder,
+      }
+    }
+    `
+  );
+}

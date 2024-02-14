@@ -391,3 +391,34 @@ export type projectsPageType = {
     };
   };
 };
+
+export type faqPageType = {
+  FaqPage: {
+    _id: string;
+    pageHeading: string;
+    pageImage: {
+      alt: string;
+      image: string;
+      asset: {
+        _ref: string;
+      };
+      crop: {
+        _type: "sanity.imageCrop";
+        bottom: number;
+        left: number;
+        right: number;
+        top: number;
+      };
+      hotspot: {
+        _type: "sanity.imageHotspot";
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+      };
+    };
+    introTitle: string;
+    introMessage: string;
+    formPlaceholder: string;
+  };
+};

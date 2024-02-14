@@ -169,14 +169,9 @@ export default async function About() {
                       );
                     })}
                   </div>
-
-                  {/* <h4 className="text-[2.2rem] xsmall:text-[2.4rem] small:text-[3.2rem] text-center tracking-[0.06em] font-bold small:w-[78%]">
-                    {content.aboutPage.featureText}
-                  </h4> */}
                 </div>
               </div>
             </div>
-            {/* pt-[4rem] xsmall:pt-[5.5rem] small:pt-[6.5rem] */}
             <div className="relative px-[5%] z-40 text-theme-dark mx-auto small:max-w-[1065px] small:px-5 -mt-[13.2em] xsmall:-mt-[12.8rem] small:-mt-[15.6rem]">
               <PortableText value={content.aboutPage.contentArea} />
             </div>

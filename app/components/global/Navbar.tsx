@@ -16,7 +16,7 @@ function Navbar() {
               <Link href="/">
                 <svg
                   width="100%"
-                  height="auto"
+                  height="100%"
                   viewBox="0 0 211 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -313,7 +313,7 @@ function Navbar() {
                 </li>
                 <li>
                   <Link
-                    href="/FAQs"
+                    href="/faqs"
                     className=""
                     onClick={() => setIsOpen(!isOpen)}
                   >

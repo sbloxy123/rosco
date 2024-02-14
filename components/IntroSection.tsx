@@ -27,7 +27,6 @@ export default async function IntroSection() {
         const croppedImage = getCroppedImageSrc(
           content.introSection.introImage
         );
-        // console.log(croppedImage);
 
         return (
           <div

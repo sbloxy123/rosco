@@ -67,7 +67,7 @@ export default async function ContactSection() {
             <div className="hidden small:block ml-[-5%] w-[105%] max-h-[4px] overflow-hidden">
               <svg
                 width="100%"
-                height="auto"
+                height="100%"
                 viewBox="0 0 390 5"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
