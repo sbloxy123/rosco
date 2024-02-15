@@ -1,11 +1,19 @@
+import ContactSection from "@/components/ContactSection";
 import FaqSearch from "@/components/FaqSearch";
 import InnerHero from "@/components/InnerHero";
 import BgDots from "@/components/assets/BgDots";
-import { getFaqPageContent } from "@/sanity/sanity.query";
+import { getFaqPageContent, getFaqs } from "@/sanity/sanity.query";
 import type { faqPageType } from "@/types";
+
+interface Faq {
+  _id: string;
+  question: string;
+  answer: string;
+}
 
 export default async function faqs() {
   const faqPageContent: faqPageType[] = await getFaqPageContent();
+  const faqs: Faq[] = await getFaqs();
 
   return (
     <main>
@@ -92,10 +100,16 @@ export default async function faqs() {
               </div>
             </div>
 
-            <FaqSearch placeholder={content.FaqPage.formPlaceholder} />
+            <FaqSearch
+              placeholder={content.FaqPage.formPlaceholder}
+              faqs={faqs}
+            />
           </div>
         );
       })}
+      <div className="mt-[10rem] xsmall:mt-[12rem]">
+        <ContactSection />
+      </div>
     </main>
   );
 }

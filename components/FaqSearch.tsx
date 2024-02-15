@@ -1,13 +1,47 @@
 "use client";
 
-export default function FaqSearch({ placeholder }: { placeholder: string }) {
+import { useState } from "react";
+import AccordionTemplate from "./AccordionTemplate";
+
+interface Faq {
+  _id: string;
+  question: string;
+  answer: string;
+}
+
+export default function FaqSearch({
+  placeholder,
+  faqs,
+}: {
+  placeholder: string;
+  faqs: Faq[];
+}) {
+  const [query, setQuery] = useState("");
+
+  const searchFilter = (array: Faq[]) => {
+    return array.filter(
+      (el) =>
+        el.question.toLowerCase().includes(query) ||
+        el.answer.toLowerCase().includes(query)
+    );
+  };
+  const filteredFaqs = searchFilter(faqs);
+
+  const uniqueFilteredFaqs = Array.from(
+    new Set(filteredFaqs.map((faq) => faq._id))
+  ).map((_id) => {
+    return filteredFaqs.find((faq) => faq._id === _id);
+  });
+
+  console.log(uniqueFilteredFaqs, "***filtered and unique***");
+
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     console.log(event);
+    setQuery(event.target.value);
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
     console.log(event);
   }
 
@@ -138,6 +172,24 @@ export default function FaqSearch({ placeholder }: { placeholder: string }) {
             </button>
           </form>
         </div>
+      </div>
+
+      {/* faq list */}
+      <div className=" z-20 px-[5%] relative small:max-w-[800px] mx-auto small:px-0 small:-mt-[5rem]">
+        {uniqueFilteredFaqs.map((faq, index) => {
+          if (faq) {
+            return (
+              <div key={faq._id}>
+                <AccordionTemplate
+                  question={faq.question}
+                  answer={faq.answer}
+                  UID={index}
+                />
+              </div>
+            );
+          }
+          return null;
+        })}
       </div>
     </div>
   );

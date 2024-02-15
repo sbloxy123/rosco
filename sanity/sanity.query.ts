@@ -504,3 +504,13 @@ export async function getFaqPageContent() {
     `
   );
 }
+
+export async function getFaqs() {
+  return client.fetch(
+    groq`*[_type == "faq"] {
+        _id,
+        question,
+        answer
+}`
+  );
+}
