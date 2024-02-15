@@ -33,16 +33,16 @@ export default function FaqSearch({
     return filteredFaqs.find((faq) => faq._id === _id);
   });
 
-  console.log(uniqueFilteredFaqs, "***filtered and unique***");
+  // console.log(uniqueFilteredFaqs, "***filtered and unique***");
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
-    console.log(event);
+    // console.log(event);
     setQuery(event.target.value);
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
   }
 
   return (
@@ -183,7 +183,7 @@ export default function FaqSearch({
                 <AccordionTemplate
                   question={faq.question}
                   answer={faq.answer}
-                  UID={faq._id}
+                  UID={index}
                 />
               </div>
             );
