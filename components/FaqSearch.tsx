@@ -183,7 +183,7 @@ export default function FaqSearch({
                 <AccordionTemplate
                   question={faq.question}
                   answer={faq.answer}
-                  UID={index}
+                  UID={faq._id}
                 />
               </div>
             );

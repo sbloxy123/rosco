@@ -10,7 +10,7 @@ import {
 interface AccordionTemplateProps {
   question: string;
   answer: string;
-  UID: number;
+  UID: string;
 }
 
 interface IconProps {
@@ -28,9 +28,6 @@ export default function AccordionTemplate({
   UID: number;
 }) {
   const [open, setOpen] = useState<number>(0);
-  const [alwaysOpen, setAlwaysOpen] = useState<boolean>(true);
-
-  const handleAlwaysOpen = () => setAlwaysOpen((cur) => !cur);
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
   function Icon({ id, open }: IconProps) {
