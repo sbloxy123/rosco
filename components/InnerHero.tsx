@@ -10,12 +10,14 @@ export default async function InnerHero({
   imageAltText,
   image,
   pageNumber,
+  smallScreenTitle,
 }: {
   title: string;
   sectionTitle: string;
-  imageAltText: string;
-  image: SanityImageQueryResult;
+  imageAltText?: string;
+  image?: SanityImageQueryResult;
   pageNumber: string;
+  smallScreenTitle?: string;
 }) {
   return (
     <section>
@@ -28,9 +30,23 @@ export default async function InnerHero({
             <h1 className="absolute -top-[0%] -left-5 hidden xsmall:block xsmall:-translate-x-[0] small:-translate-x-0 w-fit h-auto font-body">
               {pageNumber}
             </h1>
-            <h1 className="pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
-              {title}
-            </h1>
+
+            {pageNumber == "06" ? (
+              <div>
+                {/* show on small and large screens */}
+                <h1 className="block xsmall:hidden small:block pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
+                  {smallScreenTitle}
+                </h1>
+                {/* show on xsmall screens */}
+                <h1 className="hidden xsmall:block small:hidden pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] text-[clamp(3.2rem,5.4vw,4rem)]">
+                  {title}
+                </h1>
+              </div>
+            ) : (
+              <h1 className="pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
+                {title}
+              </h1>
+            )}
           </div>
           <div className="w-full mx-auto px-[5%] xsmall:px-0 pb-[5rem] xsmall:pb-[6.5rem] xsmall:w-fit xsmall:ml-[7.5rem] small:ml-layout-small">
             <ButtonLink
@@ -43,11 +59,13 @@ export default async function InnerHero({
           </div>
         </div>
         <div className="relative w-full mx-[390/408] aspect-square xsmall:px-0 xsmall:aspect-[744/408] small:aspect-[704/480] small:w-full small:h-auto small:max-w-[704px] small:mr-0">
-          <img
-            alt={imageAltText}
-            src={getCroppedImageSrc(image)}
-            className="object-cover w-full h-full"
-          />
+          {image ? (
+            <img
+              alt={imageAltText}
+              src={getCroppedImageSrc(image)}
+              className="object-cover w-full h-full"
+            />
+          ) : null}
           <div className="absolute top-0 left-0 w-full h-[1.7rem]">
             <GradientLineThick />
           </div>

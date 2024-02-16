@@ -234,6 +234,21 @@ const innerPageContent = {
       ],
       extends: "page",
     },
+
+    {
+      name: "ContactPage",
+      title: "Contact Page Content",
+      type: "document",
+      fields: [
+        {
+          name: "pageHeading",
+          title: "Contact Page Hero Heading",
+          description:
+            "Heading for the Contact Page. ** add '\\n' to the text where you want it to return on a new line.  *NOTE - this only applies on mobile and desktop screens, not tablet",
+          type: "string",
+        },
+      ],
+    },
   ],
 
   // Include the common "Page" schema

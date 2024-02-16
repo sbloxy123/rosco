@@ -9,7 +9,7 @@ export default async function ContactSection() {
   const contactContent: contactType[] = await getContactContent();
 
   return (
-    <section className="bg-theme-dark text-white py-[9rem] relative">
+    <section className="bg-theme-dark text-white xsmall:pt-[2.5rem] small:py-[9rem] relative">
       {/* bottom left */}
       <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
         <BgDots />
@@ -64,7 +64,7 @@ export default async function ContactSection() {
         );
         return (
           <div className="relative">
-            <div className="hidden small:block ml-[-5%] w-[105%] max-h-[4px] overflow-hidden">
+            <div className="hidden small:block ml-[-5%] w-[105%] max-h-[4px] overflow-hidden small:max-w-[1218px] small:mx-auto">
               <svg
                 width="100%"
                 height="100%"
@@ -113,15 +113,18 @@ export default async function ContactSection() {
                 key={content._id}
                 className="px-[5%] text-center small:text-left small:px-0"
               >
-                <div className="px-14 max-w-[450px] mx-auto small:px-0">
+                <div className="px-14 max-w-[450px] xsmall:max-w-[520px] mx-auto small:px-0">
                   <h2 className="">{content.contactUs.title}</h2>
-                  <p className="pt-14 xsmall:hidden font-semibold text-[1.4rem]">
+                  <p className="pt-14 xsmall:hidden font-300 xsmall:text-[1.6rem] text-[1.4rem]">
                     {lineWithoutBreaks}
                   </p>
                   <div className="pt-14 hidden xsmall:block">
                     {titleWithLineBreaks.split("\n").map((line, index) => {
                       return (
-                        <p key={index} className="font-semibold text-[1.4rem]">
+                        <p
+                          key={index}
+                          className="font-300 xsmall:text-[1.6rem] text-[1.4rem]"
+                        >
                           {line}
                         </p>
                       );
@@ -159,7 +162,7 @@ export default async function ContactSection() {
                 <ContactForm />
               </div>
             </div>
-            <div className="mt-24 ml-[-5%] w-[105%] max-h-[4px] overflow-hidden">
+            <div className="mt-24 ml-[-5%] w-[105%] max-h-[4px] overflow-hidden small:max-w-[1218px] small:mx-auto">
               <GradientLine position="bottom" />
             </div>
           </div>

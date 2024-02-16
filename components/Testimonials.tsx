@@ -11,11 +11,8 @@ export default async function Testimonials() {
       <div>
         {testimonials.map((data) => {
           return (
-            <div className="small:px-layout-small">
-              <div
-                key={data._id}
-                className="relative text-theme-dark bg-[#f8f8f8] w-full pt-[3.5rem] pb-40 px-[5%]  xsmall:pt-[5rem] xsmall:pb-32"
-              >
+            <div key={data._id} className="small:px-layout-small">
+              <div className="relative text-theme-dark bg-[#f8f8f8] w-full pt-[3.5rem] pb-40 px-[5%]  xsmall:pt-[5rem] xsmall:pb-32">
                 <h2 className="xsmall:w-[95%]">
                   {data.testimonialsSection.testimonialsSectionTitle}
                 </h2>

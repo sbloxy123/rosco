@@ -26,7 +26,7 @@ const ButtonLink = ({
   let svgHover;
 
   if (hoverEffect == "outline") {
-    hover = `hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[5px]`;
+    hover = `hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px]`;
     svgHover = `group-hover:fill-[#6015EF]`;
   } else if (hoverEffect == "fill-col") {
     hover = `hover:bg-[#6015EF] hover:border-[#6015EF] hover:text-white`;

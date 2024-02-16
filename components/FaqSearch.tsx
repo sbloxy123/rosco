@@ -17,6 +17,7 @@ export default function FaqSearch({
   faqs: Faq[];
 }) {
   const [query, setQuery] = useState("");
+  const [iteration, setIteration] = useState(5);
 
   const searchFilter = (array: Faq[]) => {
     return array.filter(
@@ -33,16 +34,12 @@ export default function FaqSearch({
     return filteredFaqs.find((faq) => faq._id === _id);
   });
 
-  // console.log(uniqueFilteredFaqs, "***filtered and unique***");
-
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
-    // console.log(event);
     setQuery(event.target.value);
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // console.log(event);
   }
 
   return (
@@ -142,9 +139,8 @@ export default function FaqSearch({
               </svg>
             </span>
             <input
-              type="email"
+              type="search"
               placeholder={placeholder}
-              // value={email}
               onChange={handleInput}
               className={`p-4 bg-white placeholder:text-theme-dark placeholder:text-opacity-40 focus:text-theme-dark text-theme-dark text-center placeholder:text-[1.8rem] xsmall:placeholder:text-[clamp(1rem,2.4vw,1.8rem)] rounded-sm w-full uppercase font-headings text-[1.8rem] tracking-[0.12em] xsmall:w-[clamp(290px,54vw,500px)] placeholder:font-[500]  xsmall:placeholder:text-center placeholder:text-center xsmall:text-left h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out xsmall:pl-[5rem]`}
             />
@@ -174,10 +170,22 @@ export default function FaqSearch({
         </div>
       </div>
 
+      <div
+        className={`${
+          query.length > 0
+            ? "block pb-[3rem] px-[5%] relative w-full small:max-w-[800px] mx-auto small:px-0 small:-mt-[5rem]"
+            : "hidden"
+        }`}
+      >
+        <h4 className="text-theme-purple text-[2.8rem] text-left tracking-[0.06em]">
+          FAQ's related to <em>"{query}"</em> :
+        </h4>
+      </div>
+
       {/* faq list */}
       <div className=" z-20 px-[5%] relative small:max-w-[800px] mx-auto small:px-0 small:-mt-[5rem]">
         {uniqueFilteredFaqs.map((faq, index) => {
-          if (faq) {
+          if (faq && index + 1 <= iteration) {
             return (
               <div key={faq._id}>
                 <AccordionTemplate
@@ -190,6 +198,31 @@ export default function FaqSearch({
           }
           return null;
         })}
+      </div>
+
+      <div
+        className={`${
+          uniqueFilteredFaqs.length < 1 ? "block relative z-20" : "hidden"
+        }`}
+      >
+        <h4 className="text-theme-purple text-center text-[1.6rem]">
+          Sorry, We couldn't find what you were looking for. <br></br> Why not
+          give us a call or send us a message using the form below?
+        </h4>
+      </div>
+
+      <div
+        className={`${
+          uniqueFilteredFaqs.length <= 5 ? "hidden" : "block"
+        } w-full mx-auto mt-section-gap px-[5%] xsmall:w-fit`}
+      >
+        <button
+          type="submit"
+          className="relative w-full text-theme-dark bg-white border-2 border-theme-dark rounded-sm cursor-pointer font-headings h-[5rem] font-[600] p-4 uppercase text-[1.6rem] tracking-[0.06em] xsmall:w-[17.6rem] z-20 text-center hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px] transition hover:duration-300"
+          onClick={() => setIteration(iteration + 5)}
+        >
+          LOAD MORE
+        </button>
       </div>
     </div>
   );

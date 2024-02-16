@@ -514,3 +514,15 @@ export async function getFaqs() {
 }`
   );
 }
+
+export async function getContactUsPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage"] {
+       _id,
+      ContactPage {
+        pageHeading,
+      }
+    }
+    `
+  );
+}

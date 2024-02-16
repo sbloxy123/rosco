@@ -43,7 +43,12 @@ p {
   font-size: 1.6rem;
   line-height: 2.8rem;
 }
-
+.form-country-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-padding-start: 1.5rem;
+}
 .hero-image {
   width: 100%;
   height: auto;

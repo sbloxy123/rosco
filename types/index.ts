@@ -422,3 +422,10 @@ export type faqPageType = {
     formPlaceholder: string;
   };
 };
+
+export type contactPageType = {
+  ContactPage: {
+    _id: string;
+    pageHeading: string;
+  };
+};
