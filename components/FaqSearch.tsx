@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccordionTemplate from "./AccordionTemplate";
 
 interface Faq {
@@ -18,15 +18,28 @@ export default function FaqSearch({
 }) {
   const [query, setQuery] = useState("");
   const [iteration, setIteration] = useState(5);
+  const [filteredFaqs, setFilteredFaqs] = useState<Faq[]>([]);
 
-  const searchFilter = (array: Faq[]) => {
-    return array.filter(
-      (el) =>
-        el.question.toLowerCase().includes(query) ||
-        el.answer.toLowerCase().includes(query)
-    );
-  };
-  const filteredFaqs = searchFilter(faqs);
+  useEffect(() => {
+    const searchFilter = (array: Faq[]) => {
+      return array.filter(
+        (el) =>
+          el.question.toLowerCase().includes(query.toLowerCase()) ||
+          el.answer.toLowerCase().includes(query.toLowerCase())
+      );
+    };
+    const updatedFilteredFaqs = searchFilter(faqs);
+    setFilteredFaqs(updatedFilteredFaqs);
+  }, [query, faqs]);
+
+  // const searchFilter = (array: Faq[]) => {
+  //   return array.filter(
+  //     (el) =>
+  //       el.question.toLowerCase().includes(query) ||
+  //       el.answer.toLowerCase().includes(query)
+  //   );
+  // };
+  // const filteredFaqs = searchFilter(faqs);
 
   const uniqueFilteredFaqs = Array.from(
     new Set(filteredFaqs.map((faq) => faq._id))
@@ -177,7 +190,7 @@ export default function FaqSearch({
             : "hidden"
         }`}
       >
-        <h4 className="text-theme-purple text-[2.8rem] text-left tracking-[0.06em]">
+        <h4 className="text-theme-purple text-[2.8rem] text-left tracking-[0.06em] relative z-30">
           FAQ's related to <em>"{query}"</em> :
         </h4>
       </div>
@@ -213,7 +226,10 @@ export default function FaqSearch({
 
       <div
         className={`${
-          uniqueFilteredFaqs.length <= 5 ? "hidden" : "block"
+          uniqueFilteredFaqs.length <= 5 ||
+          uniqueFilteredFaqs.length <= iteration
+            ? "hidden"
+            : "block"
         } w-full mx-auto mt-section-gap px-[5%] xsmall:w-fit`}
       >
         <button

@@ -33,7 +33,7 @@ export default async function contact() {
       })}
 
       <div className="my-section-gap">
-        <ContactSection />
+        <ContactSection showAllSizes={true} />
       </div>
 
       <LatestProjects />

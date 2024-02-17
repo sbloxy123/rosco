@@ -9,7 +9,7 @@ const BgDots = () => {
       y="0"
       viewBox="0 0 285 447"
       xmlSpace="preserve"
-      width="auto"
+      width="100%"
       height="100%"
       preserveAspectRatio="xMidYMin slice"
     >

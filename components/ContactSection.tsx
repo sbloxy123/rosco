@@ -5,52 +5,49 @@ import GradientLine from "./assets/GradientLine";
 import ContactForm from "./ContactForm";
 import BgDots from "./assets/BgDots";
 
-export default async function ContactSection() {
+export default async function ContactSection({
+  showAllSizes,
+}: {
+  showAllSizes?: boolean;
+}) {
   const contactContent: contactType[] = await getContactContent();
 
   return (
-    <section className="bg-theme-dark text-white xsmall:pt-[2.5rem] small:py-[9rem] relative">
-      {/* bottom left */}
-      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
-        <BgDots />
-      </div>
+    <section className="bg-theme-dark text-white pt-[1.5rem] pb-[5.5rem] xsmall:pt-[2.5rem] small:py-[9rem] relative">
+      <div
+        className={`${
+          showAllSizes
+            ? "hidden xsmall:block absolute bottom-0 left-0 h-1/2 w-full small:h-[85%]"
+            : "absolute bottom-0 left-0 h-full w-full"
+        }`}
+      >
+        {/* bottom left */}
+        <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+          <BgDots />
+        </div>
+        <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+          <BgDots />
+        </div>
+        <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+          <BgDots />
+        </div>
+        <div className="absolute bottom-0 left-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1]">
+          <BgDots />
+        </div>
 
-      {/* bottom right */}
-      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
-        <BgDots />
-      </div>
-      <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
-        <BgDots />
+        {/* bottom right */}
+        <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+          <BgDots />
+        </div>
+        <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+          <BgDots />
+        </div>
+        <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+          <BgDots />
+        </div>
+        <div className="absolute small:hidden bottom-0 right-0 h-[75%] xsmall:h-[100%] w-auto mix-blend-multiply transform scale-y-[-1] scale-x-[-1]">
+          <BgDots />
+        </div>
       </div>
 
       {contactContent.map((content) => {
@@ -108,10 +105,10 @@ export default async function ContactSection() {
               </svg>{" "}
             </div>
 
-            <div className="my-24 small:flex gap-[2rem] small:justify-between small:items-center small:w-full small:px-layout-small">
+            <div className="relative my-24 small:flex gap-[2rem] small:justify-between small:items-center small:w-full small:px-layout-small">
               <div
                 key={content._id}
-                className="px-[5%] text-center small:text-left small:px-0"
+                className="relative px-[5%] text-center small:text-left small:px-0"
               >
                 <div className="px-14 max-w-[450px] xsmall:max-w-[520px] mx-auto small:px-0">
                   <h2 className="">{content.contactUs.title}</h2>
@@ -158,8 +155,14 @@ export default async function ContactSection() {
                   </div>
                 </div>
               </div>
-              <div className="hidden small:block">
-                <ContactForm />
+              <div
+                className={`${
+                  showAllSizes
+                    ? "pt-[4.5rem] px-[5%] xsmall:pt-[6rem] small:px-0"
+                    : "hidden small:block"
+                }`}
+              >
+                <ContactForm showAllSizes={showAllSizes} />
               </div>
             </div>
             <div className="mt-24 ml-[-5%] w-[105%] max-h-[4px] overflow-hidden small:max-w-[1218px] small:mx-auto">

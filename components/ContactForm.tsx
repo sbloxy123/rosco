@@ -6,7 +6,11 @@ import ButtonLink from "./common/ButtonLink";
 // https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations
 // specifically here:
 // https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#:~:text=Once%20the%20fields,useFormState
-export default async function ContactForm() {
+export default async function ContactForm({
+  showAllSizes,
+}: {
+  showAllSizes?: boolean;
+}) {
   return (
     <div className="flex flex-col justify-between w-full small:w-[512px] font-body">
       <div className="w-full flex flex-col gap-[0.5rem] text-[1.4rem]">
@@ -36,7 +40,7 @@ export default async function ContactForm() {
           Phone number
         </label>
         <div className="relative flex items-center rounded-sm bg-white">
-          <div className="absolute left-[8.5%] top-0 bottom-0 my-auto w-fit h-fit z-0">
+          <div className="absolute left-[10.5%] xsmall:left-[6.5%] small:left-[8.5%] top-0 bottom-0 my-auto w-fit h-fit z-0">
             <svg
               width="10"
               height="6"
