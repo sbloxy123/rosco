@@ -35,9 +35,9 @@ const defaultMapOptions = {
 
 const MapComponent = () => {
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <GoogleMap
-        mapContainerClassName="absolute w-full h-full small:w-[calc(100%-17px)] small:right-0 small:left-auto h-[calc(100%-34px)] mt-[17px]"
+        mapContainerClassName="absolute w-full small:w-[calc(100%-17px)] small:right-0 small:left-auto top-[17px] h-[calc(100%-34px)]"
         // mapContainerStyle={defaultMapContainerStyle}
         center={defaultMapCenter}
         zoom={defaultMapZoom}

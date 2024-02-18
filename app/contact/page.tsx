@@ -2,8 +2,6 @@ import ContactSection from "@/components/ContactSection";
 import InnerHero from "@/components/InnerHero";
 import LatestProjects from "@/components/LatestProjects";
 import TotPromo from "@/components/TotPromo";
-import { MapProvider } from "@/components/providers/map-provider";
-import { MapComponent } from "@/components/Map";
 import { getContactUsPageContent } from "@/sanity/sanity.query";
 
 import type { contactPageType } from "@/types";
