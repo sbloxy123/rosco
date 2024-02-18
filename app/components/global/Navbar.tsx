@@ -1,16 +1,19 @@
 "use client";
 import { useState } from "react";
-import { Transition } from "@headlessui/react";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import Logo from "../../icons/logo.svg";
+
+const variants = {
+  open: { opacity: 1, y: 0 },
+  closed: { opacity: 0, y: "-100%" },
+};
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className=" z-50 small:fixed top-0 left-0 w-full bg-white">
-      <header className="bg-theme_white-900 tracking-[0.06em]">
-        <div className="max-w-screen-large mx-auto py-[2.7rem] ">
+      <header className="tracking-[0.06em]">
+        <div className="relative z-30 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
             <div className="max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/">
@@ -246,99 +249,86 @@ function Navbar() {
             </div>
           </div>
         </div>
-
-        {/* == MOBILE NAV == */}
-        <Transition
-          show={isOpen}
-          // enter="transition ease-out duration-1000 transform opacity"
-          // enterFrom="opacity-0 scale-95"
-          // enterTo="opacity-100 scale-100"
-          // leave="transition ease-in duration-100 transform"
-          // leaveFrom="opacity-100 scale-100"
-          // leaveTo="opacity-0 scale-95"
-        >
-          {(ref) => (
-            <nav className="" id="mobile-menu">
-              <ul
-                className={`transition ease-out duration-500 absolute left-0 w-full px-2 py-20 space-y-1 sm:px-3 flex flex-col justify-start gap-[3rem] z-30 bg-white items-center uppercase font-normal font-sans text-[2.4rem] h-0 opacity-0
-                 ${isOpen ? "h-screen opacity-100 " : "h-0 opacity-0"}`}
+        <nav className="" id="mobile-menu">
+          <motion.ul
+            initial={false}
+            transition={{ duration: 0.3 }}
+            animate={isOpen ? "open" : "closed"}
+            variants={variants}
+            className={`absolute left-0 w-full h-full px-2 py-20 sm:px-3 flex flex-col justify-start gap-[3rem] bg-white items-center uppercase font-normal font-sans text-[2.4rem] opacity-0 text-[rgba(47,48,71,90%)] ${
+              isOpen ? "z-10" : "-z-20"
+            }`}
+          >
+            <li>
+              <Link href="/" className="" onClick={() => setIsOpen(!isOpen)}>
+                <div className="flex flex-col justify-center text-center">
+                  <span className="font-bold">01</span>
+                  <span>Home</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className=""
+                onClick={() => setIsOpen(!isOpen)}
               >
-                <li>
-                  <Link
-                    href="/"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">01</span>
-                      <span>Home</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/about"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold px-[0.4rem]">02</span>
-                      <span>About</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">03</span>
-                      <span>Services</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/projects"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">04</span>
-                      <span>Projects</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/faqs"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">05</span>
-                      <span>FAQ's</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">06</span>
-                      <span>Contact</span>
-                    </div>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          )}
-        </Transition>
+                <div className="flex flex-col justify-center text-center">
+                  <span className="font-bold px-[0.4rem]">02</span>
+                  <span>About Us</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/services"
+                className=""
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <div className="flex flex-col justify-center text-center">
+                  <span className="font-bold">03</span>
+                  <span>Services</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/projects"
+                className=""
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <div className="flex flex-col justify-center text-center">
+                  <span className="font-bold">04</span>
+                  <span>Projects</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/faqs"
+                className=""
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <div className="flex flex-col justify-center text-center">
+                  <span className="font-bold">05</span>
+                  <span>FAQ's</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className=""
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <div className="flex flex-col justify-center text-center">
+                  <span className="font-bold">06</span>
+                  <span>Contact</span>
+                </div>
+              </Link>
+            </li>
+          </motion.ul>
+        </nav>
       </header>
     </div>
   );

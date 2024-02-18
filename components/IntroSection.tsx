@@ -113,7 +113,7 @@ export default async function IntroSection() {
                 }
                 className="relative bg-[image:var(--image-url)] bg-cover w-full mx-auto aspect-[349/372] xsmall:px-0 xsmall:aspect-[690/451] group"
               >
-                <div className="absolute -top-[4.9%] -left-[5.8%] xsmall:-left-[4.4%] xsmall:-top-[6.5%] -small-[6.2%] w-[112%] h-[112%] small:h-[112.3%]">
+                <div className="absolute -top-[4.9%] -left-[5.8%] xsmall:-left-[4.4%] xsmall:-top-[6.5%] -small-[6.2%] w-[112%] h-[112%] small:h-[112%]">
                   <svg
                     viewBox="0 0 389 408"
                     fill="none"

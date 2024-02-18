@@ -3,6 +3,8 @@ import type { SanityImageQueryResult } from "@/types";
 import ButtonLink from "./common/ButtonLink";
 import GradientLineThick from "./assets/GradientLineThick";
 import GradientLineVerticalThick from "./assets/GradientLineVerticalThick";
+import { MapProvider } from "@/components/providers/map-provider";
+import { MapComponent } from "@/components/Map";
 
 export default async function InnerHero({
   title,
@@ -65,7 +67,11 @@ export default async function InnerHero({
               src={getCroppedImageSrc(image)}
               className="object-cover w-full h-full"
             />
-          ) : null}
+          ) : (
+            <MapProvider>
+              <MapComponent />
+            </MapProvider>
+          )}
           <div className="absolute top-0 left-0 w-full h-[1.7rem]">
             <GradientLineThick />
           </div>
