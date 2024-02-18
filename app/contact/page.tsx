@@ -42,10 +42,6 @@ export default async function contact() {
       <div className="my-section-gap">
         <TotPromo />
       </div>
-
-      <MapProvider>
-        <MapComponent />
-      </MapProvider>
     </main>
   );
 }

@@ -37,7 +37,7 @@ const MapComponent = () => {
   return (
     <div className="w-full">
       <GoogleMap
-        mapContainerClassName="w-full h-full absolute"
+        mapContainerClassName="absolute w-full h-full small:w-[calc(100%-17px)] small:right-0 small:left-auto h-[calc(100%-34px)] mt-[17px]"
         // mapContainerStyle={defaultMapContainerStyle}
         center={defaultMapCenter}
         zoom={defaultMapZoom}
