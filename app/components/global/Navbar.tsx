@@ -11,7 +11,7 @@ const variants = {
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className=" z-50 small:fixed top-0 left-0 w-full bg-white">
+    <div className="z-50 small:fixed top-0 left-0 w-full bg-white">
       <header className="tracking-[0.06em]">
         <div className="relative z-30 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
@@ -249,7 +249,7 @@ function Navbar() {
             </div>
           </div>
         </div>
-        <nav className="" id="mobile-menu">
+        <nav className="small:hidden" id="mobile-menu">
           <motion.ul
             initial={false}
             transition={{ duration: 0.3 }}

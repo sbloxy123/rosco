@@ -1,7 +1,6 @@
 "use client";
 
 import type { serviceType } from "@/types";
-import Link from "next/link";
 import ButtonLink from "./common/ButtonLink";
 
 type ServiceImageLinkProps = {
@@ -13,9 +12,6 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
   service,
   index,
 }) => {
-  // const imageUrl = "your-image-url";
-  // const customStyle = { "--image-url": imageUrl } as React.CSSProperties;
-
   return (
     <div
       style={
@@ -33,10 +29,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
           <h2 className="text-[2rem] font-semibold text-center w-full tracking-[0.24em] px-10 uppercase">
             {service.serviceTitle}
           </h2>
-          <p className="text-center pt-6 px-[10%]">
-            add this text option to CMS and some meore text to fill the
-            container
-          </p>
+          <p className="text-center pt-6 px-[10%]">{service.serviceSummary}</p>
         </div>
         <div className="w-full px-[5%] absolute bottom-[8%] left-0 right-0 mx-auto">
           <ButtonLink

@@ -91,6 +91,10 @@ export type serviceSectionType = {
     servicesLinkTitle: string;
   };
 };
+interface AdditionalInfoItem {
+  listItem: string;
+  listItemDetails: string;
+}
 
 export type serviceType = {
   _id: string;
@@ -101,6 +105,17 @@ export type serviceType = {
   coverImage: {
     alt: string;
     image: string;
+  };
+  servicePageImage: {
+    alt: string;
+    image: string;
+  };
+  serviceAsideList?: {
+    listIntro?: string;
+    summaryList?: string[];
+  };
+  additionalInfo?: {
+    additionalList?: AdditionalInfoItem[];
   };
 };
 

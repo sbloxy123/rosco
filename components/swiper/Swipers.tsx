@@ -90,7 +90,6 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
       spaceBetween={40}
       slidesPerView={1}
       onSlideChange={handleProjectsSwiperSlideChange}
-      // onSwiper={(swiper) => console.log(swiper)}
       wrapperClass="projects--swiper pb-14 small:pb-0 relative"
       modules={[Pagination, Navigation]}
       simulateTouch={false}
@@ -101,14 +100,13 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
         nextEl: ".next-project",
         prevEl: ".prev-project",
       }}
-      speed={0} // Set speed to 0 to remove transitions
-      effect="fade" // or 'slide'
+      speed={600} // Set speed to 0 to remove transitions
+      effect={"fade"} // or 'slide'
       onSwiper={(swiper) => {
         projectsSwiperRef.current = swiper;
       }}
     >
       {data.map((elm, index) => {
-        const { _id, slug, projectTitle, projectSummary, image } = elm;
         return (
           <SwiperSlide key={index}>
             <ProjectSlide project={elm} index={index} />

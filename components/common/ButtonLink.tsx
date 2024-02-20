@@ -26,7 +26,7 @@ const ButtonLink = ({
   let svgHover;
 
   if (hoverEffect == "outline") {
-    hover = `hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px]`;
+    hover = `hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px] max-h-[5rem]`;
     svgHover = `group-hover:fill-[#6015EF]`;
   } else if (hoverEffect == "fill-col") {
     hover = `hover:bg-[#6015EF] hover:border-[#6015EF] hover:text-white`;
@@ -53,12 +53,12 @@ const ButtonLink = ({
   return (
     <Link
       href={`${destination}`}
-      className={`button__link block border-[2px] border-solid border-${color} rounded-sm ${
+      className={`button__link block border-[2px]  border-solid border-${color} rounded-sm ${
         bgColor == "white" ? `text-theme-purple bg-white` : `text-${color}`
       } py-[1.1rem] w-full bg-${bgColor} transition hover:duration-300 ${hover} group`}
     >
       <div
-        className={`flex justify-center items-center gap-6 mx-auto ${
+        className={`flex justify-center items-center gap-6 mx-auto h-full w-full ${
           ctaType == "email" || "phone" ? `px-[2.2rem]` : `px-11`
         } min-w-[176px]`}
       >

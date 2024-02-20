@@ -1,16 +1,39 @@
 import {
   getServiceLinks,
   getServicesSectionTitles,
+  // getSingleService,
 } from "@/sanity/sanity.query";
 import type { serviceType, serviceSectionType } from "@/types";
-import ServicesBgTexture from "../app/assets/images/layout/dot_graphic-top-left.png";
-import Image from "next/image";
 import ButtonLink from "./common/ButtonLink";
 import { ServiceSwiper } from "./swiper/Swipers";
 import ServiceImageLink from "./ServiceImageLink";
 import BgDots from "./assets/BgDots";
+// import { Metadata } from "next";
+import service from "@/schemas/services";
+
+// type Props = {
+//   params: {
+//     service: string;
+//   };
+// };
+// Dynamic metadata for SEO
+// export async function generateMetadata({ params }: Props): Promise<Metadata> {
+//   const slug = params.service;
+//   const service: serviceType = await getSingleService(slug);
+
+//   return {
+//     title: `${service.serviceTitle} | Service`,
+//     description: service.serviceSummary,
+//     openGraph: {
+//       images: service?.coverImage.image || "add-a-fallback-project-image-here",
+//       title: service.serviceTitle,
+//       description: service.serviceSummary,
+//     },
+//   };
+// }
 
 export default async function ServiceImageLinkSwiper() {
+  // const slug = params.service;
   const services: serviceType[] = await getServiceLinks();
   const serviceSectionHeadings: serviceSectionType[] =
     await getServicesSectionTitles();
@@ -26,10 +49,6 @@ export default async function ServiceImageLinkSwiper() {
 
   return (
     <section className="relative bg-transparent xsmall:bg-theme-off-white mb-[6rem] xsmall:pb-[6rem] small:pb-[5.6rem] overflow-hidden">
-      {/* <div className="absolute top-0 w-[115%] h-auto left-[-10%] xsmall:left-0 xsmall:h-full xsmall:w-auto small:bottom-0 small:transform small:scale-y-[-1]">
-        <BgDots />
-      </div> */}
-
       <div className="absolute top-0 left-0 w-[clamp(350px,48vw,450px)] h-auto small:transform small:scale-y-[-1] small:bottom-0 -z-10">
         <div className="bg-theme-off-white absolute top-0 left-0 w-screen h-[418px] overflow-hidden xsmall:bg-transparent xsmall:h-auto xsmall:w-[clamp(350px,48vw,450px)]">
           <BgDots />

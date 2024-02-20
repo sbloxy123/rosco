@@ -118,17 +118,40 @@ export async function getServiceLinks() {
       serviceTitle,
       "slug": slug.current,
       coverImage {alt, "image": asset->url},
+      servicePageImage {alt, "image": asset->url},
+      serviceAsideList,
+      additionalInfo,
+      description,
+      serviceSummary,
     }`
   );
 }
+
+// =================== //
+// export async function getSingleService(slug: string) {
+//   return client.fetch(
+//     groq`*[_type == "service" && slug.current == $slug][0]{
+//       _id,
+//       serviceTitle,
+//       coverImage { alt, "image": asset->url },
+//       description
+//     }`,
+//     { slug }
+//   );
+// }
 
 export async function getSingleService(slug: string) {
   return client.fetch(
     groq`*[_type == "service" && slug.current == $slug][0]{
       _id,
       serviceTitle,
-      coverImage { alt, "image": asset->url },
-      description
+      "slug": slug.current,
+      serviceSummary,
+      coverImage {alt, "image": asset->url},
+      servicePageImage {alt, "image": asset->url},
+      description,
+      serviceAsideList,
+      additionalInfo
     }`,
     { slug }
   );
