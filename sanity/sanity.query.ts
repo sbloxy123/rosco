@@ -148,10 +148,56 @@ export async function getSingleService(slug: string) {
       "slug": slug.current,
       serviceSummary,
       coverImage {alt, "image": asset->url},
-      servicePageImage {alt, "image": asset->url},
+      servicePageImage {
+        alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+          },
+      serviceBannerImage {
+        alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+          },
       description,
       serviceAsideList,
-      additionalInfo
+      additionalInfo,
+      awardHighlight {
+        awardDate,
+        awardLogo {alt, "image": asset->url},
+        awardTitle,
+      }
     }`,
     { slug }
   );

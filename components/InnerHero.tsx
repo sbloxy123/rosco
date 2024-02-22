@@ -18,7 +18,7 @@ export default async function InnerHero({
   sectionTitle: string;
   imageAltText?: string;
   image?: SanityImageQueryResult;
-  pageNumber: string;
+  pageNumber?: string;
   smallScreenTitle?: string;
 }) {
   return (

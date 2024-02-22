@@ -59,6 +59,21 @@ const service = {
       ],
     },
     {
+      name: "serviceBannerImage",
+      title: "Background Image for Service Banner",
+      type: "image",
+      description:
+        "Upload a background image for this service's banner component",
+      options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt",
+          type: "string",
+        },
+      ],
+    },
+    {
       name: "description",
       title: "Description",
       type: "array",
@@ -115,6 +130,40 @@ const service = {
                   type: "text",
                 },
               ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "awardHighlight",
+      title: "Award",
+      type: "document",
+      fields: [
+        {
+          name: "awardDate",
+          title: "Award Date",
+          type: "string",
+        },
+        {
+          name: "awardTitle",
+          title: "Award Title",
+          type: "string",
+          description:
+            "add '\\n' to the text where you want text to return on a new line",
+        },
+        {
+          name: "awardLogo",
+          title: "Award Logo",
+          type: "image",
+          description: "Upload the award logo",
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              description:
+                "describe what is in the image let search engines know what is being shown",
             },
           ],
         },

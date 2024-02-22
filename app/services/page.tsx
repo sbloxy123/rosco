@@ -37,8 +37,8 @@ export default async function Services() {
               imageAltText={content.ServicesPage.pageImage.alt}
               pageNumber="03"
             />
-            {/* <div className=" relative my-10 w-screen aspect-[390/504] xsmall:aspect-[744/416] small:aspect-[1440/504] "> */}
-            {/* <div className="absolute top-0 left-0 bg-[#6015EF] w-full h-full"> */}
+
+            {/* intro banner */}
             <div
               style={
                 {

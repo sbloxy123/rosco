@@ -25,7 +25,7 @@ import type {
 } from "@/types";
 import ProjectSlide from "../ProjectSlide";
 import { SwiperArrowNext, SwiperArrowPrev } from "../common/SwiperArrows";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import FilterButton from "../common/FilterButton";
 
 export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
@@ -444,3 +444,144 @@ export default function ProjectsImageSwiper({
     </>
   );
 }
+
+interface AdditionalInfoItem {
+  listItem: string;
+  listItemDetails: string;
+}
+import { PortableTextBlock } from "sanity";
+import { PortableText } from "@portabletext/react";
+
+export const ServiceExtrasSwiper = ({
+  additionalInfo,
+  primaryOverviewTitle,
+  primaryOverviewText,
+}: {
+  additionalInfo: AdditionalInfoItem[];
+  primaryOverviewTitle: string;
+  primaryOverviewText: PortableTextBlock;
+}) => {
+  const [btnSwiper, setBtnSwiper] = useState<SwiperType | null>(null);
+  const [scrollbarStates, setScrollbarStates] = useState<boolean[]>([]);
+  const overflowRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [activeButtonIndex, setActiveButtonIndex] = useState<number | null>(
+    1000
+  );
+
+  const handleButtonClick = (index: number) => {
+    if (index === activeButtonIndex) {
+      // If the clicked button is already active, deselect it
+      setActiveButtonIndex(index);
+    } else {
+      // Otherwise, set the clicked button as active
+      setActiveButtonIndex(index);
+    }
+  };
+
+  const updateScrollbarStates = () => {
+    const newScrollbarStates = overflowRefs.current.map((ref) => {
+      if (!ref) return false; // Guard clause to handle null refs
+      return ref.scrollHeight > ref.offsetHeight;
+    });
+    setScrollbarStates(newScrollbarStates);
+  };
+
+  useEffect(() => {
+    updateScrollbarStates(); // Update scrollbar states initially
+
+    const handleResize = () => {
+      updateScrollbarStates(); // Update scrollbar states when window resizes
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Clean up event listener on component unmount
+    };
+  }, []);
+
+  return (
+    <div>
+      <Swiper
+        spaceBetween={10}
+        slidesPerView="auto"
+        allowTouchMove={false}
+        thumbs={{ swiper: btnSwiper }}
+        modules={[FreeMode, Navigation, Thumbs]}
+        autoHeight={true}
+        className="service-subcategory--swiper-container"
+      >
+        <SwiperSlide className="w-full px-[5%] small:px-0">
+          <h2 className="pb-[1.5rem]">{primaryOverviewTitle}</h2>
+          <div className="scrollbar-and-text-container">
+            <div
+              ref={(ref) => (overflowRefs.current[0] = ref)}
+              className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto small:max-h-[145px]"
+            >
+              <PortableText value={primaryOverviewText} />
+            </div>
+            {scrollbarStates[0] && <div className="your-after-element"></div>}
+          </div>
+        </SwiperSlide>
+        {additionalInfo.map((text, index) => {
+          return (
+            <SwiperSlide key={index} className="w-full px-[5%] small:px-0">
+              <h2 className="pb-[1.5rem]">{text.listItem}</h2>
+              <div className="scrollbar-and-text-container">
+                <div
+                  ref={(ref) => (overflowRefs.current[index + 1] = ref)}
+                  className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto small:max-h-[145px]"
+                >
+                  <p>{text.listItemDetails}</p>
+                </div>
+                {scrollbarStates[index + 1] && (
+                  <div className="your-after-element"></div>
+                )}
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+
+      <Swiper
+        onSwiper={(swiper) => setBtnSwiper(swiper)}
+        slidesPerView="auto"
+        freeMode={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        wrapperClass="filterBtn__swiper filterBtn__swiper--service-extras"
+        className="flex flex-row mt-[7rem]"
+      >
+        <SwiperSlide
+          className={`w-fit mr-[1.5rem] min-w-[27.8rem] ${
+            activeButtonIndex === 1000 ? "hidden--slide" : ""
+          }`}
+        >
+          <FilterButton
+            key="001"
+            // text={primaryOverviewTitle}
+            text="back to overview"
+            serviceSubFilter
+            onClick={() => handleButtonClick(1000)}
+          />
+        </SwiperSlide>
+        {additionalInfo?.map((category, index) => {
+          return (
+            <SwiperSlide
+              key={index}
+              className={`w-fit mr-[1.5rem] min-w-[27.8rem] ${
+                activeButtonIndex === index ? "hidden--slide" : ""
+              }`}
+            >
+              <FilterButton
+                key={index}
+                text={category.listItem}
+                serviceSubFilter
+                onClick={() => handleButtonClick(index)}
+              />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
+  );
+};

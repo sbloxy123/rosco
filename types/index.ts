@@ -105,10 +105,65 @@ export type serviceType = {
   coverImage: {
     alt: string;
     image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
   };
   servicePageImage: {
     alt: string;
     image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
+  };
+  serviceBannerImage: {
+    alt: string;
+    image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
   };
   serviceAsideList?: {
     listIntro?: string;
@@ -116,6 +171,14 @@ export type serviceType = {
   };
   additionalInfo?: {
     additionalList?: AdditionalInfoItem[];
+  };
+  awardHighlight?: {
+    awardDate: string;
+    awardLogo: {
+      alt: string;
+      image: string;
+    };
+    awardTitle: string;
   };
 };
 

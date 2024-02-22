@@ -253,7 +253,7 @@ const homepage = {
                   name: "awardLogo",
                   title: "Award Logo",
                   type: "image",
-                  description: "Upload a Hero image",
+                  description: "Upload the award logo",
                   fields: [
                     {
                       name: "alt",
