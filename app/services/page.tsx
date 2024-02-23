@@ -16,6 +16,7 @@ import ServiceItem from "@/components/ServiceItem";
 import LatestProjects from "@/components/LatestProjects";
 import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
+import DetailedServiceList from "@/components/DetailedServiceList";
 
 export default async function Services() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
@@ -96,8 +97,9 @@ export default async function Services() {
                 </ul>
               </div>
             </div>
+            <DetailedServiceList allServices={services} />
 
-            {services.map((service, index) => {
+            {/* {services.map((service, index) => {
               return (
                 <div key={service._id}>
                   <ServiceItem
@@ -110,7 +112,7 @@ export default async function Services() {
                   />
                 </div>
               );
-            })}
+            })} */}
           </div>
         );
       })}

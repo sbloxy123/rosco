@@ -12,12 +12,14 @@ export default function ServiceItem({
   text,
   image,
   index,
+  onClick,
 }: {
   title: string;
   heading: string;
   slug: string;
   text: PortableTextBlock;
   index: number;
+  onClick?: () => void; // Ensure onClick is a function
   image: {
     alt: string;
     image: string;
@@ -29,7 +31,17 @@ export default function ServiceItem({
         index % 2 === 0 ? "flex-row" : "flex-row-reverse"
       }`}
     >
-      <div className="relative aspect-[390/303] xsmall:aspect-[740/496] small:aspect-[740/609] overflow-hidden small:w-[clamp(500px,51.45vw,739px)]">
+      <div
+        style={
+          {
+            "--image-url": `url(${image.image})`,
+          } as React.CSSProperties
+        }
+        className="relative aspect-[390/303] xsmall:aspect-[740/496] small:aspect-[740/609] overflow-hidden small:w-[clamp(500px,51.45vw,739px)]"
+      >
+        <div className="absolute top-0 left-0 bg-theme-dark opacity-50  w-full h-full"></div>
+        <div className="absolute top-0 left-0 bg-theme-dark mix-blend-color-dodge  w-full h-full"></div>
+        <div className="absolute top-0 left-0 bg-theme-dark mix-blend-soft-light saturate-100 w-full h-full"></div>
         <div className="absolute top-0 left-0 right-0 bottom-0 aspect-[341/233] m-auto w-[92%] xsmall:aspect-[507/304] xsmall:w-[62.7%] xsmall:ml-[5%] xsmall:my-auto small:w-[66.5%] small:ml-[10%] small:aspect-[527/346] ">
           <svg
             viewBox="0 0 523 320"
@@ -93,9 +105,9 @@ export default function ServiceItem({
           width={609}
           height={740}
           alt={image.alt}
-          className="absolute top-0 left-0 w-full h-full -z-10"
+          className="absolute top-0 left-0 w-full h-full -z-10 object-cover"
         />
-        <h1 className="h-full w-full text-white p-[3rem] pl-[15%] pr-[18%] text-[4rem] flex items-center small:w-[48%] small:pl-layout-small">
+        <h1 className="relative h-full w-full text-white p-[3rem] pl-[15%] pr-[18%] text-[4rem] flex items-center small:w-[48%] small:pl-layout-small">
           {title}
         </h1>
       </div>
@@ -112,7 +124,7 @@ export default function ServiceItem({
           <PortableText value={text} />
         </div>
 
-        <div className="pt-[3.6rem] xsmall:w-fit">
+        <div className="pt-[3.6rem] xsmall:w-fit" onClick={onClick}>
           <ButtonLink
             theme="dark"
             ctaType="general"

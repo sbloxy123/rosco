@@ -5,6 +5,11 @@ import type { serviceType } from "@/types";
 import InnerHero from "@/components/InnerHero";
 import ServiceBanner from "@/components/ServiceBanner";
 // import fallBackImage from "@/public/project.png";
+import { getServiceLinks } from "@/sanity/sanity.query";
+import ServiceItem from "@/components/ServiceItem";
+import MailingListCta from "@/components/MailingListCta";
+import ContactSection from "@/components/ContactSection";
+import DetailedServiceList from "@/components/DetailedServiceList";
 
 type Props = {
   params: {
@@ -29,6 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Service({ params }: Props) {
   const slug = params.service;
   const service: serviceType = await getSingleService(slug);
+  const allServices: serviceType[] = await getServiceLinks();
 
   return (
     <div>
@@ -45,7 +51,30 @@ export default async function Service({ params }: Props) {
         serviceText={service.description}
         additionalInfo={service.additionalInfo?.additionalList}
         awardHighlight={service.awardHighlight}
+        asideList={service.serviceAsideList}
       />
+
+      <DetailedServiceList allServices={allServices} />
+
+      {/* {allServices.map((service, index) => {
+        return (
+          <div key={service._id}>
+            <ServiceItem
+              title={service.serviceTitle}
+              slug={service.slug}
+              image={service.servicePageImage}
+              heading={service.serviceSummary}
+              text={service.description}
+              index={index}
+            />
+          </div>
+        );
+      })} */}
+
+      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+        <MailingListCta />
+      </div>
+      <ContactSection />
     </div>
   );
 }

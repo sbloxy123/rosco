@@ -41,18 +41,25 @@ interface AwardHighlight {
   awardTitle: string;
 }
 
+interface AsideList {
+  listIntro?: string;
+  summaryList?: string[];
+}
+
 export default function ServiceBanner({
   backgroundImage,
   serviceTitle,
   serviceText,
   additionalInfo,
   awardHighlight,
+  asideList,
 }: {
   backgroundImage: BgImage;
   serviceTitle: string;
   serviceText: PortableTextBlock;
   additionalInfo?: AdditionalInfoItem[];
   awardHighlight?: AwardHighlight;
+  asideList?: AsideList;
 }) {
   const titleWithLineBreaks = awardHighlight?.awardTitle.replace(/\\n/g, "\n");
 
@@ -88,8 +95,12 @@ export default function ServiceBanner({
         <BgDots />
       </div>
 
-      <div className="relative text-white pt-[4rem] pb-[6.5rem] xsmall:pt-[6rem] small:flex small:flex-row small:justify-between small:gap-10 small:pt-[12rem] small:pb-[12rem]">
-        <div className="small:w-[72%] small:pl-layout-small">
+      <div className="relative text-white pt-[4rem] pb-[6.5rem] xsmall:pt-[6rem] small:flex small:flex-row small:justify-between small:gap-10 small:pt-[12rem] small:pb-[12rem] medium:max-w-[1120px] medium:mx-auto">
+        <div
+          className={`${
+            asideList ? "small:w-[90%]" : "small:w-[72%]"
+          } small:pl-layout-small medium:pl-0`}
+        >
           {additionalInfo ? (
             <ServiceExtrasSwiper
               primaryOverviewTitle={serviceTitle}
@@ -114,7 +125,7 @@ export default function ServiceBanner({
           )}
         </div>
         {awardHighlight ? (
-          <div className="hidden small:flex aspect-[255/345] w-auto xsmall:w-auto max-w-[255px] justify-center items-center flex-col gap-8 bg-transparent text-white text-center my-4 mr-layout-small">
+          <div className="hidden small:flex aspect-[255/345] w-auto xsmall:w-auto max-w-[255px] justify-center items-center flex-col gap-8 bg-transparent text-white text-center my-4 mr-layout-small medium:mr-0">
             <div className="relative h-[150px] w-full mb-4">
               <Image
                 src={awardHighlight?.awardLogo.image}
@@ -138,6 +149,17 @@ export default function ServiceBanner({
                 })}
               </div>
             </div>
+          </div>
+        ) : null}
+
+        {asideList ? (
+          <div className="hidden small:block mr-layout-small text-[1.6rem] font-body font-bold w-[clamp(25rem,27vw,39.3rem)] medium:mr-0">
+            <h4 className="pb-[1.5rem] font-body">{asideList.listIntro}</h4>
+            <ul className="flex flex-col gap-[1.5rem]">
+              {asideList.summaryList?.map((listItem, index) => {
+                return <li>- {listItem}</li>;
+              })}
+            </ul>
           </div>
         ) : null}
       </div>
