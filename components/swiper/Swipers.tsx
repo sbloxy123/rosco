@@ -549,10 +549,10 @@ export const ServiceExtrasSwiper = ({
         freeMode={true}
         modules={[FreeMode, Navigation, Thumbs]}
         wrapperClass="filterBtn__swiper filterBtn__swiper--service-extras"
-        className="flex flex-row mt-[7rem]"
+        className="flex flex-row mt-[7rem] "
       >
         <SwiperSlide
-          className={`w-fit mr-[1.5rem] min-w-[27.8rem] ${
+          className={`w-fit mr-[1.5rem] min-w-[27.8rem] small:min-w-[25.8rem] ${
             activeButtonIndex === 1000 ? "hidden--slide" : ""
           }`}
         >
@@ -568,7 +568,7 @@ export const ServiceExtrasSwiper = ({
           return (
             <SwiperSlide
               key={index}
-              className={`w-fit mr-[1.5rem] min-w-[27.8rem] ${
+              className={`w-fit mr-[1.5rem] min-w-[27.8rem] small:min-w-[25.8rem] ${
                 activeButtonIndex === index ? "hidden--slide" : ""
               }`}
             >

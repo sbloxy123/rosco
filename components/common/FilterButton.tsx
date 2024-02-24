@@ -26,7 +26,7 @@ const FilterButton: React.FC<FilterButtonProps> = ({
       } block rounded-sm border-solid py-[1.1rem] border-[2px] transition hover:duration-300 group cursor-pointer w-full`}
       onClick={onClick}
     >
-      <div className="flex justify-center items-center gap-6 mx-auto min-w-[176px] px-11">
+      <div className="flex justify-center items-center gap-6 mx-auto min-w-[176px] px-11 small:min-w-0">
         {serviceSubFilter && (
           <General fill="fill-white" hover="group-hover:fill-[#6015EF]" />
         )}
