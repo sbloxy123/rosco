@@ -61,6 +61,7 @@ function Navbar() {
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
             <div className="max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/">
+                {/* header-logo */}
                 <svg
                   width="100%"
                   height="100%"
@@ -310,20 +311,30 @@ function Navbar() {
               >
                 {[
                   "Home",
-                  "About Us",
+                  "About",
                   "Services",
                   "Projects",
-                  "FAQ's",
+                  "FAQs",
                   "Contact",
                 ].map((text, index) => (
                   <motion.li key={index} variants={itemVariants}>
                     <Link
-                      href={`/${text.toLowerCase().replace(" ", "")}`}
+                      href={
+                        text.includes("Home")
+                          ? "/"
+                          : `/${text.toLowerCase().replace(" ", "")}`
+                      }
                       onClick={() => setIsOpen(!isOpen)}
                     >
                       <div className="flex flex-col justify-center text-center">
                         <span className="font-bold">0{`${index + 1}`}</span>
-                        <span>{text}</span>
+                        {text.includes("About") ? (
+                          <span>{text} us</span>
+                        ) : text.includes("FAQs") ? (
+                          <span>FAQ's</span>
+                        ) : (
+                          <span>{text}</span>
+                        )}
                       </div>
                     </Link>
                   </motion.li>
