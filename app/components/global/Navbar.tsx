@@ -1,19 +1,63 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-const variants = {
-  open: { opacity: 1, y: 0 },
-  closed: { opacity: 0, y: "-100%" },
+const backgroundVariants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    height: "100vh",
+    transition: {
+      type: "", // Use a spring animation for more natural movement
+      stiffness: 260,
+      damping: 20,
+      // when: "beforeChildren", // Animate the container before its children
+      staggerChildren: 0.1, // Stagger the animation of children
+      duration: 0.5,
+    },
+  },
+  closed: {
+    opacity: 0.4,
+    y: "-100%",
+    height: 0,
+    transition: { duration: 0.5, ease: "easeInOut" }, // Smooth transition with easeInOut
+    // transitionEnd: { display: "none" },
+  }, // Ensure component is not interactive when closed
+  exit: {
+    opacity: 0,
+    y: "-100%",
+    transition: { duration: 0.5, ease: "easeInOut" }, // Match the exit transition to the closed state
+  },
+};
+const navVariants = {
+  open: {
+    transition: { staggerChildren: 0.1, delayChildren: 0 }, // delayChildren starts the staggering after the menu opens
+  },
+  closed: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 }, // staggerDirection -1 makes the children animate in reverse order
+  },
+};
+
+const itemVariants = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: { y: { stiffness: 1000, velocity: -100 } },
+  },
+  closed: {
+    y: -50,
+    opacity: 0,
+    transition: { y: { stiffness: 1000 } },
+  },
 };
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="z-50 small:fixed top-0 left-0 w-full bg-white">
-      <header className="tracking-[0.06em]">
-        <div className="relative z-30 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
+      <header className="relative tracking-[0.06em]">
+        <div className="relative z-50 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
             <div className="max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/">
@@ -205,6 +249,7 @@ function Navbar() {
                   aria-expanded="false"
                 >
                   <span className="sr-only">Open main menu</span>
+
                   {!isOpen ? (
                     <svg
                       width="40"
@@ -249,86 +294,117 @@ function Navbar() {
             </div>
           </div>
         </div>
-        <nav className="small:hidden" id="mobile-menu">
-          <motion.ul
-            initial={false}
-            transition={{ duration: 0.3 }}
-            animate={isOpen ? "open" : "closed"}
-            variants={variants}
-            className={`absolute left-0 w-full h-full px-2 py-20 sm:px-3 flex flex-col justify-start gap-[3rem] bg-white items-center uppercase font-normal font-sans text-[2.4rem] opacity-0 text-[rgba(47,48,71,90%)] ${
-              isOpen ? "z-10" : "-z-20"
-            }`}
-          >
-            <li>
-              <Link href="/" className="" onClick={() => setIsOpen(!isOpen)}>
-                <div className="flex flex-col justify-center text-center">
-                  <span className="font-bold">01</span>
-                  <span>Home</span>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                className=""
-                onClick={() => setIsOpen(!isOpen)}
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.nav
+              className="small:hidden h-screen absolute top-[7rem] left-0 w-full z-40"
+              initial="closed"
+              animate="open"
+              exit="exit"
+              variants={backgroundVariants}
+            >
+              <motion.ul
+                variants={navVariants} // Control the staggering here
+                className="absolute left-0 w-full h-full px-2 py-20 sm:px-3 flex flex-col justify-start gap-[3rem] bg-white items-center uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30"
               >
-                <div className="flex flex-col justify-center text-center">
-                  <span className="font-bold px-[0.4rem]">02</span>
-                  <span>About Us</span>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services"
-                className=""
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <div className="flex flex-col justify-center text-center">
-                  <span className="font-bold">03</span>
-                  <span>Services</span>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/projects"
-                className=""
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <div className="flex flex-col justify-center text-center">
-                  <span className="font-bold">04</span>
-                  <span>Projects</span>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/faqs"
-                className=""
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <div className="flex flex-col justify-center text-center">
-                  <span className="font-bold">05</span>
-                  <span>FAQ's</span>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className=""
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <div className="flex flex-col justify-center text-center">
-                  <span className="font-bold">06</span>
-                  <span>Contact</span>
-                </div>
-              </Link>
-            </li>
-          </motion.ul>
-        </nav>
+                {[
+                  "Home",
+                  "About Us",
+                  "Services",
+                  "Projects",
+                  "FAQ's",
+                  "Contact",
+                ].map((text, index) => (
+                  <motion.li key={index} variants={itemVariants}>
+                    <Link
+                      href={`/${text.toLowerCase().replace(" ", "")}`}
+                      onClick={() => setIsOpen(!isOpen)}
+                    >
+                      <div className="flex flex-col justify-center text-center">
+                        <span className="font-bold">0{`${index + 1}`}</span>
+                        <span>{text}</span>
+                      </div>
+                    </Link>
+                  </motion.li>
+                ))}
+
+                {/* <li>
+                  <Link
+                    href="/"
+                    className=""
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <div className="flex flex-col justify-center text-center">
+                      <span className="font-bold">01</span>
+                      <span>Home</span>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className=""
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <div className="flex flex-col justify-center text-center">
+                      <span className="font-bold px-[0.4rem]">02</span>
+                      <span>About Us</span>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services"
+                    className=""
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <div className="flex flex-col justify-center text-center">
+                      <span className="font-bold">03</span>
+                      <span>Services</span>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/projects"
+                    className=""
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <div className="flex flex-col justify-center text-center">
+                      <span className="font-bold">04</span>
+                      <span>Projects</span>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/faqs"
+                    className=""
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <div className="flex flex-col justify-center text-center">
+                      <span className="font-bold">05</span>
+                      <span>FAQ's</span>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className=""
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <div className="flex flex-col justify-center text-center">
+                      <span className="font-bold">06</span>
+                      <span>Contact</span>
+                    </div>
+                  </Link>
+                </li> */}
+              </motion.ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </header>
     </div>
   );
