@@ -32,9 +32,12 @@ const backgroundVariants = {
 };
 const navVariants = {
   open: {
+    opacity: 1,
+
     transition: { staggerChildren: 0.1, delayChildren: 0 }, // delayChildren starts the staggering after the menu opens
   },
   closed: {
+    opacity: 0,
     transition: { staggerChildren: 0.05, staggerDirection: -1 }, // staggerDirection -1 makes the children animate in reverse order
   },
 };
@@ -54,6 +57,7 @@ const itemVariants = {
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchIsOpen, setSearchIsOpen] = useState(false);
   return (
     <div className="z-50 small:fixed top-0 left-0 w-full bg-white">
       <header className="relative tracking-[0.06em]">
@@ -131,6 +135,8 @@ function Navbar() {
                 </svg>
               </Link>
             </div>
+
+            {/* desktop nav */}
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
@@ -187,6 +193,8 @@ function Navbar() {
                 </nav>
               </div>
             </div>
+
+            {/* nav extras */}
             <div className="flex gap-[1rem]">
               <form
                 className="nav-search-form relative flex flex-col justify-center gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:flex-row small:w-fit small:mr-0"
@@ -194,7 +202,16 @@ function Navbar() {
               >
                 <div className="flex items-center gap-[1rem]">
                   <div className="xsmall:absolute top-0 left-0 xsmall:left-[3%] h-full w-auto">
-                    <button className="h-full aspect-square flex justify-center items-center opacity-30">
+                    {/* magnifying glass button */}
+                    <button
+                      className={`relative h-full aspect-square flex justify-center items-center opacity-30 xsmall:-z-10 ${
+                        searchIsOpen && "hidden"
+                      }  `}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setSearchIsOpen(!searchIsOpen);
+                      }}
+                    >
                       <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
                         <svg
                           viewBox="0 0 20 20"
@@ -214,6 +231,7 @@ function Navbar() {
                     </button>
                   </div>
                   <div className="xsmall:absolute top-0 right-0 h-full w-auto">
+                    {/* dictaphone button */}
                     <button className="h-full aspect-square flex justify-center items-center opacity-30">
                       <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
                         <svg
@@ -236,11 +254,12 @@ function Navbar() {
                   placeholder="Search"
                   // value={email}
                   // onChange={handleInput}
-                  className="p-4 hidden xsmall:block xsmall:bg-[rgba(230,230,231,0.3)] text-left pl-[4.5rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:bg-[url('/assets/images/Icons.png')] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
+                  className="p-4 hidden xsmall:block xsmall:bg-[rgba(230,230,231,0.3)] text-left pl-[4.9rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                 />
               </form>
 
-              {/* == MOBILE MENU OPEN/CLOSE  */}
+              {/* == MOBILE MENU OPEN/CLOSE BUTTONS  */}
+
               <div className="-mr-2 flex small:hidden">
                 <button
                   onClick={() => setIsOpen(!isOpen)}
@@ -296,6 +315,95 @@ function Navbar() {
           </div>
         </div>
 
+        {/* search results */}
+        <AnimatePresence>
+          {searchIsOpen && (
+            <motion.div
+              className="small:hidden h-screen absolute top-[7rem] left-0 w-full z-[45]"
+              initial="closed"
+              animate="open"
+              exit="exit"
+              variants={backgroundVariants}
+            >
+              <motion.div
+                variants={navVariants}
+                className="absolute left-0 w-full h-full py-20 flex flex-col justify-start gap-[3rem] bg-white items-center uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30"
+              >
+                {/* form in mobile view */}
+                <form
+                  className="xsmall:hidden nav-search-form relative flex justify-end flex-row w-full px-[5%]"
+                  // onSubmit={handleSubmit}
+                >
+                  {/* search form icons */}
+                  <div className="flex items-center gap-[1rem]">
+                    <div className="absolute top-0 left-[7%] h-full w-auto">
+                      {/* magnifying glass button */}
+                      <button
+                        className="h-full aspect-square flex justify-center items-center cursor-default"
+                        onClick={(event) => {
+                          event.preventDefault();
+                        }}
+                      >
+                        <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
+                          <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M8.97495 15.25C7.73388 15.25 6.52067 14.882 5.48875 14.1925C4.45683 13.503 3.65255 12.523 3.17761 11.3764C2.70267 10.2297 2.5784 8.96805 2.82053 7.75082C3.06265 6.53359 3.66028 5.41549 4.53786 4.53792C5.41543 3.66035 6.53353 3.06271 7.75076 2.82059C8.96799 2.57847 10.2297 2.70273 11.3763 3.17767C12.5229 3.65261 13.5029 4.45689 14.1924 5.48881C14.8819 6.52073 15.25 7.73394 15.25 8.97502C15.25 9.79906 15.0876 10.615 14.7723 11.3764C14.4569 12.1377 13.9947 12.8294 13.4121 13.4121C12.8294 13.9948 12.1376 14.457 11.3763 14.7724C10.615 15.0877 9.799 15.25 8.97495 15.25ZM8.97495 3.95835C7.98605 3.95835 7.01935 4.25159 6.1971 4.801C5.37486 5.35041 4.73399 6.1313 4.35556 7.04493C3.97712 7.95856 3.8781 8.96389 4.07103 9.9338C4.26395 10.9037 4.74016 11.7946 5.43942 12.4939C6.13868 13.1931 7.0296 13.6693 7.9995 13.8623C8.96941 14.0552 9.97474 13.9562 10.8884 13.5777C11.802 13.1993 12.5829 12.5584 13.1323 11.7362C13.6817 10.914 13.975 9.94726 13.975 8.95835C13.975 7.63227 13.4482 6.3605 12.5105 5.42281C11.5728 4.48513 10.301 3.95835 8.97495 3.95835Z"
+                              fill="#231F20"
+                            />
+                            <path
+                              d="M16.6667 17.2917C16.5846 17.2921 16.5032 17.276 16.4273 17.2446C16.3515 17.2131 16.2827 17.1668 16.225 17.1083L12.7833 13.6667C12.6729 13.5482 12.6128 13.3915 12.6157 13.2296C12.6186 13.0677 12.6841 12.9132 12.7987 12.7987C12.9132 12.6841 13.0677 12.6186 13.2296 12.6157C13.3915 12.6128 13.5482 12.6729 13.6667 12.7833L17.1083 16.225C17.2254 16.3422 17.2911 16.5011 17.2911 16.6667C17.2911 16.8323 17.2254 16.9912 17.1083 17.1083C17.0506 17.1668 16.9818 17.2131 16.906 17.2446C16.8302 17.276 16.7488 17.2921 16.6667 17.2917Z"
+                              fill="#231F20"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+
+                    <div className="absolute top-0 bottom-0 right-[7%] h-full w-auto my-auto">
+                      {/* close search button */}
+                      <button
+                        className="h-full aspect-square flex justify-center items-center"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setSearchIsOpen(!searchIsOpen);
+                        }}
+                      >
+                        <span className="">
+                          <svg
+                            width="40"
+                            height="40"
+                            viewBox="0 0 40 40"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M21.7667 19.9999L29.1333 12.6333C29.2561 12.5188 29.3546 12.3808 29.423 12.2275C29.4913 12.0742 29.528 11.9086 29.531 11.7408C29.5339 11.573 29.5031 11.4062 29.4402 11.2506C29.3773 11.095 29.2838 10.9536 29.1651 10.8349C29.0464 10.7162 28.905 10.6226 28.7493 10.5597C28.5937 10.4969 28.427 10.466 28.2591 10.4689C28.0913 10.4719 27.9258 10.5086 27.7724 10.577C27.6191 10.6453 27.4811 10.7438 27.3667 10.8666L20 18.2333L12.6333 10.8666C12.3964 10.6458 12.083 10.5256 11.7591 10.5313C11.4353 10.537 11.1263 10.6682 10.8973 10.8972C10.6683 11.1262 10.5371 11.4352 10.5314 11.7591C10.5257 12.0829 10.6459 12.3963 10.8667 12.6333L18.2333 19.9999L10.8667 27.3666C10.6326 27.601 10.5011 27.9187 10.5011 28.2499C10.5011 28.5812 10.6326 28.8989 10.8667 29.1333C11.101 29.3673 11.4187 29.4988 11.75 29.4988C12.0812 29.4988 12.399 29.3673 12.6333 29.1333L20 21.7666L27.3667 29.1333C27.601 29.3673 27.9187 29.4988 28.25 29.4988C28.5813 29.4988 28.899 29.3673 29.1333 29.1333C29.3674 28.8989 29.4989 28.5812 29.4989 28.2499C29.4989 27.9187 29.3674 27.601 29.1333 27.3666L21.7667 19.9999Z"
+                              fill="#2F3047"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <input
+                    type="search"
+                    placeholder="Search"
+                    // value={email}
+                    // onChange={handleInput}
+                    className="p-4 bg-[rgba(230,230,231,0.3)] text-left pl-[20%] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
+                  />
+                </form>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* mobile nav dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.nav
