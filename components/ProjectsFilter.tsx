@@ -17,12 +17,15 @@ export default function ProjectsFilter({
   const [filters, setFilters] = useState<{ id: number; category: string }[]>(
     []
   );
-  const searchParams = new URLSearchParams(window.location.search); // Example adjustment for client-side fetch
+
+  const searchParams = useSearchParams();
   const filterParam = searchParams.get("filter");
+  console.log(filterParam);
 
   useEffect(() => {
+    // Check if there is a filterParam in the URL
     if (filterParam) {
-      // Provide an explicit type for the accumulator (acc) as string[]
+      // Assuming categoriesArray is available here or you fetch it similarly
       const categoriesArray = projects.reduce<string[]>((acc, project) => {
         project.categories.forEach((category) => {
           if (category !== "" && !acc.includes(category)) {
@@ -32,13 +35,13 @@ export default function ProjectsFilter({
         return acc;
       }, []);
 
-      // Assuming you have a way to ensure the category exists before setting it as a filter
+      // Set the initial filter based on filterParam
       const initialFilter = categoriesArray.includes(filterParam)
-        ? [{ id: Math.random(), category: filterParam }]
+        ? [{ id: Math.random(), category: filterParam }] // Using Math.random() for unique ID, adjust as needed
         : [];
       setFilters(initialFilter);
     }
-  }, [filterParam, projects]); // Added projects as a dependency
+  }, [filterParam]);
 
   const handleFilter = (category: string) => {
     // Check if the category already exists in the filters array

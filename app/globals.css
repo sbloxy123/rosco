@@ -99,7 +99,7 @@ input[type="text"]::-webkit-search-cancel-button {
   border-width: 2px;
 }
 
-.nav-search-form > div::before {
+/* .nav-search-form > div::before {
   background: url("/assets/images/Icons.png");
   position: absolute;
   top: 0;
@@ -107,7 +107,7 @@ input[type="text"]::-webkit-search-cancel-button {
   width: 3rem;
   height: 3rem;
   content: "";
-}
+} */
 
 .inner-border-container {
   position: absolute;
