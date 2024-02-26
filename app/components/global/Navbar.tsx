@@ -67,8 +67,13 @@ const query: string = groq`
       serviceSummary
   }
 `;
-
-const SearchResultList = ({ setSearchIsOpen, results }) => {
+interface SearchResultListProps {
+  setSearchIsOpen: (isOpen: boolean) => void;
+}
+const SearchResultList: React.FC<SearchResultListProps> = ({
+  setSearchIsOpen,
+  results,
+}) => {
   return (
     <>
       {results.map((result) => (
