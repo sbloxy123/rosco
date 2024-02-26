@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { groq } from "next-sanity";
+import client from "../../../sanity/sanity.client";
 
 const backgroundVariants = {
   open: {
@@ -55,9 +57,77 @@ const itemVariants = {
   },
 };
 
+const query: string = groq`
+    *[
+  _type == "service" && (
+    serviceTitle match $searchText || serviceSummary match $searchText ||  serviceAsideList.summaryList[] match $searchText  )]{
+      "id": _id,
+      "slug": slug.current,
+      serviceTitle,
+      serviceSummary
+  }
+`;
+
+const SearchResultList: React.FC<SearchResultListProps> = ({
+  setSearchIsOpen,
+  results,
+}) => {
+  return (
+    <>
+      {results.map((result, index) => (
+        <Link
+          key={result._id}
+          onClick={() => setSearchIsOpen(false)}
+          href={`/services/${result.slug}`}
+        >
+          <p className="capitalize">
+            <span>services / </span>
+            <strong>{result.serviceTitle}</strong>
+          </p>
+        </Link>
+      ))}
+    </>
+  );
+};
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
+
+  // search states
+  const ref = useRef<any>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState([]);
+
+  // useOutsideClick({
+  //   ref: ref,
+  //   handler: () => {
+  //     setIsModalOpen(false);
+  //     setProducts([]);
+  //   },
+  // });
+  const fetchResults = async () => {
+    setIsLoading(true);
+    const results = await client.fetch(query, {
+      searchText: `*${searchText}*`,
+    });
+
+    setResults(results);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (searchText.trim().length >= 3) {
+        fetchResults();
+      }
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [searchText]);
+
   return (
     <div className="z-50 small:fixed top-0 left-0 w-full bg-white">
       <header className="relative tracking-[0.06em]">
@@ -315,7 +385,7 @@ function Navbar() {
           </div>
         </div>
 
-        {/* search results */}
+        {/* mobile nav search results */}
         <AnimatePresence>
           {searchIsOpen && (
             <motion.div
@@ -394,10 +464,14 @@ function Navbar() {
                     type="search"
                     placeholder="Search"
                     // value={email}
-                    // onChange={handleInput}
+                    onChange={(e) => setSearchText(e.target.value)}
                     className="p-4 bg-[rgba(230,230,231,0.3)] text-left pl-[20%] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                   />
                 </form>
+                <SearchResultList
+                  results={results}
+                  setSearchIsOpen={setSearchIsOpen}
+                />
               </motion.div>
             </motion.div>
           )}
@@ -447,79 +521,6 @@ function Navbar() {
                     </Link>
                   </motion.li>
                 ))}
-
-                {/* <li>
-                  <Link
-                    href="/"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">01</span>
-                      <span>Home</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/about"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold px-[0.4rem]">02</span>
-                      <span>About Us</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">03</span>
-                      <span>Services</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/projects"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">04</span>
-                      <span>Projects</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/faqs"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">05</span>
-                      <span>FAQ's</span>
-                    </div>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className=""
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    <div className="flex flex-col justify-center text-center">
-                      <span className="font-bold">06</span>
-                      <span>Contact</span>
-                    </div>
-                  </Link>
-                </li> */}
               </motion.ul>
             </motion.nav>
           )}

@@ -127,19 +127,6 @@ export async function getServiceLinks() {
   );
 }
 
-// =================== //
-// export async function getSingleService(slug: string) {
-//   return client.fetch(
-//     groq`*[_type == "service" && slug.current == $slug][0]{
-//       _id,
-//       serviceTitle,
-//       coverImage { alt, "image": asset->url },
-//       description
-//     }`,
-//     { slug }
-//   );
-// }
-
 export async function getSingleService(slug: string) {
   return client.fetch(
     groq`*[_type == "service" && slug.current == $slug][0]{
