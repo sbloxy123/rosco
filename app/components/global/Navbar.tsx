@@ -69,6 +69,7 @@ const query: string = groq`
 `;
 interface SearchResultListProps {
   setSearchIsOpen: (isOpen: boolean) => void;
+  results: any[];
 }
 const SearchResultList: React.FC<SearchResultListProps> = ({
   setSearchIsOpen,
