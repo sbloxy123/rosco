@@ -326,7 +326,10 @@ function Navbar() {
                   type="search"
                   placeholder="Search"
                   // value={email}
-                  // onChange={handleInput}
+                  onChange={(e) => {
+                    setSearchIsOpen(true);
+                    setSearchText(e.target.value);
+                  }}
                   className="p-4 hidden xsmall:block xsmall:bg-[rgba(230,230,231,0.3)] text-left pl-[4.9rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                 />
               </form>
