@@ -55,6 +55,15 @@ p {
   aspect-ratio: 1 / 1;
 }
 
+.site__search--input {
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="text"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .nav__item__link {
   position: relative;
   span {

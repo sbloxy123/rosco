@@ -58,15 +58,25 @@ const itemVariants = {
 };
 
 const query: string = groq`
-    *[
-  _type == "service" && (
-    serviceTitle match $searchText || serviceSummary match $searchText ||  serviceAsideList.summaryList[] match $searchText  )]{
-      "id": _id,
-      "slug": slug.current,
-      serviceTitle,
-      serviceSummary
-  }
-`;
+      *[
+    _type in ["service", "projects", "faq"] && (
+      (_type == "service" && (serviceTitle match $searchText || serviceSummary match $searchText || serviceAsideList.summaryList[] match $searchText)) ||
+      (_type == "projects" && (projectTitle match $searchText || projectSummary match $searchText || categories match $searchText)) ||
+      (_type == "faq" && ( question match $searchText || answer match $searchText ))
+    )
+  ]{
+        _type,
+        "id": _id,
+        "slug": slug.current,
+        serviceTitle,
+        serviceSummary,
+        projectTitle,
+        projectSummary,
+        categories,
+        question,
+        answer,
+    }
+  `;
 interface SearchResultListProps {
   setSearchIsOpen: (isOpen: boolean) => void;
   results: any[];
@@ -75,20 +85,73 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
   setSearchIsOpen,
   results,
 }) => {
+  console.log(results);
+
   return (
     <>
-      {results.map((result) => (
-        <Link
-          key={result._id}
-          onClick={() => setSearchIsOpen(false)}
-          href={`/services/${result.slug}`}
-        >
-          <p className="capitalize">
-            <span>services / </span>
-            <strong>{result.serviceTitle}</strong>
-          </p>
-        </Link>
-      ))}
+      {results.map((result, index) => {
+        // Determine the title and type label based on the document type
+        const title =
+          result._type === "service"
+            ? result.serviceTitle
+            : result.projectTitle;
+        const projectCategories =
+          result._type === "service" ? "" : result.categories;
+        const typeLabel = result._type === "service" ? "services" : "projects";
+        const faqQuestion = result._type === "faq" && result.question;
+
+        // Adjusting the Link component's href based on whether it's a service or a project
+        if (result._type === "service") {
+          // For services, navigate directly to the service page
+          return (
+            <Link
+              key={index}
+              onClick={() => setSearchIsOpen(false)}
+              href={`/${typeLabel}/${result.slug}`}
+            >
+              <div className="capitalize">
+                <span>{typeLabel} / </span>
+                <strong>{title}</strong>
+              </div>
+            </Link>
+          );
+        } else if (result._type === "faq") {
+          // For services, navigate directly to the service page
+          return (
+            <Link
+              key={index}
+              onClick={() => setSearchIsOpen(false)}
+              href={{
+                pathname: "/faqs", // General projects page
+                query: { searchTerm: "" }, // Pass the filter in the query string
+              }}
+            >
+              <div className="capitalize">
+                <span>FAQs / </span>
+                <strong>{faqQuestion}</strong>
+              </div>
+            </Link>
+          );
+        } else {
+          // For projects, pass a filter (e.g., project title) to the projects page
+          // Assuming you want to filter projects by title or another attribute
+          return (
+            <Link
+              key={index}
+              onClick={() => setSearchIsOpen(false)}
+              href={{
+                pathname: "/projects", // General projects page
+                query: { filter: projectCategories }, // Pass the filter in the query string
+              }}
+            >
+              <div className="capitalize">
+                <span>{typeLabel} / </span>
+                <strong>{title}</strong>
+              </div>
+            </Link>
+          );
+        }
+      })}
     </>
   );
 };
@@ -99,7 +162,7 @@ function Navbar() {
 
   // search states
   const ref = useRef<any>();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
@@ -330,7 +393,7 @@ function Navbar() {
                     setSearchIsOpen(true);
                     setSearchText(e.target.value);
                   }}
-                  className="p-4 hidden xsmall:block xsmall:bg-[rgba(230,230,231,0.3)] text-left pl-[4.9rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
+                  className="site__search--input p-4 hidden xsmall:block xsmall:bg-[rgba(230,230,231,0.3)] text-left pl-[4.9rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                 />
               </form>
 
@@ -395,7 +458,7 @@ function Navbar() {
         <AnimatePresence>
           {searchIsOpen && (
             <motion.div
-              className="small:hidden h-screen absolute top-[7rem] left-0 w-full z-[45]"
+              className=" h-screen absolute top-[7rem] left-0 w-full z-[45]"
               initial="closed"
               animate="open"
               exit="exit"
@@ -403,7 +466,7 @@ function Navbar() {
             >
               <motion.div
                 variants={navVariants}
-                className="absolute left-0 w-full h-full py-20 flex flex-col justify-start gap-[3rem] bg-white items-center uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30"
+                className="absolute left-0 w-full h-full py-20 flex flex-col justify-start gap-[3rem] bg-white items-center uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small"
               >
                 {/* form in mobile view */}
                 <form
@@ -471,7 +534,7 @@ function Navbar() {
                     placeholder="Search"
                     // value={email}
                     onChange={(e) => setSearchText(e.target.value)}
-                    className="p-4 bg-[rgba(230,230,231,0.3)] text-left pl-[20%] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
+                    className="site__search--input p-4 bg-[rgba(230,230,231,0.3)] text-left pl-[20%] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                   />
                 </form>
                 <SearchResultList

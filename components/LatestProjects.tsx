@@ -48,13 +48,6 @@ export default async function LatestProjects() {
             <BgDots />
           </div>
 
-          {/* <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
-            <BgDots />
-          </div>
-          <div className="hidden xsmall:block absolute top-0 left-0 w-[40%] h-auto mix-blend-multiply">
-            <BgDots />
-          </div> */}
-
           {/* bottom right dots */}
           <div className="absolute bottom-0 right-0 w-full h-auto mix-blend-multiply rotate-180 xsmall:hidden">
             <BgDots />
@@ -68,7 +61,7 @@ export default async function LatestProjects() {
 
           <ProjectsSwiper data={projects} />
         </div>
-        {/* <div className="project-pagination-outer h-[5.6rem] w-full pb-[4rem] z-30 flex gap-3 items-center small:justify-center"></div> */}
+
         <ProjectsPaginationSwiper data={projects} />
 
         {projectsSection.map((content) => {

@@ -33,8 +33,6 @@ export default function ProjectsComponent({
   project: projectType;
   bg: BgImage;
 }) {
-  // console.log(project);
-
   return (
     <div className="block relative z-0 text-white">
       <div

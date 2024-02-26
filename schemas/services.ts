@@ -3,7 +3,7 @@ import { defineField } from "sanity";
 
 const service = {
   name: "service",
-  title: "Service",
+  title: "Services",
   description: "Service Schema",
   type: "document",
   icon: BiPackage,

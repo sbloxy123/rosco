@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { projectType, projectsPageType } from "@/types";
 import BgDots from "./assets/BgDots";
 import ProjectsComponent from "./ProjectComponent";
 import FilterButton from "./common/FilterButton";
 import { FilterButtonSwiper } from "./swiper/Swipers";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 
 export default function ProjectsFilter({
   projects,
@@ -16,6 +17,28 @@ export default function ProjectsFilter({
   const [filters, setFilters] = useState<{ id: number; category: string }[]>(
     []
   );
+  const searchParams = new URLSearchParams(window.location.search); // Example adjustment for client-side fetch
+  const filterParam = searchParams.get("filter");
+
+  useEffect(() => {
+    if (filterParam) {
+      // Provide an explicit type for the accumulator (acc) as string[]
+      const categoriesArray = projects.reduce<string[]>((acc, project) => {
+        project.categories.forEach((category) => {
+          if (category !== "" && !acc.includes(category)) {
+            acc.push(category);
+          }
+        });
+        return acc;
+      }, []);
+
+      // Assuming you have a way to ensure the category exists before setting it as a filter
+      const initialFilter = categoriesArray.includes(filterParam)
+        ? [{ id: Math.random(), category: filterParam }]
+        : [];
+      setFilters(initialFilter);
+    }
+  }, [filterParam, projects]); // Added projects as a dependency
 
   const handleFilter = (category: string) => {
     // Check if the category already exists in the filters array
@@ -154,7 +177,7 @@ export default function ProjectsFilter({
         </div>
       </div>
 
-      {/* projcets */}
+      {/* projects */}
       <div>
         {assets.map((content, index) => (
           <div key={content.ProjectsPage._id + index}>

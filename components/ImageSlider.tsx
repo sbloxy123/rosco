@@ -62,7 +62,7 @@ export const ImageSlider = ({
         onTouchStart={handleMouseDown}
       >
         <Image
-          alt="picture of wall after treatment"
+          alt="before Image"
           fill
           className="object-cover"
           sizes="auto"
@@ -82,7 +82,7 @@ export const ImageSlider = ({
             fill
             className="object-cover"
             priority
-            alt="picture of wall before treatment"
+            alt="After Image"
             sizes="auto"
             src={before}
           />
