@@ -68,13 +68,10 @@ const query: string = groq`
   }
 `;
 
-const SearchResultList: React.FC<SearchResultListProps> = ({
-  setSearchIsOpen,
-  results,
-}) => {
+const SearchResultList = ({ setSearchIsOpen, results }) => {
   return (
     <>
-      {results.map((result, index) => (
+      {results.map((result) => (
         <Link
           key={result._id}
           onClick={() => setSearchIsOpen(false)}
