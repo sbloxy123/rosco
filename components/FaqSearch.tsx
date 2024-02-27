@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import AccordionTemplate from "./AccordionTemplate";
+import { useSearchParams } from "next/navigation";
 
 interface Faq {
   _id: string;
@@ -19,8 +20,15 @@ export default function FaqSearch({
   const [query, setQuery] = useState("");
   const [iteration, setIteration] = useState(5);
   const [filteredFaqs, setFilteredFaqs] = useState<Faq[]>([]);
+  const searchParams = useSearchParams();
+  const filterParam = searchParams.get("searchTerm");
+  console.log(filterParam);
 
   useEffect(() => {
+    if (filterParam) {
+      setQuery(filterParam);
+    }
+
     const searchFilter = (array: Faq[]) => {
       return array.filter(
         (el) =>
@@ -30,16 +38,7 @@ export default function FaqSearch({
     };
     const updatedFilteredFaqs = searchFilter(faqs);
     setFilteredFaqs(updatedFilteredFaqs);
-  }, [query, faqs]);
-
-  // const searchFilter = (array: Faq[]) => {
-  //   return array.filter(
-  //     (el) =>
-  //       el.question.toLowerCase().includes(query) ||
-  //       el.answer.toLowerCase().includes(query)
-  //   );
-  // };
-  // const filteredFaqs = searchFilter(faqs);
+  }, [query, faqs, filterParam]);
 
   const uniqueFilteredFaqs = Array.from(
     new Set(filteredFaqs.map((faq) => faq._id))
@@ -153,7 +152,7 @@ export default function FaqSearch({
             </span>
             <input
               type="search"
-              placeholder={placeholder}
+              placeholder={`${filterParam ? filterParam : placeholder}`}
               onChange={handleInput}
               className={`p-4 bg-white placeholder:text-theme-dark placeholder:text-opacity-40 focus:text-theme-dark text-theme-dark text-center placeholder:text-[1.8rem] xsmall:placeholder:text-[clamp(1rem,2.4vw,1.8rem)] rounded-sm w-full uppercase font-headings text-[1.8rem] tracking-[0.12em] xsmall:w-[clamp(290px,54vw,500px)] placeholder:font-[500]  xsmall:placeholder:text-center placeholder:text-center xsmall:text-left h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out xsmall:pl-[5rem]`}
             />

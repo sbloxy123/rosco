@@ -5,7 +5,7 @@ import BgDots from "./assets/BgDots";
 import ProjectsComponent from "./ProjectComponent";
 import FilterButton from "./common/FilterButton";
 import { FilterButtonSwiper } from "./swiper/Swipers";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 export default function ProjectsFilter({
   projects,

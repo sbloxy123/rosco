@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { groq } from "next-sanity";
 import client from "../../../sanity/sanity.client";
-import SearchResultImage from "@/components/SearchResultImage";
 import Image from "next/image";
 
 const backgroundVariants = {
@@ -145,15 +144,17 @@ interface SearchResultListProps {
   setSearchIsOpen: (isOpen: boolean) => void;
   results: any[];
   faqMainImage: faqImageType[] | null;
+  searchTerm?: string;
 }
 
 const SearchResultList: React.FC<SearchResultListProps> = ({
   setSearchIsOpen,
   results,
   faqMainImage,
+  searchTerm,
 }) => {
-  console.log(results);
-  console.log(faqMainImage);
+  // console.log(results);
+  // console.log(faqMainImage);
 
   return (
     <>
@@ -187,14 +188,15 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
                 <div className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px]  aspect-square">
                   <Image
                     src={serviceThumbnail}
-                    fill={true}
+                    height={52}
+                    width={52}
                     alt="thumbnail services image"
-                    className=""
+                    className="grayscale object-cover h-full"
                   />
                 </div>
-                <div className="capitalize">
+                <div className="capitalize text-[1.6rem]">
                   <span>{typeLabel} / </span>
-                  <strong>{title}</strong>
+                  <span className="font-semibold">{title}</span>
                 </div>
               </div>
             </Link>
@@ -208,7 +210,7 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
               onClick={() => setSearchIsOpen(false)}
               href={{
                 pathname: "/faqs", // General projects page
-                query: { searchTerm: "" }, // Pass the filter in the query string
+                query: { searchTerm: searchTerm }, // Pass the filter in the query string
               }}
             >
               <div className="flex gap-[2rem] items-center">
@@ -221,25 +223,21 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
                           width={52}
                           height={52}
                           alt={img.FaqPage.pageImage.image}
-                          className="cover"
+                          className="object-cover h-full"
                         />
                       </div>
                     );
                   })}
 
-                <div className="capitalize">
+                <div className="capitalize text-[1.6rem]">
                   <span>FAQs / </span>
-                  <strong>{faqQuestion}</strong>
+                  <span className="font-semibold">{faqQuestion}</span>
                 </div>
               </div>
             </Link>
           );
           // projects results:
         } else {
-          // For projects, pass a filter (e.g., project title) to the projects page
-          // Assuming you want to filter projects by title or another attribute
-          console.log(projectThumbnail[0].image, "thumbnail.......", index);
-
           return (
             <Link
               key={index}
@@ -253,14 +251,15 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
                 <div className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px]  aspect-square">
                   <Image
                     src={projectThumbnail}
-                    fill={true}
+                    height={52}
+                    width={52}
                     alt="thumbnail services image"
-                    className="grayscale"
+                    className="grayscale object-cover h-full"
                   />
                 </div>
-                <div className="capitalize">
+                <div className="capitalize text-[1.6rem]">
                   <span>{typeLabel} / </span>
-                  <strong>{title}</strong>
+                  <span className="font-semibold">{title}</span>
                 </div>
               </div>
             </Link>
@@ -321,7 +320,11 @@ function Navbar() {
   }, [searchText]);
 
   return (
-    <div className="z-50 small:fixed top-0 left-0 w-full bg-white">
+    <div
+      className={`z-50 small:fixed top-0 left-0 w-full bg-white ${
+        searchIsOpen || isOpen ? "fixed" : "relative"
+      }`}
+    >
       <header className="relative tracking-[0.06em]">
         <div className="relative z-50 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
@@ -667,6 +670,7 @@ function Navbar() {
                   results={results}
                   setSearchIsOpen={setSearchIsOpen}
                   faqMainImage={faqMainImage} // Pass the main FAQ image as a prop
+                  searchTerm={searchText}
                 />
               </motion.div>
             </motion.div>
