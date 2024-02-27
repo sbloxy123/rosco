@@ -463,8 +463,8 @@ input[type="text"]::-webkit-search-cancel-button {
 
 .thumbMiniSwiper {
   .swiper-wrapper {
-    justify-content: flex-end;
-    gap: 1rem;
+    /* justify-content: flex-end;
+    gap: 1rem; */
     .swiper-slide {
       width: fit-content !important;
     }

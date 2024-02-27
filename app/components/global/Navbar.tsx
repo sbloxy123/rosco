@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { groq } from "next-sanity";
 import client from "../../../sanity/sanity.client";
+import SearchResultImage from "@/components/SearchResultImage";
+import Image from "next/image";
 
 const backgroundVariants = {
   open: {
@@ -70,22 +72,88 @@ const query: string = groq`
         "slug": slug.current,
         serviceTitle,
         serviceSummary,
+        servicePageImage {alt, "image": asset->url},
         projectTitle,
         projectSummary,
+        gallery {
+          images[] {
+            alt,
+            "image": asset->url,
+            asset->{_ref},
+          }
+        },
         categories,
         question,
         answer,
     }
   `;
+
+const faqMainImageQuery = groq`*[_type == "innerPage"] {
+  _id,
+ FaqPage {
+   pageImage {
+       alt,
+     "image": asset->url,
+     asset {
+       _ref
+     },
+     crop {
+       _type,
+       bottom,
+       left,
+       top,
+       right
+     },
+     hotspot {
+       _type,
+       height,
+       width,
+       x,
+       y
+     }
+   },
+ }
+}
+`;
+export type faqImageType = {
+  FaqPage: {
+    _id: string;
+    pageImage: {
+      alt: string;
+      image: string;
+      asset: {
+        _ref: string;
+      };
+      crop: {
+        _type: "sanity.imageCrop";
+        bottom: number;
+        left: number;
+        right: number;
+        top: number;
+      };
+      hotspot: {
+        _type: "sanity.imageHotspot";
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+      };
+    };
+  };
+};
 interface SearchResultListProps {
   setSearchIsOpen: (isOpen: boolean) => void;
   results: any[];
+  faqMainImage: faqImageType[] | null;
 }
+
 const SearchResultList: React.FC<SearchResultListProps> = ({
   setSearchIsOpen,
   results,
+  faqMainImage,
 }) => {
   console.log(results);
+  console.log(faqMainImage);
 
   return (
     <>
@@ -99,22 +167,39 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
           result._type === "service" ? "" : result.categories;
         const typeLabel = result._type === "service" ? "services" : "projects";
         const faqQuestion = result._type === "faq" && result.question;
+        const serviceThumbnail =
+          result._type === "service" && result.servicePageImage.image;
+        const projectThumbnail =
+          result._type === "projects" && result.gallery.images[0].image;
 
         // Adjusting the Link component's href based on whether it's a service or a project
+        // services results:
         if (result._type === "service") {
           // For services, navigate directly to the service page
+
           return (
             <Link
               key={index}
               onClick={() => setSearchIsOpen(false)}
               href={`/${typeLabel}/${result.slug}`}
             >
-              <div className="capitalize">
-                <span>{typeLabel} / </span>
-                <strong>{title}</strong>
+              <div className="flex gap-[2rem] items-center">
+                <div className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px]  aspect-square">
+                  <Image
+                    src={serviceThumbnail}
+                    fill={true}
+                    alt="thumbnail services image"
+                    className=""
+                  />
+                </div>
+                <div className="capitalize">
+                  <span>{typeLabel} / </span>
+                  <strong>{title}</strong>
+                </div>
               </div>
             </Link>
           );
+          // faq results:
         } else if (result._type === "faq") {
           // For services, navigate directly to the service page
           return (
@@ -126,15 +211,35 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
                 query: { searchTerm: "" }, // Pass the filter in the query string
               }}
             >
-              <div className="capitalize">
-                <span>FAQs / </span>
-                <strong>{faqQuestion}</strong>
+              <div className="flex gap-[2rem] items-center">
+                {faqMainImage &&
+                  faqMainImage.map((img) => {
+                    return (
+                      <div className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px]  aspect-square">
+                        <Image
+                          src={img.FaqPage.pageImage.image}
+                          width={52}
+                          height={52}
+                          alt={img.FaqPage.pageImage.image}
+                          className="cover"
+                        />
+                      </div>
+                    );
+                  })}
+
+                <div className="capitalize">
+                  <span>FAQs / </span>
+                  <strong>{faqQuestion}</strong>
+                </div>
               </div>
             </Link>
           );
+          // projects results:
         } else {
           // For projects, pass a filter (e.g., project title) to the projects page
           // Assuming you want to filter projects by title or another attribute
+          console.log(projectThumbnail[0].image, "thumbnail.......", index);
+
           return (
             <Link
               key={index}
@@ -144,9 +249,19 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
                 query: { filter: projectCategories }, // Pass the filter in the query string
               }}
             >
-              <div className="capitalize">
-                <span>{typeLabel} / </span>
-                <strong>{title}</strong>
+              <div className="flex gap-[2rem] items-center">
+                <div className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px]  aspect-square">
+                  <Image
+                    src={projectThumbnail}
+                    fill={true}
+                    alt="thumbnail services image"
+                    className="grayscale"
+                  />
+                </div>
+                <div className="capitalize">
+                  <span>{typeLabel} / </span>
+                  <strong>{title}</strong>
+                </div>
               </div>
             </Link>
           );
@@ -159,6 +274,17 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
+  const [faqMainImage, setFaqMainImage] = useState(null);
+
+  useEffect(() => {
+    // Fetch and set the main FAQ image when the component mounts
+    const fetchFaqMainImage = async () => {
+      const image = await client.fetch(faqMainImageQuery);
+      setFaqMainImage(image);
+    };
+
+    fetchFaqMainImage();
+  }, []);
 
   // search states
   const ref = useRef<any>();
@@ -466,7 +592,7 @@ function Navbar() {
             >
               <motion.div
                 variants={navVariants}
-                className="absolute left-0 w-full h-full py-20 flex flex-col justify-start gap-[3rem] bg-white items-center uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small"
+                className="absolute left-0 w-full h-full py-20 px-[5%] flex flex-col justify-start gap-[3rem] bg-white items-start uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small overflow-auto"
               >
                 {/* form in mobile view */}
                 <form
@@ -540,6 +666,7 @@ function Navbar() {
                 <SearchResultList
                   results={results}
                   setSearchIsOpen={setSearchIsOpen}
+                  faqMainImage={faqMainImage} // Pass the main FAQ image as a prop
                 />
               </motion.div>
             </motion.div>

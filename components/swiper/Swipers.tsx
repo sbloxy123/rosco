@@ -393,6 +393,7 @@ export default function ProjectsImageSwiper({
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
         className="thumbMiniSwiper mt-[2rem]"
+        wrapperClass="justify-start xsmall:justify-end gap-[1rem]"
       >
         <SwiperSlide>
           <div className="relative w-[52px] h-[52px] aspect-square cursor-pointer">
