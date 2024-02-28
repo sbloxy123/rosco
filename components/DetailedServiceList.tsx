@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { serviceType } from "@/types";
 // import { getServiceLinks } from "@/sanity/sanity.query";
 import ServiceItem from "@/components/ServiceItem";
+import useServiceOrder from "./useServiceOrder";
 
 export default function DetailedServiceList({
   allServices,
@@ -11,24 +12,25 @@ export default function DetailedServiceList({
   allServices: serviceType[];
 }) {
   // const allServices: serviceType[] = await getServiceLinks();
+  const { services, reorderService } = useServiceOrder(allServices);
 
-  const [serviceOrder, setServiceOrder] = useState([...allServices]);
+  // const [serviceOrder, setServiceOrder] = useState([...allServices]);
 
   // Function to handle click event when a link is clicked
-  const handleServiceLinkClick = (clickedIndex: number) => {
-    setServiceOrder((prevOrder) => {
-      const updatedOrder = [
-        ...prevOrder.slice(0, clickedIndex),
-        ...prevOrder.slice(clickedIndex + 1),
-        prevOrder[clickedIndex],
-      ];
-      return updatedOrder;
-    });
-  };
+  // const handleServiceLinkClick = (clickedIndex: number) => {
+  //   setServiceOrder((prevOrder) => {
+  //     const updatedOrder = [
+  //       ...prevOrder.slice(0, clickedIndex),
+  //       ...prevOrder.slice(clickedIndex + 1),
+  //       prevOrder[clickedIndex],
+  //     ];
+  //     return updatedOrder;
+  //   });
+  // };
 
   return (
     <div>
-      {serviceOrder.map((service, index) => {
+      {services.map((service, index) => {
         return (
           <div key={service._id}>
             <ServiceItem
@@ -39,7 +41,7 @@ export default function DetailedServiceList({
               heading={service.serviceSummary}
               text={service.description}
               index={index}
-              onClick={() => handleServiceLinkClick(index)} // Pass the index to the click handler
+              onClick={() => reorderService(index)}
             />
           </div>
         );
