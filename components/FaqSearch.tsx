@@ -22,13 +22,33 @@ export default function FaqSearch({
   const [filteredFaqs, setFilteredFaqs] = useState<Faq[]>([]);
   const searchParams = useSearchParams();
   const filterParam = searchParams.get("searchTerm");
-  console.log(filterParam);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  // console.log(filterParam);
 
   useEffect(() => {
+    // Check if filterParam is not null or undefined before setting it
     if (filterParam) {
       setQuery(filterParam);
     }
+  }, [filterParam]);
 
+  useEffect(() => {
+    // Only scroll on the initial load if the searchTerm is present
+    if (isInitialLoad && filterParam) {
+      setTimeout(() => {
+        const element = document.getElementById("scroll__to__search");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          // After scrolling, set isInitialLoad to false to prevent future scrolls
+          setIsInitialLoad(false);
+        }
+      }, 250); // Adjust delay as needed, but keep it as short as possible
+    }
+    // This effect should run only once on mount, hence the empty dependency array
+  }, []);
+
+  useEffect(() => {
     const searchFilter = (array: Faq[]) => {
       return array.filter(
         (el) =>
@@ -36,9 +56,10 @@ export default function FaqSearch({
           el.answer.toLowerCase().includes(query.toLowerCase())
       );
     };
+
     const updatedFilteredFaqs = searchFilter(faqs);
     setFilteredFaqs(updatedFilteredFaqs);
-  }, [query, faqs, filterParam]);
+  }, [query, faqs]);
 
   const uniqueFilteredFaqs = Array.from(
     new Set(filteredFaqs.map((faq) => faq._id))
@@ -152,9 +173,11 @@ export default function FaqSearch({
             </span>
             <input
               type="search"
-              placeholder={`${filterParam ? filterParam : placeholder}`}
+              placeholder={placeholder}
+              value={query}
+              id="scroll__to__search"
               onChange={handleInput}
-              className={`p-4 bg-white placeholder:text-theme-dark placeholder:text-opacity-40 focus:text-theme-dark text-theme-dark text-center placeholder:text-[1.8rem] xsmall:placeholder:text-[clamp(1rem,2.4vw,1.8rem)] rounded-sm w-full uppercase font-headings text-[1.8rem] tracking-[0.12em] xsmall:w-[clamp(290px,54vw,500px)] placeholder:font-[500]  xsmall:placeholder:text-center placeholder:text-center xsmall:text-left h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out xsmall:pl-[5rem]`}
+              className={`p-4 bg-white placeholder:text-theme-dark placeholder:text-opacity-40 focus:text-theme-dark text-theme-dark text-center placeholder:text-[1.8rem] xsmall:placeholder:text-[clamp(1rem,2.4vw,1.8rem)] rounded-sm w-full font-headings text-[1.8rem] tracking-[0.12em] xsmall:w-[clamp(290px,54vw,500px)] placeholder:font-[500]  xsmall:placeholder:text-center placeholder:text-center xsmall:text-left h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out xsmall:pl-[5rem]`}
             />
             <button
               type="submit"

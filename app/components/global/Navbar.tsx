@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, RefObject, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { groq } from "next-sanity";
@@ -153,8 +153,8 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
   faqMainImage,
   searchTerm,
 }) => {
-  // console.log(results);
-  // console.log(faqMainImage);
+  console.log(results);
+  console.log(faqMainImage);
 
   return (
     <>
@@ -270,10 +270,34 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
   );
 };
 
+function useOutsideClick(
+  ref: RefObject<HTMLElement>,
+  callback: () => void
+): void {
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        callback();
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref, callback]);
+}
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [faqMainImage, setFaqMainImage] = useState(null);
+  const searchRef = useRef(null); // Create a ref for the search element
+  const [searchText, setSearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     // Fetch and set the main FAQ image when the component mounts
@@ -285,20 +309,15 @@ function Navbar() {
     fetchFaqMainImage();
   }, []);
 
-  // search states
-  const ref = useRef<any>();
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  const [searchText, setSearchText] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState([]);
+  useOutsideClick(searchRef, () => {
+    if (searchIsOpen) {
+      setSearchIsOpen(false); // Close the search area when clicked outside
+    }
+  });
 
-  // useOutsideClick({
-  //   ref: ref,
-  //   handler: () => {
-  //     setIsModalOpen(false);
-  //     setProducts([]);
-  //   },
-  // });
+  // search states
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
   const fetchResults = async () => {
     setIsLoading(true);
     const results = await client.fetch(query, {
@@ -401,7 +420,7 @@ function Navbar() {
               </Link>
             </div>
 
-            {/* desktop nav */}
+            {/* ====== desktop nav ====== */}
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
@@ -459,7 +478,7 @@ function Navbar() {
               </div>
             </div>
 
-            {/* nav extras */}
+            {/* ==== nav extras ==== */}
             <div className="flex gap-[1rem]">
               <form
                 className="nav-search-form relative flex flex-col justify-center gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:flex-row small:w-fit small:mr-0"
@@ -526,7 +545,7 @@ function Navbar() {
                 />
               </form>
 
-              {/* == MOBILE MENU OPEN/CLOSE BUTTONS  */}
+              {/* == MOBILE MENU OPEN/CLOSE BUTTONS == */}
 
               <div className="-mr-2 flex small:hidden">
                 <button
@@ -583,7 +602,7 @@ function Navbar() {
           </div>
         </div>
 
-        {/* mobile nav search results */}
+        {/* ========= search results ======== */}
         <AnimatePresence>
           {searchIsOpen && (
             <motion.div
@@ -591,6 +610,7 @@ function Navbar() {
               initial="closed"
               animate="open"
               exit="exit"
+              ref={searchRef}
               variants={backgroundVariants}
             >
               <motion.div
@@ -662,7 +682,9 @@ function Navbar() {
                     type="search"
                     placeholder="Search"
                     // value={email}
-                    onChange={(e) => setSearchText(e.target.value)}
+                    onChange={(e) => {
+                      setSearchText(e.target.value);
+                    }}
                     className="site__search--input p-4 bg-[rgba(230,230,231,0.3)] text-left pl-[20%] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                   />
                 </form>
@@ -677,7 +699,7 @@ function Navbar() {
           )}
         </AnimatePresence>
 
-        {/* mobile nav dropdown */}
+        {/* =========  mobile nav dropdown ======== */}
         <AnimatePresence>
           {isOpen && (
             <motion.nav
