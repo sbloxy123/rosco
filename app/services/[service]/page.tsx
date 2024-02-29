@@ -4,9 +4,7 @@ import { getSingleService } from "@/sanity/sanity.query";
 import type { serviceType } from "@/types";
 import InnerHero from "@/components/InnerHero";
 import ServiceBanner from "@/components/ServiceBanner";
-// import fallBackImage from "@/public/project.png";
 import { getServiceLinks } from "@/sanity/sanity.query";
-import ServiceItem from "@/components/ServiceItem";
 import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
@@ -55,21 +53,6 @@ export default async function Service({ params }: Props) {
       />
 
       <DetailedServiceList allServices={allServices} />
-
-      {/* {allServices.map((service, index) => {
-        return (
-          <div key={service._id}>
-            <ServiceItem
-              title={service.serviceTitle}
-              slug={service.slug}
-              image={service.servicePageImage}
-              heading={service.serviceSummary}
-              text={service.description}
-              index={index}
-            />
-          </div>
-        );
-      })} */}
 
       <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta />

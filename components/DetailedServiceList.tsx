@@ -14,20 +14,6 @@ export default function DetailedServiceList({
   // const allServices: serviceType[] = await getServiceLinks();
   const { services, reorderService } = useServiceOrder(allServices);
 
-  // const [serviceOrder, setServiceOrder] = useState([...allServices]);
-
-  // Function to handle click event when a link is clicked
-  // const handleServiceLinkClick = (clickedIndex: number) => {
-  //   setServiceOrder((prevOrder) => {
-  //     const updatedOrder = [
-  //       ...prevOrder.slice(0, clickedIndex),
-  //       ...prevOrder.slice(clickedIndex + 1),
-  //       prevOrder[clickedIndex],
-  //     ];
-  //     return updatedOrder;
-  //   });
-  // };
-
   return (
     <div>
       {services.map((service, index) => {

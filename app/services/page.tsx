@@ -21,8 +21,6 @@ import DetailedServiceList from "@/components/DetailedServiceList";
 export default async function Services() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
   const services: serviceType[] = await getServiceLinks();
-  const serviceSectionHeadings: serviceSectionType[] =
-    await getServicesSectionTitles();
 
   return (
     <div>
@@ -82,6 +80,8 @@ export default async function Services() {
                 </div>
                 <ul className="pt-[3rem] small:max-w-[500px] mx-auto">
                   {services.map((service) => {
+                    console.log(service._id);
+
                     return (
                       <li
                         key={service._id}
@@ -98,21 +98,6 @@ export default async function Services() {
               </div>
             </div>
             <DetailedServiceList allServices={services} />
-
-            {/* {services.map((service, index) => {
-              return (
-                <div key={service._id}>
-                  <ServiceItem
-                    title={service.serviceTitle}
-                    slug={service.slug}
-                    image={service.servicePageImage}
-                    heading={service.serviceSummary}
-                    text={service.description}
-                    index={index}
-                  />
-                </div>
-              );
-            })} */}
           </div>
         );
       })}
