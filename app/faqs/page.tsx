@@ -14,6 +14,7 @@ interface Faq {
 export default async function faqs() {
   const faqPageContent: faqPageType[] = await getFaqPageContent();
   const faqs: Faq[] = await getFaqs();
+  console.log(faqs);
 
   return (
     <main>
