@@ -50,7 +50,7 @@ export default async function ContactSection({
         </div>
       </div>
 
-      {contactContent.map((content) => {
+      {contactContent.map((content, index) => {
         const titleWithLineBreaks = content.contactUs.message.replace(
           /\\n/g,
           "\n"
@@ -60,7 +60,7 @@ export default async function ContactSection({
           " "
         );
         return (
-          <div className="relative">
+          <div key={index} className="relative">
             <div className="hidden small:block ml-[-5%] w-[105%] max-h-[4px] overflow-hidden small:max-w-[1218px] small:mx-auto">
               <svg
                 width="100%"
@@ -106,10 +106,7 @@ export default async function ContactSection({
             </div>
 
             <div className="relative my-24 small:flex gap-[2rem] small:justify-between small:items-center small:w-full small:max-w-[1120px] mx-auto">
-              <div
-                key={content._id}
-                className="relative px-[5%] text-center small:text-left small:px-0"
-              >
+              <div className="relative px-[5%] text-center small:text-left small:px-0">
                 <div className="px-14 max-w-[450px] xsmall:max-w-[520px] mx-auto small:px-0">
                   <h2 className="">{content.contactUs.title}</h2>
                   <p className="pt-14 xsmall:hidden font-300 xsmall:text-[1.6rem] text-[1.4rem]">

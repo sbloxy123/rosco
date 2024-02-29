@@ -398,7 +398,9 @@ export async function getAboutPageContent() {
 export async function getServicesPageContent() {
   return client.fetch(
     groq`*[_type == "innerPage" && defined(ServicesPage)] {
+        _id,
       ServicesPage {
+        // _id,
         pageHeading,
         pageImage {
               alt,
@@ -455,6 +457,7 @@ export async function getProjectsPageContent() {
        _id,
       title,
       ProjectsPage {
+        _id,
         pageHeading,
         pageImage {
             alt,

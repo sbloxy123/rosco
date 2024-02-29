@@ -25,10 +25,8 @@ export default async function Services() {
   return (
     <div>
       {servicesContent.map((content) => {
-        // console.log(content.ServicesPage.introBgImage);
-
         return (
-          <div key={content.ServicesPage._id}>
+          <div key={content._id}>
             <InnerHero
               title={content.ServicesPage.pageHeading}
               image={content.ServicesPage.pageImage}
@@ -79,9 +77,7 @@ export default async function Services() {
                   <p className="pt-10">{content.ServicesPage.introText}</p>
                 </div>
                 <ul className="pt-[3rem] small:max-w-[500px] mx-auto">
-                  {services.map((service) => {
-                    console.log(service._id);
-
+                  {services.map((service, index) => {
                     return (
                       <li
                         key={service._id}

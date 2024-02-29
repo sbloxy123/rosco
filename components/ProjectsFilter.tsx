@@ -20,7 +20,7 @@ export default function ProjectsFilter({
 
   const searchParams = useSearchParams();
   const filterParam = searchParams.get("filter");
-  console.log(filterParam);
+  // console.log(filterParam);
 
   useEffect(() => {
     // Check if there is a filterParam in the URL
@@ -183,7 +183,7 @@ export default function ProjectsFilter({
       {/* projects */}
       <div>
         {assets.map((content, index) => (
-          <div key={content.ProjectsPage._id + index}>
+          <div key={content._id + index}>
             {/* Map over all projects to filter based on the category */}
             {allProjects
               .filter((project) =>

@@ -14,7 +14,7 @@ export default async function Projects() {
     <div>
       {projectsContent.map((content) => {
         return (
-          <div key={content.ProjectsPage._id}>
+          <div key={content._id}>
             <InnerHero
               title={content.ProjectsPage.pageHeading}
               image={content.ProjectsPage.pageImage}

@@ -371,8 +371,9 @@ export type aboutPageType = {
 };
 
 export type servicesPageType = {
+  _id: string;
   ServicesPage: {
-    _id: string;
+    // _id: string;
     pageHeading: string;
     pageImage: {
       alt: string;
@@ -422,6 +423,7 @@ export type servicesPageType = {
 };
 
 export type projectsPageType = {
+  _id: string;
   ProjectsPage: {
     _id: string;
     pageHeading: string;
