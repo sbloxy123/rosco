@@ -14,12 +14,23 @@ export function urlFor(source: String) {
   return builder.image(source);
 }
 
+interface Hotspot {
+  width: number;
+  x: number;
+  y: number;
+  _type: "sanity.imageHotspot";
+  height: number;
+}
+
 export const getCroppedImageSrc = (image: SanityImageQueryResult) => {
   const imageRef = image.asset._ref;
   const crop = image.crop;
+  // const hotspot = image.hotspot;
 
   // get the image's og dimensions
   const { width, height } = getImageDimensions(imageRef);
+
+  let url = urlFor(imageRef);
 
   if (Boolean(crop)) {
     // compute the cropped image's area
@@ -29,10 +40,16 @@ export const getCroppedImageSrc = (image: SanityImageQueryResult) => {
     const left = Math.floor(width * crop.left);
     const top = Math.floor(height * crop.top);
     // gather into a url
-    return urlFor(imageRef).rect(left, top, croppedWidth, croppedHeight).url();
+    url = url.rect(left, top, croppedWidth, croppedHeight);
   }
-  return urlFor(imageRef).url();
+  return url;
 };
+
+export default function getPositionFromHotspot(hotspot: Hotspot) {
+  if (!hotspot || !hotspot.x || !hotspot.y) return "center";
+
+  return `${hotspot.x * 100}% ${hotspot.y * 100}%`;
+}
 
 export async function getHero() {
   return client.fetch(

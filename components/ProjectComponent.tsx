@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { getCroppedImageSrc } from "@/sanity/sanity.query";
 import type { projectType } from "@/types";
 import { ImageSlider } from "./ImageSlider";
 import Image from "next/image";
 import ProjectsImageSwiper from "./swiper/Swipers";
+import { useSearchParams } from "next/navigation";
 
 interface BgImage {
   alt: string;
@@ -33,8 +35,27 @@ export default function ProjectsComponent({
   project: projectType;
   bg: BgImage;
 }) {
+  const searchParams = useSearchParams();
+  const filterParam = searchParams.get("filter");
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  useEffect(() => {
+    // Only scroll on the initial load if the searchTerm is present
+    if (isInitialLoad && filterParam) {
+      setTimeout(() => {
+        const element = document.getElementById(`${filterParam}`);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          // After scrolling, set isInitialLoad to false to prevent future scrolls
+          setIsInitialLoad(false);
+        }
+      }, 250); // Adjust delay as needed, but keep it as short as possible
+    }
+    // This effect should run only once on mount, hence the empty dependency array
+  }, []);
+
   return (
-    <div className="block relative z-0 text-white">
+    <div id={project._id} className="block relative z-0 text-white">
       <div
         style={
           {

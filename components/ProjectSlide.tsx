@@ -267,7 +267,10 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
           </div>
           <div className="project__btn mt-[4rem] xsmall:mt-[3.2rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
             <ButtonLink
-              destination={`projects/{project.slug}`}
+              destination={{
+                pathname: "/projects", // General projects page
+                query: `${project._id}`, // Pass the filter in the query string
+              }}
               ctaType="general"
               text="view project"
               theme="light"

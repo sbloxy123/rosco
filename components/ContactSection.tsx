@@ -135,7 +135,7 @@ export default async function ContactSection({
                   <div className="xsmall:max-w-[176px]">
                     <ButtonLink
                       theme="light"
-                      destination={content.contactUs.contactNumber}
+                      destination={`tel:${content.contactUs.contactNumber}`}
                       text={content.contactUs.phoneButtonText}
                       ctaType="phone"
                       hoverEffect="fill-col"
@@ -144,7 +144,7 @@ export default async function ContactSection({
                   <div className="xsmall:max-w-[176px]">
                     <ButtonLink
                       theme="light"
-                      destination={content.contactUs.emailAddress}
+                      destination={`mailto:${content.contactUs.emailAddress}`}
                       text={content.contactUs.emailButtonText}
                       ctaType="email"
                       hoverEffect="fill-col"

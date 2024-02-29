@@ -10,13 +10,23 @@ const ButtonLink = ({
   ctaType,
   hoverEffect,
 }: {
-  destination?: string;
+  destination?: string | { pathname: string; query?: string };
   text: string;
   bgColor?: string;
   theme: "dark" | "light" | "white";
   ctaType: "general" | "email" | "phone" | "none";
   hoverEffect: "outline" | "fill-col" | "fill-white";
 }) => {
+  const isDestinationObject = typeof destination === "object";
+
+  // Construct href based on destination type
+  let href = destination;
+  if (typeof destination === "object") {
+    // Construct the query string if there are query parameters
+    const queryString = destination.query ? `?filter=${destination.query}` : "";
+    href = `${destination.pathname}${queryString}`;
+  }
+
   const color = theme == "dark" ? `theme-dark` : `white`;
   const fill = theme == "dark" ? `fill-theme-dark` : `fill-white`;
   // const borderClass = `border-[${color}]`;
@@ -52,7 +62,7 @@ const ButtonLink = ({
   // changed border through global css as tailwind uses border-style which wasnt working so changed.
   return (
     <Link
-      href={`${destination}`}
+      href={`${href}`}
       className={`button__link block border-[2px]  border-solid border-${color} rounded-sm ${
         bgColor == "white" ? `text-theme-purple bg-white` : `text-${color}`
       } py-[1.1rem] w-full bg-${bgColor} transition hover:duration-300 ${hover} group`}

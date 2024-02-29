@@ -619,12 +619,12 @@ function Navbar() {
               >
                 {/* form in mobile view */}
                 <form
-                  className="xsmall:hidden nav-search-form relative flex justify-end flex-row w-full px-[5%]"
+                  className="xsmall:hidden nav-search-form relative flex justify-end flex-row w-full"
                   // onSubmit={handleSubmit}
                 >
                   {/* search form icons */}
                   <div className="flex items-center gap-[1rem]">
-                    <div className="absolute top-0 left-[7%] h-full w-auto">
+                    <div className="absolute top-0 left-0 h-full w-auto">
                       {/* magnifying glass button */}
                       <button
                         className="h-full aspect-square flex justify-center items-center cursor-default"

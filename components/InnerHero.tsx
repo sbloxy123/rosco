@@ -1,10 +1,13 @@
-import { getCroppedImageSrc } from "@/sanity/sanity.query";
+import getPositionFromHotspot, {
+  getCroppedImageSrc,
+} from "@/sanity/sanity.query";
 import type { SanityImageQueryResult } from "@/types";
 import ButtonLink from "./common/ButtonLink";
 import GradientLineThick from "./assets/GradientLineThick";
 import GradientLineVerticalThick from "./assets/GradientLineVerticalThick";
 import { MapProvider } from "@/components/providers/map-provider";
 import { MapComponent } from "@/components/Map";
+import Image from "next/image";
 
 export default async function InnerHero({
   title,
@@ -21,6 +24,8 @@ export default async function InnerHero({
   pageNumber?: string;
   smallScreenTitle?: string;
 }) {
+  console.log(image);
+
   return (
     <section>
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto small:items-center small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
@@ -62,10 +67,17 @@ export default async function InnerHero({
         </div>
         <div className="relative w-full mx-[390/408] aspect-square xsmall:px-0 xsmall:aspect-[744/408] small:aspect-[704/480] small:w-full small:h-auto small:max-w-[704px] small:mr-0">
           {image ? (
-            <img
-              alt={imageAltText}
-              src={getCroppedImageSrc(image)}
-              className="object-cover w-full h-full"
+            // <img
+            //   alt={imageAltText}
+            //   src={getCroppedImageSrc(image)}
+            //   className="object-cover w-full h-full"
+            // />
+            <Image
+              src={getCroppedImageSrc(image).url()}
+              alt={image.alt}
+              fill
+              className="object-cover"
+              objectPosition={getPositionFromHotspot(image?.hotspot)}
             />
           ) : (
             <MapProvider>
