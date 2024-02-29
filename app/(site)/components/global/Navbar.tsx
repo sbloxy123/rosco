@@ -3,7 +3,7 @@ import { useEffect, useRef, RefObject, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { groq } from "next-sanity";
-import client from "../../../sanity/sanity.client";
+import client from "../../../../sanity/sanity.client";
 import Image from "next/image";
 
 const backgroundVariants = {

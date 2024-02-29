@@ -1,7 +1,7 @@
 import Image from "next/image";
-import newPhones from "../app/assets/images/new-phones.png";
-import phones from "../app/assets/images/new-phones.png";
-import flashGraphic from "../app/assets/images/flash-graphic.png";
+import newPhones from "../app/(site)/assets/images/new-phones.png";
+import phones from "../app/(site)/assets/images/new-phones.png";
+import flashGraphic from "../app/(site)/assets/images/flash-graphic.png";
 import GraphicLogo from "../components/assets/GraphicLogo";
 
 const PhoneGraphic = () => {

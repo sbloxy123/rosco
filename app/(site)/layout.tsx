@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../globals.css";
 import type { Metadata } from "next";
 import { Montserrat, Raleway, Open_Sans } from "next/font/google";
 import Navbar from "./components/global/Navbar";

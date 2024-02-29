@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../icons/Logo.svg";
-import MailingListForm from "../../../components/MailingListForm";
+import MailingListForm from "../../../../components/MailingListForm";
 
 export default function Footer() {
   return (

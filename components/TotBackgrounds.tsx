@@ -1,10 +1,10 @@
 import Image from "next/image";
-import bg from "../app/assets/images/bg-image.png";
-import texLeft from "../app/assets/images/tex-left.png";
-import texRight from "../app/assets/images/tex-right.png";
-import texTop from "../app/assets/images/tex-top.png";
-import texBottom from "../app/assets/images/tex-bottom.png";
-import smBottomRight from "../app/assets/images/sm-bottom-right.png";
+import bg from "../app/(site)/assets/images/bg-image.png";
+import texLeft from "../app/(site)/assets/images/tex-left.png";
+import texRight from "../app/(site)/assets/images/tex-right.png";
+import texTop from "../app/(site)/assets/images/tex-top.png";
+import texBottom from "../app/(site)/assets/images/tex-bottom.png";
+import smBottomRight from "../app/(site)/assets/images/sm-bottom-right.png";
 
 const TotBackgrounds = () => {
   return (
