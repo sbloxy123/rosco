@@ -7,6 +7,20 @@ import TotPromo from "@/components/TotPromo";
 import Testimonials from "@/components/Testimonials";
 import AwardsSection from "@/components/AwardsSection";
 import ContactSection from "@/components/ContactSection";
+import type { Metadata } from "next";
+import { getHero } from "@/sanity/sanity.query";
+import type { heroType } from "@/types";
+
+export async function metadata() {
+  const hero: heroType[] = await getHero();
+  return {
+    title: "Rosco & Perlini | Home",
+    description: hero[0].heroHeading,
+    openGraph: {
+      images: hero[0].heroImage.image,
+    },
+  };
+}
 
 export default async function Home() {
   return (

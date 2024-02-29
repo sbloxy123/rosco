@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service: serviceType = await getSingleService(slug);
 
   return {
-    title: `${service.serviceTitle} | Project`,
+    title: `${service.serviceTitle} | Service`,
     description: service.serviceSummary,
     openGraph: {
       images: service.coverImage?.image || "add-a-fallback-project-image-here",

@@ -1,9 +1,9 @@
 import Image from "next/image";
-
 import { getCroppedImageSrc, getHero, urlFor } from "@/sanity/sanity.query";
 import type { heroType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import ButtonLink from "./common/ButtonLink";
+import type { Metadata } from "next";
 
 export default async function Hero() {
   const hero: heroType[] = await getHero();

@@ -8,29 +8,7 @@ import ButtonLink from "./common/ButtonLink";
 import { ServiceSwiper } from "./swiper/Swipers";
 import ServiceImageLink from "./ServiceImageLink";
 import BgDots from "./assets/BgDots";
-// import { Metadata } from "next";
 import service from "@/schemas/services";
-
-// type Props = {
-//   params: {
-//     service: string;
-//   };
-// };
-// Dynamic metadata for SEO
-// export async function generateMetadata({ params }: Props): Promise<Metadata> {
-//   const slug = params.service;
-//   const service: serviceType = await getSingleService(slug);
-
-//   return {
-//     title: `${service.serviceTitle} | Service`,
-//     description: service.serviceSummary,
-//     openGraph: {
-//       images: service?.coverImage.image || "add-a-fallback-project-image-here",
-//       title: service.serviceTitle,
-//       description: service.serviceSummary,
-//     },
-//   };
-// }
 
 export default async function ServiceImageLinkSwiper() {
   // const slug = params.service;

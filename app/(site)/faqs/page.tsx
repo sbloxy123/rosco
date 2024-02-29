@@ -11,6 +11,17 @@ interface Faq {
   answer: string;
 }
 
+export async function metadata() {
+  const faqPageContent: faqPageType[] = await getFaqPageContent();
+  return {
+    title: "Rosco & Perlini | FAQs",
+    description: faqPageContent[0].FaqPage.pageHeading,
+    openGraph: {
+      images: faqPageContent[0].FaqPage.pageImage,
+    },
+  };
+}
+
 export default async function faqs() {
   const faqPageContent: faqPageType[] = await getFaqPageContent();
   const faqs: Faq[] = await getFaqs();

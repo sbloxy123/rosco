@@ -5,12 +5,21 @@ import MailingListCta from "@/components/MailingListCta";
 import ServiceImageLinkSwiper from "@/components/ServiceImageLinkSwiper";
 import TotPromo from "@/components/TotPromo";
 import LatestProjects from "@/components/LatestProjects";
-
 import BgDots from "@/components/assets/BgDots";
 import { getCroppedImageSrc, getAboutPageContent } from "@/sanity/sanity.query";
 import type { aboutPageType } from "@/types";
-
 import { PortableText } from "@portabletext/react";
+
+export async function metadata() {
+  const aboutContent: aboutPageType[] = await getAboutPageContent();
+  return {
+    title: "Rosco & Perlini | About",
+    description: aboutContent[0].aboutPage.introHeading,
+    openGraph: {
+      images: aboutContent[0].aboutPage.pageImage,
+    },
+  };
+}
 
 export default async function About() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();

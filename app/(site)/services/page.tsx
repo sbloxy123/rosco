@@ -18,6 +18,17 @@ import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
 
+export async function metadata() {
+  const servicesContent: servicesPageType[] = await getServicesPageContent();
+  return {
+    title: "Rosco & Perlini | Services",
+    description: servicesContent[0].ServicesPage.pageHeading,
+    openGraph: {
+      images: servicesContent[0].ServicesPage.pageImage,
+    },
+  };
+}
+
 export default async function Services() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
   const services: serviceType[] = await getServiceLinks();

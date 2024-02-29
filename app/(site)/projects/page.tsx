@@ -6,6 +6,17 @@ import TotPromo from "@/components/TotPromo";
 import { getProjectsPageContent, getAllProjects } from "@/sanity/sanity.query";
 import type { projectsPageType, projectType } from "@/types";
 
+export async function metadata() {
+  const projectsContent: projectsPageType[] = await getProjectsPageContent();
+  return {
+    title: "Rosco & Perlini | Projects",
+    description: projectsContent[0].ProjectsPage.pageHeading,
+    openGraph: {
+      images: projectsContent[0].ProjectsPage.pageImage,
+    },
+  };
+}
+
 export default async function Projects() {
   const projectsContent: projectsPageType[] = await getProjectsPageContent();
   const projects: projectType[] = await getAllProjects();
