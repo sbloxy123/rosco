@@ -715,10 +715,11 @@ function Navbar() {
               exit="exit"
               ref={searchRef}
               variants={backgroundVariants}
+              style={{ visibility: "hidden" }}
             >
               <motion.div
                 variants={navVariants}
-                className="absolute left-0 w-full h-full py-20 px-[5%] flex flex-col justify-start gap-[3rem] bg-white items-start uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small overflow-auto"
+                className="visible absolute left-0 w-full h-full py-20 px-[5%] flex flex-col justify-start gap-[3rem] bg-white items-start uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small overflow-auto"
               >
                 {/* form in mobile view */}
                 <form

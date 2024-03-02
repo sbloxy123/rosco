@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "sanity";
 import { ServiceExtrasSwiper } from "./swiper/Swipers";
 import Image from "next/image";
+import OverflowText from "./OverflowText";
 
 interface BgImage {
   alt: string;
@@ -109,7 +110,12 @@ export default function ServiceBanner({
             />
           ) : (
             <div className="w-full px-[5%] small:px-0">
-              <h2 className="pb-[1.5rem]">{serviceTitle}</h2>
+              <OverflowText
+                serviceTitle={serviceTitle}
+                serviceText={serviceText}
+                additionalInfo={additionalInfo}
+              />
+              {/* <h2 className="pb-[1.5rem]">{serviceTitle}</h2>
               <div className="scrollbar-and-text-container">
                 <div
                   className={`portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto ${
@@ -120,7 +126,7 @@ export default function ServiceBanner({
                 >
                   <PortableText value={serviceText} />
                 </div>
-              </div>
+              </div> */}
             </div>
           )}
         </div>
