@@ -12,25 +12,21 @@ export const useRecordVoice = () => {
   const initSpeechRecognition = useCallback(() => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRecognition) {
-      speechRecognition.current = new SpeechRecognition();
-      speechRecognition.current.continuous = true;
-      speechRecognition.current.interimResults = true;
-      speechRecognition.current.onresult = (event) => {
-        const currentTranscript = Array.from(event.results)
-          .map((result) => result[0])
-          .map((result) => result.transcript)
-          .join("");
-        setTranscript(currentTranscript);
-      };
+    speechRecognition.current = new SpeechRecognition();
+    speechRecognition.current.continuous = true;
+    speechRecognition.current.interimResults = true;
+    speechRecognition.current.onresult = (event) => {
+      const currentTranscript = Array.from(event.results)
+        .map((result) => result[0])
+        .map((result) => result.transcript)
+        .join("");
+      setTranscript(currentTranscript); // Concatenate new results
+    };
 
-      speechRecognition.current.onerror = (event) => {
-        console.log("Speech recognition error", event.error);
-      };
-      setIsSpeechRecognitionSupported(true);
-    } else {
-      console.log("SpeechRecognition is not supported in this browser.");
-    }
+    speechRecognition.current.onerror = (event) => {
+      console.log("Speech recognition error", event.error);
+    };
+    setIsSpeechRecognitionSupported(true);
   }, []);
 
   const initMediaRecorder = useCallback(async () => {
@@ -62,19 +58,46 @@ export const useRecordVoice = () => {
     await initMediaRecorder();
   }, [initMediaRecorder, initSpeechRecognition]);
 
-  const startRecording = async () => {
-    if (!mediaRecorder) {
-      console.log("start recording...");
-      await initializeRecording();
+  const startRecording = () => {
+    // Stop the existing speech recognition session if it's running
+    if (speechRecognition.current && recording) {
+      speechRecognition.current.stop();
+      // Optionally, reset the transcript here if you want to clear the previous result
+      setTranscript("");
     }
-    if (
+
+    // Proceed to check and initialize if necessary
+    if (!mediaRecorder) {
+      console.log("Initializing recording...");
+      initializeRecording().then(() => {
+        // Ensure mediaRecorder and speechRecognition are ready
+        if (
+          mediaRecorder &&
+          isSpeechRecognitionSupported &&
+          speechRecognition.current
+        ) {
+          try {
+            mediaRecorder.start();
+            speechRecognition.current.start();
+            setRecording(true);
+          } catch (error) {
+            console.error("Error starting recording:", error);
+          }
+        }
+      });
+    } else if (
       mediaRecorder &&
       isSpeechRecognitionSupported &&
       speechRecognition.current
     ) {
-      mediaRecorder.start();
-      speechRecognition.current.start();
-      setRecording(true);
+      // If already initialized, just start recording and speech recognition
+      try {
+        mediaRecorder.start();
+        speechRecognition.current.start();
+        setRecording(true);
+      } catch (error) {
+        console.error("Error starting recording:", error);
+      }
     }
   };
 
