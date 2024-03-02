@@ -1,10 +1,11 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef, RefObject, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { groq } from "next-sanity";
 import client from "../../../../sanity/sanity.client";
-import Image from "next/image";
+import { useRecordVoice } from "../../../../components/useRecordVoice";
 
 const backgroundVariants = {
   open: {
@@ -271,12 +272,17 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
 };
 
 function useOutsideClick(
-  ref: RefObject<HTMLElement>,
+  refs: RefObject<HTMLElement>[],
   callback: () => void
 ): void {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
+      // Check if click was outside every ref in refs
+      const isClickOutsideRefs = refs.every((ref) => {
+        return ref.current && !ref.current.contains(event.target as Node);
+      });
+
+      if (isClickOutsideRefs) {
         callback();
       }
     }
@@ -287,7 +293,7 @@ function useOutsideClick(
       // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref, callback]);
+  }, [refs, callback]); // Ensure refs is part of the dependency array
 }
 
 function Navbar() {
@@ -295,9 +301,63 @@ function Navbar() {
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [faqMainImage, setFaqMainImage] = useState(null);
   const searchRef = useRef(null); // Create a ref for the search element
+  const searchFormRef = useRef(null); // Create a ref for the search element
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
+  const {
+    recording,
+    startRecording,
+    stopRecording,
+    transcript,
+    isSpeechRecognitionSupported,
+    // initializeRecording, //
+  } = useRecordVoice();
+  const [isRecording, setIsRecording] = useState(false); // Local state to manage recording
+
+  const handleToggleRecording = () => {
+    if (!isRecording) {
+      startRecording(); // Start the recording
+      setIsRecording(true); // Update local state to indicate recording has started
+
+      // Set a timer to automatically stop the recording after 2 seconds
+      setTimeout(() => {
+        stopRecording(); // Stop the recording
+        setIsRecording(false); // Update local state to indicate recording has stopped
+      }, 3000); // Wait for 2000 milliseconds (2 seconds) before stopping
+    } else {
+      // If the recording is already in progress and the button is pressed,
+      // you might want to stop the recording immediately or ignore the button press.
+      // Depending on your use case, you can handle it here.
+      // For example, to stop recording immediately if the button is pressed again:
+      stopRecording();
+      setIsRecording(false); // Update local state to indicate recording has stopped
+    }
+  };
+
+  // const toggleRecording = () => {
+  //   // Toggle recording state based on current state
+  //   if (isRecording) {
+  //     stopRecording();
+  //   } else {
+  //     startRecording();
+  //   }
+  // };
+
+  useEffect(() => {
+    console.log("Transcript updated:", transcript); // Debugging
+    if (transcript.trim().length > 0) {
+      setSearchText(transcript);
+      setSearchIsOpen(true);
+      setIsLoading(true);
+      console.log("Search should be open now"); // Debugging
+    }
+  }, [transcript]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchIsOpen(true); // Optionally open the search UI here
+    setSearchText(e.target.value); // Update searchText with input field value
+  };
 
   useEffect(() => {
     // Fetch and set the main FAQ image when the component mounts
@@ -309,15 +369,13 @@ function Navbar() {
     fetchFaqMainImage();
   }, []);
 
-  useOutsideClick(searchRef, () => {
+  useOutsideClick([searchRef, searchFormRef], () => {
     if (searchIsOpen) {
       setSearchIsOpen(false); // Close the search area when clicked outside
     }
   });
 
   // search states
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
   const fetchResults = async () => {
     setIsLoading(true);
     const results = await client.fetch(query, {
@@ -481,6 +539,7 @@ function Navbar() {
             {/* ==== nav extras ==== */}
             <div className="flex gap-[1rem]">
               <form
+                ref={searchFormRef}
                 className="nav-search-form relative flex flex-col justify-center gap-8 xsmall:justify-end xsmall:mr-8 xsmall:gap-4 xsmall:flex-row small:w-fit small:mr-0"
                 // onSubmit={handleSubmit}
               >
@@ -515,20 +574,41 @@ function Navbar() {
                     </button>
                   </div>
                   <div className="xsmall:absolute top-0 right-0 h-full w-auto">
-                    {/* dictaphone button */}
-                    <button className="h-full aspect-square flex justify-center items-center opacity-30">
-                      <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
+                    {/* microphone button */}
+                    <button
+                      onClick={(event) => {
+                        event.preventDefault();
+                        handleToggleRecording();
+                      }}
+                      className="h-full aspect-square flex justify-center items-center opacity-30"
+                    >
+                      {isRecording ? (
                         <svg
-                          viewBox="0 0 20 20"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 40 40"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M9.74134 13.457H10.258C11.4913 13.457 12.483 12.432 12.483 11.1654V4.9987C12.483 3.73203 11.483 2.70703 10.258 2.70703H9.74134C8.50801 2.70703 7.51634 3.73203 7.51634 4.9987V11.157C7.51634 12.4237 8.51634 13.4487 9.74134 13.4487V13.457ZM8.76634 4.9987C8.76634 4.4237 9.20801 3.95703 9.74134 3.95703H10.258C10.7997 3.95703 11.233 4.4237 11.233 4.9987V11.157C11.233 11.732 10.7913 12.1987 10.258 12.1987H9.74134C9.19967 12.1987 8.76634 11.732 8.76634 11.157V4.9987ZM14.7913 7.8237V11.3487C14.7913 13.6904 12.9413 15.5904 10.6247 15.707V17.2904C10.6247 17.632 10.3413 17.9154 9.99967 17.9154C9.65801 17.9154 9.37467 17.632 9.37467 17.2904V15.707C7.05801 15.5904 5.20801 13.6904 5.20801 11.3487V7.8237C5.20801 7.48203 5.49134 7.1987 5.83301 7.1987C6.17467 7.1987 6.45801 7.48203 6.45801 7.8237V11.3487C6.45801 13.0737 7.86634 14.482 9.59968 14.482H10.408C12.1413 14.482 13.5497 13.0737 13.5497 11.3487V7.8237C13.5497 7.48203 13.833 7.1987 14.1747 7.1987C14.5163 7.1987 14.7997 7.48203 14.7997 7.8237H14.7913Z"
+                            d="M21.7667 19.9999L29.1333 12.6333C29.2561 12.5188 29.3546 12.3808 29.423 12.2275C29.4913 12.0742 29.528 11.9086 29.531 11.7408C29.5339 11.573 29.5031 11.4062 29.4402 11.2506C29.3773 11.095 29.2838 10.9536 29.1651 10.8349C29.0464 10.7162 28.905 10.6226 28.7493 10.5597C28.5937 10.4969 28.427 10.466 28.2591 10.4689C28.0913 10.4719 27.9258 10.5086 27.7724 10.577C27.6191 10.6453 27.4811 10.7438 27.3667 10.8666L20 18.2333L12.6333 10.8666C12.3964 10.6458 12.083 10.5256 11.7591 10.5313C11.4353 10.537 11.1263 10.6682 10.8973 10.8972C10.6683 11.1262 10.5371 11.4352 10.5314 11.7591C10.5257 12.0829 10.6459 12.3963 10.8667 12.6333L18.2333 19.9999L10.8667 27.3666C10.6326 27.601 10.5011 27.9187 10.5011 28.2499C10.5011 28.5812 10.6326 28.8989 10.8667 29.1333C11.101 29.3673 11.4187 29.4988 11.75 29.4988C12.0812 29.4988 12.399 29.3673 12.6333 29.1333L20 21.7666L27.3667 29.1333C27.601 29.3673 27.9187 29.4988 28.25 29.4988C28.5813 29.4988 28.899 29.3673 29.1333 29.1333C29.3674 28.8989 29.4989 28.5812 29.4989 28.2499C29.4989 27.9187 29.3674 27.601 29.1333 27.3666L21.7667 19.9999Z"
                             fill="#2F3047"
                           />
                         </svg>
-                      </span>
+                      ) : (
+                        <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
+                          <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M9.74134 13.457H10.258C11.4913 13.457 12.483 12.432 12.483 11.1654V4.9987C12.483 3.73203 11.483 2.70703 10.258 2.70703H9.74134C8.50801 2.70703 7.51634 3.73203 7.51634 4.9987V11.157C7.51634 12.4237 8.51634 13.4487 9.74134 13.4487V13.457ZM8.76634 4.9987C8.76634 4.4237 9.20801 3.95703 9.74134 3.95703H10.258C10.7997 3.95703 11.233 4.4237 11.233 4.9987V11.157C11.233 11.732 10.7913 12.1987 10.258 12.1987H9.74134C9.19967 12.1987 8.76634 11.732 8.76634 11.157V4.9987ZM14.7913 7.8237V11.3487C14.7913 13.6904 12.9413 15.5904 10.6247 15.707V17.2904C10.6247 17.632 10.3413 17.9154 9.99967 17.9154C9.65801 17.9154 9.37467 17.632 9.37467 17.2904V15.707C7.05801 15.5904 5.20801 13.6904 5.20801 11.3487V7.8237C5.20801 7.48203 5.49134 7.1987 5.83301 7.1987C6.17467 7.1987 6.45801 7.48203 6.45801 7.8237V11.3487C6.45801 13.0737 7.86634 14.482 9.59968 14.482H10.408C12.1413 14.482 13.5497 13.0737 13.5497 11.3487V7.8237C13.5497 7.48203 13.833 7.1987 14.1747 7.1987C14.5163 7.1987 14.7997 7.48203 14.7997 7.8237H14.7913Z"
+                              fill="#2F3047"
+                            />
+                          </svg>{" "}
+                        </span>
+                      )}
                     </button>
                   </div>
                 </div>
@@ -536,11 +616,8 @@ function Navbar() {
                 <input
                   type="search"
                   placeholder="Search"
-                  // value={email}
-                  onChange={(e) => {
-                    setSearchIsOpen(true);
-                    setSearchText(e.target.value);
-                  }}
+                  value={searchText} // Controlled by searchText state
+                  onChange={handleInputChange} // Updates searchText state on change
                   className="site__search--input p-4 hidden xsmall:block xsmall:bg-[rgba(230,230,231,0.3)] text-left pl-[4.9rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
                 />
               </form>
@@ -548,15 +625,41 @@ function Navbar() {
               {/* == MOBILE MENU OPEN/CLOSE BUTTONS == */}
 
               <div className="-mr-2 flex small:hidden">
+                {/* SEARCH ONLY CLOSE BUTTON */}
+                {searchIsOpen && (
+                  <button
+                    onClick={() => setSearchIsOpen(!searchIsOpen)}
+                    type="button"
+                    className=" inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900 z-40 bg-[#fff]"
+                    aria-controls="mobile-menu"
+                    aria-expanded="false"
+                  >
+                    {" "}
+                    <span className="sr-only"> close search menu</span>
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 40 40"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.7667 19.9999L29.1333 12.6333C29.2561 12.5188 29.3546 12.3808 29.423 12.2275C29.4913 12.0742 29.528 11.9086 29.531 11.7408C29.5339 11.573 29.5031 11.4062 29.4402 11.2506C29.3773 11.095 29.2838 10.9536 29.1651 10.8349C29.0464 10.7162 28.905 10.6226 28.7493 10.5597C28.5937 10.4969 28.427 10.466 28.2591 10.4689C28.0913 10.4719 27.9258 10.5086 27.7724 10.577C27.6191 10.6453 27.4811 10.7438 27.3667 10.8666L20 18.2333L12.6333 10.8666C12.3964 10.6458 12.083 10.5256 11.7591 10.5313C11.4353 10.537 11.1263 10.6682 10.8973 10.8972C10.6683 11.1262 10.5371 11.4352 10.5314 11.7591C10.5257 12.0829 10.6459 12.3963 10.8667 12.6333L18.2333 19.9999L10.8667 27.3666C10.6326 27.601 10.5011 27.9187 10.5011 28.2499C10.5011 28.5812 10.6326 28.8989 10.8667 29.1333C11.101 29.3673 11.4187 29.4988 11.75 29.4988C12.0812 29.4988 12.399 29.3673 12.6333 29.1333L20 21.7666L27.3667 29.1333C27.601 29.3673 27.9187 29.4988 28.25 29.4988C28.5813 29.4988 28.899 29.3673 29.1333 29.1333C29.3674 28.8989 29.4989 28.5812 29.4989 28.2499C29.4989 27.9187 29.3674 27.601 29.1333 27.3666L21.7667 19.9999Z"
+                        fill="#2F3047"
+                      />
+                    </svg>
+                  </button>
+                )}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
                   type="button"
-                  className=" inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900"
+                  className={`${
+                    searchIsOpen && "hidden"
+                  } inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900`}
                   aria-controls="mobile-menu"
                   aria-expanded="false"
                 >
                   <span className="sr-only">Open main menu</span>
-
                   {!isOpen ? (
                     <svg
                       width="40"
