@@ -28,32 +28,34 @@ export default async function InnerHero({
 
   return (
     <section>
-      <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto small:items-center small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
-        <div className="text-center pt-[5.5rem] xsmall:pt-[4rem] small:pt-0 xsmall:text-left max-w-[323px] mx-auto  xsmall:max-w-[580px] xsmall:ml-0 small:max-w-full">
+      <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto  small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
+        <div className="text-center pt-[5.5rem] xsmall:pt-[4rem] small:pt-0 xsmall:text-left max-w-[323px] mx-auto small:mt-[6rem] xsmall:max-w-[580px] xsmall:ml-0 small:max-w-full text-theme-dark">
           <h3 className="uppercase font-semibold xsmall:ml-[7.5rem] small:ml-layout-small">
             {sectionTitle}
           </h3>
-          <div className="w-full relative pl-0 xsmall:pl-[7.5rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] small:pl-layout-small">
-            <h1 className="absolute -top-[0%] -left-5 hidden xsmall:block xsmall:-translate-x-[0] small:-translate-x-0 w-fit h-auto font-body">
-              {pageNumber}
-            </h1>
+          <div className="w-full order-last small:order-first px-[5%] small:px-0">
+            <div className="w-full relative pl-0 xsmall:pl-[7.5rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] large:static pb-12 xsmall:px-20 small:pl-layout-small">
+              <h1 className="absolute -left-5 hidden xsmall:block xsmall:-translate-x-[4.5vw] small:-translate-x-0 w-fit h-auto font-body small:top-0 large:top-[23.4%] mt-[0.1rem] ">
+                {pageNumber}
+              </h1>
 
-            {pageNumber == "06" ? (
-              <div>
-                {/* show on small and large screens */}
-                <h1 className="block xsmall:hidden small:block pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
-                  {smallScreenTitle}
-                </h1>
-                {/* show on xsmall screens */}
-                <h1 className="hidden xsmall:block small:hidden pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] text-[clamp(3.2rem,5.4vw,4rem)]">
+              {pageNumber == "06" ? (
+                <div>
+                  {/* show on small and large screens */}
+                  <h1 className="block xsmall:hidden small:block pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
+                    {smallScreenTitle}
+                  </h1>
+                  {/* show on xsmall screens */}
+                  <h1 className="hidden xsmall:block small:hidden pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] text-[clamp(3.2rem,5.4vw,4rem)]">
+                    {title}
+                  </h1>
+                </div>
+              ) : (
+                <h1 className="pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
                   {title}
                 </h1>
-              </div>
-            ) : (
-              <h1 className="pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
-                {title}
-              </h1>
-            )}
+              )}
+            </div>
           </div>
           <div className="w-full mx-auto px-[5%] xsmall:px-0 pb-[5rem] xsmall:pb-[6.5rem] xsmall:w-fit xsmall:ml-[7.5rem] small:ml-layout-small">
             <ButtonLink
