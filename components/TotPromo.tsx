@@ -90,7 +90,7 @@ export default async function TotPromo() {
                   return (
                     <h3
                       key={index}
-                      className="font-bold tracking-[0.06em] uppercase text-[2rem] text-white text-center px-[5%] xsmall:text-[2.4rem] xsmall:w-[70%] xsmall:max-w-[500px] xsmall:mx-auto small:max-w-full small:text-left small:ml-0 small:px-0 small:w-[90%]"
+                      className="font-[600] tracking-[0.06em] text-[2rem] text-white text-center px-[5%] xsmall:text-[2.4rem] xsmall:w-[70%] xsmall:max-w-[500px] xsmall:mx-auto small:max-w-full small:text-left small:ml-0 small:px-0 small:w-[90%]"
                     >
                       {content.totPromo.promoMessage}
                     </h3>

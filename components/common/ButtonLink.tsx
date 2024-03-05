@@ -36,7 +36,7 @@ const ButtonLink = ({
   let svgHover;
 
   if (hoverEffect == "outline") {
-    hover = `hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px] max-h-[5rem]`;
+    hover = `hover:border-[#6015EF] hover:text-[#6015EF] hover:border-transparent  hover:after:block`;
     svgHover = `group-hover:fill-[#6015EF]`;
   } else if (hoverEffect == "fill-col") {
     hover = `hover:bg-[#6015EF] hover:border-[#6015EF] hover:text-white`;
@@ -63,7 +63,7 @@ const ButtonLink = ({
   return (
     <Link
       href={`${href}`}
-      className={`button__link block border-[2px]  border-solid border-${color} rounded-sm ${
+      className={`button__link relative block border-[2px] border-solid border-${color} rounded-sm after:bg-transparent after:absolute after:top-[-2px] after:left-[-2px] after:h-[calc(100%+4px)] after:w-[calc(100%+4px)] after:border-[3px] after:border-theme-purple after:rounded-sm after:hidden after:hover:duration-300 ${
         bgColor == "white" ? `text-theme-purple bg-white` : `text-${color}`
       } py-[1.1rem] w-full bg-${bgColor} transition hover:duration-300 ${hover} group`}
     >
@@ -72,8 +72,8 @@ const ButtonLink = ({
           ctaType == "email" || "phone" ? `px-[2.2rem]` : `px-11`
         } min-w-[176px]`}
       >
-        {btnType}
         <h5 className="uppercase text-center">{text}</h5>
+        {btnType}
       </div>
     </Link>
   );

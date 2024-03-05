@@ -6,6 +6,7 @@ import Link from "next/link";
 import { groq } from "next-sanity";
 import client from "../../../../sanity/sanity.client";
 import { useRecordVoice } from "../../../../components/useRecordVoice";
+import { usePathname } from "next/navigation";
 
 const backgroundVariants = {
   open: {
@@ -296,7 +297,17 @@ function useOutsideClick(
   }, [refs, callback]); // Ensure refs is part of the dependency array
 }
 
+const navLinks = [
+  { name: "Home", href: "/", pageNumber: "01" },
+  { name: "About", href: "/about", pageNumber: "02" },
+  { name: "Services", href: "/services", pageNumber: "03" },
+  { name: "Projects", href: "/projects", pageNumber: "04" },
+  { name: "FAQ's", href: "/faqs", pageNumber: "05" },
+  { name: "Contact", href: "/contact", pageNumber: "06" },
+];
+
 function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [faqMainImage, setFaqMainImage] = useState(null);
@@ -483,7 +494,30 @@ function Navbar() {
               <div className="hidden small:block">
                 <nav>
                   <ul className="nav__link__list flex items-center justify-between w-[45vw] max-w-[645px] uppercase font-[400] font-sans text-[rgba(47,48,71,90%)] text-[1.4rem] small:pl-[1.9rem]">
-                    <li>
+                    {navLinks.map((link) => {
+                      let isActive = pathname === link.href;
+                      if (!isActive && link.href !== "/") {
+                        isActive = pathname.includes(link.href.split("/")[1]);
+                      }
+
+                      return (
+                        <li>
+                          <Link href={link.href} className="">
+                            <div
+                              className={`${
+                                isActive && "nav__item__active"
+                              } nav__item__link pr-[0.4rem] text-right`}
+                            >
+                              <span className="font-semibold px-[0.4rem]">
+                                {link.pageNumber}{" "}
+                              </span>
+                              {link.name}
+                            </div>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                    {/* <li>
                       <Link href="/" className="">
                         <div className="nav__item__link pr-[0.4rem] text-right">
                           <span className="font-semibold px-[0.4rem]">01 </span>
@@ -530,7 +564,7 @@ function Navbar() {
                           Contact
                         </div>
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </nav>
               </div>
@@ -547,8 +581,8 @@ function Navbar() {
                   <div className="xsmall:absolute top-0 left-0 xsmall:left-[3%] h-full w-auto">
                     {/* magnifying glass button */}
                     <button
-                      className={`relative h-full aspect-square flex justify-center items-center opacity-30 xsmall:-z-10 ${
-                        searchIsOpen && "hidden"
+                      className={`relative h-full aspect-square flex justify-center items-center opacity-30 ${
+                        searchIsOpen && "cursor-default"
                       }  `}
                       onClick={(event) => {
                         event.preventDefault();

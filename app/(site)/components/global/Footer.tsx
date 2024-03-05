@@ -229,9 +229,9 @@ export default function Footer() {
               </svg>
             </Link>
 
-            <ul className="flex flex-wrap justify-center items-center gap-x-[1.6rem] font-sans text-[1.4rem] mx-auto mt-10 text-theme-dark font-light small:h-[4.2rem] small:items-center small:justify-start small:mx-0">
+            <ul className="flex flex-wrap justify-center items-center tracking-[0.02em] gap-x-[1.6rem] font-sans text-[1.4rem] mx-auto mt-10 text-theme-dark font-light small:h-[4.2rem] small:items-center small:justify-start small:mx-0 ">
               <li className="py-3 small:p-0">
-                <Link href="/" className="hover:text-purple-400 duration-300">
+                <Link href="/" className=" hover:text-purple-400 duration-300">
                   Home
                 </Link>
               </li>
@@ -364,7 +364,7 @@ export default function Footer() {
             </li>
           </ul>
 
-          <h4 className="text-center font-light text-[1.4rem] mt-16 text-theme-dark small:text-right small:mt-[6rem]">
+          <h4 className="text-center font-light tracking-[0.02em] text-[1.4rem] mt-16 text-theme-dark small:text-right small:mt-[6rem]">
             {" "}
             &copy; {new Date().getFullYear()} Rosco & Perlini Ltd
           </h4>

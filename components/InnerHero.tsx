@@ -42,16 +42,16 @@ export default async function InnerHero({
               {pageNumber == "06" ? (
                 <div>
                   {/* show on small and large screens */}
-                  <h1 className="block xsmall:hidden small:block pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
+                  <h1 className="block font-bold xsmall:hidden small:block pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
                     {smallScreenTitle}
                   </h1>
                   {/* show on xsmall screens */}
-                  <h1 className="hidden xsmall:block small:hidden pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] text-[clamp(3.2rem,5.4vw,4rem)]">
+                  <h1 className="hidden  font-bold xsmall:block small:hidden pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] text-[clamp(3.2rem,5.4vw,4rem)]">
                     {title}
                   </h1>
                 </div>
               ) : (
-                <h1 className="pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
+                <h1 className="pt-[3rem] font-bold pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
                   {title}
                 </h1>
               )}

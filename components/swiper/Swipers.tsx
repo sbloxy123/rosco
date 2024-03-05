@@ -100,7 +100,7 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
         nextEl: ".next-project",
         prevEl: ".prev-project",
       }}
-      speed={600} // Set speed to 0 to remove transitions
+      speed={400} // Set speed to 0 to remove transitions
       effect={"fade"} // or 'slide'
       onSwiper={(swiper) => {
         projectsSwiperRef.current = swiper;
@@ -120,7 +120,7 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
 
           <div className="project-pagination h-[5.6rem] w-[40%] pb-[4rem] z-30 flex gap-1 items-center xsmall:absolute xsmall:right-0 xsmall:bottom-0 xsmall:mb-[4%] xsmall:pl-[5%] xsmall:w-fit xsmall:justify-start xsmall:mx-[5%] small:w-1/3 small:justify-center small:mb-0 small:mx-0 small:px-0 small:hidden visible"></div>
 
-          <div className="relative flex gap-4 pb-[5.5rem] pr-[1.5rem] xsmall:pb-0 xsmall:pr-0 xsmall:rotate-90 xsmall:absolute xsmall:right-0 xsmall:mr-[7%] small:pr-[1.5rem] small:pb-[clamp(10%,5vw,8.5rem)]  small:rotate-0 small:w-1/3 small:justify-end visible">
+          <div className="relative flex gap-4 pb-[5.5rem] pr-[1.5rem] xsmall:pb-0 xsmall:pr-0 xsmall:-rotate-90 xsmall:absolute xsmall:right-0 xsmall:mr-[7%] small:pr-[1.5rem] small:pb-[clamp(10%,5vw,8.5rem)]  small:rotate-0 small:w-1/3 small:justify-end visible">
             <SwiperArrowPrev swiperDivName="prev-project" />
             <SwiperArrowNext swiperDivName="next-project" />
           </div>

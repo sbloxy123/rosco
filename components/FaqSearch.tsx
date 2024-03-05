@@ -18,7 +18,7 @@ export default function FaqSearch({
   faqs: Faq[];
 }) {
   const [query, setQuery] = useState("");
-  const [iteration, setIteration] = useState(5);
+  const [iteration, setIteration] = useState(8);
   const [filteredFaqs, setFilteredFaqs] = useState<Faq[]>([]);
   const searchParams = useSearchParams();
   const filterParam = searchParams.get("searchTerm");
@@ -177,7 +177,7 @@ export default function FaqSearch({
               value={query}
               id="scroll__to__search"
               onChange={handleInput}
-              className={`p-4 bg-white placeholder:text-theme-dark placeholder:text-opacity-40 focus:text-theme-dark text-theme-dark text-center placeholder:text-[1.8rem] xsmall:placeholder:text-[clamp(1rem,2.4vw,1.8rem)] rounded-sm w-full font-headings text-[1.8rem] tracking-[0.12em] xsmall:w-[clamp(290px,54vw,500px)] placeholder:font-[500]  xsmall:placeholder:text-center placeholder:text-center xsmall:text-left h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out xsmall:pl-[5rem]`}
+              className={`p-4 bg-white placeholder:text-theme-dark placeholder:text-opacity-40 focus:text-theme-dark text-theme-dark text-center placeholder:uppercase placeholder:text-[1.8rem] xsmall:placeholder:text-[clamp(1rem,2.4vw,1.8rem)] rounded-sm w-full font-headings text-[1.8rem] tracking-[0.12em] xsmall:w-[clamp(290px,54vw,500px)] placeholder:font-[500] xsmall:placeholder:text-left xsmall:placeholder:pl-[2rem] small:placeholder:pl-[3rem] placeholder:text-center xsmall:text-left h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out xsmall:pl-[5rem]`}
             />
             <button
               type="submit"
@@ -248,7 +248,7 @@ export default function FaqSearch({
 
       <div
         className={`${
-          uniqueFilteredFaqs.length <= 5 ||
+          uniqueFilteredFaqs.length <= 8 ||
           uniqueFilteredFaqs.length <= iteration
             ? "hidden"
             : "block"
@@ -257,7 +257,7 @@ export default function FaqSearch({
         <button
           type="submit"
           className="relative w-full text-theme-dark bg-white border-2 border-theme-dark rounded-sm cursor-pointer font-headings h-[5rem] font-[600] p-4 uppercase text-[1.6rem] tracking-[0.06em] xsmall:w-[17.6rem] z-20 text-center hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px] transition hover:duration-300"
-          onClick={() => setIteration(iteration + 5)}
+          onClick={() => setIteration(iteration + 8)}
         >
           LOAD MORE
         </button>

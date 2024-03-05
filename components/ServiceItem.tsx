@@ -27,8 +27,8 @@ export default function ServiceItem({
 }) {
   return (
     <div
-      className={`my-section-gap small:flex small:justify-between small:items-center small:max-w-[1440px] small:mx-auto ${
-        index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+      className={`my-section-gap small:flex small:justify-between small:items-center small:max-w-[1440px] small:mx-auto medium:justify-end ${
+        index % 2 === 0 ? "flex-row " : "flex-row-reverse "
       }`}
     >
       <div
@@ -37,7 +37,7 @@ export default function ServiceItem({
             "--image-url": `url(${image.image})`,
           } as React.CSSProperties
         }
-        className="relative aspect-[390/303] xsmall:aspect-[740/496] small:aspect-[740/609] overflow-hidden small:w-[clamp(500px,51.45vw,739px)]"
+        className="relative aspect-[390/303] xsmall:aspect-[740/496] small:aspect-[740/609] overflow-hidden small:w-[clamp(500px,51.45vw,739px)] medium:max-w-[590px]"
       >
         <div className="absolute top-0 left-0 bg-theme-dark opacity-50  w-full h-full"></div>
         <div className="absolute top-0 left-0 bg-theme-dark mix-blend-color-dodge  w-full h-full"></div>
