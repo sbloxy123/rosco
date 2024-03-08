@@ -1,19 +1,15 @@
-"use client";
-
 import { useCallback, useEffect, useState } from "react";
 import type { serviceType } from "@/types";
+
 const useServiceOrder = (initialServices: serviceType[]) => {
-  // Initialize services state with a function to avoid accessing sessionStorage during SSR
   const [services, setServices] = useState<serviceType[]>(() => {
     if (typeof window !== "undefined") {
-      // Attempt to get a stored order from sessionStorage, but only if window is defined
       const storedServices = sessionStorage.getItem("servicesOrder");
       return storedServices ? JSON.parse(storedServices) : initialServices;
     }
-    return initialServices; // Fallback to initialServices if window is not available
+    return initialServices;
   });
 
-  // Update sessionStorage whenever services order changes, also checking for window availability
   useEffect(() => {
     if (typeof window !== "undefined") {
       sessionStorage.setItem("servicesOrder", JSON.stringify(services));

@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import type { serviceType } from "@/types";
-// import { getServiceLinks } from "@/sanity/sanity.query";
 import ServiceItem from "@/components/ServiceItem";
 import useServiceOrder from "./useServiceOrder";
 
@@ -11,7 +9,6 @@ export default function DetailedServiceList({
 }: {
   allServices: serviceType[];
 }) {
-  // const allServices: serviceType[] = await getServiceLinks();
   const { services, reorderService } = useServiceOrder(allServices);
 
   return (

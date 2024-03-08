@@ -143,6 +143,32 @@ export async function getServiceLinks() {
     }`
   );
 }
+export async function getSingleServiceBannerImage() {
+  return client.fetch(groq`*[_type == "service"]{
+    serviceTitle,
+    serviceBannerImage {
+        alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+          },
+  }`);
+}
 
 export async function getSingleService(slug: string) {
   return client.fetch(

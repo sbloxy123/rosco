@@ -12,7 +12,7 @@ export default async function Testimonials() {
         {testimonials.map((data) => {
           return (
             <div key={data._id} className="small:px-layout-small">
-              <div className="relative text-theme-dark bg-[#f8f8f8] w-full pt-[3.5rem] pb-40 px-[5%]  xsmall:pt-[5rem] xsmall:pb-32">
+              <div className="relative text-theme-dark bg-[#f8f8f8] w-full pt-[3.5rem] pb-40 px-[5%]  xsmall:pt-[5rem] xsmall:pb-32 medium:max-w-[1120px] medium:mx-auto">
                 <h2 className="xsmall:w-[95%]">
                   {data.testimonialsSection.testimonialsSectionTitle}
                 </h2>
@@ -26,7 +26,7 @@ export default async function Testimonials() {
                   </div>
                   <div className="testimonial-pagination visible h-10 w-[40%] z-30 mb-[1.4rem] flex gap-3 items-center xsmall:mb-0 xsmall:absolute xsmall:right-0 xsmall:bottom-0 xsmall:pl-[5%] xsmall:w-fit xsmall:justify-end xsmall:-ml-[5%] xsmall:mr-[5%] small:justify-center small:mx-auto small:left-0 small:mr-[13px]"></div>
                   {/* reference for projects navigation - added h-full to parent absolute container. then see classes used to position */}
-                  <div className="flex visible gap-4 xsmall:-rotate-90 xsmall:absolute xsmall:top-1/2 xsmall:right-[2%] small:right-[5%] small:rotate-0">
+                  <div className="flex visible gap-4 xsmall:-rotate-90 xsmall:absolute xsmall:top-1/2 xsmall:right-[2%] small:right-[7%] small:rotate-0">
                     <SwiperArrowPrev swiperDivName="prev-testimonial" />
                     <SwiperArrowNext swiperDivName="next-testimonial" />
                   </div>

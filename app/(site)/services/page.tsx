@@ -5,14 +5,10 @@ import {
 } from "@/sanity/sanity.query";
 import type { servicesPageType } from "@/types";
 
-import {
-  getServiceLinks,
-  getServicesSectionTitles,
-} from "@/sanity/sanity.query";
+import { getServiceLinks } from "@/sanity/sanity.query";
 
-import type { serviceType, serviceSectionType } from "@/types";
+import type { serviceType } from "@/types";
 import BgDots from "@/components/assets/BgDots";
-import ServiceItem from "@/components/ServiceItem";
 import LatestProjects from "@/components/LatestProjects";
 import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";

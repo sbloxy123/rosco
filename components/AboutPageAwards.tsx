@@ -15,7 +15,7 @@ export default async function AboutPageAwards() {
               <AwardsSwiper data={awards} />
             </div>
 
-            <div className="hidden small:grid grid-cols-4 max-w-[1119px] gap-5 mx-auto small:px-1">
+            <div className="hidden small:grid grid-cols-4 max-w-[1119px] gap-x-[2.9rem] gap-y-[1.1rem] mx-auto small:px-1">
               {award.awardsSection.awardsList.map((content, innerIndex) => {
                 const titleWithLineBreaks = content.awardTitle.replace(
                   /\\n/g,

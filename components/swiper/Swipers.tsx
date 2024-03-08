@@ -34,8 +34,6 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
       spaceBetween={10}
       slidesPerView="auto"
       direction="vertical"
-      // onSlideChange={() => console.log("slide change")}
-      // onSwiper={(swiper) => console.log(swiper)}
       wrapperClass="service-swiper"
       modules={[Scrollbar, Mousewheel, FreeMode]}
       mousewheel={{
@@ -64,9 +62,6 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
           </SwiperSlide>
         );
       })}
-
-      {/* <div className="swiper-scrollbar"></div> */}
-      {/* <div className="swiper-scrollbar" style={dynamicStyles}></div> */}
     </Swiper>
   );
 };
@@ -296,6 +291,7 @@ export const FilterButtonSwiper = ({
       freeMode={true}
     >
       {categories.map((category, index) => {
+        // console.log(category);
         const filterMatch = filters.some(
           (filter) => filter.category === category
         );

@@ -105,7 +105,7 @@ export default async function ContactSection({
               </svg>{" "}
             </div>
 
-            <div className="relative my-24 small:flex gap-[2rem] small:justify-between small:items-center small:w-full small:max-w-[1120px] mx-auto">
+            <div className="relative my-24 small:flex gap-[2rem] small:justify-around medium:justify-between small:items-center small:w-full small:max-w-[1120px] mx-auto">
               <div className="relative px-[5%] text-center small:text-left small:px-0">
                 <div className="px-14 max-w-[450px] xsmall:max-w-[520px] mx-auto small:px-0">
                   <h2 className="">{content.contactUs.title}</h2>

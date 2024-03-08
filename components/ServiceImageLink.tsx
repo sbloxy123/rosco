@@ -31,7 +31,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
           </h2>
           <p className="text-center pt-6 px-[10%]">{service.serviceSummary}</p>
         </div>
-        <div className="w-full px-[5%] absolute bottom-[8%] left-0 right-0 mx-auto">
+        <div className="w-full px-[5%] absolute bottom-[8%] left-0 right-0 mx-auto small:w-fit">
           <ButtonLink
             bgColor="white"
             theme="light"
@@ -96,22 +96,3 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
 };
 
 export default ServiceImageLink;
-{
-  /* <Link href={`/services/${service.slug}`}>
-      <div className="relative w-60 h-80 overflow-hidden cursor-pointer group">
-        <Image
-          src={service.coverImage.image}
-          width={400}
-          height={400}
-          alt={service.coverImage.alt}
-          className="absolute object-cover h-[100%] w-[100%] z-0 group-hover:opacity-75"
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-theme-dark opacity-70"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white z-10">
-          <h2 className="text-2xl font-bold text-center">
-            {service.serviceTitle}
-          </h2>
-        </div>
-      </div>
-    </Link> */
-}

@@ -1,10 +1,9 @@
-/*Since the map was loaded on client side,
-we need to make this component client rendered as well*/
 "use client";
 import RPLogo from "../app/assets/images/RoscoLogo.png";
 //Map component Component from library
 import { GoogleMap, Marker } from "@react-google-maps/api";
-
+// Import custom styles to customize the style of Google Map
+import styles from "../app/(site)/assets/GoogleMapStyles.json";
 //Map's styling
 // const defaultMapContainerStyle = {
 //   width: "100%",
@@ -31,6 +30,7 @@ const defaultMapOptions = {
   streetViewControl: false,
   mapTypeControl: false,
   fullscreenControl: false,
+  styles: styles, // change default map styles
 };
 
 const MapComponent = () => {

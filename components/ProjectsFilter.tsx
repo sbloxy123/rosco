@@ -17,10 +17,10 @@ export default function ProjectsFilter({
   const [filters, setFilters] = useState<{ id: number; category: string }[]>(
     []
   );
-
   const searchParams = useSearchParams();
   const filterParam = searchParams.get("filter");
-  // console.log(filterParam);
+  const allProjects = [...projects];
+  const [iteration, setIteration] = useState(4);
 
   useEffect(() => {
     // Check if there is a filterParam in the URL
@@ -84,11 +84,27 @@ export default function ProjectsFilter({
       }
     });
   });
+  const order: string[] = [
+    "damp proofing",
+    "leak detection",
+    "water damage repairs",
+    "maintenance",
+    "renovation",
+    "roofing",
+  ];
 
+  // Assuming `categories` is a Set<string> with your categories
   const categoriesArray = Array.from(categories);
 
-  // Store all projects once
-  const allProjects = [...projects];
+  // Ensure sorting is robust against case sensitivity and missing items
+  const sortedCategories: string[] = categoriesArray.sort((a, b) => {
+    const indexA = order.indexOf(a.toLowerCase()); // Ensure case-insensitive comparison
+    const indexB = order.indexOf(b.toLowerCase()); // Ensure case-insensitive comparison
+
+    if (indexA === -1) return 1; // Push a to end if not found
+    if (indexB === -1) return -1; // Push b to end if not found
+    return indexA - indexB;
+  });
 
   return (
     <div>
@@ -126,7 +142,7 @@ export default function ProjectsFilter({
         <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
           <BgDots />
         </div>
-        <div className="relative">
+        <div className="relative medium:max-w-[1120px] medium:mx-auto">
           <h2 className="text-white xsmall:px-[5%] small:px-0">
             Latest Projects
           </h2>
@@ -193,20 +209,39 @@ export default function ProjectsFilter({
                     )
                   : true
               )
-              .map((filteredProject) => (
-                <div
-                  key={filteredProject._id}
-                  className="mt-section-gap small:mt-[325px]"
-                >
-                  <ProjectsComponent
-                    key={filteredProject._id}
-                    project={filteredProject}
-                    bg={content.ProjectsPage.BgImage}
-                  />
-                </div>
-              ))}
+              .map((filteredProject, index) => {
+                if (filteredProject && index + 1 <= iteration) {
+                  return (
+                    <div
+                      key={filteredProject._id}
+                      className="mt-section-gap small:mt-[325px]"
+                    >
+                      <ProjectsComponent
+                        key={filteredProject._id}
+                        project={filteredProject}
+                        bg={content.ProjectsPage.BgImage}
+                      />
+                    </div>
+                  );
+                }
+              })}
           </div>
         ))}
+        <div
+          className={`${
+            projects.length <= 4 || projects.length <= iteration
+              ? "hidden"
+              : "block"
+          } w-full mx-auto mt-section-gap px-[5%] xsmall:w-fit`}
+        >
+          <button
+            type="submit"
+            className="relative w-full text-theme-dark bg-white border-2 border-theme-dark rounded-sm cursor-pointer font-headings h-[5rem] font-[600] p-4 uppercase text-[1.6rem] tracking-[0.06em] xsmall:w-[17.6rem] z-20 text-center hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px] transition hover:duration-300"
+            onClick={() => setIteration(iteration + 4)}
+          >
+            LOAD MORE
+          </button>
+        </div>
       </div>
     </div>
   );

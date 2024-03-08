@@ -41,7 +41,7 @@ export default function ServiceItem({
       >
         <div className="absolute top-0 left-0 bg-theme-dark opacity-50  w-full h-full"></div>
         <div className="absolute top-0 left-0 bg-theme-dark mix-blend-color-dodge  w-full h-full"></div>
-        <div className="absolute top-0 left-0 bg-theme-dark mix-blend-soft-light saturate-100 w-full h-full"></div>
+        <div className="absolute top-0 left-0 bg-theme-dark mix-blend-hard-light saturate-100 w-full h-full"></div>
         <div className="absolute top-0 left-0 right-0 bottom-0 aspect-[341/233] m-auto w-[92%] xsmall:aspect-[507/304] xsmall:w-[62.7%] xsmall:ml-[5%] xsmall:my-auto small:w-[66.5%] small:ml-[10%] small:aspect-[527/346] ">
           <svg
             viewBox="0 0 523 320"
@@ -118,7 +118,9 @@ export default function ServiceItem({
             : "small:pl-layout-small small:pr-[3.5rem]"
         }`}
       >
-        <h2 className="text-theme-dark w-[80%] small:w-full">{heading}</h2>
+        <h2 className="text-theme-dark w-[80%] small:w-full leading-[3.6rem]">
+          {heading}
+        </h2>
 
         <div className="service-component-text hidden xsmall:block pt-[4.5rem]">
           <PortableText value={text} />

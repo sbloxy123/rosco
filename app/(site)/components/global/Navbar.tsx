@@ -217,9 +217,12 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
             >
               <div className="flex gap-[2rem] items-center">
                 {faqMainImage &&
-                  faqMainImage.map((img) => {
+                  faqMainImage.map((img, index) => {
                     return (
-                      <div className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px]  aspect-square">
+                      <div
+                        key={index}
+                        className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px]  aspect-square"
+                      >
                         <Image
                           src={img.FaqPage.pageImage.image}
                           width={52}
@@ -501,7 +504,7 @@ function Navbar() {
                       }
 
                       return (
-                        <li>
+                        <li key={link.pageNumber}>
                           <Link href={link.href} className="">
                             <div
                               className={`${

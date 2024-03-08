@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCroppedImageSrc } from "@/sanity/sanity.query";
 import type { projectType } from "@/types";
-import { ImageSlider } from "./ImageSlider";
-import Image from "next/image";
 import ProjectsImageSwiper from "./swiper/Swipers";
 import { useSearchParams } from "next/navigation";
 
