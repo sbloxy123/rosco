@@ -13,6 +13,7 @@ import LatestProjects from "@/components/LatestProjects";
 import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
+import Link from "next/link";
 
 export async function metadata() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
@@ -90,10 +91,12 @@ export default async function Services() {
                         key={service._id}
                         className="pt-2 xsmall:pt-0 small:pt-[1rem]"
                       >
-                        <h4 className="uppercase text-[2rem] xsmall:text-[2.2rem] font-bold tracking-[0.24em]">
-                          <span className="hidden xsmall:inline pr-4">–</span>
-                          {service.serviceTitle}
-                        </h4>
+                        <Link href={`services/${service.slug}`}>
+                          <h4 className="uppercase text-[2rem] xsmall:text-[2.2rem] font-bold tracking-[0.24em]">
+                            <span className="hidden xsmall:inline pr-4">–</span>
+                            {service.serviceTitle}
+                          </h4>
+                        </Link>
                       </li>
                     );
                   })}

@@ -96,6 +96,9 @@ export default async function InnerHero({
           <div className="absolute bottom-0 left-0 h-full w-[1.7rem] hidden small:block">
             <GradientLineVerticalThick />
           </div>
+          <div className="hidden overLarge:block absolute bottom-0 right-0 h-full w-[1.7rem]">
+            <GradientLineVerticalThick />
+          </div>
         </div>
       </div>
     </section>

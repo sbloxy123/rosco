@@ -1,7 +1,5 @@
 import { getCroppedImageSrc } from "@/sanity/sanity.query";
 import BgDots from "./assets/BgDots";
-import { PortableText } from "@portabletext/react";
-
 import { PortableTextBlock } from "sanity";
 import { ServiceExtrasSwiper } from "./swiper/Swipers";
 import Image from "next/image";

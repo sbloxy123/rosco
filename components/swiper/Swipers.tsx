@@ -2,6 +2,8 @@
 
 import SwiperCore, { Swiper as SwiperType } from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperClass } from "swiper";
+
 import {
   Scrollbar,
   Pagination,
@@ -14,6 +16,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import "swiper/css/effect-fade";
+
 import ServiceImageLink from "../ServiceImageLink";
 import Image from "next/image";
 
@@ -71,20 +75,19 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
 export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
   const projectsSwiperRef = useRef<SwiperCore | null>(null);
   const projectsPaginationSwiperRef = useRef<SwiperCore | null>(null);
-
-  const handleProjectsSwiperSlideChange = () => {
-    if (projectsPaginationSwiperRef.current) {
-      projectsPaginationSwiperRef.current.slideTo(
-        projectsSwiperRef.current?.realIndex ?? 0
-      );
-    }
+  const [prevIndex, setPrevIndex] = useState(0); // Track the previous slide index
+  const [isSwipingBackward, setIsSwipingBackward] = useState(false);
+  const handleSlideChange = (swiper: SwiperClass) => {
+    const currentIndex = swiper.realIndex;
+    const previousIndex = swiper.previousIndex;
+    setIsSwipingBackward(currentIndex < previousIndex);
   };
 
   return (
     <Swiper
       spaceBetween={40}
       slidesPerView={1}
-      onSlideChange={handleProjectsSwiperSlideChange}
+      onSlideChange={handleSlideChange}
       wrapperClass="projects--swiper pb-14 small:pb-0 relative"
       modules={[Pagination, Navigation]}
       simulateTouch={false}
@@ -103,7 +106,10 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
     >
       {data.map((elm, index) => {
         return (
-          <SwiperSlide key={index}>
+          <SwiperSlide
+            key={index}
+            className={isSwipingBackward ? "no-transition" : ""}
+          >
             <ProjectSlide project={elm} index={index} />
           </SwiperSlide>
         );
@@ -320,7 +326,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 // import required modules
-import { Thumbs } from "swiper/modules";
+import { Thumbs, EffectFade } from "swiper/modules";
 import { ImageSlider } from "../ImageSlider";
 
 export default function ProjectsImageSwiper({
@@ -504,8 +510,9 @@ export const ServiceExtrasSwiper = ({
         slidesPerView="auto"
         allowTouchMove={false}
         thumbs={{ swiper: btnSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Navigation, Thumbs, EffectFade]}
         autoHeight={true}
+        effect={"fade"}
         className="service-subcategory--swiper-container"
       >
         <SwiperSlide className="w-full px-[5%] small:px-0">

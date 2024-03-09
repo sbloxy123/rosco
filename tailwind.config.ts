@@ -27,6 +27,7 @@ module.exports = withMT({
         small: "1024px",
         medium: "1280px",
         large: "1440px",
+        overLarge: "1444px",
         xlarge: "1680px",
       },
       fontFamily: {

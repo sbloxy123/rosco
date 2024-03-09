@@ -33,7 +33,7 @@ export default async function IntroSection() {
             key={content.introSection._id}
             className="relative grid grid-cols-1 small:grid-cols-2 gap-10 items-center z-10"
           >
-            <div className="relative w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451]">
+            <div className="relative w-full mx-auto aspect-square xsmall:px-0 xsmall:aspect-[690/451] small:max-w-[700px] medium:mr-0 medium:ml-auto">
               <div className="absolute -top-[4.9%] -left-[5.8%] xsmall:-left-[4.4%] xsmall:-top-[6.5%] w-[112%] h-[112%]">
                 <svg
                   viewBox="0 0 389 408"
