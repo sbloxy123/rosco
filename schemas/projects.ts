@@ -40,8 +40,8 @@ const projects = {
       type: "array",
       of: [
         {
-          name: "category",
-          type: "string",
+          type: "reference",
+          to: [{ type: "service" }],
         },
       ],
     },

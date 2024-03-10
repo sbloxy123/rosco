@@ -3,17 +3,20 @@ import { PortableTextBlock } from "sanity";
 // image utility
 export type SanityImageQueryResult = {
   alt: string;
-  asset: {
+  asset?: {
     _ref: string;
   };
-  crop: {
+  assetRef?: string; // Add this line
+  crop?: {
+    // Made optional as it might not always be provided
     _type: "sanity.imageCrop";
     bottom: number;
     left: number;
     right: number;
     top: number;
   };
-  hotspot: {
+  hotspot?: {
+    // Made optional as it might not always be provided
     _type: "sanity.imageHotspot";
     height: number;
     width: number;
@@ -215,6 +218,32 @@ interface BeforeAfter {
   beforeImage: Image;
   afterImage: Image;
 }
+interface ServiceBannerImage {
+  alt: string;
+  image: string;
+  asset: {
+    _ref: string;
+  };
+  crop: {
+    _type: "sanity.imageCrop";
+    bottom: number;
+    left: number;
+    right: number;
+    top: number;
+  };
+  hotspot: {
+    _type: "sanity.imageHotspot";
+    height: number;
+    width: number;
+    x: number;
+    y: number;
+  };
+}
+interface ServiceCategory {
+  serviceTitle: string;
+  _id: string;
+  serviceBannerImage: ServiceBannerImage;
+}
 
 export type projectType = {
   _id: string;
@@ -245,7 +274,9 @@ export type projectType = {
       y: number;
     };
   };
-  categories: string[];
+
+  categories: ServiceCategory[];
+
   beforeAfter: BeforeAfter;
   gallery: {
     images: {
@@ -367,6 +398,35 @@ export type aboutPageType = {
     };
     featureText: string;
     contentArea: any[]; // Adjust the type based on your actual data structure
+  };
+};
+
+export type servicesSlideshow = {
+  ServicesPage: {
+    gallery: {
+      images: {
+        _id: string;
+        alt: string;
+        image: string;
+        asset: {
+          _ref: string;
+        };
+        crop: {
+          _type: "sanity.imageCrop";
+          bottom: number;
+          left: number;
+          right: number;
+          top: number;
+        };
+        hotspot: {
+          _type: "sanity.imageHotspot";
+          height: number;
+          width: number;
+          x: number;
+          y: number;
+        };
+      }[];
+    };
   };
 };
 

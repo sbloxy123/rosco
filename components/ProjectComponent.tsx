@@ -51,13 +51,16 @@ export default function ProjectsComponent({
     }
     // This effect should run only once on mount, hence the empty dependency array
   }, []);
+  // console.log(project);
 
   return (
     <div id={project._id} className="block relative z-0 text-white">
       <div
         style={
           {
-            "--image-url": `url(${getCroppedImageSrc(bg)})`,
+            "--image-url": `url(${getCroppedImageSrc(
+              project.categories[0].serviceBannerImage
+            )})`,
           } as React.CSSProperties
         }
         className="relative  bg-[image:var(--image-url)] bg-cover w-full h-auto group -z-10 px-[5%] py-[4rem] small:px-layout-small xsmall:pb-[7.5rem] small:pb-[10rem]"
@@ -70,7 +73,7 @@ export default function ProjectsComponent({
                 return (
                   <div key={index}>
                     <h3 key={index} className="uppercase pb-[2rem]">
-                      {category}{" "}
+                      {category.serviceTitle}{" "}
                     </h3>
                   </div>
                 );

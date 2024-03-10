@@ -11,7 +11,7 @@ const builder = imageUrlBuilder(client);
 // builder an image and returns the builder for you to specify additional
 // parameters:
 export function urlFor(source: String) {
-  return builder.image(source);
+  return builder.image(source); // Directly return the URL string
 }
 
 interface Hotspot {
@@ -22,31 +22,36 @@ interface Hotspot {
   height: number;
 }
 
-export const getCroppedImageSrc = (image: SanityImageQueryResult) => {
-  const imageRef = image.asset._ref;
+export const getCroppedImageSrc = (image: SanityImageQueryResult): string => {
+  const imageRef = image.assetRef || image.asset?._ref;
   const crop = image.crop;
-  // const hotspot = image.hotspot;
 
-  // get the image's og dimensions
-  const { width, height } = getImageDimensions(imageRef);
-
-  let url = urlFor(imageRef);
-
-  if (Boolean(crop)) {
-    // compute the cropped image's area
-    const croppedWidth = Math.floor(width * (1 - (crop.right + crop.left)));
-    const croppedHeight = Math.floor(height * (1 - (crop.top + crop.bottom)));
-    // compute the cropped image's position
-    const left = Math.floor(width * crop.left);
-    const top = Math.floor(height * crop.top);
-    // gather into a url
-    url = url.rect(left, top, croppedWidth, croppedHeight);
+  if (!imageRef) {
+    console.error("No image reference found");
+    return ""; // or return a default image placeholder if you have one
   }
-  return url;
+
+  // Assuming these functions are updated to safely handle the case where imageRef is not a valid SanityImageSource
+  const { width, height } = getImageDimensions(imageRef);
+  let url = urlFor(imageRef);
+  let urlBuilder = urlFor(imageRef); // This now returns an ImageUrlBuilder object
+
+  if (crop) {
+    const { width, height } = getImageDimensions(imageRef);
+    const left = Math.round(width * crop.left);
+    const top = Math.round(height * crop.top);
+    const croppedWidth = Math.round(width * (1 - crop.left - crop.right));
+    const croppedHeight = Math.round(height * (1 - crop.top - crop.bottom));
+
+    urlBuilder = urlBuilder.rect(left, top, croppedWidth, croppedHeight);
+  }
+
+  return urlBuilder.url();
 };
 
-export default function getPositionFromHotspot(hotspot: Hotspot) {
-  if (!hotspot || !hotspot.x || !hotspot.y) return "center";
+export default function getPositionFromHotspot(hotspot?: Hotspot) {
+  // Marking `hotspot` as optional
+  if (!hotspot) return "center";
 
   return `${hotspot.x * 100}% ${hotspot.y * 100}%`;
 }
@@ -143,31 +148,62 @@ export async function getServiceLinks() {
     }`
   );
 }
+
+export async function getServiceSlideshowImages() {
+  return client.fetch(groq`*[_type == "service"]{
+      _id,
+      ServicesPage {
+      gallery {
+            images[] {
+              _id,
+              alt,
+              "image": asset->url,
+              asset->{_ref},
+              crop {
+                _type,
+                bottom,
+                left,
+                top,
+                right
+              },
+              hotspot {
+                _type,
+                height,
+                width,
+                x,
+                y
+              }
+            }
+          }
+        }
+  }`);
+}
+
 export async function getSingleServiceBannerImage() {
   return client.fetch(groq`*[_type == "service"]{
     serviceTitle,
     serviceBannerImage {
         alt,
-          "image": asset->url,
-          asset {
-            _ref
-          },
-          crop {
-            _type,
-            bottom,
-            left,
-            top,
-            right
-          },
-          hotspot {
-            _type,
-            height,
-            width,
-            x,
-            y
-          }
-          },
-  }`);
+        "image": asset->url,
+        asset {
+          _ref
+        },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
+}`);
 }
 
 export async function getSingleService(slug: string) {
@@ -267,7 +303,29 @@ export async function getAllProjects() {
       projectBtnText,
       completionTimeframe,
       projectLocation,
-      categories,
+      "categories": categories[]->{
+        serviceTitle,
+        _id,
+        serviceBannerImage{
+          alt,
+          "image": asset->url, // For fetching the URL
+          "assetRef": asset._ref,
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+        }
+      },
       image {
         alt,
         "image": asset->url,

@@ -135,7 +135,41 @@ const innerPageContent = {
           description: "Introduction text on Services Page ('Who we are')",
           type: "text",
         },
+        {
+          name: "gallery",
+          type: "object",
+          title: "Services Slideshow",
+          description: "Set of images to showcase work",
+          fields: [
+            {
+              name: "images",
+              type: "array",
+              title: "Images",
+              of: [
+                {
+                  name: "image",
+                  type: "image",
+                  title: "Image",
+                  options: {
+                    hotspot: true,
+                  },
+                  fields: [
+                    {
+                      name: "alt",
+                      type: "string",
+                      title: "Alternative text",
+                    },
+                  ],
+                },
+              ],
+              options: {
+                layout: "grid",
+              },
+            },
+          ],
+        },
       ],
+
       extends: "page",
     },
 

@@ -113,18 +113,6 @@ export default function ServiceBanner({
                 serviceText={serviceText}
                 additionalInfo={additionalInfo}
               />
-              {/* <h2 className="pb-[1.5rem]">{serviceTitle}</h2>
-              <div className="scrollbar-and-text-container">
-                <div
-                  className={`portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto ${
-                    additionalInfo
-                      ? "small:max-h-[145px]"
-                      : "small:max-h-[260px]"
-                  } `}
-                >
-                  <PortableText value={serviceText} />
-                </div>
-              </div> */}
             </div>
           )}
         </div>

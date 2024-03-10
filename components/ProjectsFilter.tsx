@@ -28,8 +28,11 @@ export default function ProjectsFilter({
       // Assuming categoriesArray is available here or you fetch it similarly
       const categoriesArray = projects.reduce<string[]>((acc, project) => {
         project.categories.forEach((category) => {
-          if (category !== "" && !acc.includes(category)) {
-            acc.push(category);
+          if (
+            category.serviceTitle !== "" &&
+            !acc.includes(category.serviceTitle)
+          ) {
+            acc.push(category.serviceTitle);
           }
         });
         return acc;
@@ -79,8 +82,8 @@ export default function ProjectsFilter({
   let categories = new Set<string>();
   projects.forEach((project) => {
     project.categories.forEach((category) => {
-      if (category !== "") {
-        categories.add(category);
+      if (category.serviceTitle !== "") {
+        categories.add(category.serviceTitle);
       }
     });
   });
@@ -176,7 +179,7 @@ export default function ProjectsFilter({
             />
           </div>
 
-          <div className="flex flex-col gap-6 xsmall:hidden small:flex small:flex-row flex-wrap">
+          <div className="flex flex-col gap-6 xsmall:hidden small:flex small:flex-row flex-wrap small:max-w-[100.9rem]">
             {categoriesArray.map((category, index) => {
               const filterMatch = filters.some(
                 (filter) => filter.category === category
@@ -200,12 +203,13 @@ export default function ProjectsFilter({
       <div>
         {assets.map((content, index) => (
           <div key={content._id + index}>
-            {/* Map over all projects to filter based on the category */}
             {allProjects
               .filter((project) =>
                 filters.length > 0
-                  ? filters.some((filter) =>
-                      project.categories.includes(filter.category)
+                  ? project.categories.some((category) =>
+                      filters.some((filter) =>
+                        category.serviceTitle.includes(filter.category)
+                      )
                     )
                   : true
               )
@@ -232,11 +236,11 @@ export default function ProjectsFilter({
             projects.length <= 4 || projects.length <= iteration
               ? "hidden"
               : "block"
-          } w-full mx-auto mt-section-gap px-[5%] xsmall:w-fit`}
+          } w-full mx-auto mt-section-gap px-[5%] xsmall:w-fit `}
         >
           <button
             type="submit"
-            className="relative w-full text-theme-dark bg-white border-2 border-theme-dark rounded-sm cursor-pointer font-headings h-[5rem] font-[600] p-4 uppercase text-[1.6rem] tracking-[0.06em] xsmall:w-[17.6rem] z-20 text-center hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px] transition hover:duration-300"
+            className="relative w-full text-theme-dark bg-white border-2 border-theme-dark rounded-sm cursor-pointer font-headings h-[5rem] font-[600] p-4 uppercase text-[1.6rem] tracking-[0.06em]  xsmall:w-[17.6rem] z-20 text-center hover:border-[#6015EF] hover:text-[#6015EF] hover:border-[3px] transition hover:duration-300"
             onClick={() => setIteration(iteration + 4)}
           >
             LOAD MORE

@@ -34,7 +34,7 @@ export default async function InnerHero({
             {sectionTitle}
           </h3>
           <div className="w-full order-last small:order-first px-[5%] small:px-0">
-            <div className="w-full relative pl-0 xsmall:pl-[7.5rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] large:static pb-12 xsmall:px-20 small:pl-layout-small">
+            <div className="w-full relative pl-0 xsmall:pl-[4.5rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] large:static pb-12 xsmall:px-20 small:pl-layout-small">
               <h1 className="absolute -left-5 hidden xsmall:block xsmall:-translate-x-[4.5vw] small:-translate-x-0 w-fit h-auto font-body small:top-0 large:top-[26rem] mt-[0.1rem] ">
                 {pageNumber}
               </h1>
@@ -69,13 +69,8 @@ export default async function InnerHero({
         </div>
         <div className="relative w-full mx-[390/408] aspect-square xsmall:px-0 xsmall:aspect-[744/408] small:aspect-[704/480] small:w-full small:h-auto small:max-w-[704px] small:mr-0">
           {image ? (
-            // <img
-            //   alt={imageAltText}
-            //   src={getCroppedImageSrc(image)}
-            //   className="object-cover w-full h-full"
-            // />
             <Image
-              src={getCroppedImageSrc(image).url()}
+              src={getCroppedImageSrc(image)}
               alt={image.alt}
               fill
               className="object-cover"

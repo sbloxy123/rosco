@@ -14,6 +14,7 @@ import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
 import Link from "next/link";
+import ServiceImageSlideshow from "@/components/ServiceImageSlideshow";
 
 export async function metadata() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
@@ -103,6 +104,7 @@ export default async function Services() {
                 </ul>
               </div>
             </div>
+            <ServiceImageSlideshow />
             <DetailedServiceList allServices={services} />
           </div>
         );
