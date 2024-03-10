@@ -19,6 +19,7 @@ export default async function ImageCrop({
     //     />
     //   </div>
     // </div>
-    <Image src={image.asset._ref} alt="some text" />
+    // <Image src={image?.asset?._ref} alt="some text" />
+    <></>
   );
 }
