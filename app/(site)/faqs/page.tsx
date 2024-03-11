@@ -41,7 +41,10 @@ export default async function faqs() {
 
   return (
     <main>
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {faqPageContent.map((content) => {
         const titleWithLineBreaks = content.FaqPage.introMessage.replace(
           /\\n/g,
