@@ -22,7 +22,7 @@ export async function metadata() {
     title: "Rosco & Perlini | Services",
     description: servicesContent[0].ServicesPage.pageHeading,
     openGraph: {
-      images: servicesContent[0].ServicesPage.pageImage,
+      images: servicesContent[0].ServicesPage.pageImage.image,
     },
   };
 }

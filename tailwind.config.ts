@@ -25,6 +25,7 @@ module.exports = withMT({
       screens: {
         xsmall: "512px",
         small: "1024px",
+        overSmall: "1145px",
         medium: "1280px",
         large: "1440px",
         overLarge: "1444px",

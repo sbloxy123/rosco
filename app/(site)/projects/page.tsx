@@ -12,7 +12,7 @@ export async function metadata() {
     title: "Rosco & Perlini | Projects",
     description: projectsContent[0].ProjectsPage.pageHeading,
     openGraph: {
-      images: projectsContent[0].ProjectsPage.pageImage,
+      images: projectsContent[0].ProjectsPage.pageImage.image,
     },
   };
 }

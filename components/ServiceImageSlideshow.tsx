@@ -5,7 +5,7 @@ export default async function ServiceImageSlideshow({}) {
   const serviceSlideshow: servicesSlideshow[] =
     await getServiceSlideshowImages();
 
-  console.log(serviceSlideshow, "SLIDESHOW IMAGES***");
+  // console.log(serviceSlideshow, "SLIDESHOW IMAGES***");
 
   return (
     <div>

@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Montserrat, Raleway, Open_Sans } from "next/font/google";
 import Navbar from "./components/global/Navbar";
 import Footer from "./components/global/Footer";
+import { heroType } from "@/types";
+import { getHero } from "@/sanity/sanity.query";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -17,13 +19,16 @@ const opensans = Open_Sans({
   variable: "--font-opensans",
 });
 
-export const metadata: Metadata = {
-  title: "Rosco & Perlini",
-  description: "todo - add description for site here",
-  openGraph: {
-    images: "add-your-open-graph-image-url-here",
-  },
-};
+export async function metadata() {
+  const hero: heroType[] = await getHero();
+  return {
+    title: "Rosco & Perlini",
+    description: hero[0].heroHeading,
+    openGraph: {
+      images: hero[0].heroImage.image,
+    },
+  };
+}
 
 export default function RootLayout({
   children,

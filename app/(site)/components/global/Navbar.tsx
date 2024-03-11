@@ -26,24 +26,24 @@ const backgroundVariants = {
     opacity: 0.4,
     y: "-100%",
     height: 0,
-    transition: { duration: 0.5, ease: "easeInOut" }, // Smooth transition with easeInOut
+    transition: { duration: 1, ease: "easeInOut" }, // Smooth transition with easeInOut
     // transitionEnd: { display: "none" },
   }, // Ensure component is not interactive when closed
   exit: {
     opacity: 0,
     y: "-100%",
-    transition: { duration: 0.5, ease: "easeInOut" }, // Match the exit transition to the closed state
+    transition: { duration: 1, ease: "easeInOut" }, // Match the exit transition to the closed state
   },
 };
 const navVariants = {
   open: {
     opacity: 1,
 
-    transition: { staggerChildren: 0.1, delayChildren: 0 }, // delayChildren starts the staggering after the menu opens
+    transition: { staggerChildren: 0.05, delayChildren: 0.1, duration: 0.5 }, // delayChildren starts the staggering after the menu opens
   },
   closed: {
     opacity: 0,
-    transition: { staggerChildren: 0.05, staggerDirection: -1 }, // staggerDirection -1 makes the children animate in reverse order
+    transition: { staggerChildren: 0.1, staggerDirection: -1, duration: 0.4 }, // staggerDirection -1 makes the children animate in reverse order
   },
 };
 
@@ -51,12 +51,12 @@ const itemVariants = {
   open: {
     y: 0,
     opacity: 1,
-    transition: { y: { stiffness: 1000, velocity: -100 } },
+    transition: { y: { stiffness: 1000, velocity: -100 }, duration: 1.5 },
   },
   closed: {
     y: -50,
     opacity: 0,
-    transition: { y: { stiffness: 1000 } },
+    transition: { y: { stiffness: 1000 }, duration: 1 },
   },
 };
 
@@ -155,8 +155,8 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
   faqMainImage,
   searchTerm,
 }) => {
-  console.log(results);
-  console.log(faqMainImage);
+  // console.log(results);
+  // console.log(faqMainImage);
 
   return (
     <>

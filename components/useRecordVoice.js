@@ -24,7 +24,7 @@ export const useRecordVoice = () => {
     };
 
     speechRecognition.current.onerror = (event) => {
-      console.log("Speech recognition error", event.error);
+      // console.log("Speech recognition error", event.error);
     };
     setIsSpeechRecognitionSupported(true);
   }, []);
@@ -44,7 +44,7 @@ export const useRecordVoice = () => {
         };
         newMediaRecorder.onstop = () => {
           const audioBlob = new Blob(chunks.current, { type: "audio/wav" });
-          console.log(audioBlob, "audioBlob");
+          // console.log(audioBlob, "audioBlob");
         };
         setMediaRecorder(newMediaRecorder);
       } catch (err) {
@@ -68,7 +68,7 @@ export const useRecordVoice = () => {
 
     // Proceed to check and initialize if necessary
     if (!mediaRecorder) {
-      console.log("Initializing recording...");
+      // console.log("Initializing recording...");
       initializeRecording().then(() => {
         // Ensure mediaRecorder and speechRecognition are ready
         if (

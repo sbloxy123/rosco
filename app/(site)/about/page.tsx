@@ -12,11 +12,13 @@ import { PortableText } from "@portabletext/react";
 
 export async function metadata() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
+  // console.log(aboutContent[0].aboutPage.pageImage.image);
+
   return {
     title: "Rosco & Perlini | About",
     description: aboutContent[0].aboutPage.introHeading,
     openGraph: {
-      images: aboutContent[0].aboutPage.pageImage,
+      images: aboutContent[0].aboutPage.pageImage.image,
     },
   };
 }

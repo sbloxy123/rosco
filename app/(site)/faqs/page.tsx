@@ -17,7 +17,7 @@ export async function metadata() {
     title: "Rosco & Perlini | FAQs",
     description: faqPageContent[0].FaqPage.pageHeading,
     openGraph: {
-      images: faqPageContent[0].FaqPage.pageImage,
+      images: faqPageContent[0].FaqPage.pageImage.image,
     },
   };
 }
@@ -25,10 +25,23 @@ export async function metadata() {
 export default async function faqs() {
   const faqPageContent: faqPageType[] = await getFaqPageContent();
   const faqs: Faq[] = await getFaqs();
-  console.log(faqs);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <main>
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       {faqPageContent.map((content) => {
         const titleWithLineBreaks = content.FaqPage.introMessage.replace(
           /\\n/g,
