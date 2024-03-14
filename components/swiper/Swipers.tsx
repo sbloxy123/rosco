@@ -511,7 +511,7 @@ export const ServiceExtrasSwiper = ({
         allowTouchMove={false}
         thumbs={{ swiper: btnSwiper }}
         modules={[FreeMode, Navigation, Thumbs, EffectFade]}
-        autoHeight={true}
+        autoHeight={false}
         effect={"fade"}
         className="service-subcategory--swiper-container"
       >

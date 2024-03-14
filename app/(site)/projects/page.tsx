@@ -24,10 +24,23 @@ export default async function Projects() {
   return (
     <div>
       {projectsContent.map((content) => {
+        const titleWithLineBreaks = content.ProjectsPage.pageHeading.replace(
+          /\\n/g,
+          "\n"
+        );
+        const titleWithoutLineBreaks = content.ProjectsPage.pageHeading.replace(
+          /\\n/g,
+          " "
+        );
+
         return (
           <div key={content._id}>
             <InnerHero
-              title={content.ProjectsPage.pageHeading}
+              desktopHasLineBreaks={{
+                hasLineBreaks: true,
+                titleWithLineBreaks,
+              }}
+              title={titleWithoutLineBreaks}
               image={content.ProjectsPage.pageImage}
               sectionTitle="projects"
               imageAltText={content.ProjectsPage.pageImage.alt}

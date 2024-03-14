@@ -107,7 +107,7 @@ export default function ServiceBanner({
               additionalInfo={additionalInfo}
             />
           ) : (
-            <div className="w-full px-[5%] small:px-0">
+            <div className="w-full px-[5%] small:px-0 ">
               <OverflowText
                 serviceTitle={serviceTitle}
                 serviceText={serviceText}

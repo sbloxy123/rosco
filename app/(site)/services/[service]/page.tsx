@@ -8,6 +8,7 @@ import { getServiceLinks } from "@/sanity/sanity.query";
 import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
+import ServiceImageSlideshow from "@/components/ServiceImageSlideshow";
 
 type Props = {
   params: {
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service: serviceType = await getSingleService(slug);
 
   return {
-    title: `${service.serviceTitle} | Service`,
+    title: `Service | ${service.serviceTitle}`,
     description: service.serviceSummary,
     openGraph: {
       images: service.coverImage?.image || "add-a-fallback-project-image-here",
@@ -34,11 +35,18 @@ export default async function Service({ params }: Props) {
   const service: serviceType = await getSingleService(slug);
   const allServices: serviceType[] = await getServiceLinks();
 
+  const titleWithLineBreaks = service.serviceSummary.replace(/\\n/g, "\n");
+  const titleWithoutLineBreaks = service.serviceSummary.replace(/\\n/g, " ");
+
   return (
     <div>
       <InnerHero
         sectionTitle={service.serviceTitle}
-        title={service.serviceSummary}
+        desktopHasLineBreaks={{
+          hasLineBreaks: true,
+          titleWithLineBreaks: titleWithLineBreaks,
+        }}
+        title={titleWithoutLineBreaks}
         image={service.servicePageImage}
         imageAltText={service.servicePageImage.alt}
       />
@@ -51,6 +59,7 @@ export default async function Service({ params }: Props) {
         awardHighlight={service.awardHighlight}
         asideList={service.serviceAsideList}
       />
+      <ServiceImageSlideshow />
 
       <DetailedServiceList allServices={allServices} />
 

@@ -14,7 +14,8 @@ const innerPageContent = {
         {
           name: "pageHeading",
           title: "About Page Hero Heading",
-          description: "Heading for the About Page",
+          description:
+            "Heading for the About Page. --add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies to desktop screen sizes",
           type: "string",
         },
         {
@@ -181,7 +182,8 @@ const innerPageContent = {
         {
           name: "pageHeading",
           title: "Projects Page Hero Heading",
-          description: "Heading for the Projects Page",
+          description:
+            "Heading for the Projects Page. --add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies to desktop screen sizes",
           type: "string",
         },
         {

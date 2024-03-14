@@ -61,7 +61,7 @@ export default async function ContactSection({
         );
         return (
           <div key={index} className="relative">
-            <div className="hidden small:block ml-[-5%] w-[105%] max-h-[4px] overflow-hidden small:max-w-[1218px] small:mx-auto">
+            <div className="hidden small:block ml-[-5%] w-[105%] max-h-[5.5px] overflow-hidden small:max-w-[1218px] small:mx-auto">
               <svg
                 width="100%"
                 height="100%"
@@ -162,7 +162,7 @@ export default async function ContactSection({
                 <ContactForm showAllSizes={showAllSizes} />
               </div>
             </div>
-            <div className="mt-24 ml-[-5%] w-[105%] max-h-[4px] overflow-hidden small:max-w-[1218px] small:mx-auto">
+            <div className="mt-24 ml-[-5%] w-[105%] max-h-[5.5px] overflow-hidden small:max-w-[1218px] small:mx-auto">
               <GradientLine position="bottom" />
             </div>
           </div>

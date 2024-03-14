@@ -179,14 +179,14 @@ export default function ProjectsFilter({
             />
           </div>
 
-          <div className="flex flex-col gap-6 xsmall:hidden small:flex small:flex-row flex-wrap small:max-w-[100.9rem]">
+          <div className="filter__flex flex flex-col gap-4 xsmall:hidden small:flex small:flex-row flex-wrap small:justify-between">
             {categoriesArray.map((category, index) => {
               const filterMatch = filters.some(
                 (filter) => filter.category === category
               );
 
               return (
-                <div key={index} className="xsmall:w-fit">
+                <div key={index} className="xsmall:w-fit flex-grow">
                   <FilterButton
                     text={category}
                     selected={filterMatch} // Pass the boolean value of filterMatch

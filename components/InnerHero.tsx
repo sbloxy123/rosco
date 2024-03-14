@@ -13,19 +13,25 @@ export default async function InnerHero({
   title,
   sectionTitle,
   imageAltText,
+  desktopHasLineBreaks,
+  mobileHasLineBreaks,
   image,
   pageNumber,
-  smallScreenTitle,
 }: {
   title: string;
   sectionTitle: string;
   imageAltText?: string;
+  desktopHasLineBreaks?: {
+    hasLineBreaks: boolean;
+    titleWithLineBreaks: string;
+  };
+  mobileHasLineBreaks?: {
+    hasLineBreaks: boolean;
+    titleWithLineBreaks: string;
+  };
   image?: SanityImageQueryResult;
   pageNumber?: string;
-  smallScreenTitle?: string;
 }) {
-  // console.log(image);
-
   return (
     <section>
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto  small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
@@ -39,33 +45,56 @@ export default async function InnerHero({
                 {pageNumber}
               </h1>
 
-              {pageNumber == "06" ? (
-                <div>
-                  {/* show on small and large screens */}
-                  <h1 className="block font-bold xsmall:hidden small:block pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
-                    {smallScreenTitle}
-                  </h1>
-                  {/* show on xsmall screens */}
-                  <h1 className="hidden  font-bold xsmall:block small:hidden pt-[3rem] pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] text-[clamp(3.2rem,5.4vw,4rem)]">
-                    {title}
-                  </h1>
-                </div>
-              ) : (
-                <h1 className="pt-[3rem] font-bold pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[1rem] ">
-                  {title}
-                </h1>
-              )}
+              {/* NOTE: if/else for variable line breaks in cms. see also small:pr-[clamp(...)] which may be individual per page */}
+
+              {/* desktop has line breaks... */}
+              <h1 className="pt-[3rem] font-bold pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[2rem] ">
+                {desktopHasLineBreaks?.hasLineBreaks && (
+                  <div>
+                    <span className="hidden small:block">
+                      {desktopHasLineBreaks.titleWithLineBreaks
+                        .split("\n")
+                        .map((line, index) => (
+                          <span key={index}>
+                            {line} <br />
+                          </span>
+                        ))}
+                    </span>
+                    <span className="block small:hidden">{title}</span>
+                  </div>
+                )}
+                {/* mobile has line breaks */}
+                {mobileHasLineBreaks?.hasLineBreaks && (
+                  <div>
+                    <span className="block xsmall:hidden">
+                      {mobileHasLineBreaks.titleWithLineBreaks
+                        .split("\n")
+                        .map((line, index) => (
+                          <span key={index}>
+                            {line} <br />
+                          </span>
+                        ))}
+                    </span>
+                    <span className="hidden xsmall:block">{title}</span>
+                  </div>
+                )}
+
+                {!mobileHasLineBreaks?.hasLineBreaks &&
+                  !desktopHasLineBreaks?.hasLineBreaks && <span>{title}</span>}
+              </h1>
             </div>
           </div>
-          <div className="w-full mx-auto px-[5%] xsmall:px-0 pb-[5rem] xsmall:pb-[6.5rem] xsmall:w-fit xsmall:ml-[7.5rem] small:ml-layout-small">
-            <ButtonLink
-              theme="dark"
-              text="Get in touch"
-              destination="/contact"
-              ctaType="general"
-              hoverEffect="fill-col"
-            />
-          </div>
+          {pageNumber !== "06" && (
+            <div className="w-full mx-auto px-[5%] xsmall:px-0 pb-[5rem] xsmall:pb-[6.5rem] xsmall:w-fit xsmall:ml-[7.5rem] small:ml-layout-small">
+              <ButtonLink
+                theme="dark"
+                text="Get in touch"
+                destination="/contact"
+                ctaType="general"
+                hoverEffect="fill-col"
+              />
+            </div>
+          )}
         </div>
         <div className="relative w-full mx-[390/408] aspect-square xsmall:px-0 xsmall:aspect-[744/408] small:aspect-[704/480] small:w-full small:h-auto small:max-w-[704px] small:mr-0">
           {image ? (

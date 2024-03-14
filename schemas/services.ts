@@ -26,7 +26,8 @@ const service = {
     {
       name: "serviceSummary",
       title: "Service Summary Title",
-      description: "In a few words, summarise what this service offers",
+      description:
+        "In a few words, summarise what this service offers. --add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies to desktop screen sizes",
       type: "string",
     },
     {

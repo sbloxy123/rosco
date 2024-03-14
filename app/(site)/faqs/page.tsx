@@ -39,6 +39,10 @@ export default async function faqs() {
     })),
   };
 
+  faqs.map((faq) => {
+    console.log(faq);
+  });
+
   return (
     <main>
       <script
@@ -46,11 +50,19 @@ export default async function faqs() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {faqPageContent.map((content) => {
-        const titleWithLineBreaks = content.FaqPage.introMessage.replace(
+        const messageWithLineBreaks = content.FaqPage.introMessage.replace(
           /\\n/g,
           "\n"
         );
-        const titleWithoutLineBreaks = content.FaqPage.introMessage.replace(
+        const messageWithoutLineBreaks = content.FaqPage.introMessage.replace(
+          /\\n/g,
+          " "
+        );
+        const titleWithLineBreaks = content.FaqPage.pageHeading.replace(
+          /\\n/g,
+          "\n"
+        );
+        const titleWithoutLineBreaks = content.FaqPage.pageHeading.replace(
           /\\n/g,
           " "
         );
@@ -58,11 +70,15 @@ export default async function faqs() {
         return (
           <div key={content.FaqPage._id}>
             <InnerHero
-              title={content.FaqPage.pageHeading}
+              title={titleWithoutLineBreaks}
               image={content.FaqPage.pageImage}
+              desktopHasLineBreaks={{
+                hasLineBreaks: true,
+                titleWithLineBreaks,
+              }}
               sectionTitle="FAQ's"
               imageAltText={content.FaqPage.pageImage.alt}
-              pageNumber="04"
+              pageNumber="05"
             />
 
             <div className="relative bg-theme-dark overflow-hidden pt-[5rem] pb-[16rem] px-[5%] xsmall:pt-[5.2rem] xsmall:pb-[10rem] small:pt-[9rem] small:pb-[20rem] small:px-layout-small mt-section-gap">
@@ -107,7 +123,7 @@ export default async function faqs() {
 
                 {/* mobile only: */}
                 <div className="xsmall:hidden pt-[3.5rem] pr-[10%]">
-                  {titleWithLineBreaks.split("\n").map((line, index) => {
+                  {messageWithLineBreaks.split("\n").map((line, index) => {
                     return (
                       <p key={index} className="text-white font-[500]">
                         {line}
@@ -117,7 +133,7 @@ export default async function faqs() {
                 </div>
                 {/* tablet +  */}
                 <div className="hidden xsmall:block pt-[5rem] pr-0 xsmall:max-w-[59.4rem] small:max-w-[101.5rem] ">
-                  {titleWithoutLineBreaks.split("\n").map((line, index) => {
+                  {messageWithoutLineBreaks.split("\n").map((line, index) => {
                     return (
                       <p key={index} className="text-white font-[500]">
                         {line}

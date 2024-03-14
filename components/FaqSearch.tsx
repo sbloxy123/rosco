@@ -212,7 +212,7 @@ export default function FaqSearch({
             : "hidden"
         }`}
       >
-        <h4 className="text-theme-purple text-[2.8rem] text-left tracking-[0.06em] relative z-30">
+        <h4 className="text-theme-dark text-[2.8rem] text-left tracking-[0.06em] pb-[8rem] relative z-30">
           FAQ's related to <em>"{query}"</em> :
         </h4>
       </div>
@@ -240,7 +240,7 @@ export default function FaqSearch({
           uniqueFilteredFaqs.length < 1 ? "block relative z-20" : "hidden"
         }`}
       >
-        <h4 className="text-theme-purple text-center text-[1.6rem]">
+        <h4 className="text-theme-dark text-center text-[1.6rem]">
           Sorry, We couldn't find what you were looking for. <br></br> Why not
           give us a call or send us a message using the form below?
         </h4>

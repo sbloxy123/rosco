@@ -319,6 +319,9 @@ function Navbar() {
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
   const {
     recording,
     startRecording,
@@ -328,6 +331,11 @@ function Navbar() {
     // initializeRecording, //
   } = useRecordVoice();
   const [isRecording, setIsRecording] = useState(false); // Local state to manage recording
+
+  useEffect(() => {
+    // Reset hover state when the route changes
+    setHoveredLink(null);
+  }, [pathname]);
 
   const handleToggleRecording = () => {
     if (!isRecording) {
@@ -348,15 +356,6 @@ function Navbar() {
       setIsRecording(false); // Update local state to indicate recording has stopped
     }
   };
-
-  // const toggleRecording = () => {
-  //   // Toggle recording state based on current state
-  //   if (isRecording) {
-  //     stopRecording();
-  //   } else {
-  //     startRecording();
-  //   }
-  // };
 
   useEffect(() => {
     console.log("Transcript updated:", transcript); // Debugging
@@ -409,6 +408,23 @@ function Navbar() {
 
     return () => clearTimeout(timeout);
   }, [searchText]);
+
+  const handleSearchButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+
+    // Check if the screen width is less than 640px (TailwindCSS's 'sm' breakpoint)
+    if (window.matchMedia("(min-width: 512px)").matches) {
+      // If true, focus the search input instead of toggling the motion.div
+      if (searchInputRef.current) {
+        searchInputRef.current.focus();
+      }
+    } else {
+      // Otherwise, toggle the motion.div visibility
+      setSearchIsOpen(!searchIsOpen);
+    }
+  };
 
   return (
     <div
@@ -502,9 +518,17 @@ function Navbar() {
                       if (!isActive && link.href !== "/") {
                         isActive = pathname.includes(link.href.split("/")[1]);
                       }
+                      // Override isActive if this link is hovered or another link is being hovered
+                      if (hoveredLink !== null) {
+                        isActive = hoveredLink === link.href;
+                      }
 
                       return (
-                        <li key={link.pageNumber}>
+                        <li
+                          key={link.pageNumber}
+                          onMouseEnter={() => setHoveredLink(link.href)}
+                          onMouseLeave={() => setHoveredLink(null)}
+                        >
                           <Link href={link.href} className="">
                             <div
                               className={`${
@@ -520,54 +544,6 @@ function Navbar() {
                         </li>
                       );
                     })}
-                    {/* <li>
-                      <Link href="/" className="">
-                        <div className="nav__item__link pr-[0.4rem] text-right">
-                          <span className="font-semibold px-[0.4rem]">01 </span>
-                          Home
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/about" className="">
-                        <div className="nav__item__link pr-[0.4rem] text-right">
-                          <span className="font-semibold px-[0.4rem]">02 </span>
-                          About
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/services" className="">
-                        <div className="nav__item__link pr-[0.4rem] text-right">
-                          <span className="font-semibold px-[0.4rem]">03 </span>
-                          Services
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/projects" className="">
-                        <div className="nav__item__link pr-[0.4rem] text-right">
-                          <span className="font-semibold px-[0.4rem]">04 </span>
-                          Projects
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/faqs" className="">
-                        <div className="nav__item__link pr-[0.4rem] text-right">
-                          <span className="font-semibold px-[0.4rem]">05 </span>
-                          FAQ's
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/contact" className="">
-                        <div className="nav__item__link pr-[0.4rem] text-right">
-                          <span className="font-semibold px-[0.4rem]">06 </span>
-                          Contact
-                        </div>
-                      </Link>
-                    </li> */}
                   </ul>
                 </nav>
               </div>
@@ -587,10 +563,12 @@ function Navbar() {
                       className={`relative h-full aspect-square flex justify-center items-center opacity-30 ${
                         searchIsOpen && "cursor-default"
                       }  `}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        setSearchIsOpen(!searchIsOpen);
-                      }}
+                      // onClick={(event) => {
+                      // event.preventDefault();
+                      // setSearchIsOpen(!searchIsOpen);
+                      onClick={handleSearchButtonClick}
+
+                      // }}
                     >
                       <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
                         <svg
@@ -619,33 +597,20 @@ function Navbar() {
                       }}
                       className="h-full aspect-square flex justify-center items-center opacity-30"
                     >
-                      {isRecording ? (
+                      <span
+                        className={`h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]`}
+                      >
                         <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 40 40"
+                          viewBox="0 0 20 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M21.7667 19.9999L29.1333 12.6333C29.2561 12.5188 29.3546 12.3808 29.423 12.2275C29.4913 12.0742 29.528 11.9086 29.531 11.7408C29.5339 11.573 29.5031 11.4062 29.4402 11.2506C29.3773 11.095 29.2838 10.9536 29.1651 10.8349C29.0464 10.7162 28.905 10.6226 28.7493 10.5597C28.5937 10.4969 28.427 10.466 28.2591 10.4689C28.0913 10.4719 27.9258 10.5086 27.7724 10.577C27.6191 10.6453 27.4811 10.7438 27.3667 10.8666L20 18.2333L12.6333 10.8666C12.3964 10.6458 12.083 10.5256 11.7591 10.5313C11.4353 10.537 11.1263 10.6682 10.8973 10.8972C10.6683 11.1262 10.5371 11.4352 10.5314 11.7591C10.5257 12.0829 10.6459 12.3963 10.8667 12.6333L18.2333 19.9999L10.8667 27.3666C10.6326 27.601 10.5011 27.9187 10.5011 28.2499C10.5011 28.5812 10.6326 28.8989 10.8667 29.1333C11.101 29.3673 11.4187 29.4988 11.75 29.4988C12.0812 29.4988 12.399 29.3673 12.6333 29.1333L20 21.7666L27.3667 29.1333C27.601 29.3673 27.9187 29.4988 28.25 29.4988C28.5813 29.4988 28.899 29.3673 29.1333 29.1333C29.3674 28.8989 29.4989 28.5812 29.4989 28.2499C29.4989 27.9187 29.3674 27.601 29.1333 27.3666L21.7667 19.9999Z"
-                            fill="#2F3047"
+                            d="M9.74134 13.457H10.258C11.4913 13.457 12.483 12.432 12.483 11.1654V4.9987C12.483 3.73203 11.483 2.70703 10.258 2.70703H9.74134C8.50801 2.70703 7.51634 3.73203 7.51634 4.9987V11.157C7.51634 12.4237 8.51634 13.4487 9.74134 13.4487V13.457ZM8.76634 4.9987C8.76634 4.4237 9.20801 3.95703 9.74134 3.95703H10.258C10.7997 3.95703 11.233 4.4237 11.233 4.9987V11.157C11.233 11.732 10.7913 12.1987 10.258 12.1987H9.74134C9.19967 12.1987 8.76634 11.732 8.76634 11.157V4.9987ZM14.7913 7.8237V11.3487C14.7913 13.6904 12.9413 15.5904 10.6247 15.707V17.2904C10.6247 17.632 10.3413 17.9154 9.99967 17.9154C9.65801 17.9154 9.37467 17.632 9.37467 17.2904V15.707C7.05801 15.5904 5.20801 13.6904 5.20801 11.3487V7.8237C5.20801 7.48203 5.49134 7.1987 5.83301 7.1987C6.17467 7.1987 6.45801 7.48203 6.45801 7.8237V11.3487C6.45801 13.0737 7.86634 14.482 9.59968 14.482H10.408C12.1413 14.482 13.5497 13.0737 13.5497 11.3487V7.8237C13.5497 7.48203 13.833 7.1987 14.1747 7.1987C14.5163 7.1987 14.7997 7.48203 14.7997 7.8237H14.7913Z"
+                            fill={`${isRecording ? "#f80914" : "#2F3047"} `}
                           />
-                        </svg>
-                      ) : (
-                        <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
-                          <svg
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M9.74134 13.457H10.258C11.4913 13.457 12.483 12.432 12.483 11.1654V4.9987C12.483 3.73203 11.483 2.70703 10.258 2.70703H9.74134C8.50801 2.70703 7.51634 3.73203 7.51634 4.9987V11.157C7.51634 12.4237 8.51634 13.4487 9.74134 13.4487V13.457ZM8.76634 4.9987C8.76634 4.4237 9.20801 3.95703 9.74134 3.95703H10.258C10.7997 3.95703 11.233 4.4237 11.233 4.9987V11.157C11.233 11.732 10.7913 12.1987 10.258 12.1987H9.74134C9.19967 12.1987 8.76634 11.732 8.76634 11.157V4.9987ZM14.7913 7.8237V11.3487C14.7913 13.6904 12.9413 15.5904 10.6247 15.707V17.2904C10.6247 17.632 10.3413 17.9154 9.99967 17.9154C9.65801 17.9154 9.37467 17.632 9.37467 17.2904V15.707C7.05801 15.5904 5.20801 13.6904 5.20801 11.3487V7.8237C5.20801 7.48203 5.49134 7.1987 5.83301 7.1987C6.17467 7.1987 6.45801 7.48203 6.45801 7.8237V11.3487C6.45801 13.0737 7.86634 14.482 9.59968 14.482H10.408C12.1413 14.482 13.5497 13.0737 13.5497 11.3487V7.8237C13.5497 7.48203 13.833 7.1987 14.1747 7.1987C14.5163 7.1987 14.7997 7.48203 14.7997 7.8237H14.7913Z"
-                              fill="#2F3047"
-                            />
-                          </svg>{" "}
-                        </span>
-                      )}
+                        </svg>{" "}
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -653,6 +618,7 @@ function Navbar() {
                 <input
                   type="search"
                   placeholder="Search"
+                  ref={searchInputRef}
                   value={searchText} // Controlled by searchText state
                   onChange={handleInputChange} // Updates searchText state on change
                   className="site__search--input p-4 hidden xsmall:block xsmall:bg-[rgba(230,230,231,0.3)] text-left pl-[4.9rem] text-theme-dark rounded-sm w-full  text-[1.4rem] tracking-[0.06em] xsmall:w-[clamp(100px,40vw,323px)] before:absolute before:top-0 before:left-0 before:w-[3rem] before:content-none font-sans small:w-[clamp(150px,15vw,214px)] h-[4.8rem] max-h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out"
@@ -756,7 +722,9 @@ function Navbar() {
             >
               <motion.div
                 variants={navVariants}
-                className="visible absolute left-0 w-full h-full py-20 px-[5%] flex flex-col justify-start gap-[3rem] bg-white items-start uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small overflow-auto"
+                className={`${
+                  results.length < 1 ? "invisible" : "visible"
+                } absolute left-0 w-full h-full py-20 px-[5%] flex flex-col justify-start gap-[3rem] bg-white items-start uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small overflow-auto`}
               >
                 {/* form in mobile view */}
                 <form

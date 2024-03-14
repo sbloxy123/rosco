@@ -118,7 +118,7 @@ export default async function IntroSection() {
                     viewBox="0 0 389 408"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="block xsmall:hidden"
+                    className="mix-blend-color-dodge block xsmall:hidden"
                     preserveAspectRatio="none"
                   >
                     <rect

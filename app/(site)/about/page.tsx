@@ -28,11 +28,25 @@ export default async function About() {
   return (
     <section>
       {aboutContent.map((content) => {
+        const titleWithLineBreaks = content.aboutPage.pageHeading.replace(
+          /\\n/g,
+          "\n"
+        );
+        const titleWithoutLineBreaks = content.aboutPage.pageHeading.replace(
+          /\\n/g,
+          " "
+        );
+
         return (
           <div key={content.aboutPage._id}>
             <InnerHero
               sectionTitle="about us"
-              title={content.aboutPage.pageHeading}
+              desktopHasLineBreaks={{
+                hasLineBreaks: true,
+                titleWithLineBreaks,
+              }}
+              // titleWithLineBreaks={titleWithoutLineBreaks}
+              title={titleWithoutLineBreaks}
               image={content.aboutPage.pageImage}
               imageAltText={content.aboutPage.pageImage.alt}
               pageNumber="02"
