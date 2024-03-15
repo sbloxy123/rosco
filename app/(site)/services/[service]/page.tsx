@@ -59,7 +59,9 @@ export default async function Service({ params }: Props) {
         awardHighlight={service.awardHighlight}
         asideList={service.serviceAsideList}
       />
-      <ServiceImageSlideshow />
+      {service?.gallery?.images?.length > 0 && (
+        <ServiceImageSlideshow images={service.gallery.images} />
+      )}
 
       <DetailedServiceList allServices={allServices} />
 

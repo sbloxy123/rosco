@@ -1,17 +1,56 @@
-import { getServiceSlideshowImages } from "@/sanity/sanity.query";
-import { servicesSlideshow } from "@/types";
+import GradientLineThick from "./assets/GradientLineThick";
+import GradientLineVerticalThick from "./assets/GradientLineVerticalThick";
+import {
+  ServiceGalleryPaginationSwiper,
+  ServiceGallerySwiper,
+} from "./swiper/Swipers";
 
-export default async function ServiceImageSlideshow({}) {
-  const serviceSlideshow: servicesSlideshow[] =
-    await getServiceSlideshowImages();
-
-  // console.log(serviceSlideshow, "SLIDESHOW IMAGES***");
+export default async function ServiceImageSlideshow({
+  images,
+}: {
+  images: {
+    _id: string;
+    alt: string;
+    image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
+  }[];
+}) {
+  console.log(images, "service gallery images ******");
 
   return (
-    <div>
-      <h1 className="w-[500px] h-[300px] bg-red-200 flex justify-center items-center mx-auto p-8 text-center">
-        SLIDESHOW IMAGES TO GO HERE
-      </h1>
+    <div className=" w-full small:px-layout-small">
+      <div className="relative">
+        <div className="absolute top-0 left-0 w-full h-[1.7rem] z-10">
+          <GradientLineThick />
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-[1.7rem] z-10">
+          <GradientLineThick />
+        </div>
+        <div className="absolute bottom-0 left-0 h-full w-[1.7rem] hidden small:block z-10">
+          <GradientLineVerticalThick />
+        </div>
+        <div className="absolute bottom-0 right-0 h-full w-[1.7rem] small:block hidden z-10">
+          <GradientLineVerticalThick />
+        </div>
+        <ServiceGallerySwiper images={images} />
+      </div>
+      <ServiceGalleryPaginationSwiper data={images} />
     </div>
   );
 }

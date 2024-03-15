@@ -87,12 +87,27 @@ export default async function TotPromo() {
               </div>
               <div className="relative z-1 xsmall:order-3">
                 {totPromo.map((content, index) => {
+                  const textWithLineBreaks =
+                    content.totPromo.promoMessage.replace(/\\n/g, "\n");
+                  const textWithoutLineBreaks =
+                    content.totPromo.promoMessage.replace(/\\n/g, " ");
+                  console.log(content.totPromo.promoMessage);
+
                   return (
                     <h3
                       key={index}
                       className="font-[600] tracking-[0.06em] text-[2rem] text-white text-center px-[5%] xsmall:text-[2.4rem] xsmall:w-[70%] xsmall:max-w-[500px] xsmall:mx-auto small:max-w-full small:text-left small:ml-0 small:px-0 small:w-[90%]"
                     >
-                      {content.totPromo.promoMessage}
+                      <span className="hidden small:block pr-[3rem]">
+                        {textWithLineBreaks.split("\n").map((line, index) => (
+                          <span key={index}>
+                            {line} <br />
+                          </span>
+                        ))}
+                      </span>
+                      <span className="block small:hidden">
+                        {textWithoutLineBreaks}
+                      </span>
                     </h3>
                   );
                 })}

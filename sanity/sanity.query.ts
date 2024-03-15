@@ -149,62 +149,35 @@ export async function getServiceLinks() {
   );
 }
 
-export async function getServiceSlideshowImages() {
-  return client.fetch(groq`*[_type == "service"]{
-      _id,
-      ServicesPage {
-      gallery {
-            images[] {
-              _id,
-              alt,
-              "image": asset->url,
-              asset->{_ref},
-              crop {
-                _type,
-                bottom,
-                left,
-                top,
-                right
-              },
-              hotspot {
-                _type,
-                height,
-                width,
-                x,
-                y
-              }
-            }
-          }
-        }
-  }`);
-}
-
-export async function getSingleServiceBannerImage() {
-  return client.fetch(groq`*[_type == "service"]{
-    serviceTitle,
-    serviceBannerImage {
-        alt,
-        "image": asset->url,
-        asset {
-          _ref
-        },
-        crop {
-          _type,
-          bottom,
-          left,
-          top,
-          right
-        },
-        hotspot {
-          _type,
-          height,
-          width,
-          x,
-          y
-        }
-      },
-}`);
-}
+// export async function getServiceSlideshowImages() {
+//   return client.fetch(groq`*[_type == "service"]{
+//       _id,
+//       ServicesPage {
+//         gallery {
+//             images[] {
+//               _id,
+//               alt,
+//               "image": asset->url,
+//               asset->{_ref},
+//               crop {
+//                 _type,
+//                 bottom,
+//                 left,
+//                 top,
+//                 right
+//               },
+//               hotspot {
+//                 _type,
+//                 height,
+//                 width,
+//                 x,
+//                 y
+//               }
+//             }
+//           }
+//         }
+//   }`);
+// }
 
 export async function getSingleService(slug: string) {
   return client.fetch(
@@ -263,7 +236,29 @@ export async function getSingleService(slug: string) {
         awardDate,
         awardLogo {alt, "image": asset->url},
         awardTitle,
-      }
+      },
+      gallery {
+            images[] {
+              _id,
+              alt,
+              "image": asset->url,
+              asset->{_ref},
+              crop {
+                _type,
+                bottom,
+                left,
+                top,
+                right
+              },
+              hotspot {
+                _type,
+                height,
+                width,
+                x,
+                y
+              }
+            }
+          },
     }`,
     { slug }
   );

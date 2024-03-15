@@ -32,6 +32,7 @@ import { SwiperArrowNext, SwiperArrowPrev } from "../common/SwiperArrows";
 import { useEffect, useRef } from "react";
 import FilterButton from "../common/FilterButton";
 
+// homepage services swiper
 export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
   return (
     <Swiper
@@ -70,8 +71,7 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
   );
 };
 
-// PROJECTS SWIPER
-
+// Homepage PROJECTS SWIPER
 export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
   const projectsSwiperRef = useRef<SwiperCore | null>(null);
   const projectsPaginationSwiperRef = useRef<SwiperCore | null>(null);
@@ -131,6 +131,7 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
   );
 };
 
+// swiper specifically for pagination on the homepage projects swiper (projects swiper also has bagination but for smaller screens only)
 export const ProjectsPaginationSwiper = ({ data }: { data: projectType[] }) => {
   const projectsPaginationSwiperRef = useRef<SwiperCore | null>(null);
   return (
@@ -160,6 +161,7 @@ export const ProjectsPaginationSwiper = ({ data }: { data: projectType[] }) => {
   );
 };
 
+// Homepage Testimonials swiper
 export const TestimonialSwiper = ({ data }: { data: testimonialsType[] }) => {
   return (
     <Swiper
@@ -195,6 +197,7 @@ export const TestimonialSwiper = ({ data }: { data: testimonialsType[] }) => {
   );
 };
 
+// Homepage awards swiper
 export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
   return (
     <Swiper
@@ -274,6 +277,7 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
   );
 };
 
+// filter button swiper for projects and related service
 export const FilterButtonSwiper = ({
   categories,
   filters,
@@ -329,6 +333,7 @@ import "swiper/css/thumbs";
 import { Thumbs, EffectFade } from "swiper/modules";
 import { ImageSlider } from "../ImageSlider";
 
+// Projects page gallery swiper with before/after slider and thumbnail swiper for controls
 export default function ProjectsImageSwiper({
   images,
   beforeImage,
@@ -381,7 +386,6 @@ export default function ProjectsImageSwiper({
                 alt={image.alt}
                 className="object-cover"
               />
-              <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
             </SwiperSlide>
           );
         })}
@@ -454,7 +458,10 @@ interface AdditionalInfoItem {
 }
 import { PortableTextBlock } from "sanity";
 import { PortableText } from "@portabletext/react";
+import GradientLineThick from "../assets/GradientLineThick";
+import GradientLineVerticalThick from "../assets/GradientLineVerticalThick";
 
+// single service's sub-categories and related info, eg- damp proofing -> rising damp, etc
 export const ServiceExtrasSwiper = ({
   additionalInfo,
   primaryOverviewTitle,
@@ -587,5 +594,126 @@ export const ServiceExtrasSwiper = ({
         })}
       </Swiper>
     </div>
+  );
+};
+
+export const ServiceGallerySwiper = ({
+  images,
+}: {
+  images: {
+    _id: string;
+    alt: string;
+    image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
+  }[];
+}) => {
+  return (
+    <Swiper
+      spaceBetween={0}
+      slidesPerView="auto"
+      wrapperClass=""
+      className="service-slideshow-swiper relative w-full aspect-[389/303] xsmall:aspect-[742/409] small:aspect-[1118.5/623] overflow-hidden"
+      modules={[Pagination, Navigation]}
+      pagination={{
+        el: ".service-slideshow-pagination",
+      }}
+      navigation={{
+        nextEl: ".next-service-image",
+        prevEl: ".prev-service-image",
+      }}
+      speed={400} // Set speed to 0 to remove transitions
+      effect={"fade"} // or 'slide'
+    >
+      {images.map((image, index) => {
+        return (
+          <SwiperSlide key={index} className="">
+            <Image
+              src={image.image}
+              width={1120}
+              height={625}
+              alt={image.alt}
+              className="object-cover h-full w-full"
+            />
+          </SwiperSlide>
+        );
+      })}
+
+      <div className="absolute flex gap-4 right-[5%] bottom-[10%] z-20">
+        <SwiperArrowPrev swiperDivName="prev-service-image" />
+        <SwiperArrowNext swiperDivName="next-service-image" />
+      </div>
+    </Swiper>
+  );
+};
+
+// swiper specifically for pagination on the service gallery swiper (overflow hidden blocks pagination)
+export const ServiceGalleryPaginationSwiper = ({
+  data,
+}: {
+  data: {
+    _id: string;
+    alt: string;
+    image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
+  }[];
+}) => {
+  const ServiceGalleryPaginationSwiperRef = useRef<SwiperCore | null>(null);
+  return (
+    <Swiper
+      onSwiper={(swiper) => {
+        ServiceGalleryPaginationSwiperRef.current = swiper;
+      }}
+      navigation={{
+        nextEl: ".next-service-image",
+        prevEl: ".prev-service-image",
+      }}
+      wrapperClass=""
+      className="mb-[-3rem] xsmall:mb-[-1rem]"
+      modules={[Pagination, Navigation]}
+      pagination={{
+        el: ".service-slideshow-pagination",
+      }}
+    >
+      {data.map((elm, index) => {
+        return (
+          <SwiperSlide key={index}>
+            <div></div>
+          </SwiperSlide>
+        );
+      })}
+      <div className="service-slideshow-pagination h-fit w-full z-30 flex gap-1 items-center justify-center mt-[5rem] pb-[2rem]"></div>
+    </Swiper>
   );
 };

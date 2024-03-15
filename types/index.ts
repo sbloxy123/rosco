@@ -183,6 +183,30 @@ export type serviceType = {
     };
     awardTitle: string;
   };
+  gallery: {
+    images: {
+      _id: string;
+      alt: string;
+      image: string;
+      asset: {
+        _ref: string;
+      };
+      crop: {
+        _type: "sanity.imageCrop";
+        bottom: number;
+        left: number;
+        right: number;
+        top: number;
+      };
+      hotspot: {
+        _type: "sanity.imageHotspot";
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+      };
+    }[];
+  };
 };
 
 // mailing list
@@ -401,34 +425,34 @@ export type aboutPageType = {
   };
 };
 
-export type servicesSlideshow = {
-  ServicesPage: {
-    gallery: {
-      images: {
-        _id: string;
-        alt: string;
-        image: string;
-        asset: {
-          _ref: string;
-        };
-        crop: {
-          _type: "sanity.imageCrop";
-          bottom: number;
-          left: number;
-          right: number;
-          top: number;
-        };
-        hotspot: {
-          _type: "sanity.imageHotspot";
-          height: number;
-          width: number;
-          x: number;
-          y: number;
-        };
-      }[];
-    };
-  };
-};
+// export type servicesSlideshow = {
+//   ServicesPage: {
+//     gallery: {
+//       images: {
+//         _id: string;
+//         alt: string;
+//         image: string;
+//         asset: {
+//           _ref: string;
+//         };
+//         crop: {
+//           _type: "sanity.imageCrop";
+//           bottom: number;
+//           left: number;
+//           right: number;
+//           top: number;
+//         };
+//         hotspot: {
+//           _type: "sanity.imageHotspot";
+//           height: number;
+//           width: number;
+//           x: number;
+//           y: number;
+//         };
+//       }[];
+//     };
+//   };
+// };
 
 export type servicesPageType = {
   _id: string;
