@@ -39,9 +39,9 @@ export default async function faqs() {
     })),
   };
 
-  faqs.map((faq) => {
-    console.log(faq);
-  });
+  // faqs.map((faq) => {
+  //   console.log(faq);
+  // });
 
   return (
     <main>

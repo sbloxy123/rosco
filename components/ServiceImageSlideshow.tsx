@@ -31,8 +31,6 @@ export default async function ServiceImageSlideshow({
     };
   }[];
 }) {
-  console.log(images, "service gallery images ******");
-
   return (
     <div className=" w-full small:px-layout-small">
       <div className="relative">

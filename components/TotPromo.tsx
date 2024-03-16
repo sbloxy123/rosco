@@ -91,7 +91,6 @@ export default async function TotPromo() {
                     content.totPromo.promoMessage.replace(/\\n/g, "\n");
                   const textWithoutLineBreaks =
                     content.totPromo.promoMessage.replace(/\\n/g, " ");
-                  console.log(content.totPromo.promoMessage);
 
                   return (
                     <h3

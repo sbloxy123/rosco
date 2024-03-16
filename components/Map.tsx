@@ -4,13 +4,6 @@ import RPLogo from "../app/assets/images/RoscoLogo.png";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 // Import custom styles to customize the style of Google Map
 import styles from "../app/(site)/assets/GoogleMapStyles.json";
-//Map's styling
-// const defaultMapContainerStyle = {
-//   width: "100%",
-//   height: "100%",
-//   position: "absolute"
-//   // borderRadius: "15px 0px 0px 15px",
-// };
 
 //K2's coordinates
 const defaultMapCenter = {

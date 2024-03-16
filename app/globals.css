@@ -592,3 +592,8 @@ input[type="text"]::-webkit-search-cancel-button {
     opacity: 1 !important;
   }
 }
+
+/* move google maps zoom controls */
+.gmnoprint {
+  margin-left: -2rem;
+}

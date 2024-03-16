@@ -14,49 +14,47 @@ const backgroundVariants = {
     y: 0,
     height: "100vh",
     transition: {
-      type: "", // Use a spring animation for more natural movement
+      // type: "spring", // Specifying spring type here
       stiffness: 260,
       damping: 20,
-      // when: "beforeChildren", // Animate the container before its children
-      staggerChildren: 0.1, // Stagger the animation of children
+      staggerChildren: 0.4,
       duration: 0.5,
     },
   },
   closed: {
-    opacity: 0.4,
+    opacity: 1,
     y: "-100%",
     height: 0,
-    transition: { duration: 1, ease: "easeInOut" }, // Smooth transition with easeInOut
-    // transitionEnd: { display: "none" },
-  }, // Ensure component is not interactive when closed
+    transition: { duration: 1, ease: "easeInOut" },
+  },
   exit: {
-    opacity: 0,
+    opacity: 1,
     y: "-100%",
-    transition: { duration: 1, ease: "easeInOut" }, // Match the exit transition to the closed state
+    transition: { duration: 0.5, ease: "easeInOut" },
   },
 };
+
 const navVariants = {
   open: {
     opacity: 1,
-
-    transition: { staggerChildren: 0.05, delayChildren: 0.1, duration: 0.5 }, // delayChildren starts the staggering after the menu opens
+    transition: { staggerChildren: 0.06, delayChildren: 0.15, duration: 0.3 }, // delayChildren starts the staggering after the menu opens
   },
   closed: {
-    opacity: 0,
-    transition: { staggerChildren: 0.1, staggerDirection: -1, duration: 0.4 }, // staggerDirection -1 makes the children animate in reverse order
+    opacity: 0.4,
+    transition: { staggerChildren: 3, staggerDirection: -1, duration: 0.5 }, // staggerDirection -1 makes the children animate in reverse order
   },
 };
 
 const itemVariants = {
   open: {
-    y: 0,
     opacity: 1,
-    transition: { y: { stiffness: 1000, velocity: -100 }, duration: 1.5 },
+    y: "100%",
+    transition: { duration: 0.2 },
   },
   closed: {
-    y: -50,
     opacity: 0,
-    transition: { y: { stiffness: 1000 }, duration: 1 },
+    y: "0",
+    transition: { duration: 0.2 },
   },
 };
 
@@ -427,11 +425,7 @@ function Navbar() {
   };
 
   return (
-    <div
-      className={`z-50 small:fixed top-0 left-0 w-full bg-white ${
-        searchIsOpen || isOpen ? "fixed" : "relative"
-      }`}
-    >
+    <div className={`z-50 small:fixed top-0 left-0 w-full bg-white `}>
       <header className="relative tracking-[0.06em]">
         <div className="relative z-50 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
@@ -563,12 +557,7 @@ function Navbar() {
                       className={`relative h-full aspect-square flex justify-center items-center opacity-30 ${
                         searchIsOpen && "cursor-default"
                       }  `}
-                      // onClick={(event) => {
-                      // event.preventDefault();
-                      // setSearchIsOpen(!searchIsOpen);
                       onClick={handleSearchButtonClick}
-
-                      // }}
                     >
                       <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
                         <svg
@@ -790,7 +779,6 @@ function Navbar() {
                   <input
                     type="search"
                     placeholder="Search"
-                    // value={email}
                     onChange={(e) => {
                       setSearchText(e.target.value);
                     }}
@@ -820,7 +808,7 @@ function Navbar() {
             >
               <motion.ul
                 variants={navVariants} // Control the staggering here
-                className="absolute left-0 w-full h-full px-2 py-20 sm:px-3 flex flex-col justify-start gap-[3rem] bg-white items-center uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30"
+                className="absolute left-0 w-full h-full px-2 py-20 sm:px-3 flex flex-col justify-start gap-[1.7rem] bg-white items-center uppercase font-normal font-sans text-[1.9rem] text-[rgba(47,48,71,90%)] z-30"
               >
                 {[
                   "Home",
