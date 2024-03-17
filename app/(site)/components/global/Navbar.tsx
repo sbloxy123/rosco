@@ -153,9 +153,6 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
   faqMainImage,
   searchTerm,
 }) => {
-  // console.log(results);
-  // console.log(faqMainImage);
-
   return (
     <>
       {results.map((result, index) => {
@@ -247,11 +244,11 @@ const SearchResultList: React.FC<SearchResultListProps> = ({
               onClick={() => setSearchIsOpen(false)}
               href={{
                 pathname: "/projects", // General projects page
-                query: { filter: projectCategories }, // Pass the filter in the query string
+                query: { filter: result.id }, // Pass the filter in the query string
               }}
             >
               <div className="flex gap-[2rem] items-center">
-                <div className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px]  aspect-square">
+                <div className="relative min-w-[52px] max-w-[52px] min-h-[52px] max-h-[52px] aspect-square">
                   <Image
                     src={projectThumbnail}
                     height={52}
@@ -356,12 +353,12 @@ function Navbar() {
   };
 
   useEffect(() => {
-    console.log("Transcript updated:", transcript); // Debugging
+    // console.log("Transcript updated:", transcript); // Debugging
     if (transcript.trim().length > 0) {
       setSearchText(transcript);
       setSearchIsOpen(true);
       setIsLoading(true);
-      console.log("Search should be open now"); // Debugging
+      // console.log("Search should be open now"); // Debugging
     }
   }, [transcript]);
 
@@ -411,7 +408,6 @@ function Navbar() {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
-
     // Check if the screen width is less than 640px (TailwindCSS's 'sm' breakpoint)
     if (window.matchMedia("(min-width: 512px)").matches) {
       // If true, focus the search input instead of toggling the motion.div
@@ -427,7 +423,7 @@ function Navbar() {
   return (
     <div
       className={` z-50 small:fixed top-0 left-0 w-full bg-white ${
-        searchIsOpen || isOpen ? "fixed" : "relative"
+        searchIsOpen || isOpen ? "fixed" : "fixed"
       }`}
     >
       <header className="relative tracking-[0.06em]">
@@ -626,7 +622,7 @@ function Navbar() {
                   <button
                     onClick={() => setSearchIsOpen(!searchIsOpen)}
                     type="button"
-                    className=" inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900 z-40 bg-[#fff]"
+                    className="inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900 z-40 bg-[#fff]"
                     aria-controls="mobile-menu"
                     aria-expanded="false"
                   >
@@ -705,7 +701,7 @@ function Navbar() {
         <AnimatePresence>
           {searchIsOpen && (
             <motion.div
-              className=" h-screen absolute top-[7rem] left-0 w-full z-[45]"
+              className="h-screen absolute top-[7rem] left-0 w-full z-[45]"
               initial="closed"
               animate="open"
               exit="exit"
@@ -716,14 +712,11 @@ function Navbar() {
               <motion.div
                 variants={navVariants}
                 className={`${
-                  results.length < 1 ? "invisible" : "visible"
+                  searchIsOpen ? "visible" : "invisible"
                 } absolute left-0 w-full h-full py-20 px-[5%] flex flex-col justify-start gap-[3rem] bg-white items-start uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small overflow-auto`}
               >
                 {/* form in mobile view */}
-                <form
-                  className="xsmall:hidden nav-search-form relative flex justify-end flex-row w-full"
-                  // onSubmit={handleSubmit}
-                >
+                <form className="xsmall:hidden nav-search-form relative flex justify-end flex-row w-full">
                   {/* search form icons */}
                   <div className="flex items-center gap-[1rem]">
                     <div className="absolute top-0 left-0 h-full w-auto">

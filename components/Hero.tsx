@@ -9,7 +9,7 @@ export default async function Hero() {
   const hero: heroType[] = await getHero();
 
   return (
-    <section className="relative">
+    <section className="relative mt-[11rem] small:mt-0">
       {hero &&
         hero.map((content) => {
           let titleWithLineBreaks = content.heroHeading;
