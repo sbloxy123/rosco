@@ -35,7 +35,7 @@ export default async function InnerHero({
   return (
     <section>
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto  small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
-        <div className="text-center pt-[5.5rem] xsmall:pt-[4rem] small:pt-0 xsmall:text-left max-w-[323px] mx-auto small:mt-[6rem] xsmall:max-w-[580px] xsmall:ml-0 small:max-w-full text-theme-dark">
+        <div className="text-theme-dark text-center pt-[5.5rem] mx-auto xsmall:max-w-[580px] xsmall:ml-0 xsmall:text-left xsmall:pt-[4rem] small:pt-0 small:mt-[6rem] small:max-w-full ">
           <h3 className="uppercase font-semibold xsmall:ml-[7.5rem] small:ml-layout-small">
             {sectionTitle}
           </h3>

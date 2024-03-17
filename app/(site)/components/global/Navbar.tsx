@@ -48,12 +48,12 @@ const navVariants = {
 const itemVariants = {
   open: {
     opacity: 1,
-    y: "100%",
+    y: "0%",
     transition: { duration: 0.2 },
   },
   closed: {
     opacity: 0,
-    y: "0",
+    y: "-100%",
     transition: { duration: 0.2 },
   },
 };
@@ -425,7 +425,11 @@ function Navbar() {
   };
 
   return (
-    <div className={`z-50 small:fixed top-0 left-0 w-full bg-white `}>
+    <div
+      className={` z-50 small:fixed top-0 left-0 w-full bg-white ${
+        searchIsOpen || isOpen ? "fixed" : "relative"
+      }`}
+    >
       <header className="relative tracking-[0.06em]">
         <div className="relative z-50 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
