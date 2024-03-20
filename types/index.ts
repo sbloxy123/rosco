@@ -56,8 +56,8 @@ export type heroType = {
 
 // about us
 export type introType = {
+  _id: string;
   introSection: {
-    _id: string;
     introSubheading: string;
     introHeading: string;
     introText: PortableTextBlock[];

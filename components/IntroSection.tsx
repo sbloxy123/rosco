@@ -3,9 +3,7 @@ import type { introType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import ButtonLink from "./common/ButtonLink";
 import BgDots from "./assets/BgDots";
-
-import OldBorderedImage from "./utils/OldBorderImage";
-import BorderedImage from "./utils/BorderedImage";
+import BorderedImageAbout from "./utils/BorderedImageAbout";
 
 export default async function IntroSection() {
   const intro: introType[] = await getIntro();
@@ -27,16 +25,12 @@ export default async function IntroSection() {
       </div>
 
       {intro.map((content) => {
-        const croppedImage = getCroppedImageSrc(
-          content.introSection.introImage
-        );
-
         return (
           <div
-            key={content.introSection._id}
+            key={content._id}
             className="relative grid grid-cols-1 small:grid-cols-2 gap-10 items-center z-10"
           >
-            <BorderedImage image={content.introSection.introImage} />
+            <BorderedImageAbout image={content.introSection.introImage} />
 
             <div className="small:max-w-[90%] small:pl-[70px]">
               <h3 className="uppercase pb-[2.4rem] pt-[2.7rem] small:pt-0">

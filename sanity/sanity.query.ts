@@ -91,6 +91,7 @@ export async function getHero() {
 export async function getIntro() {
   return client.fetch(
     groq`*[_type == 'homepage'] {
+        _id,
       introSection {
         introSubheading,
         introHeading,
@@ -324,7 +325,9 @@ export async function getAllProjects() {
       image {
         alt,
         "image": asset->url,
-        asset->{_ref},
+        asset{
+          _ref,
+            },
         crop {
           _type,
           bottom,
@@ -374,7 +377,8 @@ export async function getAllProjects() {
             }
           }
         }
-    }`
+    }
+        `
   );
 }
 

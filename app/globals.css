@@ -130,12 +130,14 @@ input[type="text"]::-webkit-search-cancel-button {
   border-width: 2px;
 }
 
-.filter__flex > div:last-child {
-  max-width: 15rem;
-  margin-right: auto;
-}
-.filter__flex > div:nth-last-child(2) {
-  max-width: 17rem;
+@media all and (min-width: 1024px) {
+  .filter__flex > div:last-child {
+    max-width: 15rem;
+    margin-right: auto;
+  }
+  .filter__flex > div:nth-last-child(2) {
+    max-width: 17rem;
+  }
 }
 
 .project-img {

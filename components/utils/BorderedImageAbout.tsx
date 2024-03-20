@@ -4,35 +4,33 @@ import getPositionFromHotspot, {
 import { SanityImageQueryResult } from "@/types";
 import Image from "next/image";
 
-export default async function BorderedImage({
+export default function BorderedImageAbout({
   image,
 }: {
   image: SanityImageQueryResult;
 }) {
   return (
     <div className="relative w-full h-auto small:max-w-[700px] medium:mr-0 medium:ml-auto">
-      <div className="relative w-[103.5vw] -ml-[6.7%] -mt-[5.8%] xsmall:-ml-[4.5%] xsmall:-mt-[4.2%] small:absolute small:top-0 small:left-0 small:w-full small:h-full">
+      <div className="relative w-[100vw] aspect-[349/375] -ml-[4.7%] -mt-[5.8%] xsmall:aspect-[690/451] xsmall:w-[104.5vw] xsmall:ml-[-6.9%] xsmall:-mt-[4.5%] small:ml-[-4.6%] small:absolute small:top-0 small:left-0 small:w-[109.4%] small:h-auto small:mt-[-4.1%] small:aspect-[703/454]">
         {/* 2 x mobile only border svgs */}
         <svg
           viewBox="0 0 385 412"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="mix-blend-color-dodge absolute top-0 w-full h-full xsmall:hidden"
-          preserveAspectRatio="none"
         >
           <rect
             x="20"
             y="16"
             width="349"
             height="372"
-            stroke="url(#paint0_linear_17_3269)"
+            stroke="url(#aboutBorderMob)"
             strokeOpacity="0.5"
             strokeWidth="40"
-            vectorEffect="non-scaling-stroke"
           />
           <defs>
             <linearGradient
-              id="paint0_linear_17_3269"
+              id="aboutBorderMob"
               x1="383.689"
               y1="5.10812"
               x2="-41.2097"
@@ -50,22 +48,20 @@ export default async function BorderedImage({
           viewBox="0 0 385 412"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="mix-blend-color-dodge xsmall:hidden"
-          preserveAspectRatio="none"
+          className="mix-blend-color-dodge absolute top-0 w-full h-full  xsmall:hidden"
         >
           <rect
             x="20"
             y="16"
             width="349"
             height="372"
-            stroke="url(#paint0_linear_17_3269)"
+            stroke="url(#aboutBorderMob2)"
             strokeOpacity="0.5"
             strokeWidth="40"
-            vectorEffect="non-scaling-stroke"
           />
           <defs>
             <linearGradient
-              id="paint0_linear_17_3269"
+              id="aboutBorderMob2"
               x1="383.689"
               y1="5.10812"
               x2="-41.2097"
@@ -81,91 +77,60 @@ export default async function BorderedImage({
         </svg>
 
         {/* 2 x TABLET+ SCREEN border svgs */}
-        <svg
-          viewBox="0 0 731 510"
-          fill="none"
-          className="hidden xsmall:block absolute top-0 left-0 w-[104vw] h-auto xsmall:aspect-[690/451] small:aspect-[703/454] small:w-[112%] small:h-[112%] small:hidden mix-blend-color-dodge"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            y="28"
-            width="703"
-            height="454"
-            stroke="url(#paint0_linear_0_4932)"
-            strokeOpacity="0.5"
-            strokeWidth="56"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_0_4931"
-              x1="732.588"
-              y1="14.7072"
-              x2="370.402"
-              y2="433.912"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0.161927" stopColor="#4804F8" />
-              <stop offset="0.741249" stopColor="#FF4A1D" />
-              <stop offset="0.838542" stopColor="#F9BA17" />
-              <stop offset="0.978225" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 731 510"
-          fill="none"
-          className="hidden xsmall:block absolute top-0 left-0 w-[104vw] h-auto xsmall:aspect-[690/451] -z-20 small:aspect-[703/454] small:w-[112%] small:h-[112%] mix-blend-color-dodge"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            y="28"
-            width="703"
-            height="454"
-            stroke="url(#paint0_linear_0_4932)"
-            strokeOpacity="0.5"
-            strokeWidth="56"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_0_4931"
-              x1="732.588"
-              y1="14.7072"
-              x2="370.402"
-              y2="433.912"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0.161927" stopColor="#4804F8" />
-              <stop offset="0.741249" stopColor="#FF4A1D" />
-              <stop offset="0.838542" stopColor="#F9BA17" />
-              <stop offset="0.978225" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
 
-        {/* laptop+ screen */}
         <svg
-          viewBox="0 0 731 510"
-          className="hidden small:block absolute top-0 left-0 small:aspect-[703/454] small:w-[112%] small:h-[112%] z-20 mix-blend-color-dodge"
+          viewBox="0 0 743 507"
+          className="mix-blend-color-dodge hidden xsmall:block small:hidden absolute top-0 w-full h-full -z-10"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect
+            x="26"
             y="28"
-            width="703"
-            height="454"
-            stroke="url(#paint111_linear_0_4932)"
+            width="690"
+            height="451.417"
+            stroke="url(#back-tab)"
             strokeOpacity="0.5"
-            strokeWidth="56"
+            strokeWidth="55"
           />
           <defs>
             <linearGradient
-              id="paint111_linear_0_4932"
-              x1="732.588"
-              y1="14.7072"
-              x2="87.5547"
-              y2="529.643"
+              id="back-tab"
+              x1="745.04"
+              y1="14.7829"
+              x2="384.268"
+              y2="426.977"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0.161927" stopColor="#4804F8" />
+              <stop offset="0.741249" stopColor="#FF4A1D" />
+              <stop offset="0.838542" stopColor="#F9BA17" />
+              <stop offset="0.978225" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg
+          viewBox="0 0 743 507"
+          className="mix-blend-color-dodge hidden xsmall:block small:hidden absolute top-0 w-full h-full"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="26"
+            y="28"
+            width="690"
+            height="451.417"
+            stroke="url(#tab-front)"
+            strokeOpacity="0.5"
+            strokeWidth="55"
+          />
+          <defs>
+            <linearGradient
+              id="tab-front"
+              x1="745.04"
+              y1="14.7829"
+              x2="105.567"
+              y2="518.708"
               gradientUnits="userSpaceOnUse"
             >
               <stop offset="0.161927" stopColor="#4804F8" />
@@ -175,26 +140,57 @@ export default async function BorderedImage({
             </linearGradient>
           </defs>
         </svg>
+
+        {/* laptop+ screen */}
         <svg
-          viewBox="0 0 731 510"
-          className="hidden small:block absolute top-0 left-0 small:aspect-[703/454] small:w-[112%] small:h-[112%] -z-20 mix-blend-color-dodge"
+          viewBox="0 0 759 510"
+          className="hidden small:block absolute top-0 left-0 mix-blend-color-dodge -z-10"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect
+            x="28"
             y="28"
             width="703"
             height="454"
-            stroke="url(#paint111_linear_0_4932)"
+            stroke="url(#lap-back)"
+            strokeOpacity="0.5"
+            stroke-width="56"
+          />
+          <defs>
+            <linearGradient
+              id="lap-back"
+              x1="760.588"
+              y1="14.7072"
+              x2="398.402"
+              y2="433.912"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0.161927" stopColor="#4804F8" />
+              <stop offset="0.741249" stopColor="#FF4A1D" />
+              <stop offset="0.838542" stopColor="#F9BA17" />
+              <stop offset="0.978225" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg
+          viewBox="0 0 760 510"
+          className="hidden small:block absolute top-0 left-0 mix-blend-color-dodge"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M28.5 28H731.5V482H28.5V28Z"
+            stroke="url(#lap-front)"
             strokeOpacity="0.5"
             strokeWidth="56"
           />
           <defs>
             <linearGradient
-              id="paint111_linear_0_4932"
-              x1="732.588"
-              y1="14.7072"
-              x2="87.5547"
+              id="lap-front"
+              x1="676.588"
+              y1="14.7073"
+              x2="31.5547"
               y2="529.643"
               gradientUnits="userSpaceOnUse"
             >
@@ -206,7 +202,7 @@ export default async function BorderedImage({
           </defs>
         </svg>
       </div>
-      <div className="absolute top-[-0.5%] left-[-0.5%] w-[calc(100%+0.6%)] aspect-[349/375] overflow-hidden xsmall:relative xsmall:aspect-[690/451] small:aspect-[703/454] xsmall:mt-[4.2%] small:mt-0">
+      <div className="absolute top-[-0.7%] left-0 w-full aspect-[349/365] overflow-hidden xsmall:w-[calc(100%+0.6%)] xsmall:left-[-0.5%]  xsmall:absolute xsmall:aspect-[690/451] small:w-[calc(100%+1.2%)] small:relative small:aspect-[703/454] small:mt-0">
         <Image
           src={getCroppedImageSrc(image)}
           alt={image.alt}

@@ -12,12 +12,14 @@ export default async function LatestProjects() {
   return (
     <section className="relative">
       <div className="relative">
-        <div className="h-[410px] absolute -z-10 top-0 left-0 w-full small:h-1/2 bg-theme-off-white overflow-hidden">
-          <div className="absolute top-0 left-0 h-[200%] w-auto hidden small:block">
-            <BgDots />
-          </div>
-          <div className="absolute top-0 right-0 w-full h-auto small:h-[200%] small:w-auto transform scale-x-[-1]">
-            <BgDots />
+        <div className="h-[410px] absolute -z-10 top-0 left-0 w-full xsmall:max-h-[380px] xsmall:overflow-visible small:h-1/2 bg-theme-off-white small:overflow-hidden">
+          <div className="invidible xsmall:visible xsmall:max-h-[442px] absolute top-0 left-0 w-full h-[121%] xsmall:overflow-hidden small:max-h-none small:overflow-visible">
+            <div className="absolute top-0 left-0 h-[200%] w-auto hidden small:block">
+              <BgDots />
+            </div>
+            <div className="absolute top-0 right-0 w-full h-auto small:h-[200%] small:w-auto transform scale-x-[-1]">
+              <BgDots />
+            </div>
           </div>
         </div>
 
@@ -36,7 +38,7 @@ export default async function LatestProjects() {
           );
         })}
 
-        <div className="relative small:w-[90%] small:h-fit small:m-auto bg-theme-dark small:max-w-[1120px] small:flex small:items-center small:px-[0%] overflow-hidden">
+        <div className="relative xsmall:mx-[5%] small:w-[90%] small:h-fit small:m-auto bg-theme-dark small:max-w-[1120px] small:flex small:items-center small:px-[0%] overflow-hidden">
           {/* top left dots */}
           <div className="hidden xsmall:block absolute top-0 left-0 w-[51%] small:w-[42%] mix-blend-multiply">
             <BgDots />
