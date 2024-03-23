@@ -10,14 +10,26 @@ import ContactSection from "@/components/ContactSection";
 import type { Metadata } from "next";
 import { getHero } from "@/sanity/sanity.query";
 import type { heroType } from "@/types";
+import thumbnail from "./assets/Thumbnail_1280x720.png";
 
 export async function metadata() {
   const hero: heroType[] = await getHero();
+  let titleWithLineBreaks;
+  hero.map((content) => {
+    titleWithLineBreaks = content.heroHeading;
+    if (
+      typeof titleWithLineBreaks === "string" &&
+      titleWithLineBreaks.includes("\\n")
+    ) {
+      titleWithLineBreaks = titleWithLineBreaks.replace(/\\n/g, "");
+    }
+  });
+
   return {
-    title: "Rosco & Perlini | Home",
-    description: hero[0].heroHeading,
+    title: "Rosco & Perlini",
+    description: titleWithLineBreaks,
     openGraph: {
-      images: hero[0].heroImage.image,
+      images: thumbnail.src,
     },
   };
 }

@@ -8,6 +8,7 @@ import GradientLineVerticalThick from "./assets/GradientLineVerticalThick";
 import { MapProvider } from "@/components/providers/map-provider";
 import { MapComponent } from "@/components/Map";
 import Image from "next/image";
+import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 
 export default async function InnerHero({
   title,
@@ -33,11 +34,11 @@ export default async function InnerHero({
   pageNumber?: string;
 }) {
   return (
-    <section>
+    <section className="mt-[7rem] xsmall:mt-[10rem] small:mt-0">
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto  small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
-        <div className="text-theme-dark text-center pt-[5.5rem] mx-auto xsmall:max-w-[580px] xsmall:ml-0 xsmall:text-left xsmall:pt-[4rem] small:pt-0 small:mt-[6rem] small:max-w-full ">
+        <div className="text-theme-dark text-center pt-[5.5rem] mx-auto xsmall:max-w-[612px] xsmall:ml-0 xsmall:text-left xsmall:pt-[4rem] small:pt-0 small:mt-[6rem] small:max-w-full ">
           <h3 className="uppercase font-semibold xsmall:ml-[7.5rem] small:ml-layout-small">
-            {sectionTitle}
+            {removelineBreakCodeFromHTML(sectionTitle)}
           </h3>
           <div className="w-full order-last small:order-first px-[5%] small:px-0">
             <div className="w-full relative pl-0 xsmall:pl-[4.5rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] large:static pb-12 xsmall:px-20 small:pl-layout-small">
@@ -48,7 +49,7 @@ export default async function InnerHero({
               {/* NOTE: if/else for variable line breaks in cms. see also small:pr-[clamp(...)] which may be individual per page */}
 
               {/* desktop has line breaks... */}
-              <h1 className="pt-[3rem] font-bold pb-[7rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[2rem] ">
+              <h1 className="pt-[3rem] font-bold pb-[2rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[2rem] ">
                 {desktopHasLineBreaks?.hasLineBreaks && (
                   <div>
                     <span className="hidden small:block">
@@ -85,7 +86,7 @@ export default async function InnerHero({
             </div>
           </div>
           {pageNumber !== "06" && (
-            <div className="w-full mx-auto px-[5%] xsmall:px-0 pb-[5rem] xsmall:pb-[6.5rem] xsmall:w-fit xsmall:ml-[7.5rem] small:ml-layout-small">
+            <div className="w-full mx-auto px-[8%] xsmall:px-0 pb-[5rem] xsmall:pb-[6.5rem] xsmall:w-fit xsmall:ml-[7.5rem] small:ml-layout-small">
               <ButtonLink
                 theme="dark"
                 text="Get in touch"

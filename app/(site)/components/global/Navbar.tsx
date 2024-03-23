@@ -428,8 +428,8 @@ function Navbar() {
     >
       <header className="relative tracking-[0.06em]">
         <div className="relative z-50 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
-          <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
-            <div className="max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
+          <div className="flex items-center justify-between h-20 px-[8%] xsmall:px-10 small:px-layout-small">
+            <div className="w-[154px] max-w-[172px] xsmall:w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/">
                 {/* header-logo */}
                 <svg
@@ -559,7 +559,7 @@ function Navbar() {
                       }  `}
                       onClick={handleSearchButtonClick}
                     >
-                      <span className="h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]">
+                      <span className="h-[2.8rem] aspect-square xsmall:h-[3.2rem] small:h-[2rem]">
                         <svg
                           viewBox="0 0 20 20"
                           fill="none"
@@ -586,9 +586,7 @@ function Navbar() {
                       }}
                       className="h-full aspect-square flex justify-center items-center opacity-30"
                     >
-                      <span
-                        className={`h-[3.2rem] w-[3.2rem] xsmall:h-[2rem] xsmall:w-[2rem]`}
-                      >
+                      <span className="h-[2.8rem] aspect-square xsmall:h-[3.2rem] small:h-[2rem]">
                         <svg
                           viewBox="0 0 20 20"
                           fill="none"
@@ -647,15 +645,13 @@ function Navbar() {
                   type="button"
                   className={`${
                     searchIsOpen && "hidden"
-                  } inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900`}
+                  } w-[3.2rem] xsmall:w-[4rem] aspect-square inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900`}
                   aria-controls="mobile-menu"
                   aria-expanded="false"
                 >
                   <span className="sr-only">Open main menu</span>
                   {!isOpen ? (
                     <svg
-                      width="40"
-                      height="40"
                       viewBox="0 0 40 40"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"

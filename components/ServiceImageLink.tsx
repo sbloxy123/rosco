@@ -2,6 +2,7 @@
 
 import type { serviceType } from "@/types";
 import ButtonLink from "./common/ButtonLink";
+import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 
 type ServiceImageLinkProps = {
   service: serviceType;
@@ -27,7 +28,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
             0{index + 1}
           </p>
           <h2 className="text-[2rem] font-semibold text-center w-full tracking-[0.24em] px-10 uppercase">
-            {service.serviceTitle}
+            {removelineBreakCodeFromHTML(service.serviceTitle)}
           </h2>
           <p className="text-center pt-6 px-[10%]">{service.serviceSummary}</p>
         </div>
@@ -51,7 +52,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
           0{index + 1}
         </p>
         <h2 className="text-[2.4rem] font-semibold text-center w-full tracking-[0.24em] px-10 h-7 uppercase">
-          {service.serviceTitle}
+          {removelineBreakCodeFromHTML(service.serviceTitle)}
         </h2>
       </div>
       {/* btn */}

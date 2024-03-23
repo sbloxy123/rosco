@@ -26,6 +26,16 @@ export default function ServiceItem({
     image: string;
   };
 }) {
+  let headingWithoutLineBreaks;
+
+  headingWithoutLineBreaks = heading;
+  if (
+    typeof headingWithoutLineBreaks === "string" &&
+    headingWithoutLineBreaks.includes("\\n")
+  ) {
+    headingWithoutLineBreaks = headingWithoutLineBreaks.replace(/\\n/g, "");
+  }
+
   return (
     <div
       className={`my-section-gap small:flex small:justify-between small:items-center small:max-w-[1440px] small:mx-auto ${
@@ -171,14 +181,14 @@ export default function ServiceItem({
         </h1>
       </div>
       <div
-        className={`px-[5%] pt-[4rem] small:w-[48%] small:pt-0 ${
+        className={`px-[8%] pt-[4rem] small:w-[48%] small:pt-0 ${
           index % 2 === 0
             ? "small:pr-layout-small small:pl-[3.5rem]"
             : "small:pl-layout-small small:pr-[3.5rem]"
         }`}
       >
-        <h2 className="text-theme-dark w-[80%] small:w-full leading-[3.6rem]">
-          {heading}
+        <h2 className="text-theme-dark w-[90%] small:w-full text-[2.4rem] xsmall:text-[3.2rem] xsmall:leading-[3.6rem]">
+          {headingWithoutLineBreaks}
         </h2>
 
         <div className="service-component-text hidden xsmall:block pt-[4.5rem]">

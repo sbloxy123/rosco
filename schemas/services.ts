@@ -12,7 +12,8 @@ const service = {
       name: "serviceTitle",
       title: "Service Title",
       type: "string",
-      description: "Enter the name of the service",
+      description:
+        "Enter the name of the service.  --NOTE add '\\n' to the text where you want text to return on a new line. Only applies to the title in purple feature section (with the autoscroll text) and in mobile screen sizes",
     },
     defineField({
       name: "slug",

@@ -49,6 +49,15 @@ export default async function LatestProjects() {
           <div className="hidden xsmall:block absolute top-0 left-0 w-[51%] small:w-[42%] mix-blend-multiply">
             <BgDots />
           </div>
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[51%] small:w-[42%] mix-blend-multiply">
+            <BgDots />
+          </div>
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[51%] small:w-[42%] mix-blend-multiply">
+            <BgDots />
+          </div>
+          <div className="hidden xsmall:block absolute top-0 left-0 w-[51%] small:w-[42%] mix-blend-multiply">
+            <BgDots />
+          </div>
 
           {/* bottom right dots */}
           <div className="absolute bottom-0 right-0 w-full h-auto mix-blend-multiply rotate-180 xsmall:hidden">

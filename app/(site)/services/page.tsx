@@ -15,6 +15,7 @@ import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
 import Link from "next/link";
 import ServiceImageSlideshow from "@/components/ServiceImageSlideshow";
+import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 
 export async function metadata() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
@@ -107,7 +108,9 @@ export default async function Services() {
                               </svg>
                             </span>
                             <span className="service__list__link__item">
-                              {service.serviceTitle}
+                              {removelineBreakCodeFromHTML(
+                                service.serviceTitle
+                              )}
                             </span>
                           </h4>
                         </Link>

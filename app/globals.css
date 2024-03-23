@@ -22,11 +22,17 @@ h1 {
   @media all and (max-width: 350px) {
     font-size: clamp(2.7rem, 9vw, 3.2rem);
   }
+  @media all and (min-width: 1024px) {
+    font-size: clamp(3.2rem, 3.1vw, 4rem);
+  }
 }
 h2 {
   font-size: 3.2rem;
   letter-spacing: 0.06em;
   font-weight: bold;
+  @media all and (max-width: 512px) {
+    line-height: 3rem;
+  }
 }
 h3 {
   font-size: 1.8rem;
@@ -217,6 +223,16 @@ input[type="text"]::-webkit-search-cancel-button {
     width: 12px;
     background: #fff;
     /* border: 1px solid #fff; */
+  }
+  @media all and (max-width: 512px) {
+    .swiper-pagination-bullet {
+      height: 9.6px;
+      width: 9.6px;
+    }
+    .swiper-pagination-bullet-active {
+      height: 9.6px;
+      width: 9.6px;
+    }
   }
 }
 .testimonial-pagination,

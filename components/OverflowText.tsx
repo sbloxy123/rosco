@@ -41,9 +41,22 @@ const OverflowText = ({
     };
   }, []);
 
+  const titleWithLineBreaks = serviceTitle.replace(/\\n/g, "\n");
+  const titleWithoutLineBreaks = serviceTitle.replace(/\\n/g, " ");
+
   return (
     <div>
-      <h2 className="pb-[1.5rem]">{serviceTitle}</h2>
+      <h2 className="pb-[1.5rem] ">
+        <span className="leading-[4rem] xsmall:hidden">
+          {titleWithLineBreaks.split("\n").map((line, index) => (
+            <span key={index}>
+              {line} <br />
+            </span>
+          ))}
+        </span>
+        <span className="hidden xsmall:block">{titleWithoutLineBreaks}</span>
+      </h2>
+
       <div className="relative scrollbar-and-text-container">
         <div
           ref={(ref) => (overflowRefs.current[0] = ref)}

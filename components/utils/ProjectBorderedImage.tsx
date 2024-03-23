@@ -80,7 +80,7 @@ export default function ProjectBorderedImage({
           {/* tablet border radial */}
           <svg
             viewBox="0 0 679 400"
-            className="hidden xsmall:block small:hidden absolute w-full -z-10 top-0 left-0 "
+            className="hidden xsmall:block small:hidden absolute w-full -z-10 top-0 opacity-80 left-0 "
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >

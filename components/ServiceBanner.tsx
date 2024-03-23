@@ -97,7 +97,7 @@ export default function ServiceBanner({
       <div className="relative text-white pt-[4rem] pb-[6.5rem] xsmall:pt-[6rem] small:flex small:flex-row small:justify-between small:gap-10 small:pt-[12rem] small:pb-[12rem] medium:max-w-[1120px] medium:mx-auto">
         <div
           className={`${
-            asideList ? "small:w-[90%]" : "small:w-[72%]"
+            asideList ? "small:w-[84%]" : "small:w-[72%]"
           } small:pl-layout-small medium:pl-0`}
         >
           {additionalInfo ? (
@@ -107,7 +107,7 @@ export default function ServiceBanner({
               additionalInfo={additionalInfo}
             />
           ) : (
-            <div className="w-full px-[5%] small:px-0 ">
+            <div className="w-full px-[8%] small:px-0 ">
               <OverflowText
                 serviceTitle={serviceTitle}
                 serviceText={serviceText}
