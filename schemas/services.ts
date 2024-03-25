@@ -38,14 +38,13 @@ const service = {
       description:
         "Upload a cover image for this service's swiper card (on the homepage)",
       options: { hotspot: true },
-      // commented out as image is used as a background
-      // fields: [
-      //   {
-      //     name: "alt",
-      //     title: "Alt",
-      //     type: "string",
-      //   },
-      // ],
+      fields: [
+        {
+          name: "alt",
+          title: "Alt",
+          type: "string",
+        },
+      ],
     },
     {
       name: "servicePageImage",
@@ -69,6 +68,13 @@ const service = {
       description:
         "Upload a background image for this service's banner component",
       options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt",
+          type: "string",
+        },
+      ],
     },
     {
       name: "description",

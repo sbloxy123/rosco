@@ -7,6 +7,7 @@ import OverflowText from "./OverflowText";
 
 interface BgImage {
   image: string;
+  alt: string;
   asset: {
     _ref: string;
   };
@@ -60,6 +61,7 @@ export default function ServiceBanner({
   asideList?: AsideList;
 }) {
   const titleWithLineBreaks = awardHighlight?.awardTitle.replace(/\\n/g, "\n");
+  console.log(backgroundImage.alt, "**********************");
 
   return (
     <div

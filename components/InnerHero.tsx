@@ -31,9 +31,11 @@ export default async function InnerHero({
   //   hasLineBreaks: boolean;
   //   titleWithLineBreaks: string;
   // };
-  image?: SanityImageQueryResult;
+  image?: SanityImageQueryResult | undefined;
   pageNumber?: string;
 }) {
+  // image && console.log(image.alt, "*********************************");
+
   return (
     <section className="mt-[7rem] xsmall:mt-[10rem] small:mt-0">
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto  small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">

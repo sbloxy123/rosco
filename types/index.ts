@@ -148,6 +148,7 @@ export type serviceType = {
     };
   };
   serviceBannerImage: {
+    alt: string;
     image: string;
     asset: {
       _ref: string;

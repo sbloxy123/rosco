@@ -210,7 +210,7 @@ export async function getSingleService(slug: string) {
           }
           },
       serviceBannerImage {
-        alt,
+          alt,
           "image": asset->url,
           asset {
             _ref
