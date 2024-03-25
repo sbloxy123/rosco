@@ -155,7 +155,7 @@ export default function ProjectBorderedImage({
               height="456"
               stroke="url(#proj-back-lap)"
               strokeOpacity="0.5"
-              stroke-width="56"
+              strokeWidth="56"
             />
             <defs>
               <linearGradient
@@ -186,7 +186,7 @@ export default function ProjectBorderedImage({
               height="456"
               stroke="url(#proj-front-lap)"
               strokeOpacity="0.5"
-              stroke-width="56"
+              strokeWidth="56"
             />
             <defs>
               <linearGradient
@@ -210,8 +210,10 @@ export default function ProjectBorderedImage({
             src={getCroppedImageSrc(image)}
             alt={image.alt}
             fill
-            className="object-cover -z-10 "
-            objectPosition={getPositionFromHotspot(image?.hotspot)}
+            className="object-cover -z-10"
+            style={{
+              objectPosition: `${getPositionFromHotspot(image?.hotspot)}`,
+            }}
           />
         </div>
       </div>

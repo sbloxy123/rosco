@@ -42,11 +42,11 @@ export default async function Service({ params }: Props) {
     <div>
       <InnerHero
         sectionTitle={service.serviceTitle}
-        desktopHasLineBreaks={{
-          hasLineBreaks: true,
-          titleWithLineBreaks: titleWithLineBreaks,
-        }}
-        title={titleWithoutLineBreaks}
+        // desktopHasLineBreaks={{
+        //   hasLineBreaks: true,
+        //   titleWithLineBreaks: titleWithLineBreaks,
+        // }}
+        title={service.serviceSummary}
         image={service.servicePageImage}
         imageAltText={service.servicePageImage.alt}
       />

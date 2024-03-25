@@ -35,11 +35,12 @@ export default async function contact() {
           <section key={content.ContactPage._id}>
             <InnerHero
               sectionTitle="contact us"
-              desktopHasLineBreaks={{
-                hasLineBreaks: true,
-                titleWithLineBreaks,
-              }}
-              title={titleWithoutLineBreaks}
+              // desktopHasLineBreaks={{
+              //   hasLineBreaks: true,
+              //   titleWithLineBreaks,
+              // }}
+
+              title={content.ContactPage.pageHeading}
               pageNumber="06"
             />
           </section>

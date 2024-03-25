@@ -6,6 +6,7 @@ import ProjectsComponent from "./ProjectComponent";
 import FilterButton from "./common/FilterButton";
 import { FilterButtonSwiper } from "./swiper/Swipers";
 import { useSearchParams } from "next/navigation";
+import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 
 export default function ProjectsFilter({
   projects,
@@ -83,7 +84,8 @@ export default function ProjectsFilter({
   projects.forEach((project) => {
     project.categories.forEach((category) => {
       if (category.serviceTitle !== "") {
-        categories.add(category.serviceTitle);
+        // added removelineBreakCodeFromHTML() function so that sort function(below) matches the set order (also below)
+        categories.add(removelineBreakCodeFromHTML(category.serviceTitle));
       }
     });
   });
@@ -188,7 +190,7 @@ export default function ProjectsFilter({
               return (
                 <div key={index} className="xsmall:w-fit flex-grow">
                   <FilterButton
-                    text={category}
+                    text={removelineBreakCodeFromHTML(category)}
                     selected={filterMatch} // Pass the boolean value of filterMatch
                     onClick={() => handleFilter(category)}
                   />

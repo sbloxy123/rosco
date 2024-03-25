@@ -11,7 +11,7 @@ export default function BorderedImageAbout({
 }) {
   return (
     <div className="relative w-full h-auto small:max-w-[700px] medium:mr-0 medium:ml-auto">
-      <div className="relative w-[100vw] aspect-[349/375] -ml-[4.7%] -mt-[5.8%] xsmall:aspect-[690/451] xsmall:w-[104.5vw] xsmall:ml-[-6.9%] xsmall:-mt-[4.5%] small:ml-[-4.6%] small:absolute small:top-0 small:left-0 small:w-[109.4%] small:h-auto small:mt-[-4.1%] small:aspect-[703/454]">
+      <div className="relative w-[100vw] aspect-[349/375] -ml-[4.7%] -mt-[5.4%] xsmall:aspect-[690/451] xsmall:w-[104.5vw] xsmall:ml-[-6.9%] xsmall:-mt-[4.5%] small:ml-[-4.6%] small:absolute small:top-0 small:left-0 small:w-[109.4%] small:h-auto small:mt-[-4.1%] small:aspect-[703/454]">
         {/* 2 x mobile only border svgs */}
         <svg
           viewBox="0 0 385 412"
@@ -105,7 +105,7 @@ export default function BorderedImageAbout({
               <stop offset="0.161927" stopColor="#4804F8" />
               <stop offset="0.741249" stopColor="#FF4A1D" />
               <stop offset="0.838542" stopColor="#F9BA17" />
-              <stop offset="0.978225" stop-opacity="0" />
+              <stop offset="0.978225" stopOpacity="0" />
             </linearGradient>
           </defs>
         </svg>
@@ -155,7 +155,7 @@ export default function BorderedImageAbout({
             height="454"
             stroke="url(#lap-back)"
             strokeOpacity="0.5"
-            stroke-width="56"
+            strokeWidth="56"
           />
           <defs>
             <linearGradient
@@ -208,7 +208,9 @@ export default function BorderedImageAbout({
           alt={image.alt}
           fill
           className="object-cover -z-10"
-          objectPosition={getPositionFromHotspot(image?.hotspot)}
+          style={{
+            objectPosition: `${getPositionFromHotspot(image?.hotspot)}`,
+          }}
         />
       </div>
     </div>

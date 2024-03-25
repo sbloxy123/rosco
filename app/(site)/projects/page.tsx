@@ -36,11 +36,11 @@ export default async function Projects() {
         return (
           <div key={content._id}>
             <InnerHero
-              desktopHasLineBreaks={{
-                hasLineBreaks: true,
-                titleWithLineBreaks,
-              }}
-              title={titleWithoutLineBreaks}
+              // desktopHasLineBreaks={{
+              //   hasLineBreaks: true,
+              //   titleWithLineBreaks,
+              // }}
+              title={content.ProjectsPage.pageHeading}
               image={content.ProjectsPage.pageImage}
               sectionTitle="projects"
               imageAltText={content.ProjectsPage.pageImage.alt}

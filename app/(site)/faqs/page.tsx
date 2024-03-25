@@ -70,12 +70,12 @@ export default async function faqs() {
         return (
           <div key={content.FaqPage._id}>
             <InnerHero
-              title={titleWithoutLineBreaks}
+              title={content.FaqPage.pageHeading}
               image={content.FaqPage.pageImage}
-              desktopHasLineBreaks={{
-                hasLineBreaks: true,
-                titleWithLineBreaks,
-              }}
+              // desktopHasLineBreaks={{
+              //   hasLineBreaks: true,
+              //   titleWithLineBreaks,
+              // }}
               sectionTitle="FAQ's"
               imageAltText={content.FaqPage.pageImage.alt}
               pageNumber="05"

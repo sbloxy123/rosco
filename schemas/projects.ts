@@ -29,12 +29,6 @@ const projects = {
       type: "text",
     },
     {
-      name: "projectBtnText",
-      title: "Project Button Text",
-      description: "Text shown on project button",
-      type: "string",
-    },
-    {
       name: "categories",
       title: "Categories",
       type: "array",

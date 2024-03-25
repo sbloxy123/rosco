@@ -296,7 +296,6 @@ export async function getAllProjects() {
       projectTitle,
       "slug": slug.current,
       projectSummary,
-      projectBtnText,
       completionTimeframe,
       projectLocation,
       "categories": categories[]->{

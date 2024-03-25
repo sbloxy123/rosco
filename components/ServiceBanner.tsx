@@ -6,7 +6,6 @@ import Image from "next/image";
 import OverflowText from "./OverflowText";
 
 interface BgImage {
-  alt: string;
   image: string;
   asset: {
     _ref: string;

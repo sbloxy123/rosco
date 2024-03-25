@@ -9,39 +9,40 @@ import { MapProvider } from "@/components/providers/map-provider";
 import { MapComponent } from "@/components/Map";
 import Image from "next/image";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
+import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 
 export default async function InnerHero({
   title,
   sectionTitle,
   imageAltText,
-  desktopHasLineBreaks,
-  mobileHasLineBreaks,
+  // desktopHasLineBreaks,
+  // mobileHasLineBreaks,
   image,
   pageNumber,
 }: {
   title: string;
   sectionTitle: string;
   imageAltText?: string;
-  desktopHasLineBreaks?: {
-    hasLineBreaks: boolean;
-    titleWithLineBreaks: string;
-  };
-  mobileHasLineBreaks?: {
-    hasLineBreaks: boolean;
-    titleWithLineBreaks: string;
-  };
+  // desktopHasLineBreaks?: {
+  //   hasLineBreaks: boolean;
+  //   titleWithLineBreaks: string;
+  // };
+  // mobileHasLineBreaks?: {
+  //   hasLineBreaks: boolean;
+  //   titleWithLineBreaks: string;
+  // };
   image?: SanityImageQueryResult;
   pageNumber?: string;
 }) {
   return (
     <section className="mt-[7rem] xsmall:mt-[10rem] small:mt-0">
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto  small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
-        <div className="text-theme-dark text-center pt-[5.5rem] mx-auto xsmall:max-w-[612px] xsmall:ml-0 xsmall:text-left xsmall:pt-[4rem] small:pt-0 small:mt-[6rem] small:max-w-full ">
+        <div className="text-theme-dark text-center pt-[5.5rem] mx-auto xsmall:ml-0 xsmall:text-left xsmall:pt-[4rem] small:pt-0 small:mt-[6rem] small:max-w-full ">
           <h3 className="uppercase font-semibold xsmall:ml-[7.5rem] small:ml-layout-small">
             {removelineBreakCodeFromHTML(sectionTitle)}
           </h3>
           <div className="w-full order-last small:order-first px-[5%] small:px-0">
-            <div className="w-full relative pl-0 xsmall:pl-[4.5rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] large:static pb-12 xsmall:px-20 small:pl-layout-small">
+            <div className="w-full relative pl-0 xsmall:pl-[3.7rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] large:static pb-12 small:pl-layout-small">
               <h1 className="absolute -left-5 hidden xsmall:block xsmall:-translate-x-[3.3vw] small:-translate-x-0 w-fit h-auto font-body small:top-0 large:top-[26rem] mt-[0.1rem] ">
                 {pageNumber}
               </h1>
@@ -49,8 +50,10 @@ export default async function InnerHero({
               {/* NOTE: if/else for variable line breaks in cms. see also small:pr-[clamp(...)] which may be individual per page */}
 
               {/* desktop has line breaks... */}
-              <h1 className="pt-[3rem] font-bold pb-[2rem] xsmall:pt-0 xsmall:pb-0 small:w-[clamp(400px,43vw,558px)] small:pr-[2rem] ">
-                {desktopHasLineBreaks?.hasLineBreaks && (
+              <h1 className="inner__hero__title pt-[3rem] mx-auto max-w-[383px] font-bold pb-[2rem] xsmall:max-w-full xsmall:pt-0 xsmall:pb-0 xsmall:ml-0 small:w-[clamp(400px,43vw,558px)] small:pr-[2rem]">
+                {title && getTextWithLineBreaks(title)}
+
+                {/* {desktopHasLineBreaks?.hasLineBreaks && (
                   <div>
                     <span className="hidden small:block">
                       {desktopHasLineBreaks.titleWithLineBreaks
@@ -63,9 +66,10 @@ export default async function InnerHero({
                     </span>
                     <span className="block small:hidden">{title}</span>
                   </div>
-                )}
+                )} */}
                 {/* mobile has line breaks */}
-                {mobileHasLineBreaks?.hasLineBreaks && (
+
+                {/* {mobileHasLineBreaks?.hasLineBreaks && (
                   <div>
                     <span className="block xsmall:hidden">
                       {mobileHasLineBreaks.titleWithLineBreaks
@@ -78,10 +82,10 @@ export default async function InnerHero({
                     </span>
                     <span className="hidden xsmall:block">{title}</span>
                   </div>
-                )}
+                )} */}
 
-                {!mobileHasLineBreaks?.hasLineBreaks &&
-                  !desktopHasLineBreaks?.hasLineBreaks && <span>{title}</span>}
+                {/* {!mobileHasLineBreaks?.hasLineBreaks &&
+                  !desktopHasLineBreaks?.hasLineBreaks && <span>{title}</span>} */}
               </h1>
             </div>
           </div>
@@ -103,8 +107,11 @@ export default async function InnerHero({
               src={getCroppedImageSrc(image)}
               alt={image.alt}
               fill
+              priority
               className="object-cover"
-              objectPosition={getPositionFromHotspot(image?.hotspot)}
+              style={{
+                objectPosition: `${getPositionFromHotspot(image?.hotspot)}`,
+              }}
             />
           ) : (
             <MapProvider>

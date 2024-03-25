@@ -5,6 +5,7 @@ import Image from "next/image";
 import ButtonLink from "./common/ButtonLink";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "sanity";
+import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 
 export default function ServiceItem({
   title,
@@ -177,7 +178,7 @@ export default function ServiceItem({
           className="absolute top-0 left-0 w-full h-full -z-10 object-cover"
         />
         <h1 className="relative h-full w-full text-white p-[3rem] pl-[15%] pr-[18%] text-[4rem] flex items-center small:w-[48%] small:pl-layout-small">
-          {title}
+          {removelineBreakCodeFromHTML(title)}
         </h1>
       </div>
       <div
@@ -187,8 +188,8 @@ export default function ServiceItem({
             : "small:pl-layout-small small:pr-[3.5rem]"
         }`}
       >
-        <h2 className="text-theme-dark w-[90%] small:w-full text-[2.4rem] xsmall:text-[3.2rem] xsmall:leading-[3.6rem]">
-          {headingWithoutLineBreaks}
+        <h2 className="text-theme-dark w-[90%] small:w-full text-[2.4rem] xsmall:text-[3.2rem] xsmall:leading-[3.6rem] xsmall:max-w-[70%] small:max-w-[100%] ">
+          {removelineBreakCodeFromHTML(headingWithoutLineBreaks)}
         </h2>
 
         <div className="service-component-text hidden xsmall:block pt-[4.5rem]">

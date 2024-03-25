@@ -148,7 +148,6 @@ export type serviceType = {
     };
   };
   serviceBannerImage: {
-    alt: string;
     image: string;
     asset: {
       _ref: string;
@@ -274,7 +273,6 @@ export type projectType = {
   projectTitle: string;
   slug: string;
   projectSummary: string;
-  projectBtnText: string;
   completionTimeframe: string;
   projectLocation: string;
   image: {

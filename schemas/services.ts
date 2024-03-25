@@ -28,22 +28,24 @@ const service = {
       name: "serviceSummary",
       title: "Service Summary Title",
       description:
-        "In a few words, summarise what this service offers. --add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies to desktop screen sizes",
+        "In a few words, summarise what this service offers. --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
       type: "string",
     },
     {
       name: "coverImage",
       title: "Swiper Cover Image",
       type: "image",
-      description: "Upload a cover image for this service's swiper component",
+      description:
+        "Upload a cover image for this service's swiper card (on the homepage)",
       options: { hotspot: true },
-      fields: [
-        {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-        },
-      ],
+      // commented out as image is used as a background
+      // fields: [
+      //   {
+      //     name: "alt",
+      //     title: "Alt",
+      //     type: "string",
+      //   },
+      // ],
     },
     {
       name: "servicePageImage",
@@ -67,13 +69,6 @@ const service = {
       description:
         "Upload a background image for this service's banner component",
       options: { hotspot: true },
-      fields: [
-        {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-        },
-      ],
     },
     {
       name: "description",

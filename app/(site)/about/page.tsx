@@ -9,6 +9,7 @@ import BgDots from "@/components/assets/BgDots";
 import { getCroppedImageSrc, getAboutPageContent } from "@/sanity/sanity.query";
 import type { aboutPageType } from "@/types";
 import { PortableText } from "@portabletext/react";
+import { getTextWithLineBreaks } from "@/components/utils/getTextWithLineBreaks";
 
 export async function metadata() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
@@ -41,12 +42,12 @@ export default async function About() {
           <div key={content.aboutPage._id}>
             <InnerHero
               sectionTitle="about us"
-              desktopHasLineBreaks={{
-                hasLineBreaks: true,
-                titleWithLineBreaks,
-              }}
+              // desktopHasLineBreaks={{
+              //   hasLineBreaks: true,
+              //   titleWithLineBreaks: content.aboutPage.pageHeading,
+              // }}
               // titleWithLineBreaks={titleWithoutLineBreaks}
-              title={titleWithoutLineBreaks}
+              title={content.aboutPage.pageHeading}
               image={content.aboutPage.pageImage}
               imageAltText={content.aboutPage.pageImage.alt}
               pageNumber="02"
@@ -55,14 +56,14 @@ export default async function About() {
         );
       })}
       {aboutContent.map((content) => {
-        const titleWithLineBreaks = content.aboutPage.featureText.replace(
-          /\\n/g,
-          "\n"
-        );
-        const titleWithoutLineBreaks = content.aboutPage.featureText.replace(
-          /\\n/g,
-          " "
-        );
+        // const titleWithLineBreaks = content.aboutPage.featureText.replace(
+        //   /\\n/g,
+        //   "\n"
+        // );
+        // const titleWithoutLineBreaks = content.aboutPage.featureText.replace(
+        //   /\\n/g,
+        //   " "
+        // );
         return (
           <div
             key={content.aboutPage._id}
@@ -177,17 +178,18 @@ export default async function About() {
                   <BgDots />
                 </div>
 
-                <div className="text-white px-[4%] flex justify-center items-center w-full h-full ">
-                  <div className="xsmall:hidden text-[2.2rem] xsmall:text-[2.4rem] small:text-[3.2rem] text-center tracking-[0.06em] font-bold small:w-[78%]">
-                    {titleWithLineBreaks.split("\n").map((line, index) => {
+                <div className="relative text-white px-[4%] flex justify-center items-center w-full h-full z-10">
+                  <h4 className="text-[clamp(1.8rem,5.4vw,2.2rem)] xsmall:text-[clamp(1.9rem,3.7vw,2.4rem)] small:text-[clamp(2.5rem,2.7vw,3.2rem)] text-center tracking-[0.06em] font-bold small:w-[78%]">
+                    {/* {titleWithLineBreaks.split("\n").map((line, index) => {
                       return (
                         <h4 key={index} className="">
                           {line}
                         </h4>
                       );
-                    })}
-                  </div>
-                  <div className="hidden xsmall:block text-[2.2rem] xsmall:text-[2.4rem] small:text-[3.2rem] text-center tracking-[0.06em] font-bold small:w-[78%]">
+                    })} */}
+                    {getTextWithLineBreaks(content?.aboutPage?.featureText)}
+                  </h4>
+                  {/* <div className="hidden xsmall:block text-[2.2rem] xsmall:text-[2.4rem] small:text-[3.2rem] text-center tracking-[0.06em] font-bold small:w-[78%]">
                     {titleWithoutLineBreaks.split("\n").map((line, index) => {
                       return (
                         <h4 key={index} className="">
@@ -195,7 +197,7 @@ export default async function About() {
                         </h4>
                       );
                     })}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

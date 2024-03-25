@@ -3,6 +3,7 @@ import { getCroppedImageSrc } from "@/sanity/sanity.query";
 import type { projectType } from "@/types";
 import ProjectsImageSwiper from "./swiper/Swipers";
 import { useSearchParams } from "next/navigation";
+import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 
 interface BgImage {
   alt: string;
@@ -73,7 +74,7 @@ export default function ProjectsComponent({
                 return (
                   <div key={index}>
                     <h3 key={index} className="uppercase pb-[2rem]">
-                      {category.serviceTitle}{" "}
+                      {removelineBreakCodeFromHTML(category.serviceTitle)}{" "}
                     </h3>
                   </div>
                 );
