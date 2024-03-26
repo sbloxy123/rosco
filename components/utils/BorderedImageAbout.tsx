@@ -27,6 +27,7 @@ export default function BorderedImageAbout({
             stroke="url(#aboutBorderMob)"
             strokeOpacity="0.5"
             strokeWidth="40"
+            vectorEffect="non-scaling-stroke"
           />
           <defs>
             <linearGradient
@@ -48,7 +49,7 @@ export default function BorderedImageAbout({
           viewBox="0 0 385 412"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="mix-blend-color-dodge absolute top-0 w-full h-full  xsmall:hidden"
+          className="mix-blend-color-dodge absolute top-0 w-full h-full xsmall:hidden"
         >
           <rect
             x="20"
@@ -58,6 +59,7 @@ export default function BorderedImageAbout({
             stroke="url(#aboutBorderMob2)"
             strokeOpacity="0.5"
             strokeWidth="40"
+            vectorEffect="non-scaling-stroke"
           />
           <defs>
             <linearGradient
@@ -202,7 +204,7 @@ export default function BorderedImageAbout({
           </defs>
         </svg>
       </div>
-      <div className="absolute top-[-0.7%] left-0 w-full aspect-[349/365] overflow-hidden xsmall:w-[calc(100%+0.6%)] xsmall:left-[-0.5%]  xsmall:absolute xsmall:aspect-[690/451] small:w-[calc(100%+1.2%)] small:relative small:aspect-[703/454] small:mt-0">
+      <div className="absolute top-[-0.4%] left-[0.6%] w-[98.7%] aspect-[343/365] overflow-hidden xsmall:w-[calc(100%+0.6%)] xsmall:left-[-0.5%]  xsmall:absolute xsmall:aspect-[690/451] small:w-[calc(100%+1.2%)] small:relative small:aspect-[703/454] small:mt-0">
         <Image
           src={getCroppedImageSrc(image)}
           alt={image.alt}

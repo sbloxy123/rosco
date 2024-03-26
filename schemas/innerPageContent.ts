@@ -15,7 +15,7 @@ const innerPageContent = {
           name: "pageHeading",
           title: "About Page Hero Heading",
           description:
-            "Heading for the About Page. --add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies to desktop screen sizes",
+            "Heading for the About Page. --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "string",
         },
         {
@@ -67,7 +67,7 @@ const innerPageContent = {
           name: "featureText",
           title: "Feature text",
           description:
-            "Text in highlight box. --add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies on mobile screens",
+            "Text in highlight box. --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "text",
         },
         {
@@ -247,7 +247,7 @@ const innerPageContent = {
           name: "pageHeading",
           title: "Contact Page Hero Heading",
           description:
-            "Heading for the Contact Page. ** add '\\n' to the text where you want it to return on a new line.  *NOTE - this only applies on mobile and desktop screens, not tablet",
+            "Heading for the Contact Page. --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "string",
         },
       ],

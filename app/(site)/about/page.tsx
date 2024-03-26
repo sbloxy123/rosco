@@ -10,14 +10,16 @@ import { getCroppedImageSrc, getAboutPageContent } from "@/sanity/sanity.query";
 import type { aboutPageType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import { getTextWithLineBreaks } from "@/components/utils/getTextWithLineBreaks";
+import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 
 export async function metadata() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
-  // console.log(aboutContent[0].aboutPage.pageImage.image);
 
   return {
     title: "Rosco & Perlini | About",
-    description: aboutContent[0].aboutPage.introHeading,
+    description: removelineBreakCodeFromHTML(
+      aboutContent[0].aboutPage.pageHeading
+    ),
     openGraph: {
       images: aboutContent[0].aboutPage.pageImage.image,
     },
@@ -29,24 +31,10 @@ export default async function About() {
   return (
     <section>
       {aboutContent.map((content) => {
-        const titleWithLineBreaks = content.aboutPage.pageHeading.replace(
-          /\\n/g,
-          "\n"
-        );
-        const titleWithoutLineBreaks = content.aboutPage.pageHeading.replace(
-          /\\n/g,
-          " "
-        );
-
         return (
           <div key={content.aboutPage._id}>
             <InnerHero
               sectionTitle="about us"
-              // desktopHasLineBreaks={{
-              //   hasLineBreaks: true,
-              //   titleWithLineBreaks: content.aboutPage.pageHeading,
-              // }}
-              // titleWithLineBreaks={titleWithoutLineBreaks}
               title={content.aboutPage.pageHeading}
               image={content.aboutPage.pageImage}
               imageAltText={content.aboutPage.pageImage.alt}
@@ -56,14 +44,6 @@ export default async function About() {
         );
       })}
       {aboutContent.map((content) => {
-        // const titleWithLineBreaks = content.aboutPage.featureText.replace(
-        //   /\\n/g,
-        //   "\n"
-        // );
-        // const titleWithoutLineBreaks = content.aboutPage.featureText.replace(
-        //   /\\n/g,
-        //   " "
-        // );
         return (
           <div
             key={content.aboutPage._id}

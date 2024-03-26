@@ -205,7 +205,7 @@ export default function ProjectBorderedImage({
             </defs>
           </svg>
         </div>
-        <div className="absolute top-0 left-0 w-full h-full mt-[5.6%] xsmall:mt-[3.5%] small:mt-[0.9%] small:w-[95.4%] small:h-[98.4%] small:right-0 small:ml-[3.7%] small:z-10">
+        <div className="absolute top-[-0.1%] left-[-0.5%] w-[100.3%] h-[99.6%] mt-[5.6%] xsmall:left-0 xsmall:w-full xsmall:h-full xsmall:top-0 xsmall:mt-[3.5%] small:mt-[0.9%] small:w-[95.4%] small:h-[98.4%] small:right-0 small:ml-[3.7%] small:z-10">
           <Image
             src={getCroppedImageSrc(image)}
             alt={image.alt}

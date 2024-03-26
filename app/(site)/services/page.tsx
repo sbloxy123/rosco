@@ -14,14 +14,15 @@ import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
 import Link from "next/link";
-import ServiceImageSlideshow from "@/components/ServiceImageSlideshow";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 
 export async function metadata() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
   return {
     title: "Rosco & Perlini | Services",
-    description: servicesContent[0].ServicesPage.pageHeading,
+    description: removelineBreakCodeFromHTML(
+      servicesContent[0].ServicesPage.pageHeading
+    ),
     openGraph: {
       images: servicesContent[0].ServicesPage.pageImage.image,
     },

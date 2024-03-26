@@ -5,12 +5,15 @@ import TotPromo from "@/components/TotPromo";
 import { getContactUsPageContent } from "@/sanity/sanity.query";
 import type { contactPageType } from "@/types";
 import contactMap from "../assets/images/contact_map.png";
+import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 
 export async function metadata() {
   const contactPageContent: contactPageType[] = await getContactUsPageContent();
   return {
     title: "Rosco & Perlini | Contact Us",
-    description: contactPageContent[0].ContactPage.pageHeading,
+    description: removelineBreakCodeFromHTML(
+      contactPageContent[0].ContactPage.pageHeading
+    ),
     openGraph: {
       images: contactMap,
     },
@@ -23,23 +26,10 @@ export default async function contact() {
   return (
     <main>
       {contactPageContent.map((content) => {
-        const titleWithLineBreaks = content.ContactPage.pageHeading.replace(
-          /\\n/g,
-          "\n"
-        );
-        const titleWithoutLineBreaks = content.ContactPage.pageHeading.replace(
-          /\\n/g,
-          " "
-        );
         return (
           <section key={content.ContactPage._id}>
             <InnerHero
               sectionTitle="contact us"
-              // desktopHasLineBreaks={{
-              //   hasLineBreaks: true,
-              //   titleWithLineBreaks,
-              // }}
-
               title={content.ContactPage.pageHeading}
               pageNumber="06"
             />

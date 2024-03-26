@@ -86,7 +86,7 @@ export default function AccordionTemplate({
             : "text-theme-dark"
         }`}
       >
-        {question}
+        <h2 className="text-[1.8rem]">{question}</h2>
       </AccordionHeader>
       <AccordionBody className="text-[1.6rem]">{answer}</AccordionBody>
     </Accordion>

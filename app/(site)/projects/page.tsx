@@ -3,6 +3,7 @@ import InnerHero from "@/components/InnerHero";
 import MailingListCta from "@/components/MailingListCta";
 import ProjectsFilter from "@/components/ProjectsFilter";
 import TotPromo from "@/components/TotPromo";
+import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 import { getProjectsPageContent, getAllProjects } from "@/sanity/sanity.query";
 import type { projectsPageType, projectType } from "@/types";
 
@@ -10,7 +11,9 @@ export async function metadata() {
   const projectsContent: projectsPageType[] = await getProjectsPageContent();
   return {
     title: "Rosco & Perlini | Projects",
-    description: projectsContent[0].ProjectsPage.pageHeading,
+    description: removelineBreakCodeFromHTML(
+      projectsContent[0].ProjectsPage.pageHeading
+    ),
     openGraph: {
       images: projectsContent[0].ProjectsPage.pageImage.image,
     },

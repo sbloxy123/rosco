@@ -2,6 +2,7 @@ import ContactSection from "@/components/ContactSection";
 import FaqSearch from "@/components/FaqSearch";
 import InnerHero from "@/components/InnerHero";
 import BgDots from "@/components/assets/BgDots";
+import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 import { getFaqPageContent, getFaqs } from "@/sanity/sanity.query";
 import type { faqPageType } from "@/types";
 
@@ -15,7 +16,9 @@ export async function metadata() {
   const faqPageContent: faqPageType[] = await getFaqPageContent();
   return {
     title: "Rosco & Perlini | FAQs",
-    description: faqPageContent[0].FaqPage.pageHeading,
+    description: removelineBreakCodeFromHTML(
+      faqPageContent[0].FaqPage.pageHeading
+    ),
     openGraph: {
       images: faqPageContent[0].FaqPage.pageImage.image,
     },
@@ -39,10 +42,6 @@ export default async function faqs() {
     })),
   };
 
-  // faqs.map((faq) => {
-  //   console.log(faq);
-  // });
-
   return (
     <main>
       <script
@@ -58,24 +57,12 @@ export default async function faqs() {
           /\\n/g,
           " "
         );
-        const titleWithLineBreaks = content.FaqPage.pageHeading.replace(
-          /\\n/g,
-          "\n"
-        );
-        const titleWithoutLineBreaks = content.FaqPage.pageHeading.replace(
-          /\\n/g,
-          " "
-        );
 
         return (
           <div key={content.FaqPage._id}>
             <InnerHero
               title={content.FaqPage.pageHeading}
               image={content.FaqPage.pageImage}
-              // desktopHasLineBreaks={{
-              //   hasLineBreaks: true,
-              //   titleWithLineBreaks,
-              // }}
               sectionTitle="FAQ's"
               imageAltText={content.FaqPage.pageImage.alt}
               pageNumber="05"
