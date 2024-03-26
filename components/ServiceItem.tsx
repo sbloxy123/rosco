@@ -27,15 +27,15 @@ export default function ServiceItem({
     image: string;
   };
 }) {
-  let headingWithoutLineBreaks;
+  // let headingWithoutLineBreaks;
 
-  headingWithoutLineBreaks = heading;
-  if (
-    typeof headingWithoutLineBreaks === "string" &&
-    headingWithoutLineBreaks.includes("\\n")
-  ) {
-    headingWithoutLineBreaks = headingWithoutLineBreaks.replace(/\\n/g, "");
-  }
+  // headingWithoutLineBreaks = heading;
+  // if (
+  //   typeof headingWithoutLineBreaks === "string" &&
+  //   headingWithoutLineBreaks.includes("\\n")
+  // ) {
+  //   headingWithoutLineBreaks = headingWithoutLineBreaks.replace(/\\n/g, "");
+  // }
 
   return (
     <div
@@ -43,14 +43,7 @@ export default function ServiceItem({
         index % 2 === 0 ? "flex-row " : "flex-row-reverse "
       }`}
     >
-      <div
-        style={
-          {
-            "--image-url": `url(${image.image})`,
-          } as React.CSSProperties
-        }
-        className="relative aspect-[390/303] xsmall:aspect-[740/496] small:aspect-[740/609] overflow-hidden small:w-[clamp(500px,52.45vw,739px)]"
-      >
+      <div className="relative aspect-[390/303] xsmall:aspect-[740/496] small:aspect-[740/609] overflow-hidden small:w-[clamp(500px,52.45vw,739px)]">
         <div className="absolute top-0 left-0 bg-theme-dark opacity-50  w-full h-full"></div>
         <div className="absolute top-0 left-0 bg-theme-dark mix-blend-color-dodge  w-full h-full"></div>
         <div className="absolute top-0 left-0 bg-theme-dark mix-blend-hard-light saturate-100 w-full h-full"></div>
@@ -189,7 +182,7 @@ export default function ServiceItem({
         }`}
       >
         <h2 className="text-theme-dark w-[90%] small:w-full text-[2.4rem] xsmall:text-[3.2rem] xsmall:leading-[3.6rem] xsmall:max-w-[70%] small:max-w-[100%] ">
-          {removelineBreakCodeFromHTML(headingWithoutLineBreaks)}
+          {removelineBreakCodeFromHTML(heading)}
         </h2>
 
         <div className="service-component-text hidden xsmall:block pt-[4.5rem]">
