@@ -27,22 +27,9 @@ export default async function Projects() {
   return (
     <div>
       {projectsContent.map((content) => {
-        const titleWithLineBreaks = content.ProjectsPage.pageHeading.replace(
-          /\\n/g,
-          "\n"
-        );
-        const titleWithoutLineBreaks = content.ProjectsPage.pageHeading.replace(
-          /\\n/g,
-          " "
-        );
-
         return (
           <div key={content._id}>
             <InnerHero
-              // desktopHasLineBreaks={{
-              //   hasLineBreaks: true,
-              //   titleWithLineBreaks,
-              // }}
               title={content.ProjectsPage.pageHeading}
               image={content.ProjectsPage.pageImage}
               sectionTitle="projects"
@@ -53,17 +40,19 @@ export default async function Projects() {
         );
       })}
 
-      <div className="my-section-gap">
+      <section className="my-section-gap">
         <ProjectsFilter projects={projects} assets={projectsContent} />
-      </div>
+      </section>
 
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <TotPromo />
-      </div>
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      </section>
+      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta />
-      </div>
-      <ContactSection />
+      </section>
+      <section>
+        <ContactSection />
+      </section>
     </div>
   );
 }

@@ -76,7 +76,7 @@ export default function FaqSearch({
   }
 
   return (
-    <div className="relative mb-[-7.6rem] xsmall:mb-[-7.2rem] small:mb-[-10rem] py-[4rem] xsmall:py-[4rem] xsmall:w-[95%] xsmall:mx-auto small:py-[6rem] after:absolute after:content-[''] after:w-full after:h-full after:bg-white after:top-0 after:left-0 after:z-10">
+    <section className="relative mb-[-7.6rem] xsmall:mb-[-7.2rem] small:mb-[-10rem] py-[4rem] xsmall:py-[4rem] xsmall:w-[95%] xsmall:mx-auto small:py-[6rem] after:absolute after:content-[''] after:w-full after:h-full after:bg-white after:top-0 after:left-0 after:z-10">
       <svg
         className="about-color-border absolute inset-0 w-full h-full pointer-events-none -translate-y-[13.2rem] xsmall:-translate-y-[7.8rem] small:-translate-y-[14.6rem] xsmall:max-w-[calc(700px+56px)] small:max-w-[calc(800px+56px)] left-0 right-0 mx-auto mix-blend-color-dodge top-0 bottom-0 m-auto "
         viewBox="0 0 1121 286"
@@ -262,6 +262,6 @@ export default function FaqSearch({
           LOAD MORE
         </button>
       </div>
-    </div>
+    </section>
   );
 }

@@ -45,7 +45,7 @@ export default async function InnerHero({
           </h3>
           <div className="w-full order-last small:order-first px-[5%] small:px-0">
             <div className="w-full relative pl-0 xsmall:pl-[3.7rem] small:pr-0 xsmall:mt-[4rem] xsmall:pb-[3rem] xsmall:text-[clamp(3.5rem,6.3vw,4rem)] small:text-[clamp(3.2rem,2.8vw,4rem)] large:static pb-12 small:pl-layout-small">
-              <h1 className="absolute -left-5 hidden xsmall:block xsmall:-translate-x-[3.3vw] small:-translate-x-0 w-fit h-auto font-body small:top-0 large:top-[26rem] mt-[0.1rem] ">
+              <h1 className="absolute -left-5 hidden xsmall:block xsmall:-translate-x-[5.3vw] small:-translate-x-0 w-fit h-auto font-body small:top-0 large:top-[26rem] mt-[0.1rem] ">
                 {pageNumber}
               </h1>
 

@@ -26,7 +26,7 @@ export default async function ServiceImageLinkSwiper() {
   scrollbarThumbWidth = `${thumbWidthPercentage.toFixed(2)}%`;
 
   return (
-    <section className="relative bg-transparent xsmall:bg-theme-off-white mb-[6rem] xsmall:pb-[6rem] small:pb-[5.6rem] overflow-hidden">
+    <div className="relative bg-transparent xsmall:bg-theme-off-white mb-[6rem] xsmall:pb-[6rem] small:pb-[5.6rem] overflow-hidden">
       <div className="absolute top-0 left-0 w-[clamp(350px,48vw,450px)] h-auto small:transform small:scale-y-[-1] small:bottom-0 -z-10">
         <div className="bg-theme-off-white absolute top-0 left-0 w-screen h-[418px] overflow-hidden xsmall:bg-transparent xsmall:h-auto xsmall:w-[clamp(350px,48vw,450px)]">
           <BgDots />
@@ -86,6 +86,6 @@ export default async function ServiceImageLinkSwiper() {
           </div>
         );
       })}
-    </section>
+    </div>
   );
 }

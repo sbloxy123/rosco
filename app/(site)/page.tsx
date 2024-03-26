@@ -39,20 +39,20 @@ export default async function Home() {
     <main>
       <Hero />
       <IntroSection />
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small ">
+      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small ">
         <ServiceImageLinkSwiper />
-      </div>
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      </section>
+      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta />
-      </div>
+      </section>
       <LatestProjects />
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <TotPromo />
-      </div>
+      </section>
       <Testimonials />
-      <div className="mt-[10rem] my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <section className="mt-[10rem] my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <AwardsSection />
-      </div>
+      </section>
       <ContactSection />
     </main>
   );

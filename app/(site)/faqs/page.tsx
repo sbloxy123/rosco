@@ -67,7 +67,6 @@ export default async function faqs() {
               imageAltText={content.FaqPage.pageImage.alt}
               pageNumber="05"
             />
-
             <div className="relative bg-theme-dark overflow-hidden pt-[5rem] pb-[16rem] px-[5%] xsmall:pt-[5.2rem] xsmall:pb-[10rem] small:pt-[9rem] small:pb-[20rem] small:px-layout-small mt-section-gap">
               {/* top right */}
               <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">

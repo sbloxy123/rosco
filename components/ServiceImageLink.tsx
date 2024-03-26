@@ -30,7 +30,9 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
           <h2 className="text-[2rem] font-semibold text-center w-full tracking-[0.24em] px-10 uppercase">
             {removelineBreakCodeFromHTML(service.serviceTitle)}
           </h2>
-          <p className="text-center pt-6 px-[10%]">{service.serviceSummary}</p>
+          <p className="text-center pt-6 px-[10%]">
+            {removelineBreakCodeFromHTML(service.serviceSummary)}
+          </p>
         </div>
         <div className="w-full px-[5%] absolute bottom-[8%] left-0 right-0 mx-auto small:w-fit">
           <ButtonLink

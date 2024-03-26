@@ -7,7 +7,7 @@ export default async function AwardsSection() {
   const awards: awardsType[] = await getAwards();
 
   return (
-    <section className="relative px-0">
+    <div className="relative px-0">
       {awards.map((award) => {
         const titleWithLineBreaks =
           award.awardsSection.awardsSectionTitle.replace(/\\n/g, "\n");
@@ -47,6 +47,6 @@ export default async function AwardsSection() {
           </div>
         );
       })}
-    </section>
+    </div>
   );
 }

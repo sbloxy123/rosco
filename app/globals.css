@@ -218,6 +218,8 @@ input[type="text"]::-webkit-search-cancel-button {
   .swiper-pagination-bullet {
     height: 12px;
     width: 12px;
+    min-height: 12px;
+    min-width: 12px;
     background: transparent;
     border: 1.45px solid #fff;
     opacity: 1;
@@ -437,11 +439,8 @@ input[type="text"]::-webkit-search-cancel-button {
 }
 
 .filterBtn__swiper {
-  .swiper-slide:nth-child(1) {
-    margin-left: 5%;
-  }
   .swiper-slide:nth-last-child(1) {
-    margin-right: 5%;
+    margin-right: 10%;
   }
 
   @media all and (min-width: 1024px) {

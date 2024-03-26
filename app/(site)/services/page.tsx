@@ -47,7 +47,7 @@ export default async function Services() {
             />
 
             {/* intro banner */}
-            <div
+            <section
               style={
                 {
                   "--image-url": `url(${getCroppedImageSrc(
@@ -120,17 +120,21 @@ export default async function Services() {
                   })}
                 </ul>
               </div>
-            </div>
-            <DetailedServiceList allServices={services} />
+            </section>
+            <section>
+              <DetailedServiceList allServices={services} />
+            </section>
           </div>
         );
       })}
 
       <LatestProjects />
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta />
-      </div>
-      <ContactSection />
+      </section>
+      <section>
+        <ContactSection />
+      </section>
     </div>
   );
 }
