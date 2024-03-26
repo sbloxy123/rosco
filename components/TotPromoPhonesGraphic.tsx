@@ -8,13 +8,11 @@ const PhoneGraphic = () => {
   return (
     <div className="absolute w-[118vw] h-auto -ml-[14vw] top-0 left-0 object-contain xsmall:relative xsmall:w-[80vw] xsmall:-ml-0 xsmall:mx-auto small:w-[40vw] small:h-auto small:max-w-[404px]">
       <Image
-        priority
         src={phones}
         alt="graphic of phones for app 'Trick of the Trades'"
         className="absolute transform object-center translate3d(0, 0, 0) top-0 left-0 mix-blend-multiply z-0 h-auto w-full"
       />
       <Image
-        priority
         src={flashGraphic}
         alt="graphic showing a flash"
         className="flash-img absolute -top-[50%] left-[50%] object-center mix-blend-plus-lighter w-[95%] h-auto -translate-x-[49%] -translate-y-[8%]"

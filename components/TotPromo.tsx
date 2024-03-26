@@ -13,7 +13,6 @@ export default async function TotPromo() {
       </div>
       <div className="small:max-w-[1120px] small:mx-auto ">
         <div className="relative h-full w-auto text-[#000] overflow-hidden py-[2.3rem]">
-          {/* <div className="absolute top-0 left-0 h-full w-full bg-theme-dark"></div> */}
           <div className="px-[5%] overSmall:px-0 small:flex flex-row-reverse small:items-center small:justify-between small:my-[2rem]">
             <div className="">
               <div className="relative phones-container h-[78%] mt-[10rem] mx-auto xsmall:w-fit xsmall:h-auto small:mt-0">
