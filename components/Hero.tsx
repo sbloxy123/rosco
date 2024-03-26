@@ -62,6 +62,7 @@ export default async function Hero() {
                   src={content.heroImage.image}
                   width={400}
                   height={400}
+                  priority
                   alt={content.heroImage.alt}
                   className="absolute w-full h-full object-cover z-0 group-hover:opacity-75 m-auto"
                 />
