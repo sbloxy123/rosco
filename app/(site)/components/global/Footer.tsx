@@ -98,7 +98,7 @@ export default function Footer() {
                     href="https://www.facebook.com/roscoandperlini.builders/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Facebook"
+                    aria-label="Link to our Facebook page"
                   >
                     <div className="min-h-[4.8rem] aspect-square flex justify-center items-center bg-theme-purple text-white rounded-sm">
                       <svg
@@ -121,7 +121,7 @@ export default function Footer() {
                     href="https://www.instagram.com/roscoandperlini"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Instagram"
+                    aria-label="Link to our Instagram page"
                   >
                     <div className="min-h-[4.8rem] aspect-square flex justify-center items-center bg-theme-purple text-white rounded-sm">
                       <svg
@@ -162,6 +162,7 @@ export default function Footer() {
             <Link
               href="/"
               className="hidden small:block mr-auto w-fit max-w-[172px] w-[clamp(120px, 8vw, 172px)]"
+              aria-label="Home"
             >
               <svg
                 width="100%"
@@ -311,6 +312,7 @@ export default function Footer() {
                 href="https://www.facebook.com/roscoandperlini.builders/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Link to our Facebook page"
               >
                 <div className="min-h-[4.8rem] aspect-square flex justify-center items-center bg-theme-purple text-white rounded-sm">
                   <svg
@@ -333,6 +335,7 @@ export default function Footer() {
                 href="https://www.instagram.com/roscoandperlini"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Link to our Instagram page"
               >
                 <div className="min-h-[4.8rem] aspect-square flex justify-center items-center bg-theme-purple text-white rounded-sm">
                   <svg

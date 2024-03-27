@@ -248,12 +248,12 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
                     <div>
                       {titleWithLineBreaks.split("\n").map((line, index) => {
                         return (
-                          <h5
+                          <p
                             key={index}
-                            className="font-semibold text-[1.4rem]"
+                            className="font-semibold font-headings text-[1.4rem]"
                           >
                             {line}
-                          </h5>
+                          </p>
                         );
                       })}
                     </div>

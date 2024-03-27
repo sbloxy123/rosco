@@ -33,9 +33,9 @@ export default async function IntroSection() {
             <BorderedImageAbout image={content.introSection.introImage} />
 
             <div className="small:max-w-[90%] small:pl-[70px]">
-              <h3 className="uppercase pb-[2.4rem] pt-[2.7rem] small:pt-0">
+              <h2 className="uppercase text-[1.8rem] tracking-[0.12em] font-[500] pb-[2.4rem] pt-[2.7rem] small:pt-0">
                 {content.introSection.introSubheading}
-              </h3>
+              </h2>
               <h2 className="pb-[4.2rem]">
                 {content.introSection.introHeading}
               </h2>

@@ -127,9 +127,9 @@ export default async function ContactSection({
                   <p className="font-semibold font-headings text-[1.8rem] pt-10 px-4 small:px-0">
                     {content.contactUs.address}
                   </p>
-                  <h4 className="font-semibold text-[1.8rem] pt-2">
+                  <p className="font-semibold font-headings text-[1.8rem] pt-2">
                     {content.contactUs.contactNumber}
-                  </h4>
+                  </p>
                 </div>
                 <div className="flex flex-col gap-5 mt-16 xsmall:flex-row xsmall:justify-center small:justify-start small:pl-0">
                   <div className="xsmall:max-w-[176px]">
