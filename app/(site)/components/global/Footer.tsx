@@ -10,6 +10,7 @@ export default function Footer() {
         <Link
           href="/"
           className="mx-auto w-fit block max-w-[172px] w-[clamp(120px, 8vw, 172px)] xsmall:w-full small:hidden"
+          aria-label="home"
         >
           <svg
             width="100%"
@@ -97,6 +98,7 @@ export default function Footer() {
                     href="https://www.facebook.com/roscoandperlini.builders/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Facebook"
                   >
                     <div className="min-h-[4.8rem] aspect-square flex justify-center items-center bg-theme-purple text-white rounded-sm">
                       <svg
@@ -119,6 +121,7 @@ export default function Footer() {
                     href="https://www.instagram.com/roscoandperlini"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Instagram"
                   >
                     <div className="min-h-[4.8rem] aspect-square flex justify-center items-center bg-theme-purple text-white rounded-sm">
                       <svg

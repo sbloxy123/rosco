@@ -54,7 +54,10 @@ export default async function ContactForm({
               />
             </svg>
           </div>
-          <select className="form-country-select rounded-none border-none outline-none h-[4.6rem] w-[7rem] bg-transparent text-theme-dark rounded-tl-sm rounded-bl-sm text-left px-[4%] z-10">
+          <select
+            className="form-country-select rounded-none border-none outline-none h-[4.6rem] w-[7rem] bg-transparent text-theme-dark rounded-tl-sm rounded-bl-sm text-left px-[4%] z-10"
+            aria-label="country code"
+          >
             <option className="" value="UK">
               UK
             </option>

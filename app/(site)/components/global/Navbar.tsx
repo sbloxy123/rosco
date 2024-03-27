@@ -430,7 +430,7 @@ function Navbar() {
         <div className="relative z-50 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[8%] xsmall:px-10 small:px-layout-small">
             <div className="w-[154px] max-w-[172px] xsmall:w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
-              <Link href="/">
+              <Link href="/" aria-label="home">
                 {/* header-logo */}
                 <svg
                   width="100%"
@@ -557,6 +557,7 @@ function Navbar() {
                       className={`relative h-full aspect-square flex justify-center items-center opacity-30 ${
                         searchIsOpen && "cursor-default"
                       }  `}
+                      aria-label="Search"
                       onClick={handleSearchButtonClick}
                     >
                       <span className="h-[2.8rem] aspect-square xsmall:h-[3.2rem] small:h-[2rem]">
@@ -585,6 +586,7 @@ function Navbar() {
                         handleToggleRecording();
                       }}
                       className="h-full aspect-square flex justify-center items-center opacity-30"
+                      aria-label="Voice Search"
                     >
                       <span className="h-[2.8rem] aspect-square xsmall:h-[3.2rem] small:h-[2rem]">
                         <svg

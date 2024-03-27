@@ -36,9 +36,9 @@ export default async function AboutPageAwards() {
                       />
                     </div>
                     <div>
-                      <h4 className="uppercase font-bold text-[1.6rem] pb-2">
+                      <p className="uppercase font-headings font-bold text-[1.6rem] pb-2">
                         {content.awardDate}
-                      </h4>
+                      </p>
                       <div>
                         {titleWithLineBreaks.split("\n").map((line, index) => {
                           return (

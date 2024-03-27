@@ -124,9 +124,9 @@ export default async function ContactSection({
                       );
                     })}
                   </div>
-                  <h4 className="font-semibold text-[1.8rem] pt-10 px-4 small:px-0">
+                  <p className="font-semibold font-headings text-[1.8rem] pt-10 px-4 small:px-0">
                     {content.contactUs.address}
-                  </h4>
+                  </p>
                   <h4 className="font-semibold text-[1.8rem] pt-2">
                     {content.contactUs.contactNumber}
                   </h4>
