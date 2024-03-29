@@ -28,7 +28,7 @@ export type SanityImageQueryResult = {
 // hero
 export type heroType = {
   _id: string;
-  heroHeading: string | string[];
+  heroHeading: string;
   heroText: PortableTextBlock[];
   heroButtonText: string;
   heroImage: {
@@ -104,6 +104,7 @@ export type serviceType = {
   serviceTitle: string;
   slug: string;
   serviceSummary: string;
+  serviceSummaryBodyVersion: string;
   description: PortableTextBlock;
   coverImage: {
     alt: string;
@@ -591,4 +592,37 @@ export type contactPageType = {
     _id: string;
     pageHeading: string;
   };
+};
+
+interface GeoLocation {
+  latitude: string;
+  longitude: string;
+}
+
+interface Location {
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  addressCountry: string;
+  postalCode: string;
+  geo: GeoLocation;
+}
+
+interface ContactDetails {
+  telephone: string;
+  email: string;
+}
+
+interface OpeningHours {
+  open: string;
+  close: string;
+}
+
+export type metadataType = {
+  companyName: string;
+  description: string;
+  contactDetails: ContactDetails;
+  location: Location;
+  openingHours: OpeningHours;
+  areasServed: string;
 };

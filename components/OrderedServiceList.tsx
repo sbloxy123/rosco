@@ -24,7 +24,7 @@ export default function OrderedServiceList({
 
   return (
     <div>
-      {serviceOrder.map((service, index) => {
+      {/* {serviceOrder.map((service, index) => {
         return (
           <div key={service._id}>
             <ServiceItem
@@ -33,13 +33,14 @@ export default function OrderedServiceList({
               slug={service.slug}
               image={service.servicePageImage}
               heading={service.serviceSummary}
+              headingListBody={service.serviceSummaryBodyVersion}
               text={service.description}
               index={index}
               onClick={() => handleServiceLinkClick(index)} // Pass the index to the click handler
             />
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }

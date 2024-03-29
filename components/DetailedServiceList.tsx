@@ -4,6 +4,7 @@ import type { serviceType } from "@/types";
 import ServiceItem from "@/components/ServiceItem";
 import useServiceOrder from "./useServiceOrder";
 
+// service list in body of service page
 export default function DetailedServiceList({
   allServices,
 }: {
@@ -14,6 +15,8 @@ export default function DetailedServiceList({
   return (
     <div>
       {services.map((service, index) => {
+        console.log(service);
+
         return (
           <div key={service._id}>
             <ServiceItem
@@ -22,6 +25,7 @@ export default function DetailedServiceList({
               slug={service.slug}
               image={service.servicePageImage}
               heading={service.serviceSummary}
+              headingListBody={service.serviceSummaryBodyVersion}
               text={service.description}
               index={index}
               onClick={() => reorderService(index)}

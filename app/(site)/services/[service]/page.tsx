@@ -9,6 +9,7 @@ import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
 import ServiceImageSlideshow from "@/components/ServiceImageSlideshow";
+import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 
 type Props = {
   params: {
@@ -20,12 +21,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service: serviceType = await getSingleService(slug);
 
   return {
-    title: `Service | ${service.serviceTitle}`,
-    description: service.serviceSummary,
+    title: `Service | ${removelineBreakCodeFromHTML(service.serviceTitle)}`,
+    description: removelineBreakCodeFromHTML(service.serviceSummary),
     openGraph: {
       images: service.coverImage?.image || "add-a-fallback-project-image-here",
-      title: service.serviceTitle,
-      description: service.serviceSummary,
+      title: removelineBreakCodeFromHTML(service.serviceTitle),
+      description: removelineBreakCodeFromHTML(service.serviceSummary),
     },
   };
 }
@@ -35,17 +36,10 @@ export default async function Service({ params }: Props) {
   const service: serviceType = await getSingleService(slug);
   const allServices: serviceType[] = await getServiceLinks();
 
-  const titleWithLineBreaks = service.serviceSummary.replace(/\\n/g, "\n");
-  const titleWithoutLineBreaks = service.serviceSummary.replace(/\\n/g, " ");
-
   return (
     <div>
       <InnerHero
         sectionTitle={service.serviceTitle}
-        // desktopHasLineBreaks={{
-        //   hasLineBreaks: true,
-        //   titleWithLineBreaks: titleWithLineBreaks,
-        // }}
         title={service.serviceSummary}
         image={service.servicePageImage}
         imageAltText={service.servicePageImage.alt}

@@ -3,6 +3,7 @@ import service from "./services";
 import projects from "./projects";
 import innerPageContent from "./innerPageContent";
 import faqs from "./faqs";
+import metadata from "./metadata";
 
 export const schemaTypes = [
   homepage,
@@ -10,4 +11,5 @@ export const schemaTypes = [
   projects,
   innerPageContent,
   faqs,
+  metadata,
 ];

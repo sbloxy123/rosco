@@ -32,6 +32,13 @@ const service = {
       type: "string",
     },
     {
+      name: "serviceSummaryBodyVersion",
+      title: "Service Summary Title V2(Service List title)",
+      description:
+        "Same text as above field but is shown on another part of the page, with different line-breaks. --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
+      type: "string",
+    },
+    {
       name: "coverImage",
       title: "Swiper Cover Image",
       type: "image",

@@ -15,7 +15,7 @@ export const getTextWithLineBreaks = (text: string) => {
     .replace(/\\tabletn/g, ""); // Remove \tabletn sequences for desktop
 
   return (
-    <div>
+    <>
       <span className="block xsmall:hidden">
         {mobileTextBreaks.split("\n").map((line, index) => (
           <span key={index}>
@@ -37,6 +37,6 @@ export const getTextWithLineBreaks = (text: string) => {
           </span>
         ))}
       </span>
-    </div>
+    </>
   );
 };

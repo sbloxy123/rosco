@@ -146,39 +146,10 @@ export async function getServiceLinks() {
       additionalInfo,
       description,
       serviceSummary,
+      serviceSummaryBodyVersion,
     }`
   );
 }
-
-// export async function getServiceSlideshowImages() {
-//   return client.fetch(groq`*[_type == "service"]{
-//       _id,
-//       ServicesPage {
-//         gallery {
-//             images[] {
-//               _id,
-//               alt,
-//               "image": asset->url,
-//               asset->{_ref},
-//               crop {
-//                 _type,
-//                 bottom,
-//                 left,
-//                 top,
-//                 right
-//               },
-//               hotspot {
-//                 _type,
-//                 height,
-//                 width,
-//                 x,
-//                 y
-//               }
-//             }
-//           }
-//         }
-//   }`);
-// }
 
 export async function getSingleService(slug: string) {
   return client.fetch(
@@ -187,6 +158,7 @@ export async function getSingleService(slug: string) {
       serviceTitle,
       "slug": slug.current,
       serviceSummary,
+      serviceSummaryBodyVersion,
       coverImage {alt, "image": asset->url},
       servicePageImage {
         alt,
@@ -680,6 +652,35 @@ export async function getContactUsPageContent() {
       ContactPage {
         pageHeading,
       }
+    }
+    `
+  );
+}
+export async function getMetadata() {
+  return client.fetch(
+    groq`*[_type == "metadata"]{
+      companyName,
+      description,
+      contactDetails {
+        telephone,
+        email
+      },
+      location {
+        streetAddress,
+        addressLocality,
+        addressRegion,
+        addressCountry,
+        postalCode,
+        geo {
+          latitude,
+          longitude
+        }
+      },
+      openingHours {
+        open,
+        close
+      },
+      areasServed
     }
     `
   );

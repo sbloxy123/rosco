@@ -72,6 +72,7 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
 };
 
 // Homepage PROJECTS SWIPER
+// pagination shows on Mobile.. another paginationmade in swiper below this one for desktops
 export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
   const projectsSwiperRef = useRef<SwiperCore | null>(null);
   const projectsPaginationSwiperRef = useRef<SwiperCore | null>(null);
@@ -93,6 +94,8 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
       simulateTouch={false}
       pagination={{
         el: ".project-pagination",
+        dynamicBullets: true,
+        dynamicMainBullets: 5,
       }}
       navigation={{
         nextEl: ".next-project",
@@ -131,7 +134,7 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
   );
 };
 
-// swiper specifically for pagination on the homepage projects swiper (projects swiper also has pagination but for smaller screens only)
+// swiper specifically for pagination on the homepage projects swiper on larger screens (projects swiper also has pagination but for smaller screens only)
 export const ProjectsPaginationSwiper = ({ data }: { data: projectType[] }) => {
   const projectsPaginationSwiperRef = useRef<SwiperCore | null>(null);
   return (
@@ -147,6 +150,8 @@ export const ProjectsPaginationSwiper = ({ data }: { data: projectType[] }) => {
       modules={[Pagination, Navigation]}
       pagination={{
         el: ".project-pagination-outer",
+        dynamicBullets: true,
+        dynamicMainBullets: 5,
       }}
     >
       {data.map((elm, index) => {
@@ -171,6 +176,8 @@ export const TestimonialSwiper = ({ data }: { data: testimonialsType[] }) => {
       modules={[Pagination, Navigation]}
       pagination={{
         el: ".testimonial-pagination",
+        dynamicBullets: true,
+        dynamicMainBullets: 5,
       }}
       navigation={{
         nextEl: ".next-testimonial",
@@ -517,7 +524,7 @@ export const ServiceExtrasSwiper = ({
         effect={"fade"}
         className="service-subcategory--swiper-container"
       >
-        <SwiperSlide className="w-full px-[5%] small:px-0">
+        <SwiperSlide className="w-full pr-[5%] pl-[8%] xsmall:px-[5%] small:px-0">
           <h2 className="pb-[1.5rem]">
             {removelineBreakCodeFromHTML(primaryOverviewTitle)}
           </h2>
@@ -533,7 +540,10 @@ export const ServiceExtrasSwiper = ({
         </SwiperSlide>
         {additionalInfo.map((text, index) => {
           return (
-            <SwiperSlide key={index} className="w-full px-[5%] small:px-0">
+            <SwiperSlide
+              key={index}
+              className="w-full pr-[5%] pl-[8%] xsmall:px-[5%] small:px-0"
+            >
               <h2 className="pb-[1.5rem]">{text.listItem}</h2>
               <div className="scrollbar-and-text-container">
                 <div
@@ -629,6 +639,8 @@ export const ServiceGallerySwiper = ({
       modules={[Pagination, Navigation]}
       pagination={{
         el: ".service-slideshow-pagination",
+        dynamicBullets: true,
+        dynamicMainBullets: 5,
       }}
       navigation={{
         nextEl: ".next-service-image",
@@ -701,6 +713,8 @@ export const ServiceGalleryPaginationSwiper = ({
       modules={[Pagination, Navigation]}
       pagination={{
         el: ".service-slideshow-pagination",
+        dynamicBullets: true,
+        dynamicMainBullets: 5,
       }}
     >
       {data.map((elm, index) => {

@@ -24,6 +24,7 @@
     "react-dom": "^18",
     "react-responsive": "^9.0.2",
     "sanity": "^3.20.2",
+    "schema-dts": "^1.1.2",
     "styled-components": "^6.1.1",
     "swiper": "^11.0.5"
   },

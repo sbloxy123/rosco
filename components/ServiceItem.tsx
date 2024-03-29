@@ -6,10 +6,12 @@ import ButtonLink from "./common/ButtonLink";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "sanity";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
+import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 
 export default function ServiceItem({
   title,
   heading,
+  headingListBody,
   slug,
   text,
   image,
@@ -18,6 +20,7 @@ export default function ServiceItem({
 }: {
   title: string;
   heading: string;
+  headingListBody: string;
   slug: string;
   text: PortableTextBlock;
   index: number;
@@ -27,15 +30,7 @@ export default function ServiceItem({
     image: string;
   };
 }) {
-  // let headingWithoutLineBreaks;
-
-  // headingWithoutLineBreaks = heading;
-  // if (
-  //   typeof headingWithoutLineBreaks === "string" &&
-  //   headingWithoutLineBreaks.includes("\\n")
-  // ) {
-  //   headingWithoutLineBreaks = headingWithoutLineBreaks.replace(/\\n/g, "");
-  // }
+  console.log(headingListBody);
 
   return (
     <div
@@ -170,19 +165,19 @@ export default function ServiceItem({
           alt={image.alt}
           className="absolute top-0 left-0 w-full h-full -z-10 object-cover"
         />
-        <h1 className="relative h-full w-full text-white p-[3rem] pl-[15%] pr-[18%] text-[4rem] flex items-center small:w-[48%] small:pl-layout-small">
+        <h1 className="relative h-full w-full text-white p-[3rem] pl-[15%] pr-[41%] flex items-center small:w-[48%] small:pl-layout-small">
           {removelineBreakCodeFromHTML(title)}
         </h1>
       </div>
       <div
-        className={`px-[8%] pt-[4rem] small:w-[48%] small:pt-0 ${
+        className={`px-[8%] pt-[4rem] xsmall:px-[5%] small:w-[48%] small:pt-0 ${
           index % 2 === 0
             ? "small:pr-layout-small small:pl-[3.5rem]"
             : "small:pl-layout-small small:pr-[3.5rem]"
         }`}
       >
-        <h2 className="text-theme-dark w-[90%] small:w-full text-[2.4rem] xsmall:text-[3.2rem] xsmall:leading-[3.6rem] xsmall:max-w-[70%] small:max-w-[100%] ">
-          {removelineBreakCodeFromHTML(heading)}
+        <h2 className="text-theme-dark w-[90%] small:w-full text-[clamp(2.4rem,6vw,3.2rem)] xsmall:text-[3.2rem] xsmall:leading-[3.6rem] xsmall:w-full small:text-[clamp(2.6rem,2.1vw,3.2rem)]">
+          {headingListBody && getTextWithLineBreaks(headingListBody)}
         </h2>
 
         <div className="service-component-text hidden xsmall:block pt-[4.5rem]">

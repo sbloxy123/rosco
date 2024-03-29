@@ -215,6 +215,11 @@ input[type="text"]::-webkit-search-cancel-button {
 .service-slideshow-pagination,
 .project-pagination-outer {
   /* gap: 1 !important; */
+  transform: translateX(0) !important;
+  width: 100% !important;
+  left: 0 !important;
+  margin-inline: auto;
+
   .swiper-pagination-bullet {
     height: 12px;
     width: 12px;
@@ -222,15 +227,29 @@ input[type="text"]::-webkit-search-cancel-button {
     min-width: 12px;
     background: transparent;
     border: 1.45px solid #fff;
-    opacity: 1;
+    transform: scale(1) !important;
     border-radius: 50%;
+  }
+  .swiper-pagination-bullet-active-next-next.swiper-pagination-bullet,
+  .swiper-pagination-bullet-active-prev-prev.swiper-pagination-bullet {
+    opacity: 0 !important;
+  }
+  .swiper-pagination-bullet-active-next,
+  .swiper-pagination-bullet-active-prev {
+    opacity: 0.3 !important;
+    transform: scale(1) !important;
   }
   .swiper-pagination-bullet-active {
     height: 12px;
     width: 12px;
     background: #fff;
+    opacity: 1 !important;
     /* border: 1px solid #fff; */
   }
+  .swiper-pagination-bullet-active-main {
+    opacity: 1 !important;
+  }
+
   @media all and (max-width: 512px) {
     gap: 0.1rem;
     .swiper-pagination-bullet {

@@ -49,6 +49,7 @@ export default function ProjectsFilter({
 
   const handleFilter = (category: string) => {
     // Check if the category already exists in the filters array
+
     const filterIndex = filters.findIndex(
       (filter) => filter.category === category
     );
@@ -210,7 +211,9 @@ export default function ProjectsFilter({
                 filters.length > 0
                   ? project.categories.some((category) =>
                       filters.some((filter) =>
-                        category.serviceTitle.includes(filter.category)
+                        removelineBreakCodeFromHTML(
+                          category.serviceTitle
+                        ).includes(filter.category)
                       )
                     )
                   : true
