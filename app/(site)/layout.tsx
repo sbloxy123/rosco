@@ -40,6 +40,12 @@ export default async function RootLayout({
 }) {
   const meta: metadataType[] = await getMetadata();
 
+  let phoneNumberOnly = meta[0].contactDetails.telephone;
+  // Check if heroHeading is a string and includes the newline character
+  if (typeof phoneNumberOnly === "string" && phoneNumberOnly.includes(" ")) {
+    phoneNumberOnly = phoneNumberOnly.replace(" ", "");
+  }
+
   const jsonLd: WithContext<LocalBusiness> = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -58,7 +64,7 @@ export default async function RootLayout({
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: meta[0].contactDetails.telephone,
+      telephone: phoneNumberOnly,
       email: meta[0].contactDetails.email,
     },
     image: thumbnail.src,
