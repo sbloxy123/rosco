@@ -61,7 +61,7 @@ export default async function RootLayout({
       telephone: meta[0].contactDetails.telephone,
       email: meta[0].contactDetails.email,
     },
-    image: ["https://www.dr-mould.co.uk/opengraph-image.png?ad00cb6df7787160"],
+    image: thumbnail.src,
     geo: {
       "@type": "GeoCoordinates",
       latitude: meta[0].location.geo.latitude,
