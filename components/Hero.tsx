@@ -4,6 +4,7 @@ import type { heroType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import ButtonLink from "./common/ButtonLink";
 import type { Metadata } from "next";
+import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 
 export default async function Hero() {
   const hero: heroType[] = await getHero();
@@ -12,14 +13,14 @@ export default async function Hero() {
     <section className="relative mt-[11rem] small:mt-0">
       {hero &&
         hero.map((content) => {
-          let titleWithLineBreaks = content.heroHeading;
-          // Check if heroHeading is a string and includes the newline character
-          if (
-            typeof titleWithLineBreaks === "string" &&
-            titleWithLineBreaks.includes("\\n")
-          ) {
-            titleWithLineBreaks = titleWithLineBreaks.split("\\n");
-          }
+          // let titleWithLineBreaks = content.heroHeading;
+          // // Check if heroHeading is a string and includes the newline character
+          // if (
+          //   typeof titleWithLineBreaks === "string" &&
+          //   titleWithLineBreaks.includes("\\n")
+          // ) {
+          //   titleWithLineBreaks = titleWithLineBreaks.split("\\n");
+          // }
           return (
             <div
               key={content._id}
@@ -31,15 +32,9 @@ export default async function Hero() {
                     01
                   </h1>
                   <div className="">
-                    {Array.isArray(titleWithLineBreaks) ? (
-                      titleWithLineBreaks.map((line, index) => (
-                        <h1 key={index} className="font-bold">
-                          {line}
-                        </h1>
-                      ))
-                    ) : (
-                      <h1>{content.heroHeading}</h1>
-                    )}
+                    <h1 className="font-bold">
+                      {getTextWithLineBreaks(content.heroHeading)}
+                    </h1>
                   </div>
                 </div>
                 <div className="pl-0 xsmall:px-20 xsmall:pr-10 small:pl-layout-small small:pr-0 small:pb-40px">

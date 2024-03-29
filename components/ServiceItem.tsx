@@ -30,8 +30,6 @@ export default function ServiceItem({
     image: string;
   };
 }) {
-  console.log(headingListBody);
-
   return (
     <div
       className={`my-section-gap small:flex small:justify-between small:items-center small:max-w-[1440px] small:mx-auto ${
