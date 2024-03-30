@@ -8,6 +8,8 @@ import { heroType, metadataType } from "@/types";
 import { getHero, getMetadata } from "@/sanity/sanity.query";
 import thumbnail from "./assets/Thumbnail_1280x720.png";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
+import GoogleAnalytics from "@/components/utils/GoogleAnalytics";
+import CookieBanner from "@/components/CookieBanner";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -75,28 +77,7 @@ export default async function RootLayout({
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        {
-          "@type": "DayOfWeek",
-          name: "Monday",
-        },
-        {
-          "@type": "DayOfWeek",
-          name: "Tuesday",
-        },
-        {
-          "@type": "DayOfWeek",
-          name: "Wednesday",
-        },
-        {
-          "@type": "DayOfWeek",
-          name: "Thursday",
-        },
-        {
-          "@type": "DayOfWeek",
-          name: "Friday",
-        },
-      ],
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: meta[0].openingHours.open,
       closes: meta[0].openingHours.close,
     },
@@ -105,6 +86,8 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <GoogleAnalytics GA_MEASUREMENT_ID="G-4D66S7T7SN" />
+
       <body
         className={` ${opensans.variable}  ${raleway.variable} ${montserrat.variable}`}
       >
@@ -114,6 +97,8 @@ export default async function RootLayout({
         />
         <Navbar />
         {children}
+        <CookieBanner />
+
         <Footer />
       </body>
     </html>
