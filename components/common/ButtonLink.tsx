@@ -29,9 +29,6 @@ const ButtonLink = ({
 
   const color = theme == "dark" ? `theme-dark` : `white`;
   const fill = theme == "dark" ? `fill-theme-dark` : `fill-white`;
-  // const borderClass = `border-[${color}]`;
-  // const typeClass = `text-[${color}]`;
-
   let hover;
   let svgHover;
 
@@ -64,13 +61,17 @@ const ButtonLink = ({
     <Link
       href={`${href}`}
       className={`button__link relative block border-[2px] border-solid border-${color} rounded-sm after:bg-transparent after:absolute after:top-[-1.5px] after:left-[-2px] after:h-[calc(100%+4px)] after:w-[calc(100%+4px)] after:-z-10 after:border-[2px] hover:after:border-[3px] hover:after:border-theme-purple after:rounded-sm after:border-theme-dark after:-translate-y-[0.3px] after:hover:duration-150 ${
-        bgColor == "white" ? `text-theme-purple bg-white` : `text-${color}`
+        bgColor == "white"
+          ? `text-theme-purple bg-white`
+          : bgColor == "theme-dark"
+          ? `border-theme-dark text-white hover:after:border-theme-purple`
+          : `text-${color}`
       } py-[1.1rem] w-full bg-${bgColor} transition duration-300 hover:duration-300 ${hover} group`}
     >
       <div
         className={`flex justify-center items-center gap-6 mx-auto h-full w-full ${
           ctaType == "email" || "phone" ? `px-[2.2rem]` : `px-11`
-        } min-w-[176px]`}
+        } min-w-[176px] `}
       >
         {btnType}
         <span className="uppercase text-center font-bold font-headings tracking-[0.06em] text-[1.6rem]">
