@@ -54,7 +54,9 @@ export default async function Service({ params }: Props) {
         asideList={service.serviceAsideList}
       />
       {service?.gallery?.images?.length > 0 && (
-        <ServiceImageSlideshow images={service.gallery.images} />
+        <div className=" max-w-[1220px] mx-auto">
+          <ServiceImageSlideshow images={service.gallery.images} />
+        </div>
       )}
 
       <DetailedServiceList allServices={allServices} />

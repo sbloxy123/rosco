@@ -555,6 +555,10 @@ input[type="text"]::-webkit-search-cancel-button {
 
 .filterBtn__swiper {
   padding-inline: 4rem;
+
+  @media all and (min-width: 1024px) {
+    padding-left: 0;
+  }
   /* div:first-child {
     margin-left: 3rem !important;
   } */
