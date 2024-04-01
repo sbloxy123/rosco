@@ -506,7 +506,7 @@ function Navbar() {
             <div className="flex items-center">
               <div className="hidden small:block">
                 <nav>
-                  <ul className="nav__link__list flex items-center justify-between w-[45vw] max-w-[645px] uppercase font-[400] font-sans text-[rgba(47,48,71,90%)] text-[1.4rem] small:pl-[1.9rem]">
+                  <ul className="nav__link__list flex items-center justify-between w-[45vw] max-w-[645px] uppercase font-[400] font-sans text-[rgba(47,48,71,90%)] text-[clamp(1.1rem,1vw,1.4rem)] small:pl-[1.9rem]">
                     {navLinks.map((link) => {
                       let isActive = pathname === link.href;
                       if (!isActive && link.href !== "/") {
