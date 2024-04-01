@@ -37,7 +37,7 @@ export default function CookieBanner() {
         cookieConsent !== null ? "hidden" : "flex"
       }`}
     >
-      <div className="flex px-[5%] py-[1rem] small:py-[3rem] justify-between text-center items-center flex-col gap-4 small:flex-row small:text-left w-full small:max-w-[1120px] small:px-0 mx-auto">
+      <div className="flex px-[2%] py-[1rem] xsmall:px-[5%] small:py-[3rem] justify-between text-center items-center flex-col gap-4 small:flex-row small:text-left w-full small:max-w-[1120px] small:px-0 mx-auto">
         <div className="text-theme-dark pb-[0.5rem] max-w-[547px] small:pb-0">
           {/* <Link href="/info/cookies"> */}
           <h4 className="font-bold pb-0 mt-0 text-[clamp(2.2rem,5vw,2.4rem)] small:pb-[1rem] tracking-[0.06em]">
