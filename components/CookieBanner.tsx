@@ -34,7 +34,7 @@ export default function CookieBanner() {
     // >
     <div
       className={`w-screen fixed bottom-0 left-0 right-0 bg-[#fff] z-50 ${
-        cookieConsent !== null ? "flex" : "flex"
+        cookieConsent !== null ? "hidden" : "flex"
       }`}
     >
       <div className="flex px-[2%] py-[1rem] xsmall:px-[5%] small:py-[3rem] justify-between text-center items-center flex-col gap-4 small:flex-row small:text-left w-full small:max-w-[1120px] small:px-0 mx-auto">
@@ -60,7 +60,7 @@ export default function CookieBanner() {
             onClick={() => setCookieConsent(false)}
             className="relative block border-[2px] py-[1.1rem] border-solid border-theme-dark rounded-sm text-theme-dark hover:text-white hover:bg-theme-purple hover:border-theme-purple transition duration-300 hover:duration-300 group"
           >
-            <div className="flex justify-center items-center gap-6 mx-auto h-full w-full px-11 min-w-[176px]">
+            <div className="flex justify-center items-center gap-6 mx-auto h-full w-full px-11 min-w-[166px] xsmall:min-w-[176px]">
               <General fill="fill-[#2F3047]" hover="group-hover:fill-white" />
               <span className="uppercase text-center font-bold font-headings tracking-[0.06em] text-[1.6rem]">
                 DECLINE
@@ -73,7 +73,7 @@ export default function CookieBanner() {
             onClick={() => setCookieConsent(true)}
             className="relative block py-[1.1rem] border-[2px] border-solid bg-theme-dark border-theme-dark rounded-sm text-white hover:bg-theme-purple hover:border-theme-purple transition duration-300 hover:duration-300 group"
           >
-            <div className="flex justify-center items-center gap-6 mx-auto h-full w-full px-11 min-w-[176px]">
+            <div className="flex justify-center items-center gap-6 mx-auto h-full w-full px-11 min-w-[166px] xsmall:min-w-[176px]">
               <General fill="fill-white" hover="group-hover:fill-white" />
               <span className="uppercase text-center font-bold font-headings tracking-[0.06em] text-[1.6rem] whitespace-nowrap">
                 ACCEPT ALL
