@@ -43,7 +43,7 @@ export default function CookieBanner() {
           <h4 className="font-bold pb-0 mt-0 text-[clamp(2.2rem,5vw,2.4rem)] small:pb-[1rem] tracking-[0.06em]">
             Our cookies policy
           </h4>
-          <p className="text-[clamp(1.4rem,5vw,1.6rem)] leading-9 small:leading-[2.8rem]">
+          <p className="text-[clamp(1rem,3.3vw,1.6rem)] leading-[1.8rem] small:leading-[2.8rem]">
             We value your privacy. Our website uses cookies to enhance your
             browsing experience. By clicking ‘Accept All’ you consent to our use
             of cookies.{" "}
