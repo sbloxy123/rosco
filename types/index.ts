@@ -626,3 +626,10 @@ export type metadataType = {
   openingHours: OpeningHours;
   areasServed: string;
 };
+
+export type policiesPageType = {
+  policies: {
+    pageTitle: string;
+    policies: PortableTextBlock[];
+  };
+};

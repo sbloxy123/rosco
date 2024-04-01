@@ -2,7 +2,7 @@ import { BiData } from "react-icons/bi";
 
 const metadata = {
   name: "metadata",
-  title: "Metadata",
+  title: "Metadata and Policies",
   type: "document",
   icon: BiData,
   fields: [
@@ -107,12 +107,30 @@ const metadata = {
       title: "Areas Served",
       type: "string",
     },
+    {
+      name: "policies",
+      title: "Policies",
+      type: "document",
+      fields: [
+        {
+          name: "pageTitle",
+          title: "Page Title",
+          type: "string",
+        },
+        {
+          name: "policies",
+          title: "Policies",
+          type: "array",
+          of: [{ type: "block" }],
+        },
+      ],
+    },
   ],
 
   preview: {
     prepare(value: Record<string, any>) {
       return {
-        title: value.title || "Metadata", // adjust as needed based on your fields
+        title: value.title || "Metadata and Policies", // adjust as needed based on your fields
       };
     },
   },

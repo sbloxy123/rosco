@@ -37,24 +37,24 @@ export default function CookieBanner() {
         cookieConsent !== null ? "hidden" : "flex"
       }`}
     >
-      <div className="flex px-[5%] py-[3rem] justify-between text-center items-center flex-col gap-4 small:flex-row small:text-left w-full max-w-[1120px] small:px-0 mx-auto">
-        <div className="text-theme-dark pb-[2rem] max-w-[547px] small:pb-0">
+      <div className="flex px-[5%] py-[1rem] small:py-[3rem] justify-between text-center items-center flex-col gap-4 small:flex-row small:text-left w-full small:max-w-[1120px] small:px-0 mx-auto">
+        <div className="text-theme-dark pb-[0.5rem] max-w-[547px] small:pb-0">
           {/* <Link href="/info/cookies"> */}
-          <h4 className="font-bold text-[clamp(2.2rem,5vw,2.4rem)] pb-[1rem] tracking-[0.06em]">
+          <h4 className="font-bold pb-0 mt-0 text-[clamp(2.2rem,5vw,2.4rem)] small:pb-[1rem] tracking-[0.06em]">
             Our cookies policy
           </h4>
-          <p className="text-[clamp(1.4rem,5vw,1.6rem)]">
+          <p className="text-[clamp(1.4rem,5vw,1.6rem)] leading-9 small:leading-[2.8rem]">
             We value your privacy. Our website uses cookies to enhance your
             browsing experience. By clicking ‘Accept All’ you consent to our use
             of cookies.{" "}
             <span className="font-bold underline">
-              <Link href="/cookies">Read more about our policies</Link>
+              <Link href="/privacy-policy">Read more about our policies</Link>
             </span>
           </p>
           {/* </Link> */}
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-col gap-2 w-[90%] mx-auto xsmall:flex-row xsmall:w-fit small:mr-0">
           <button
             aria-label="decline cookies"
             onClick={() => setCookieConsent(false)}

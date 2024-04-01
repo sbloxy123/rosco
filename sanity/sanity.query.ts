@@ -685,3 +685,14 @@ export async function getMetadata() {
     `
   );
 }
+export async function getPoliciesPageData() {
+  return client.fetch(
+    groq`*[_type == "metadata"]{
+      policies {
+        pageTitle,
+        policies,
+      }
+    }
+    `
+  );
+}

@@ -286,20 +286,20 @@ export default function Footer() {
               </li>
               <li className="py-3 small:p-0">
                 <Link
-                  href="/contact"
+                  href="/privacy-policy"
                   className="hover:text-purple-400 duration-300"
                 >
                   Privacy Policy
                 </Link>
               </li>
-              <li className="py-3 small:p-0">
+              {/* <li className="py-3 small:p-0">
                 <Link
                   href="/contact"
                   className="hover:text-purple-400 duration-300"
                 >
                   Cookies Policy
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
