@@ -11,7 +11,7 @@ export default function BorderedImageAbout({
 }) {
   return (
     <div className="relative w-full h-auto small:max-w-[700px] medium:mr-0 medium:ml-auto">
-      <div className="relative w-[101vw] aspect-[386/412] -ml-[4.7%] -mt-[5.8%] xsmall:aspect-[690/451] xsmall:w-[104.5vw] xsmall:ml-[-6.9%] xsmall:-mt-[4.5%] small:ml-[-4.6%] small:absolute small:top-0 small:left-0 small:w-[109.4%] small:h-auto small:mt-[-4.1%] small:aspect-[703/454]">
+      <div className="relative w-[100.3vw] aspect-[386/412] -ml-[4.3%] -mt-[5.5%] xsmall:aspect-[690/451] xsmall:w-[104.5vw] xsmall:ml-[-6.9%] xsmall:-mt-[4.5%] small:ml-[-4.6%] small:absolute small:top-0 small:left-0 small:w-[109.4%] small:h-auto small:mt-[-4.1%] small:aspect-[703/454]">
         {/* 2 x mobile only border svgs */}
         <svg
           viewBox="0 0 386 412"
@@ -24,6 +24,7 @@ export default function BorderedImageAbout({
             stroke="url(#aboutBorderMob)"
             strokeOpacity="0.5"
             strokeWidth="40"
+            vectorEffect="non-scaling-stroke"
           />
           <defs>
             <linearGradient
@@ -262,7 +263,7 @@ export default function BorderedImageAbout({
           </defs>
         </svg>
       </div>
-      <div className="absolute top-[0%] left-[0%] w-[99%] aspect-[349/372] overflow-hidden xsmall:w-[calc(100%+0.6%)] xsmall:left-[-0.5%]  xsmall:absolute xsmall:aspect-[690/451] small:w-[calc(100%+1.2%)] small:relative small:aspect-[703/454] small:mt-0">
+      <div className="absolute top-[0%] left-[-0.5%] right-0 w-[99%] mx-auto aspect-[349/372] overflow-hidden xsmall:w-[calc(100%+0.6%)] xsmall:left-[-0.5%]  xsmall:absolute xsmall:aspect-[690/451] small:w-[calc(100%+1.2%)] small:relative small:aspect-[703/454] small:mt-0">
         <Image
           src={getCroppedImageSrc(image)}
           alt={image.alt}
