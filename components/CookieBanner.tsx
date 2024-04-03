@@ -34,7 +34,7 @@ export default function CookieBanner() {
     // >
     <div
       className={`w-screen fixed bottom-0 left-0 right-0 bg-[#fff] z-50 ${
-        cookieConsent !== null ? "flex" : "flex"
+        cookieConsent !== null ? "hidden" : "flex"
       }`}
     >
       <div className="flex px-0 py-[1rem] xsmall:px-[5%] small:py-[3rem] justify-between text-center items-center flex-col gap-4 small:flex-row small:text-left w-full small:max-w-[1120px] small:px-[1%] mx-auto">

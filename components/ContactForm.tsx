@@ -1,18 +1,77 @@
 //could use this but $15 per month: https://dev.to/reeshee/25-lines-to-setup-a-form-and-send-emails-in-nextjs-14-using-server-actions-170l
-
-import ButtonLink from "./common/ButtonLink";
+"use client";
+import { useState } from "react";
+import { General } from "./common/IconSvgs";
+import { useForm } from "react-hook-form";
+import { usePost } from "@/app/hooks/usePost";
 
 // documentation - use this*
 // https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations
 // specifically here:
 // https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#:~:text=Once%20the%20fields,useFormState
-export default async function ContactForm({
+export default function ContactForm({
   showAllSizes,
 }: {
   showAllSizes?: boolean;
 }) {
+  const [fromName, setFromName] = useState("");
+  const [fromEmail, setFromEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [formSent, setFormSent] = useState("");
+  const { postRequest } = usePost();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   return (
-    <div className="flex flex-col justify-between w-full small:w-[512px] font-body">
+    <form
+      onSubmit={handleSubmit(() => {
+        const sendForm = async () => {
+          try {
+            const formData = {
+              to: "sbloxy123@gmail.com", // Change to your recipient
+              from: "sbloxy123@gmail.com", // Change to your verified sender
+              subject: `Email enquiry from ${fromName}`,
+              text: message,
+              phone: phone,
+              email: fromEmail,
+              html: `
+                Hello there!!!,
+                <br /><br />
+                You got a new message from ${fromName}.
+                <br /><br />
+                Message: ${message}
+                <br /><br />
+                Phone Number: ${phone}
+                email: ${fromEmail}
+                `,
+            };
+            // Local developer testing API Route
+            postRequest("http://localhost:3000/api/sendgrid", formData);
+            const formMessageText = new Promise((resolve, reject) => {
+              setTimeout(() => {
+                setFormSent("Message Sent!");
+                setTimeout(() => {
+                  setFormSent("");
+                  setFromName("");
+                  setFromEmail("");
+                  setPhone("");
+                  setMessage("");
+                }, 5000);
+              }, 0);
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        sendForm();
+      })}
+      className="flex flex-col justify-between w-full small:w-[512px] font-body"
+    >
       <div className="w-full flex flex-col gap-[0.5rem] text-[1.4rem]">
         <label className="text-white" htmlFor="name">
           Name
@@ -20,9 +79,21 @@ export default async function ContactForm({
         <input
           id="name"
           type="text"
+          aria-invalid={errors.name ? "true" : "false"}
+          {...register("name", { required: true })}
+          value={fromName}
+          onChange={(e) => setFromName(e.target.value)}
           placeholder="Your name"
           className="border bg-white rounded-sm px-4 py-2 h-[4.6rem] text-theme-dark"
         />
+        {errors.name?.type === "required" && (
+          <p
+            role="alert"
+            className="text-white text-center font-bold mb-6 bg-rose-600"
+          >
+            A name is required
+          </p>
+        )}
       </div>
       <div className="flex flex-col gap-[0.5rem] pt-[2rem] text-[1.4rem]">
         <label className="text-white" htmlFor="email">
@@ -31,9 +102,32 @@ export default async function ContactForm({
         <input
           id="email"
           type="email"
+          aria-invalid={errors.email ? "true" : "false"}
+          {...register("email", {
+            required: true,
+            pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+          })}
+          value={fromEmail}
+          onChange={(e) => setFromEmail(e.target.value)}
           placeholder="you@company.com"
           className="border bg-white rounded-sm px-4 py-2 w-full h-[4.6rem] text-theme-dark"
         />
+        {errors.email?.type === "required" && (
+          <p
+            role="alert"
+            className="text-white text-center font-bold mb-6 bg-rose-600"
+          >
+            A email address is required
+          </p>
+        )}
+        {errors.email?.type === "pattern" && (
+          <p
+            role="alert"
+            className="text-white text-center font-bold mb-6 bg-rose-600"
+          >
+            A valid email address is required
+          </p>
+        )}
       </div>
       <div className="flex flex-col gap-[0.5rem] pt-[2rem] text-[1.4rem]">
         <label className="text-white" htmlFor="phone">
@@ -64,8 +158,14 @@ export default async function ContactForm({
             {/* Add more options as needed */}
           </select>
           <input
+            {...register("phone", { required: false })}
             id="phone"
+            name="phone"
             type="tel"
+            value={phone}
+            onChange={(e) => {
+              setPhone(e.target.value);
+            }}
             placeholder="+44"
             className="relative border-none outline-none w-full px-4 h-[4.6rem] text-theme-dark -left-[3px] "
           />
@@ -76,21 +176,38 @@ export default async function ContactForm({
           How can we help?
         </label>
         <textarea
+          {...register("message", { required: true })}
+          aria-invalid={errors.message ? "true" : "false"}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           id="message"
           placeholder="Tell us a little about the project..."
           rows={5}
           className="border bg-white rounded-sm px-4 py-2 w-full h-[12.6rem] text-theme-dark"
         />
+        {errors.message?.type === "required" && (
+          <p
+            role="alert"
+            className="text-white text-center font-bold mb-6 bg-rose-600"
+          >
+            A message is required
+          </p>
+        )}
       </div>
       <div className="mt-[3rem]">
-        <ButtonLink
-          text="send your message"
-          theme="light"
-          hoverEffect="fill-col"
-          ctaType="general"
-          destination="/"
-        />
+        <button
+          type="submit"
+          className="relative block border-[2px] py-[1.1rem] border-solid border-white rounded-sm text-white  hover:bg-theme-purple hover:border-theme-purple transition duration-300 hover:duration-300 group w-full"
+        >
+          <div className="flex justify-center items-center gap-6 mx-auto h-full w-full px-8 xsmall:px-11 min-w-[140px] xsmall:min-w-[176px]">
+            <General fill="fill-white" hover="group-hover:fill-white" />
+            <span className="uppercase text-center font-bold font-headings tracking-[0.06em] text-[1.3rem] xsmall:text-[1.6rem]">
+              SEND YOUR MESSAGE
+            </span>
+          </div>
+        </button>
+        <p className="text-white text-center mt-2">{formSent}</p>
       </div>
-    </div>
+    </form>
   );
 }

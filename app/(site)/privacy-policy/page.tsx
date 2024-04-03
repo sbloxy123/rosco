@@ -10,7 +10,7 @@ export default async function privacyPolicy() {
     <main className="mt-[10rem] px-[5%]">
       <section className="max-w-[1120px] mx-auto">
         <h1 className="pt-[4rem] text-center">{data[0].policies.pageTitle}</h1>
-        <div className="pt-[4rem]">
+        <div className="rich-text-container pt-[4rem]">
           <PortableText value={data[0].policies.policies} />
         </div>
       </section>

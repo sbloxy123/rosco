@@ -1,46 +1,60 @@
-h1 {
-  font-size: 4rem; /* 40px if the base font-size is 16px */
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  font-weight: bold;
-}
+.rich-text-container {
+  h1 {
+    font-size: 4rem; /* 40px if the base font-size is 16px */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-weight: semibold;
+  }
 
-h2 {
-  font-size: 3.2rem; /* 32px */
-  margin-top: 0.75em;
-  margin-bottom: 0.75em;
-  font-weight: semibold;
-}
+  h2 {
+    font-size: 3.2rem; /* 32px */
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+    font-weight: semibold;
+  }
 
-h3 {
-  font-size: 2.8rem; /* 28px */
-  margin-top: 1em;
-  margin-bottom: 1em;
-  font-weight: semibold;
-}
+  h3 {
+    font-size: 2.8rem; /* 28px */
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: semibold;
+  }
 
-h4 {
-  font-size: 2.4rem; /* 24px */
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
-  font-weight: semibold;
-}
+  h4 {
+    font-size: 2.4rem; /* 24px */
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    font-weight: semibold;
+  }
 
-h5 {
-  font-size: 2rem; /* 20px */
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  font-weight: semibold;
-}
+  h5 {
+    font-size: 2rem; /* 20px */
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    font-weight: semibold;
+  }
 
-h6 {
-  font-size: 1.6rem; /* 16px, same as the body font-size */
-  margin-top: 1.75em;
-  margin-bottom: 1.75em;
-  font-weight: semibold;
-}
+  h6 {
+    font-size: 1.6rem; /* 16px, same as the body font-size */
+    margin-top: 1.75em;
+    margin-bottom: 1.75em;
+    font-weight: semibold;
+  }
 
-ul,
-li {
-  font-size: 1.6rem;
+  ul {
+    list-style: disc;
+    padding-left: 2rem;
+    li {
+      font-size: 1.6rem;
+      padding-block: 1rem;
+    }
+  }
+  a {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
 }

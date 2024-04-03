@@ -527,7 +527,7 @@ function Navbar() {
                             <div
                               className={`${
                                 isActive && "nav__item__active"
-                              } nav__item__link pr-[0.4rem] text-right`}
+                              } nav__item__link pr-[clamp(0rem,0.3vw,0.4rem)] text-right`}
                             >
                               <span className="font-semibold px-[0.4rem]">
                                 {link.pageNumber}{" "}
