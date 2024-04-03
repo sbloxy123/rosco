@@ -10,7 +10,7 @@ export default function ProjectBorderedImage({
   image: SanityImageQueryResult;
 }) {
   return (
-    <div className="project__image relative bg-cover w-full mx-auto mt-[-0.38%] aspect-[349/372] xsmall:aspect-[638/388] small:aspect-[567/456] small:min-w-[522px] order-1 px-[5%] pt-[5%] pb-[5%] xsmall:px-[3%] xsmall:pt-[3%] small:py-25 small:pl-[2%] small:pt-[2.2%] small:pb-[2.1%] small:pr-[1.7%]">
+    <div className="project__image relative bg-cover w-full mx-auto mt-[-0.38%] aspect-[349/372] xsmall:aspect-[638/388] small:aspect-[567/456] small:min-w-[522px] order-1 px-[5%] pt-[5.4%] pb-[5%] xsmall:px-[3%] xsmall:pt-[3%] small:py-25 small:pl-[2%] small:pt-[2.2%] small:pb-[2.1%] small:pr-[1.7%]">
       <div className="relative w-full h-full">
         <div className="relative ml-[-5.6%] mt-[-5.6%] w-[100vw] xsmall:mt-[-3%] xsmall:ml-[-3.4%] xsmall:w-[calc(100vw-11.5%)] small:absolute small:top-[0] small:left-0 small:w-[104%] small:mt-[-3.5%] small:ml-[-0.7%]">
           {/* mobile border radial */}
