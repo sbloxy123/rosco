@@ -74,7 +74,7 @@ const ButtonLink = ({
         } min-w-[176px] `}
       >
         {btnType}
-        <span className="uppercase text-center font-bold font-headings tracking-[0.06em] text-[1.6rem]">
+        <span className="uppercase text-center font-[700] font-headings tracking-[0.06em] text-[1.6rem]">
           {text}
         </span>
       </div>

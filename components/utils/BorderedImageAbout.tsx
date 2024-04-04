@@ -24,7 +24,6 @@ export default function BorderedImageAbout({
             stroke="url(#aboutBorderMob)"
             strokeOpacity="0.5"
             strokeWidth="40"
-            vectorEffect="non-scaling-stroke"
           />
           <defs>
             <linearGradient
@@ -70,72 +69,6 @@ export default function BorderedImageAbout({
             </linearGradient>
           </defs>
         </svg>
-
-        {/* --------------------------- */}
-        {/* <svg
-          viewBox="0 0 385 412"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="mix-blend-color-dodge absolute top-0 w-full h-full xsmall:hidden"
-        >
-          <rect
-            x="20"
-            y="16"
-            width="349"
-            height="372"
-            stroke="url(#aboutBorderMob)"
-            strokeOpacity="0.5"
-            strokeWidth="40"
-            vectorEffect="non-scaling-stroke"
-          />
-          <defs>
-            <linearGradient
-              id="aboutBorderMob"
-              x1="383.689"
-              y1="5.10812"
-              x2="-41.2097"
-              y2="210.621"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0.161927" stopColor="#4804F8" />
-              <stop offset="0.375" stopColor="#FF4A1D" />
-              <stop offset="0.635417" stopColor="#F9BA17" />
-              <stop offset="0.978225" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <svg
-          viewBox="0 0 385 412"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="mix-blend-color-dodge absolute top-0 w-full h-full xsmall:hidden"
-        >
-          <rect
-            x="20"
-            y="16"
-            width="349"
-            height="372"
-            stroke="url(#aboutBorderMob2)"
-            strokeOpacity="0.5"
-            strokeWidth="40"
-            vectorEffect="non-scaling-stroke"
-          />
-          <defs>
-            <linearGradient
-              id="aboutBorderMob2"
-              x1="383.689"
-              y1="5.10812"
-              x2="-41.2097"
-              y2="210.621"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0.161927" stopColor="#4804F8" />
-              <stop offset="0.375" stopColor="#FF4A1D" />
-              <stop offset="0.635417" stopColor="#F9BA17" />
-              <stop offset="0.978225" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg> */}
 
         {/* 2 x TABLET+ SCREEN border svgs */}
 

@@ -41,7 +41,7 @@ export default async function Hero() {
                   <div className="small:max-w-[542px]">
                     <PortableText value={content.heroText} />
                   </div>
-                  <div className="mt-[3.5rem] mx-auto xsmall:w-fit xsmall:ml-0">
+                  <div className="mt-[3.5rem] w-[95%] mx-auto xsmall:w-fit xsmall:ml-0">
                     <ButtonLink
                       destination="/about"
                       text={content.heroButtonText}
