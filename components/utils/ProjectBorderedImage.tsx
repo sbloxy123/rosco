@@ -11,14 +11,15 @@ export default function ProjectBorderedImage({
 }) {
   return (
     <div className="project__image relative w-full mx-auto mt-[-0.38%] aspect-[349/372] xsmall:aspect-[638/388] small:aspect-[567/456] small:min-w-[522px] order-1 px-[5%] pt-[5.4%] pb-[5%] xsmall:px-[3%] xsmall:pt-[3%] small:py-25 small:pl-[2%] small:pt-[2.2%] small:pb-[2.1%] small:pr-[1.7%]">
-      <div className="relative w-full h-full">
-        <div className="relative ml-[-5.6%] mt-[-5.6%] w-[100vw] xsmall:mt-[-3%] xsmall:ml-[-3.4%] xsmall:w-[calc(100vw-11.5%)] small:absolute small:top-[0] small:left-0 small:w-[104%] small:h-[110%] small:mt-[-3.5%] small:ml-[-0.7%]">
+      <div className="relative w-full h-full mix-blend-color-burn">
+        <div className="relative ml-[-5.6%] mt-[-5.6%] w-[100vw] xsmall:mt-[-3%] xsmall:ml-[-3.4%] xsmall:w-[calc(100vw-11.5%)] small:absolute small:top-[0] small:left-0 small:w-[104%] small:h-[110%] small:mt-[-3.5%] small:ml-[-0.7%] dodge">
           {/* mobile border radial */}
+
           <svg
             viewBox="0 0 389 412"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute w-full top-0 left-0 -z-10 xsmall:invisible"
+            className="absolute w-full top-0 left-0 -z-10 xsmall:hidden"
           >
             <rect
               x="20"
@@ -49,7 +50,7 @@ export default function ProjectBorderedImage({
             viewBox="0 0 389 412"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute w-full top-0 left-0 mix-blend-color-dodge xsmall:invisible"
+            className="absolute w-full top-0 left-0 mix-blend-color-dodge xsmall:hidden"
           >
             <rect
               x="20"
@@ -212,10 +213,9 @@ export default function ProjectBorderedImage({
             src={getCroppedImageSrc(image)}
             alt={image.alt}
             fill
-            className="-z-10 object-cover aspect-[349/372]"
+            className="-z-10 object-cover"
             style={{
               objectPosition: `${getPositionFromHotspot(image?.hotspot)}`,
-              aspectRatio: 349 / 372,
             }}
           />
         </div>
