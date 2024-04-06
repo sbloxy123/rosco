@@ -56,7 +56,9 @@ export default function getPositionFromHotspot(hotspot?: Hotspot) {
   return `${hotspot.x * 100}% ${hotspot.y * 100}%`;
 }
 
-export const getHero = groq`*[_type == "homepage"]{
+export async function getHero() {
+  return client.fetch(
+    groq`*[_type == "homepage"]{
       _id,
       heroHeading,
       heroText,
@@ -82,9 +84,13 @@ export const getHero = groq`*[_type == "homepage"]{
           y
         }
       },
-    }`;
+    }`
+  );
+}
 
-export const getIntro = groq`*[_type == 'homepage'] {
+export async function getIntro() {
+  return client.fetch(
+    groq`*[_type == 'homepage'] {
         _id,
       introSection {
         introSubheading,
@@ -113,17 +119,24 @@ export const getIntro = groq`*[_type == 'homepage'] {
         }
       },
       }
-    }`;
-
-export const getServicesSectionTitles = groq`*[_type == 'homepage'] {
+    }`
+  );
+}
+export async function getServicesSectionTitles() {
+  return client.fetch(
+    groq`*[_type == 'homepage'] {
       servicesSection {
         servicesSubheading,
         servicesHeading,
         servicesLinkTitle,
       }
-    }`;
+    }`
+  );
+}
 
-export const getServiceLinks = groq`*[_type == "service"]{
+export async function getServiceLinks() {
+  return client.fetch(
+    groq`*[_type == "service"]{
       _id,
       serviceTitle,
       "slug": slug.current,
@@ -134,9 +147,13 @@ export const getServiceLinks = groq`*[_type == "service"]{
       description,
       serviceSummary,
       serviceSummaryBodyVersion,
-    }`;
+    }`
+  );
+}
 
-export const getSingleService = groq`*[_type == "service" && slug.current == $slug][0]{
+export async function getSingleService(slug: string) {
+  return client.fetch(
+    groq`*[_type == "service" && slug.current == $slug][0]{
       _id,
       serviceTitle,
       "slug": slug.current,
@@ -215,26 +232,38 @@ export const getSingleService = groq`*[_type == "service" && slug.current == $sl
               }
             }
           },
-    }`;
+    }`,
+    { slug }
+  );
+}
 
-export const getMailingListCta = groq`*[_type == "homepage"]{
+export async function getMailingListCta() {
+  return client.fetch(
+    groq`*[_type == "homepage"]{
       mailingListCta {
         mailingListHeading,
         mailingListText,
         mailingListPlaceholder,
         mailingListButtonText
       }
-    }`;
-
-export const getProjectsSection = groq`*[_type == "homepage"]{
+    }`
+  );
+}
+export async function getProjectsSection() {
+  return client.fetch(
+    groq`*[_type == "homepage"]{
       projectsSection {
         projectsSubheading,
         projectsHeading,
         projectsButtonText,
       }
-    }`;
+    }`
+  );
+}
 
-export const getAllProjects = groq`*[_type == "projects"] {
+export async function getAllProjects() {
+  return client.fetch(
+    groq`*[_type == "projects"] {
       _id,
       projectTitle,
       "slug": slug.current,
@@ -320,15 +349,23 @@ export const getAllProjects = groq`*[_type == "projects"] {
           }
         }
     }
-      `;
+        `
+  );
+}
 
-export const getTotPromo = groq`*[_type == "homepage"]{
+export async function getTotPromo() {
+  return client.fetch(
+    groq`*[_type == "homepage"]{
       totPromo {
         promoMessage
       }
-    }`;
+    }`
+  );
+}
 
-export const getTestimonials = groq`*[_type == "homepage"] {
+export async function getTestimonials() {
+  return client.fetch(
+    groq`*[_type == "homepage"] {
       testimonialsSection{
         testimonialsSectionTitle,
         testimonialsList[]{
@@ -336,9 +373,12 @@ export const getTestimonials = groq`*[_type == "homepage"] {
           message
         }
       }
-    }`;
-
-export const getAwards = groq`*[_type == "homepage"] {
+    }`
+  );
+}
+export async function getAwards() {
+  return client.fetch(
+    groq`*[_type == "homepage"] {
       awardsSection{
         awardsSectionSubTitle,
         awardsSectionTitle,
@@ -348,9 +388,12 @@ export const getAwards = groq`*[_type == "homepage"] {
           awardLogo {alt, "image": asset->url},
         }
       }
-    }`;
-
-export const getContactContent = groq`*[_type == "homepage"] {
+    }`
+  );
+}
+export async function getContactContent() {
+  return client.fetch(
+    groq`*[_type == "homepage"] {
         contactUs {
           title,
           message,
@@ -360,9 +403,13 @@ export const getContactContent = groq`*[_type == "homepage"] {
           phoneButtonText,
           emailButtonText
         }
-    }`;
+    }`
+  );
+}
 
-export const getAboutPageContent = groq`*[_type == "innerPage"] {
+export async function getAboutPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage"] {
       _id,
       title,
       aboutPage {
@@ -416,9 +463,12 @@ export const getAboutPageContent = groq`*[_type == "innerPage"] {
         contentArea
       }
     }
-    `;
-
-export const getServicesPageContent = groq`*[_type == "innerPage" && defined(ServicesPage)] {
+    `
+  );
+}
+export async function getServicesPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage" && defined(ServicesPage)] {
         _id,
       ServicesPage {
         // _id,
@@ -469,9 +519,12 @@ export const getServicesPageContent = groq`*[_type == "innerPage" && defined(Ser
         introText
       }
     }
-    `;
-
-export const getProjectsPageContent = groq`*[_type == "innerPage"] {
+    `
+  );
+}
+export async function getProjectsPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage"] {
        _id,
       title,
       ProjectsPage {
@@ -521,9 +574,13 @@ export const getProjectsPageContent = groq`*[_type == "innerPage"] {
         },
       }
     }
-    `;
+    `
+  );
+}
 
-export const getFaqPageContent = groq`*[_type == "innerPage"] {
+export async function getFaqPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage"] {
        _id,
       FaqPage {
         pageHeading,
@@ -574,23 +631,34 @@ export const getFaqPageContent = groq`*[_type == "innerPage"] {
         formPlaceholder,
       }
     }
-    `;
+    `
+  );
+}
 
-export const getFaqs = groq`*[_type == "faq"] {
+export async function getFaqs() {
+  return client.fetch(
+    groq`*[_type == "faq"] {
         _id,
         question,
         answer
-}`;
+}`
+  );
+}
 
-export const getContactUsPageContent = groq`*[_type == "innerPage"] {
+export async function getContactUsPageContent() {
+  return client.fetch(
+    groq`*[_type == "innerPage"] {
        _id,
       ContactPage {
         pageHeading,
       }
     }
-    `;
-
-export const getMetadata = groq`*[_type == "metadata"]{
+    `
+  );
+}
+export async function getMetadata() {
+  return client.fetch(
+    groq`*[_type == "metadata"]{
       companyName,
       description,
       contactDetails {
@@ -614,11 +682,17 @@ export const getMetadata = groq`*[_type == "metadata"]{
       },
       areasServed
     }
-    `;
-export const getPoliciesPageData = groq`*[_type == "metadata"]{
+    `
+  );
+}
+export async function getPoliciesPageData() {
+  return client.fetch(
+    groq`*[_type == "metadata"]{
       policies {
         pageTitle,
         policies,
       }
     }
-    `;
+    `
+  );
+}

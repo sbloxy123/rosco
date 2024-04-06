@@ -9,22 +9,12 @@ import BgDots from "@/components/assets/BgDots";
 import { getCroppedImageSrc, getAboutPageContent } from "@/sanity/sanity.query";
 import type { aboutPageType } from "@/types";
 import { PortableText } from "@portabletext/react";
-import { sanityFetch } from "@/sanity/sanity.client";
 
 import { getTextWithLineBreaks } from "@/components/utils/getTextWithLineBreaks";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 
-// export async function metadata() {
-//   const aboutContent: aboutPageType[] = await getAboutPageContent();
-
 export async function metadata() {
-  const aboutContent: aboutPageType[] = await sanityFetch({
-    query: getAboutPageContent,
-    // You can add multiple tags that matches with your document _id: ['post', 'about', ...]
-    tags: ["page"],
-  });
-
-  // getAboutPageContent();
+  const aboutContent: aboutPageType[] = await getAboutPageContent();
 
   return {
     title: "Rosco & Perlini | About",
@@ -38,12 +28,7 @@ export async function metadata() {
 }
 
 export default async function About() {
-  // const aboutContent: aboutPageType[] = await getAboutPageContent();
-  const aboutContent: aboutPageType[] = await sanityFetch({
-    query: getAboutPageContent,
-    // You can add multiple tags that matches with your document _id: ['post', 'about', ...]
-    tags: ["page"],
-  });
+  const aboutContent: aboutPageType[] = await getAboutPageContent();
   return (
     <section>
       {aboutContent.map((content) => {
