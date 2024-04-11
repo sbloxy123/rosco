@@ -23,8 +23,8 @@ interface Hotspot {
 }
 
 export const getCroppedImageSrc = (image: SanityImageQueryResult): string => {
-  const imageRef = image.assetRef || image.asset?._ref;
-  const crop = image.crop;
+  const imageRef = image?.assetRef || image?.asset?._ref;
+  const crop = image?.crop;
 
   if (!imageRef) {
     console.error("No image reference found");
@@ -144,7 +144,7 @@ export async function getServiceLinks() {
       servicePageImage {alt, "image": asset->url},
       serviceAsideList,
       additionalInfo,
-      description,
+      description ->,
       serviceSummary,
       serviceSummaryBodyVersion,
     }`

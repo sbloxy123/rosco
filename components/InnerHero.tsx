@@ -15,27 +15,15 @@ export default async function InnerHero({
   title,
   sectionTitle,
   imageAltText,
-  // desktopHasLineBreaks,
-  // mobileHasLineBreaks,
   image,
   pageNumber,
 }: {
   title: string;
   sectionTitle: string;
   imageAltText?: string;
-  // desktopHasLineBreaks?: {
-  //   hasLineBreaks: boolean;
-  //   titleWithLineBreaks: string;
-  // };
-  // mobileHasLineBreaks?: {
-  //   hasLineBreaks: boolean;
-  //   titleWithLineBreaks: string;
-  // };
   image?: SanityImageQueryResult | undefined;
   pageNumber?: string;
 }) {
-  // image && console.log(image.alt, "*********************************");
-
   return (
     <section className="mt-[7rem] xsmall:mt-[10rem] small:mt-0">
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto  small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
@@ -54,40 +42,6 @@ export default async function InnerHero({
               {/* desktop has line breaks... */}
               <h1 className="inner__hero__title pt-[3rem] mx-auto max-w-[383px] font-bold pb-[2rem] xsmall:max-w-full xsmall:pt-0 xsmall:pb-0 xsmall:ml-0 small:w-[clamp(400px,43vw,558px)] small:pr-[2rem]">
                 {title && getTextWithLineBreaks(title)}
-
-                {/* {desktopHasLineBreaks?.hasLineBreaks && (
-                  <div>
-                    <span className="hidden small:block">
-                      {desktopHasLineBreaks.titleWithLineBreaks
-                        .split("\n")
-                        .map((line, index) => (
-                          <span key={index}>
-                            {line} <br />
-                          </span>
-                        ))}
-                    </span>
-                    <span className="block small:hidden">{title}</span>
-                  </div>
-                )} */}
-                {/* mobile has line breaks */}
-
-                {/* {mobileHasLineBreaks?.hasLineBreaks && (
-                  <div>
-                    <span className="block xsmall:hidden">
-                      {mobileHasLineBreaks.titleWithLineBreaks
-                        .split("\n")
-                        .map((line, index) => (
-                          <span key={index}>
-                            {line} <br />
-                          </span>
-                        ))}
-                    </span>
-                    <span className="hidden xsmall:block">{title}</span>
-                  </div>
-                )} */}
-
-                {/* {!mobileHasLineBreaks?.hasLineBreaks &&
-                  !desktopHasLineBreaks?.hasLineBreaks && <span>{title}</span>} */}
               </h1>
             </div>
           </div>

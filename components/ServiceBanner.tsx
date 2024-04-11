@@ -61,7 +61,6 @@ export default function ServiceBanner({
   asideList?: AsideList;
 }) {
   const titleWithLineBreaks = awardHighlight?.awardTitle.replace(/\\n/g, "\n");
-  console.log(backgroundImage.alt, "**********************");
 
   return (
     <div

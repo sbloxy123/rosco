@@ -4,9 +4,9 @@ export const removelineBreakCodeFromHTML = (text: string) => {
   textWithoutLineBreaks = text;
   if (
     (typeof textWithoutLineBreaks === "string" &&
-      textWithoutLineBreaks.includes("\\n")) ||
-    textWithoutLineBreaks.includes("\\mobilen") ||
-    textWithoutLineBreaks.includes("\\tabletn")
+      textWithoutLineBreaks?.includes("\\n")) ||
+    textWithoutLineBreaks?.includes("\\mobilen") ||
+    textWithoutLineBreaks?.includes("\\tabletn")
   ) {
     textWithoutLineBreaks = textWithoutLineBreaks
       .replace(/\\n/g, "")

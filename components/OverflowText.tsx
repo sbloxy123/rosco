@@ -41,14 +41,14 @@ const OverflowText = ({
     };
   }, []);
 
-  const titleWithLineBreaks = serviceTitle.replace(/\\n/g, "\n");
-  const titleWithoutLineBreaks = serviceTitle.replace(/\\n/g, " ");
+  const titleWithLineBreaks = serviceTitle?.replace(/\\n/g, "\n");
+  const titleWithoutLineBreaks = serviceTitle?.replace(/\\n/g, " ");
 
   return (
     <div>
       <h2 className="pb-[1.5rem] ">
         <span className="leading-[4rem] xsmall:hidden">
-          {titleWithLineBreaks.split("\n").map((line, index) => (
+          {titleWithLineBreaks?.split("\n").map((line, index) => (
             <span key={index}>
               {line} <br />
             </span>

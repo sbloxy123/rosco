@@ -21,12 +21,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service: serviceType = await getSingleService(slug);
 
   return {
-    title: `Service | ${removelineBreakCodeFromHTML(service.serviceTitle)}`,
-    description: removelineBreakCodeFromHTML(service.serviceSummary),
+    title: `Service | ${removelineBreakCodeFromHTML(service?.serviceTitle)}`,
+    description: removelineBreakCodeFromHTML(service?.serviceSummary),
     openGraph: {
-      images: service.coverImage?.image || "add-a-fallback-project-image-here",
-      title: removelineBreakCodeFromHTML(service.serviceTitle),
-      description: removelineBreakCodeFromHTML(service.serviceSummary),
+      images: service?.coverImage?.image || "add-a-fallback-project-image-here",
+      title: removelineBreakCodeFromHTML(service?.serviceTitle),
+      description: removelineBreakCodeFromHTML(service?.serviceSummary),
     },
   };
 }
@@ -39,19 +39,19 @@ export default async function Service({ params }: Props) {
   return (
     <div>
       <InnerHero
-        sectionTitle={service.serviceTitle}
-        title={service.serviceSummary}
-        image={service.servicePageImage}
-        imageAltText={service.servicePageImage.alt}
+        sectionTitle={service?.serviceTitle}
+        title={service?.serviceSummary}
+        image={service?.servicePageImage}
+        imageAltText={service?.servicePageImage.alt}
       />
 
       <ServiceBanner
-        backgroundImage={service.serviceBannerImage}
-        serviceTitle={service.serviceTitle}
-        serviceText={service.description}
-        additionalInfo={service.additionalInfo?.additionalList}
-        awardHighlight={service.awardHighlight}
-        asideList={service.serviceAsideList}
+        backgroundImage={service?.serviceBannerImage}
+        serviceTitle={service?.serviceTitle}
+        serviceText={service?.description}
+        additionalInfo={service?.additionalInfo?.additionalList}
+        awardHighlight={service?.awardHighlight}
+        asideList={service?.serviceAsideList}
       />
       {service?.gallery?.images?.length > 0 && (
         <div className=" max-w-[1220px] mx-auto">
