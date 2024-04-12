@@ -59,7 +59,9 @@ const OverflowText = ({
 
       <div className="relative scrollbar-and-text-container">
         <div
-          ref={(ref) => (overflowRefs.current[0] = ref)}
+          ref={(ref) => {
+            overflowRefs.current[0] = ref;
+          }}
           className={`portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto ${
             additionalInfo ? "small:max-h-[145px]" : "small:max-h-[260px]"
           } `}
