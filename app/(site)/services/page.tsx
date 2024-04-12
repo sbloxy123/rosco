@@ -15,6 +15,8 @@ import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
 import Link from "next/link";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
+import { SanityDocument } from "next-sanity";
+import { client } from "@/sanity/sanity.client";
 
 export async function metadata() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
@@ -31,7 +33,10 @@ export async function metadata() {
 
 export default async function Services() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
-  const services: serviceType[] = await getServiceLinks();
+  // const services: serviceType[] = await getServiceLinks();
+  const services = await client.fetch<serviceType[]>(getServiceLinks);
+
+  console.log(services, "from SERVICES page");
 
   return (
     <div>
@@ -122,7 +127,7 @@ export default async function Services() {
               </div>
             </section>
             <section>
-              <DetailedServiceList allServices={services} />
+              {/* <DetailedServiceList allServices={services} /> */}
             </section>
           </div>
         );
