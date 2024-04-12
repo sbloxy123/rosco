@@ -73,22 +73,24 @@ export default function AccordionTemplate({
   }
 
   return (
-    <Accordion
+    <>
+      {/* <Accordion
       open={open === UID + 1}
       icon={<Icon id={UID + 1} open={open} />}
       className="border-b-[1px] border-[#D4DBDE] py-[2rem]"
-    >
+      >
       <AccordionHeader
         onClick={() => handleOpen(UID + 1)}
         className={`border-0 text-[1.8rem] font-semibold font-body ${
           open === UID + 1
-            ? "text-theme-purple hover:text-theme-purple"
-            : "text-theme-dark"
+          ? "text-theme-purple hover:text-theme-purple"
+          : "text-theme-dark"
         }`}
-      >
+        >
         <h2 className="text-[1.8rem]">{question}</h2>
       </AccordionHeader>
       <AccordionBody className="text-[1.6rem]">{answer}</AccordionBody>
-    </Accordion>
+    </Accordion> */}
+    </>
   );
 }
