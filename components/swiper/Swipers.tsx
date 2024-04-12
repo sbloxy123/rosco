@@ -530,7 +530,9 @@ export const ServiceExtrasSwiper = ({
           </h2>
           <div className="scrollbar-and-text-container">
             <div
-              ref={(ref) => (overflowRefs.current[0] = ref)}
+              ref={(ref) => {
+                overflowRefs.current[0] = ref;
+              }} // Adjusted
               className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto small:max-h-[145px]"
             >
               <PortableText value={primaryOverviewText} />
@@ -547,7 +549,9 @@ export const ServiceExtrasSwiper = ({
               <h2 className="pb-[1.5rem]">{text.listItem}</h2>
               <div className="scrollbar-and-text-container">
                 <div
-                  ref={(ref) => (overflowRefs.current[index + 1] = ref)}
+                  ref={(ref) => {
+                    overflowRefs.current[index + 1] = ref;
+                  }} // Adjusted
                   className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto small:max-h-[145px]"
                 >
                   <p>{text.listItemDetails}</p>
@@ -630,6 +634,12 @@ export const ServiceGallerySwiper = ({
     };
   }[];
 }) => {
+  // const [imagesState, setImagesState] = useState(images);
+
+  // useEffect(() => {
+  //   setImagesState(images);
+  // }, [images]); // Dependency array includes `images` to react on its changes
+
   return (
     <Swiper
       spaceBetween={0}
@@ -659,6 +669,11 @@ export const ServiceGallerySwiper = ({
               alt={image.alt}
               className="object-cover h-full w-full"
             />
+            {/* <img
+              src={image.image}
+              alt={image.alt}
+              style={{ width: "100%", height: "auto" }}
+            /> */}
           </SwiperSlide>
         );
       })}

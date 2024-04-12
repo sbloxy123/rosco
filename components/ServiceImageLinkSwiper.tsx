@@ -1,3 +1,4 @@
+import { draftMode } from "next/headers";
 import {
   getServiceLinks,
   getServicesSectionTitles,
@@ -10,16 +11,23 @@ import ServiceImageLink from "./ServiceImageLink";
 import BgDots from "./assets/BgDots";
 import service from "@/schemas/services";
 
+import { SanityDocument } from "next-sanity";
+// import Posts from "@/components/Posts";
+import { loadQuery } from "@/sanity/lib/store";
+import ServiceImageLinkPreview from "./previewComponents/ServiceImageLinkPreview";
+// import { SERVICES_QUERY } from "@/sanity/lib/queries";
+
 export default async function ServiceImageLinkSwiper() {
   // const slug = params.service;
-  const services: serviceType[] = await getServiceLinks();
+  const services = await loadQuery<serviceType[]>(getServiceLinks);
+
   const serviceSectionHeadings: serviceSectionType[] =
     await getServicesSectionTitles();
 
   let scrollbarThumbWidth;
 
   // Get the total number of slides
-  const totalSlides = services.length;
+  const totalSlides = services.data.length;
   // Calculate the width percentage for the scrollbar thumb
   const thumbWidthPercentage = 100 / totalSlides;
 
@@ -49,18 +57,22 @@ export default async function ServiceImageLinkSwiper() {
         );
       })}
       <div className="flex flex-col justify-center gap-[16px] visible xsmall:invisible xsmall:h-0">
-        {services.map((service, index) => {
-          return (
-            <ServiceImageLink
-              key={service._id}
-              service={service}
-              index={index}
-            />
-          );
-        })}
+        {draftMode().isEnabled ? (
+          <ServiceImageLinkPreview initial={services} />
+        ) : (
+          services.data.map((service, index) => {
+            return (
+              <ServiceImageLink
+                key={service._id}
+                service={service}
+                index={index}
+              />
+            );
+          })
+        )}
       </div>
       <div className="invisible mb-0 h-0 w-fit  mx-auto xsmall:visible xsmall:w-full xsmall:h-full xsmall:mb-[0] small:pl-layout-small">
-        <ServiceSwiper data={services} />
+        <ServiceSwiper data={services.data} />
         <div className="relative h-[5rem] mx-[5%] small:h-[7rem] small:mx-0 small:mr-[clamp(8rem,11.1vw,16rem)]">
           <div className="services-swiper-scrollbar absolute bottom-0 left-0">
             <div

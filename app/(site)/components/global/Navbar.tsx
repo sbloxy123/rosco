@@ -4,7 +4,7 @@ import { useEffect, useRef, RefObject, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { groq } from "next-sanity";
-import client from "../../../../sanity/sanity.client";
+import { client } from "../../../../sanity/sanity.client";
 import { useRecordVoice } from "../../../../components/useRecordVoice";
 import { usePathname } from "next/navigation";
 

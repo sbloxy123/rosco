@@ -5,7 +5,7 @@ import {
   ServiceGallerySwiper,
 } from "./swiper/Swipers";
 
-export default async function ServiceImageSlideshow({
+export default function ServiceImageSlideshow({
   images,
 }: {
   images: {

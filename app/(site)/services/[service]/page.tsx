@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Metadata } from "next";
-import { getSingleService } from "@/sanity/sanity.query";
+import { SINGLE_SERVICE, getSingleService } from "@/sanity/sanity.query";
 import type { serviceType } from "@/types";
 import InnerHero from "@/components/InnerHero";
 import ServiceBanner from "@/components/ServiceBanner";
@@ -10,35 +10,62 @@ import ContactSection from "@/components/ContactSection";
 import DetailedServiceList from "@/components/DetailedServiceList";
 import ServiceImageSlideshow from "@/components/ServiceImageSlideshow";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
+import { loadQuery } from "@/sanity/lib/store";
+import ServicePageContent from "@/components/ServicePageContent";
+import { draftMode } from "next/headers";
+import { QueryParams, SanityDocument } from "next-sanity";
+import ServicePageContentPreview from "@/components/previewComponents/ServicePageContentPreview";
+import { client } from "@/sanity/sanity.client";
 
 type Props = {
   params: {
     service: string;
   };
 };
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.service;
-  const service: serviceType = await getSingleService(slug);
+// export async function generateMetadata({ params }: Props): Promise<Metadata> {
+//   const slug = params.service;
+//   const service: serviceType = await getSingleService(slug);
 
-  return {
-    title: `Service | ${removelineBreakCodeFromHTML(service?.serviceTitle)}`,
-    description: removelineBreakCodeFromHTML(service?.serviceSummary),
-    openGraph: {
-      images: service?.coverImage?.image || "add-a-fallback-project-image-here",
-      title: removelineBreakCodeFromHTML(service?.serviceTitle),
-      description: removelineBreakCodeFromHTML(service?.serviceSummary),
-    },
-  };
+//   return {
+//     title: `Service | ${removelineBreakCodeFromHTML(service?.serviceTitle)}`,
+//     description: removelineBreakCodeFromHTML(service?.serviceSummary),
+//     openGraph: {
+//       images: service?.coverImage?.image || "add-a-fallback-project-image-here",
+//       title: removelineBreakCodeFromHTML(service?.serviceTitle),
+//       description: removelineBreakCodeFromHTML(service?.serviceSummary),
+//     },
+//   };
+// }
+
+export async function generateStaticParams() {
+  const allServices = await client.fetch<SanityDocument[]>(getServiceLinks);
+
+  return allServices.map((service) => ({
+    slug: service.slug.current,
+  }));
 }
 
-export default async function Service({ params }: Props) {
+export default async function Service({ params }: { params: QueryParams }) {
   const slug = params.service;
-  const service: serviceType = await getSingleService(slug);
-  const allServices: serviceType[] = await getServiceLinks();
+  // const service: serviceType = await getSingleService(slug);
+  // const allServices = await loadQuery<SanityDocument[]>(getServiceLinks);
+  const queryParams = { slug }; // Create a new queryParams object with the correct key
+
+  const initial = await loadQuery<SanityDocument>(SINGLE_SERVICE, queryParams, {
+    // Because of Next.js, RSC and Dynamic Routes this currently
+    // cannot be set on the loadQuery function at the "top level"
+    perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+  });
+  console.log(initial, "this is initial from SERVICE PAGE");
 
   return (
     <div>
-      <InnerHero
+      {draftMode().isEnabled ? (
+        <ServicePageContentPreview initial={initial} params={queryParams} />
+      ) : (
+        <ServicePageContent data={initial.data} />
+      )}
+      {/* <InnerHero
         sectionTitle={service?.serviceTitle}
         title={service?.serviceSummary}
         image={service?.servicePageImage}
@@ -52,19 +79,19 @@ export default async function Service({ params }: Props) {
         additionalInfo={service?.additionalInfo?.additionalList}
         awardHighlight={service?.awardHighlight}
         asideList={service?.serviceAsideList}
-      />
-      {service?.gallery?.images?.length > 0 && (
+      /> */}
+      {/* {service?.gallery?.images?.length > 0 && (
         <div className=" max-w-[1220px] mx-auto">
           <ServiceImageSlideshow images={service.gallery.images} />
         </div>
-      )}
+      )} */}
 
-      <DetailedServiceList allServices={allServices} />
+      {/* <DetailedServiceList allServices={allServices.data} />
 
       <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta />
       </div>
-      <ContactSection />
+      <ContactSection /> */}
     </div>
   );
 }

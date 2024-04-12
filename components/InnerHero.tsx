@@ -11,7 +11,7 @@ import Image from "next/image";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 
-export default async function InnerHero({
+export default function InnerHero({
   title,
   sectionTitle,
   imageAltText,

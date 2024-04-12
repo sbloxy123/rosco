@@ -11,6 +11,9 @@ import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 import GoogleAnalytics from "@/components/utils/GoogleAnalytics";
 import CookieBanner from "@/components/CookieBanner";
 
+import { draftMode } from "next/headers";
+import LiveVisualEditing from "@/components/LiveVisualEditing";
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -97,6 +100,8 @@ export default async function RootLayout({
         />
         <Navbar />
         {children}
+        {draftMode().isEnabled && <LiveVisualEditing />}
+
         <CookieBanner />
 
         <Footer />

@@ -1,5 +1,5 @@
 import { groq } from "next-sanity";
-import client from "./sanity.client";
+import { client } from "./sanity.client";
 import imageUrlBuilder from "@sanity/image-url";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { SanityImageQueryResult } from "@/types";
@@ -134,9 +134,7 @@ export async function getServicesSectionTitles() {
   );
 }
 
-export async function getServiceLinks() {
-  return client.fetch(
-    groq`*[_type == "service"]{
+export const getServiceLinks = groq`*[_type == "service"]{
       _id,
       serviceTitle,
       "slug": slug.current,
@@ -147,9 +145,7 @@ export async function getServiceLinks() {
       description ->,
       serviceSummary,
       serviceSummaryBodyVersion,
-    }`
-  );
-}
+    }`;
 
 export async function getSingleService(slug: string) {
   return client.fetch(
@@ -236,6 +232,87 @@ export async function getSingleService(slug: string) {
     { slug }
   );
 }
+export const SINGLE_SERVICE = groq`*[_type == "service" && slug.current == $slug][0]
+{
+      _id,
+      serviceTitle,
+      "slug": slug.current,
+      serviceSummary,
+      serviceSummaryBodyVersion,
+      coverImage {alt, "image": asset->url},
+      servicePageImage {
+        alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+          },
+      serviceBannerImage {
+          alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+          },
+      description,
+      serviceAsideList,
+      additionalInfo,
+      awardHighlight {
+        awardDate,
+        awardLogo {alt, "image": asset->url},
+        awardTitle,
+      },
+      gallery {
+            images[] {
+              _id,
+              alt,
+              "image": asset->url,
+              asset->{_ref},
+              crop {
+                _type,
+                bottom,
+                left,
+                top,
+                right
+              },
+              hotspot {
+                _type,
+                height,
+                width,
+                x,
+                y
+              }
+            }
+          },
+    }`;
 
 export async function getMailingListCta() {
   return client.fetch(
