@@ -56,7 +56,7 @@ export default async function Service({ params }: { params: QueryParams }) {
     // cannot be set on the loadQuery function at the "top level"
     perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   });
-  console.log(initial, "this is initial from SERVICE PAGE");
+  // console.log(initial, "this is initial from SERVICE PAGE");
 
   return (
     <div>

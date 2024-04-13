@@ -36,7 +36,7 @@ export default async function Services() {
   // const services: serviceType[] = await getServiceLinks();
   const services = await client.fetch<serviceType[]>(getServiceLinks);
 
-  console.log(services, "from SERVICES page");
+  // console.log(services, "from SERVICES page");
 
   return (
     <div>

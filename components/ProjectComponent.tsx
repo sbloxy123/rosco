@@ -37,6 +37,11 @@ export default function ProjectsComponent({
   const searchParams = useSearchParams();
   const filterParam = searchParams.get("filter");
   const [isInitialLoad, setIsInitialLoad] = useState(true);
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const filterParam = searchParams.get("filter");
+    // Now use filterParam as required
+  }, []);
 
   useEffect(() => {
     // Only scroll on the initial load if the searchTerm is present

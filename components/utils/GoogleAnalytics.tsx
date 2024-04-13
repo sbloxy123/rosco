@@ -3,20 +3,29 @@ import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { pageview } from "../../app/lib/gtagHelper";
+import { useState, Suspense } from "react";
 
 export default function GoogleAnalytics({
   GA_MEASUREMENT_ID,
 }: {
   GA_MEASUREMENT_ID: string;
 }) {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const [pathname, setPathname] = useState("");
+  const [searchParams, setSearchParams] = useState(new URLSearchParams());
 
   useEffect(() => {
-    const url = pathname + searchParams.toString();
+    setPathname(window.location.pathname);
+    setSearchParams(new URLSearchParams(window.location.search));
+    // Now call your page view function or any other code that depends on these values
+  }, [GA_MEASUREMENT_ID]); // GA_MEASUREMENT_ID included if it might affect how effects run
 
-    pageview(GA_MEASUREMENT_ID, url);
+  useEffect(() => {
+    if (pathname && searchParams) {
+      const url = pathname + searchParams.toString();
+      pageview(GA_MEASUREMENT_ID, url);
+    }
   }, [pathname, searchParams, GA_MEASUREMENT_ID]);
+
   return (
     <>
       <Script
@@ -28,18 +37,18 @@ export default function GoogleAnalytics({
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
 
-                gtag('consent', 'default', {
-                    'analytics_storage': 'denied'
-                });
+              gtag('consent', 'default', {
+                  'analytics_storage': 'denied'
+              });
 
-                gtag('config', '${GA_MEASUREMENT_ID}', {
-                    page_path: window.location.pathname,
-                });
-                `,
+              gtag('config', '${GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+              });
+              `,
         }}
       />
     </>

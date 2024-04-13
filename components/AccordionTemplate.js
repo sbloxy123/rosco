@@ -7,30 +7,11 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 
-interface AccordionTemplateProps {
-  question: string;
-  answer: string;
-  UID: number;
-}
+export default function AccordionTemplate(question, answer, UID) {
+  const [open, setOpen] = useState(0);
+  const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
-interface IconProps {
-  id: number;
-  open: number;
-}
-
-export default function AccordionTemplate({
-  question,
-  answer,
-  UID,
-}: {
-  question: string;
-  answer: string;
-  UID: number;
-}) {
-  const [open, setOpen] = useState<number>(0);
-  const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
-
-  function Icon({ id, open }: IconProps) {
+  function Icon({ id, open }) {
     return id === open ? (
       <svg
         width="28"
@@ -74,23 +55,23 @@ export default function AccordionTemplate({
 
   return (
     <>
-      {/* <Accordion
-      open={open === UID + 1}
-      icon={<Icon id={UID + 1} open={open} />}
-      className="border-b-[1px] border-[#D4DBDE] py-[2rem]"
+      <Accordion
+        open={open === UID + 1}
+        icon={<Icon id={UID + 1} open={open} />}
+        className="border-b-[1px] border-[#D4DBDE] py-[2rem]"
       >
-      <AccordionHeader
-        onClick={() => handleOpen(UID + 1)}
-        className={`border-0 text-[1.8rem] font-semibold font-body ${
-          open === UID + 1
-          ? "text-theme-purple hover:text-theme-purple"
-          : "text-theme-dark"
-        }`}
+        <AccordionHeader
+          onClick={() => handleOpen(UID + 1)}
+          className={`border-0 text-[1.8rem] font-semibold font-body ${
+            open === UID + 1
+              ? "text-theme-purple hover:text-theme-purple"
+              : "text-theme-dark"
+          }`}
         >
-        <h2 className="text-[1.8rem]">{question}</h2>
-      </AccordionHeader>
-      <AccordionBody className="text-[1.6rem]">{answer}</AccordionBody>
-    </Accordion> */}
+          <h2 className="text-[1.8rem]">{question}</h2>
+        </AccordionHeader>
+        <AccordionBody className="text-[1.6rem]">{answer}</AccordionBody>
+      </Accordion>
     </>
   );
 }
