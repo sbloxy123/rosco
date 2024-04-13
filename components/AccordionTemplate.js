@@ -7,7 +7,7 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 
-export default function AccordionTemplate(question, answer, UID) {
+export default function AccordionTemplate({ question, answer, UID }) {
   const [open, setOpen] = useState(0);
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 

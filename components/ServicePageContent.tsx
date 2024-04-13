@@ -7,7 +7,7 @@ import ServiceImageSlideshow from "./ServiceImageSlideshow";
 import { SanityDocument } from "next-sanity";
 
 export default function ServicePageContent({ data }: { data: SanityDocument }) {
-  console.log(data, "from ServicePageContent Component");
+  // console.log(data, "from ServicePageContent Component");
 
   return (
     <>

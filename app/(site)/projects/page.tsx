@@ -6,6 +6,7 @@ import TotPromo from "@/components/TotPromo";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 import { getProjectsPageContent, getAllProjects } from "@/sanity/sanity.query";
 import type { projectsPageType, projectType } from "@/types";
+import { Suspense } from "react";
 
 export async function metadata() {
   const projectsContent: projectsPageType[] = await getProjectsPageContent();
@@ -25,34 +26,36 @@ export default async function Projects() {
   const projects: projectType[] = await getAllProjects();
 
   return (
-    <div>
-      {projectsContent.map((content) => {
-        return (
-          <div key={content._id}>
-            <InnerHero
-              title={content.ProjectsPage.pageHeading}
-              image={content.ProjectsPage.pageImage}
-              sectionTitle="projects"
-              imageAltText={content.ProjectsPage.pageImage.alt}
-              pageNumber="04"
-            />
-          </div>
-        );
-      })}
+    <Suspense fallback={<div>Loading search parameters...</div>}>
+      <div>
+        {projectsContent.map((content) => {
+          return (
+            <div key={content._id}>
+              <InnerHero
+                title={content.ProjectsPage.pageHeading}
+                image={content.ProjectsPage.pageImage}
+                sectionTitle="projects"
+                imageAltText={content.ProjectsPage.pageImage.alt}
+                pageNumber="04"
+              />
+            </div>
+          );
+        })}
 
-      <section className="my-section-gap">
-        <ProjectsFilter projects={projects} assets={projectsContent} />
-      </section>
+        <section className="my-section-gap">
+          <ProjectsFilter projects={projects} assets={projectsContent} />
+        </section>
 
-      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
-        <TotPromo />
-      </section>
-      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
-        <MailingListCta />
-      </section>
-      <section>
-        <ContactSection />
-      </section>
-    </div>
+        <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+          <TotPromo />
+        </section>
+        <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+          <MailingListCta />
+        </section>
+        <section>
+          <ContactSection />
+        </section>
+      </div>
+    </Suspense>
   );
 }
