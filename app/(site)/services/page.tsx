@@ -17,6 +17,9 @@ import Link from "next/link";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 import { SanityDocument } from "next-sanity";
 import { client } from "@/sanity/sanity.client";
+import DetailedServiceListPreview from "@/components/previewComponents/DetailedServiceListPreview";
+import { draftMode } from "next/headers";
+import { loadQuery } from "@/sanity/lib/store";
 
 export async function metadata() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
@@ -33,10 +36,14 @@ export async function metadata() {
 
 export default async function Services() {
   const servicesContent: servicesPageType[] = await getServicesPageContent();
-  // const services: serviceType[] = await getServiceLinks();
   const services = await client.fetch<serviceType[]>(getServiceLinks);
-
-  // console.log(services, "from SERVICES page");
+  const initial = await loadQuery<SanityDocument[]>(
+    getServiceLinks,
+    {},
+    {
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
 
   return (
     <div>
@@ -127,7 +134,11 @@ export default async function Services() {
               </div>
             </section>
             <section>
-              {/* <DetailedServiceList allServices={services} /> */}
+              {draftMode().isEnabled ? (
+                <DetailedServiceListPreview initial={initial} />
+              ) : (
+                <DetailedServiceList allServices={services} />
+              )}
             </section>
           </div>
         );
