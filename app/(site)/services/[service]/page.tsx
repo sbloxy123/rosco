@@ -23,6 +23,7 @@ type Props = {
     service: string;
   };
 };
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.service;
   const service: serviceType = await getSingleService(slug);
@@ -70,16 +71,22 @@ export default async function Service({ params }: { params: QueryParams }) {
   return (
     <div>
       {draftMode().isEnabled ? (
-        <ServicePageContentPreview initial={initial} params={queryParams} />
+        <>
+          <ServicePageContentPreview initial={initial} params={queryParams} />
+          <DetailedServiceListPreview initial={allServicesInitial} />
+        </>
       ) : (
-        <ServicePageContent data={initial.data} />
+        <>
+          <ServicePageContent data={initial.data} />
+          <DetailedServiceList allServices={allServices.data} />
+        </>
       )}
 
-      {draftMode().isEnabled ? (
+      {/* {draftMode().isEnabled ? (
         <DetailedServiceListPreview initial={allServicesInitial} />
       ) : (
         <DetailedServiceList allServices={allServices.data} />
-      )}
+      )} */}
       {/* <DetailedServiceList allServices={allServices.data} /> */}
 
       <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
