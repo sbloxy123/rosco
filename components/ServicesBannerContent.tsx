@@ -10,8 +10,6 @@ export const ServicesBannerContent = ({
   servicePageContent: any;
   allServices: serviceType[];
 }) => {
-  console.log(servicePageContent, "THIS IS servicePageContent");
-
   return (
     <div className="relative text-white pt-[4rem] pb-[6.5rem] px-[5%] xsmall:pt-[6rem] small:flex small:flex-row small:gap-10  small:pt-[9.4rem] small:pb-[12rem] medium:max-w-[1120px] medium:px-0 mx-auto">
       <div className="small:max-w-[488px] small:mx-auto medium:ml-0">
