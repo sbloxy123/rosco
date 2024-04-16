@@ -17,7 +17,7 @@ import { QueryParams, SanityDocument } from "next-sanity";
 import ServicePageContentPreview from "@/components/previewComponents/ServicePageContentPreview";
 import { client } from "@/sanity/sanity.client";
 import DetailedServiceListPreview from "@/components/previewComponents/DetailedServiceListPreview";
-
+export const dynamic = "force-static";
 type Props = {
   params: {
     service: string;
