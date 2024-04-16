@@ -7,8 +7,6 @@ import ServiceImageSlideshow from "./ServiceImageSlideshow";
 import { SanityDocument } from "next-sanity";
 
 export default function ServicePageContent({ data }: { data: SanityDocument }) {
-  // console.log(data, "from ServicePageContent Component");
-
   return (
     <>
       <InnerHero
@@ -32,6 +30,7 @@ export default function ServicePageContent({ data }: { data: SanityDocument }) {
         </div>
       )}
 
+      {/* commented out as showing below components in services slug page.tsx */}
       {/* <DetailedServiceList allServices={allServices.data} /> */}
 
       {/* <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">

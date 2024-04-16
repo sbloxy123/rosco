@@ -1,5 +1,3 @@
-// ./components/PostPreview.tsx
-
 "use client";
 import { getServiceLinks } from "@/sanity/sanity.query";
 import { QueryResponseInitial, useQuery } from "@sanity/react-loader";

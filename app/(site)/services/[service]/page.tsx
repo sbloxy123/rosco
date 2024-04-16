@@ -16,26 +16,27 @@ import { draftMode } from "next/headers";
 import { QueryParams, SanityDocument } from "next-sanity";
 import ServicePageContentPreview from "@/components/previewComponents/ServicePageContentPreview";
 import { client } from "@/sanity/sanity.client";
+import DetailedServiceListPreview from "@/components/previewComponents/DetailedServiceListPreview";
 
 type Props = {
   params: {
     service: string;
   };
 };
-// export async function generateMetadata({ params }: Props): Promise<Metadata> {
-//   const slug = params.service;
-//   const service: serviceType = await getSingleService(slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = params.service;
+  const service: serviceType = await getSingleService(slug);
 
-//   return {
-//     title: `Service | ${removelineBreakCodeFromHTML(service?.serviceTitle)}`,
-//     description: removelineBreakCodeFromHTML(service?.serviceSummary),
-//     openGraph: {
-//       images: service?.coverImage?.image || "add-a-fallback-project-image-here",
-//       title: removelineBreakCodeFromHTML(service?.serviceTitle),
-//       description: removelineBreakCodeFromHTML(service?.serviceSummary),
-//     },
-//   };
-// }
+  return {
+    title: `Service | ${removelineBreakCodeFromHTML(service?.serviceTitle)}`,
+    description: removelineBreakCodeFromHTML(service?.serviceSummary),
+    openGraph: {
+      images: service?.coverImage?.image || "add-a-fallback-project-image-here",
+      title: removelineBreakCodeFromHTML(service?.serviceTitle),
+      description: removelineBreakCodeFromHTML(service?.serviceSummary),
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const allServices = await client.fetch<SanityDocument[]>(getServiceLinks);
@@ -48,15 +49,23 @@ export async function generateStaticParams() {
 export default async function Service({ params }: { params: QueryParams }) {
   const slug = params.service;
   // const service: serviceType = await getSingleService(slug);
-  // const allServices = await loadQuery<SanityDocument[]>(getServiceLinks);
+  const allServices = await loadQuery<serviceType[]>(getServiceLinks);
+  // const allServices = await client.fetch<SanityDocument[]>(getServiceLinks);
   const queryParams = { slug }; // Create a new queryParams object with the correct key
+
+  const allServicesInitial = await loadQuery<SanityDocument[]>(
+    getServiceLinks,
+    {},
+    {
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
 
   const initial = await loadQuery<SanityDocument>(SINGLE_SERVICE, queryParams, {
     // Because of Next.js, RSC and Dynamic Routes this currently
     // cannot be set on the loadQuery function at the "top level"
     perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   });
-  // console.log(initial, "this is initial from SERVICE PAGE");
 
   return (
     <div>
@@ -65,33 +74,18 @@ export default async function Service({ params }: { params: QueryParams }) {
       ) : (
         <ServicePageContent data={initial.data} />
       )}
-      {/* <InnerHero
-        sectionTitle={service?.serviceTitle}
-        title={service?.serviceSummary}
-        image={service?.servicePageImage}
-        imageAltText={service?.servicePageImage.alt}
-      />
 
-      <ServiceBanner
-        backgroundImage={service?.serviceBannerImage}
-        serviceTitle={service?.serviceTitle}
-        serviceText={service?.description}
-        additionalInfo={service?.additionalInfo?.additionalList}
-        awardHighlight={service?.awardHighlight}
-        asideList={service?.serviceAsideList}
-      /> */}
-      {/* {service?.gallery?.images?.length > 0 && (
-        <div className=" max-w-[1220px] mx-auto">
-          <ServiceImageSlideshow images={service.gallery.images} />
-        </div>
-      )} */}
-
-      {/* <DetailedServiceList allServices={allServices.data} />
+      {draftMode().isEnabled ? (
+        <DetailedServiceListPreview initial={allServicesInitial} />
+      ) : (
+        <DetailedServiceList allServices={allServices.data} />
+      )}
+      {/* <DetailedServiceList allServices={allServices.data} /> */}
 
       <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta />
       </div>
-      <ContactSection /> */}
+      <ContactSection />
     </div>
   );
 }

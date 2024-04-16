@@ -20,9 +20,16 @@ import { client } from "@/sanity/sanity.client";
 import DetailedServiceListPreview from "@/components/previewComponents/DetailedServiceListPreview";
 import { draftMode } from "next/headers";
 import { loadQuery } from "@/sanity/lib/store";
+import ServicesPageContent from "@/components/ServicesPageContent";
+import ServicesPageContentPreview from "@/components/previewComponents/ServicesPageContentPreview";
+import InnerHeroPreview from "@/components/previewComponents/InnerHeroPreview";
+import { ServicesBannerContent } from "@/components/ServicesBannerContent";
+import ServicesBannerContentPreview from "@/components/previewComponents/ServicesBannerContentPreview";
 
 export async function metadata() {
-  const servicesContent: servicesPageType[] = await getServicesPageContent();
+  const servicesContent = await client.fetch<servicesPageType[]>(
+    getServicesPageContent
+  );
   return {
     title: "Rosco & Perlini | Services",
     description: removelineBreakCodeFromHTML(
@@ -35,8 +42,12 @@ export async function metadata() {
 }
 
 export default async function Services() {
-  const servicesContent: servicesPageType[] = await getServicesPageContent();
+  // const servicesContent: servicesPageType[] = await getServicesPageContent();
   const services = await client.fetch<serviceType[]>(getServiceLinks);
+
+  const servicesPageContent = await client.fetch<SanityDocument>(
+    getServicesPageContent
+  );
   const initial = await loadQuery<SanityDocument[]>(
     getServiceLinks,
     {},
@@ -45,9 +56,42 @@ export default async function Services() {
     }
   );
 
+  // DRAFT PAGE CONTENT:
+  const initialServicesContent = await loadQuery<SanityDocument>(
+    getServicesPageContent,
+    {},
+    {
+      // Because of Next.js, RSC and Dynamic Routes this currently
+      // cannot be set on the loadQuery function at the "top level"
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
+
   return (
-    <div>
-      {servicesContent.map((content) => {
+    <>
+      {draftMode().isEnabled ? (
+        <InnerHeroPreview
+          initial={initialServicesContent.data[0]}
+          sectionTitle="services"
+          pageNumber="03"
+        />
+      ) : (
+        <InnerHero
+          title={servicesPageContent[0].ServicesPage.pageHeading}
+          image={servicesPageContent[0].ServicesPage.pageImage}
+          sectionTitle="services"
+          imageAltText={servicesPageContent[0].ServicesPage.pageImage.alt}
+          pageNumber="03"
+        />
+      )}
+
+      {/* {draftMode().isEnabled ? (
+        <ServicesPageContentPreview initial={initialServicesContent} />
+      ) : (
+        <ServicesPageContent pageData={servicesPageContent} />
+      )} */}
+
+      {/* {servicesContent.map((content) => {
         return (
           <div key={content._id}>
             <InnerHero
@@ -56,43 +100,60 @@ export default async function Services() {
               sectionTitle="services"
               imageAltText={content.ServicesPage.pageImage.alt}
               pageNumber="03"
-            />
+            /> */}
 
-            {/* intro banner */}
-            <section
-              style={
-                {
-                  "--image-url": `url(${getCroppedImageSrc(
-                    content.ServicesPage.introBgImage
-                  )})`,
-                } as React.CSSProperties
-              }
-              className="relative w-full h-full bg-[image:var(--image-url)] bg-cover  mb-20 overflow-hidden my-[56px] xsmall:my-[80px]"
-            >
-              <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
-                <BgDots />
-              </div>
-              <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
-                <BgDots />
-              </div>
-              <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
-                <BgDots />
-              </div>
+      {/* intro banner */}
+      <section
+        style={
+          {
+            "--image-url": `url(${getCroppedImageSrc(
+              servicesPageContent[0].ServicesPage.introBgImage
+            )})`,
+          } as React.CSSProperties
+        }
+        className="relative w-full h-full bg-[image:var(--image-url)] bg-cover  mb-20 overflow-hidden my-[56px] xsmall:my-[80px]"
+      >
+        <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
+          <BgDots />
+        </div>
+        <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
+          <BgDots />
+        </div>
+        <div className="hidden small:block absolute top-0 left-0 h-[150%] w-auto mix-blend-multiply">
+          <BgDots />
+        </div>
 
-              <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
-                <BgDots />
-              </div>
-              <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
-                <BgDots />
-              </div>
-              <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
-                <BgDots />
-              </div>
-              <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
-                <BgDots />
-              </div>
+        <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
+          <BgDots />
+        </div>
+        <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
+          <BgDots />
+        </div>
+        <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
+          <BgDots />
+        </div>
+        <div className="absolute bottom-0 right-0 h-full xsmall:h-[120%] small:h-[150%] w-auto mix-blend-multiply rotate-180">
+          <BgDots />
+        </div>
 
-              <div className="relative text-white pt-[4rem] pb-[6.5rem] px-[5%] xsmall:pt-[6rem] small:flex small:flex-row small:gap-10  small:pt-[9.4rem] small:pb-[12rem] medium:max-w-[1120px] medium:px-0 mx-auto">
+        {/* BANNER CONTENT */}
+        {/* create component */}
+        {/* create preview component */}
+        {/* pass data in each */}
+
+        {draftMode().isEnabled ? (
+          <ServicesBannerContentPreview
+            initial={initialServicesContent}
+            allServices={services}
+          />
+        ) : (
+          <ServicesBannerContent
+            servicePageContent={servicesPageContent}
+            allServices={services}
+          />
+        )}
+
+        {/* <div className="relative text-white pt-[4rem] pb-[6.5rem] px-[5%] xsmall:pt-[6rem] small:flex small:flex-row small:gap-10  small:pt-[9.4rem] small:pb-[12rem] medium:max-w-[1120px] medium:px-0 mx-auto">
                 <div className="small:max-w-[488px] small:mx-auto medium:ml-0">
                   <h2 className="pb-[1.5rem]">
                     {content.ServicesPage.introHeading}
@@ -131,19 +192,18 @@ export default async function Services() {
                     );
                   })}
                 </ul>
-              </div>
-            </section>
-            <section>
-              {draftMode().isEnabled ? (
-                <DetailedServiceListPreview initial={initial} />
-              ) : (
-                <DetailedServiceList allServices={services} />
-              )}
-            </section>
-          </div>
-        );
-      })}
-
+              </div> */}
+      </section>
+      {/* </div> */}
+      {/* ); */}
+      {/* })} */}
+      <section>
+        {draftMode().isEnabled ? (
+          <DetailedServiceListPreview initial={initial} />
+        ) : (
+          <DetailedServiceList allServices={services} />
+        )}
+      </section>
       <LatestProjects />
       <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta />
@@ -151,6 +211,6 @@ export default async function Services() {
       <section>
         <ContactSection />
       </section>
-    </div>
+    </>
   );
 }

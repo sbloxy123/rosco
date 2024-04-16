@@ -17,10 +17,8 @@ export default function ServicePageContentPreview({
   const { data } = useQuery<SanityDocument | null>(SINGLE_SERVICE, params, {
     initial,
   });
-  console.log(data, "THIS IS THE PREVIEW DATA");
 
   return data ? (
-    // <div>hello from service page preview</div>
     <ServicePageContent data={data} />
   ) : (
     <div className="bg-red-100">Post not found</div>
