@@ -22,7 +22,7 @@ export const client = createClient({
   dataset,
   projectId,
   useCdn,
-  // These settings will be overridden in
+  // These settings are overridden in
   // ./sanity/lib/store.ts when draftMode is enabled
   perspective: "published",
   stega: {
