@@ -18,7 +18,7 @@ export default defineConfig({
     visionTool(),
     presentationTool({
       previewUrl: {
-        origin: "http://rosco-liard.vercel.app/",
+        origin: "https://rosco-liard.vercel.app/",
         draftMode: {
           enable: "/api/draft",
         },
