@@ -468,6 +468,18 @@ export async function getAwards() {
     }`
   );
 }
+export const awardList = groq`*[_type == "homepage"] {
+      awardsSection{
+        awardsSectionSubTitle,
+        awardsSectionTitle,
+        awardsList[]{
+          awardDate,
+          awardTitle,
+          awardLogo {alt, "image": asset->url},
+        }
+      }
+    }`;
+
 export async function getContactContent() {
   return client.fetch(
     groq`*[_type == "homepage"] {
@@ -543,6 +555,41 @@ export async function getAboutPageContent() {
     `
   );
 }
+export const aboutPageContent = groq`*[_type == "innerPage"] {
+      _id,
+      title,
+      aboutPage {
+        _id,
+        pageHeading,
+        pageImage {
+          alt,
+        "image": asset->url,
+        asset {
+          _ref
+        },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
+        introHeading,
+        introText,
+        featureText,
+        contentArea
+      }
+    }
+    `;
+
 export const getServicesPageContent = groq`*[_type == "innerPage" && defined(ServicesPage)] {
         _id,
       ServicesPage {
@@ -651,6 +698,36 @@ export async function getProjectsPageContent() {
     `
   );
 }
+export const projectsPageContent = groq`*[_type == "innerPage"] {
+       _id,
+      title,
+      ProjectsPage {
+        _id,
+        pageHeading,
+        pageImage {
+            alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+        },
+      }
+    }
+    `;
 
 export async function getFaqPageContent() {
   return client.fetch(
@@ -708,6 +785,58 @@ export async function getFaqPageContent() {
     `
   );
 }
+export const faqPageInitialContent = groq`*[_type == "innerPage"] {
+       _id,
+      FaqPage {
+        pageHeading,
+        pageImage {
+            alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+        },
+        BgImage{
+          alt,
+          "image": asset->url,
+          asset {
+            _ref
+          },
+          crop {
+            _type,
+            bottom,
+            left,
+            top,
+            right
+          },
+          hotspot {
+            _type,
+            height,
+            width,
+            x,
+            y
+          }
+        },
+        introTitle,
+        introMessage,
+        formPlaceholder,
+      }
+    }
+    `;
 
 export async function getFaqs() {
   return client.fetch(
@@ -730,6 +859,14 @@ export async function getContactUsPageContent() {
     `
   );
 }
+export const contactPageInitialContent = groq`*[_type == "innerPage"] {
+       _id,
+      ContactPage {
+        pageHeading,
+      }
+    }
+    `;
+
 export async function getMetadata() {
   return client.fetch(
     groq`*[_type == "metadata"]{

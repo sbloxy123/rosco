@@ -44,10 +44,10 @@ export async function metadata() {
 export default async function Services() {
   // const servicesContent: servicesPageType[] = await getServicesPageContent();
   const services = await client.fetch<serviceType[]>(getServiceLinks);
-
   const servicesPageContent = await client.fetch<SanityDocument>(
     getServicesPageContent
   );
+
   const initial = await loadQuery<SanityDocument[]>(
     getServiceLinks,
     {},
@@ -74,6 +74,8 @@ export default async function Services() {
           initial={initialServicesContent.data[0]}
           sectionTitle="services"
           pageNumber="03"
+          originalContent={getServicesPageContent}
+          pageVariable="ServicesPage"
         />
       ) : (
         <InnerHero

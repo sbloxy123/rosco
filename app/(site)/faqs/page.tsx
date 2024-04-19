@@ -2,9 +2,17 @@ import ContactSection from "@/components/ContactSection";
 import FaqSearch from "@/components/FaqSearch";
 import InnerHero from "@/components/InnerHero";
 import BgDots from "@/components/assets/BgDots";
+import InnerHeroPreview from "@/components/previewComponents/InnerHeroPreview";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
-import { getFaqPageContent, getFaqs } from "@/sanity/sanity.query";
+import { loadQuery } from "@/sanity/lib/store";
+import {
+  faqPageInitialContent,
+  getFaqPageContent,
+  getFaqs,
+} from "@/sanity/sanity.query";
 import type { faqPageType } from "@/types";
+import { SanityDocument } from "next-sanity";
+import { draftMode } from "next/headers";
 import { Suspense } from "react";
 interface Faq {
   _id: string;
@@ -42,6 +50,16 @@ export default async function faqs() {
     })),
   };
 
+  const initialFaqPageContent = await loadQuery<SanityDocument>(
+    faqPageInitialContent,
+    {},
+    {
+      // Because of Next.js, RSC and Dynamic Routes this currently
+      // cannot be set on the loadQuery function at the "top level"
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
+
   return (
     <main>
       <script
@@ -49,6 +67,24 @@ export default async function faqs() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Suspense fallback={<div>Loading search parameters...</div>}>
+        {draftMode().isEnabled ? (
+          <InnerHeroPreview
+            pageVariable="FaqPage"
+            initial={initialFaqPageContent.data[0]}
+            sectionTitle="FAQ's"
+            pageNumber="05"
+            originalContent={faqPageInitialContent}
+          />
+        ) : (
+          <InnerHero
+            title={faqPageContent[0].FaqPage.pageHeading}
+            image={faqPageContent[0].FaqPage.pageImage}
+            sectionTitle="FAQ's"
+            imageAltText={faqPageContent[0].FaqPage.pageImage.alt}
+            pageNumber="05"
+          />
+        )}
+
         {faqPageContent.map((content) => {
           const messageWithLineBreaks = content.FaqPage.introMessage.replace(
             /\\n/g,
@@ -61,13 +97,13 @@ export default async function faqs() {
 
           return (
             <div key={content.FaqPage._id}>
-              <InnerHero
+              {/* <InnerHero
                 title={content.FaqPage.pageHeading}
                 image={content.FaqPage.pageImage}
                 sectionTitle="FAQ's"
                 imageAltText={content.FaqPage.pageImage.alt}
                 pageNumber="05"
-              />
+              /> */}
               <div className="relative bg-theme-dark overflow-hidden pt-[5rem] pb-[16rem] px-[5%] xsmall:pt-[5.2rem] xsmall:pb-[10rem] small:pt-[9rem] small:pb-[20rem] small:px-layout-small mt-section-gap">
                 {/* top right */}
                 <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
