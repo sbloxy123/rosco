@@ -6,21 +6,13 @@ import ButtonLink from "./common/ButtonLink";
 import type { Metadata } from "next";
 import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 
-export default async function Hero() {
-  const hero: heroType[] = await getHero();
+export default function Hero({ content }: { content: heroType[] }) {
+  // const hero: heroType[] = await getHero();
 
   return (
     <section className="relative mt-[11rem] small:mt-0">
-      {hero &&
-        hero.map((content) => {
-          // let titleWithLineBreaks = content.heroHeading;
-          // // Check if heroHeading is a string and includes the newline character
-          // if (
-          //   typeof titleWithLineBreaks === "string" &&
-          //   titleWithLineBreaks.includes("\\n")
-          // ) {
-          //   titleWithLineBreaks = titleWithLineBreaks.split("\\n");
-          // }
+      {content &&
+        content.map((content) => {
           return (
             <div
               key={content._id}

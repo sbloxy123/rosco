@@ -87,6 +87,33 @@ export async function getHero() {
     }`
   );
 }
+export const heroContent = groq`*[_type == "homepage"]{
+      _id,
+      heroHeading,
+      heroText,
+      heroButtonText,
+      heroImage {
+        alt,
+        "image": asset->url,
+        asset {
+          _ref
+        },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
+    }`;
 
 export async function getIntro() {
   return client.fetch(
@@ -429,6 +456,93 @@ export async function getAllProjects() {
         `
   );
 }
+export const allProjects = groq`*[_type == "projects"] {
+      _id,
+      projectTitle,
+      "slug": slug.current,
+      projectSummary,
+      completionTimeframe,
+      projectLocation,
+      "categories": categories[]->{
+        serviceTitle,
+        _id,
+        serviceBannerImage{
+          alt,
+          "image": asset->url, // For fetching the URL
+          "assetRef": asset._ref,
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+        }
+      },
+      image {
+        alt,
+        "image": asset->url,
+        asset{
+          _ref,
+            },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
+      beforeAfter {
+        beforeImage {
+          alt,
+          "image": asset->url,
+          asset->{_ref},
+        },
+        afterImage {
+          alt,
+          "image": asset->url,
+          asset->{_ref},
+        },
+
+      },
+      gallery {
+          images[] {
+            alt,
+            "image": asset->url,
+            asset->{_ref},
+            crop {
+              _type,
+              bottom,
+              left,
+              top,
+              right
+            },
+            hotspot {
+              _type,
+              height,
+              width,
+              x,
+              y
+            }
+          }
+        }
+    }
+        `;
 
 export async function getTotPromo() {
   return client.fetch(
@@ -847,6 +961,11 @@ export async function getFaqs() {
 }`
   );
 }
+export const faqItems = groq`*[_type == "faq"] {
+        _id,
+        question,
+        answer
+}`;
 
 export async function getContactUsPageContent() {
   return client.fetch(

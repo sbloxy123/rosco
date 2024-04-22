@@ -2,6 +2,7 @@ import ContactSection from "@/components/ContactSection";
 import InnerHero from "@/components/InnerHero";
 import MailingListCta from "@/components/MailingListCta";
 import InnerHeroPreview from "@/components/previewComponents/InnerHeroPreview";
+import ProjectsFilterPreview from "@/components/previewComponents/ProjectsFilterPreview";
 import ProjectsFilter from "@/components/ProjectsFilter";
 import TotPromo from "@/components/TotPromo";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
@@ -10,6 +11,7 @@ import {
   getProjectsPageContent,
   getAllProjects,
   projectsPageContent,
+  allProjects,
 } from "@/sanity/sanity.query";
 import type { projectsPageType, projectType } from "@/types";
 import { SanityDocument } from "next-sanity";
@@ -35,6 +37,15 @@ export default async function Projects() {
 
   const initialProjectsPageContent = await loadQuery<SanityDocument>(
     projectsPageContent,
+    {},
+    {
+      // Because of Next.js, RSC and Dynamic Routes this currently
+      // cannot be set on the loadQuery function at the "top level"
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
+  const initialProjectItems = await loadQuery<SanityDocument>(
+    allProjects,
     {},
     {
       // Because of Next.js, RSC and Dynamic Routes this currently
@@ -79,7 +90,15 @@ export default async function Projects() {
         })} */}
 
         <section className="my-section-gap">
-          <ProjectsFilter projects={projects} assets={projectsContent} />
+          {draftMode().isEnabled ? (
+            <ProjectsFilterPreview
+              initial={initialProjectItems.data[0]}
+              originalContent={allProjects}
+              assets={projectsContent}
+            />
+          ) : (
+            <ProjectsFilter projects={projects} assets={projectsContent} />
+          )}
         </section>
 
         <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">

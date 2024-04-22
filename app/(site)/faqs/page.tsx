@@ -1,11 +1,15 @@
 import ContactSection from "@/components/ContactSection";
+import FaqIntro from "@/components/FaqIntro";
 import FaqSearch from "@/components/FaqSearch";
 import InnerHero from "@/components/InnerHero";
 import BgDots from "@/components/assets/BgDots";
+import FaqIntroPreview from "@/components/previewComponents/FaqIntroPreview";
+import FaqSearchPreview from "@/components/previewComponents/FaqSearchPreview";
 import InnerHeroPreview from "@/components/previewComponents/InnerHeroPreview";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 import { loadQuery } from "@/sanity/lib/store";
 import {
+  faqItems,
   faqPageInitialContent,
   getFaqPageContent,
   getFaqs,
@@ -59,6 +63,16 @@ export default async function faqs() {
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
+  const initialFaqItems = await loadQuery<SanityDocument>(
+    faqItems,
+    {},
+    {
+      // Because of Next.js, RSC and Dynamic Routes this currently
+      // cannot be set on the loadQuery function at the "top level"
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
+  console.log(initialFaqItems, "*** initialFaqItems ***");
 
   return (
     <main>
@@ -139,13 +153,26 @@ export default async function faqs() {
                   <BgDots />
                 </div>
 
-                <div className="relative small:max-w-[1120px] small:mx-auto">
+                {draftMode().isEnabled ? (
+                  <FaqIntroPreview
+                    initial={initialFaqPageContent.data[0]}
+                    originalContent={faqPageInitialContent}
+                  />
+                ) : (
+                  <FaqIntro
+                    messageWithLineBreaks={messageWithLineBreaks}
+                    messageWithoutLineBreaks={messageWithoutLineBreaks}
+                    introTitle={content.FaqPage.introTitle}
+                  />
+                )}
+
+                {/* <div className="relative small:max-w-[1120px] small:mx-auto">
                   <h2 className="text-white leading-[4.3rem]">
                     {content.FaqPage.introTitle}
-                  </h2>
+                  </h2> */}
 
-                  {/* mobile only: */}
-                  <div className="xsmall:hidden pt-[3.5rem] pr-[10%]">
+                {/* mobile only: */}
+                {/* <div className="xsmall:hidden pt-[3.5rem] pr-[10%]">
                     {messageWithLineBreaks.split("\n").map((line, index) => {
                       return (
                         <p key={index} className="text-white font-[500]">
@@ -153,9 +180,9 @@ export default async function faqs() {
                         </p>
                       );
                     })}
-                  </div>
-                  {/* tablet +  */}
-                  <div className="hidden xsmall:block pt-[5rem] pr-0 xsmall:max-w-[59.4rem] small:max-w-[101.5rem] ">
+                  </div> */}
+                {/* tablet +  */}
+                {/* <div className="hidden xsmall:block pt-[5rem] pr-0 xsmall:max-w-[59.4rem] small:max-w-[101.5rem] ">
                     {messageWithoutLineBreaks.split("\n").map((line, index) => {
                       return (
                         <p key={index} className="text-white font-[500]">
@@ -163,14 +190,26 @@ export default async function faqs() {
                         </p>
                       );
                     })}
-                  </div>
-                </div>
+                  </div> */}
+                {/* </div> */}
               </div>
 
-              <FaqSearch
+              {draftMode().isEnabled ? (
+                <FaqSearchPreview
+                  placeholder={content.FaqPage.formPlaceholder}
+                  initial={initialFaqItems.data[0]}
+                />
+              ) : (
+                <FaqSearch
+                  placeholder={content.FaqPage.formPlaceholder}
+                  faqs={faqs}
+                />
+              )}
+
+              {/* <FaqSearch
                 placeholder={content.FaqPage.formPlaceholder}
                 faqs={faqs}
-              />
+              /> */}
             </div>
           );
         })}

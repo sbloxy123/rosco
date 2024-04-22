@@ -13,8 +13,6 @@ export default function AboutPageAwardsPreview({
 }) {
   const { data } = useQuery<awardsType[] | null>(awardList, {}, { initial });
 
-  console.log(data, "******* awards data ********");
-
   return data ? (
     <div>
       <AboutPageAwards awards={data} />
