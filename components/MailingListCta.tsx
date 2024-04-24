@@ -2,12 +2,16 @@ import { getMailingListCta } from "@/sanity/sanity.query";
 import type { mailingListType } from "@/types";
 import MailingListForm from "./MailingListForm";
 
-export default async function MailingListCta() {
-  const mailingList: mailingListType[] = await getMailingListCta();
+export default function MailingListCta({
+  content,
+}: {
+  content: mailingListType[];
+}) {
+  // const mailingList: mailingListType[] = await getMailingListCta();
 
   return (
     <div>
-      {mailingList.map((content) => {
+      {content.map((content) => {
         const {
           mailingListHeading,
           mailingListText,

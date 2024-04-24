@@ -15,6 +15,7 @@ import { SanityDocument } from "next-sanity";
 // import Posts from "@/components/Posts";
 import { loadQuery } from "@/sanity/lib/store";
 import ServiceImageLinkPreview from "./previewComponents/ServiceImageLinkPreview";
+import ServiceSwiperPreview from "./previewComponents/ServiceSwiperPreview";
 // import { SERVICES_QUERY } from "@/sanity/lib/queries";
 
 export default async function ServiceImageLinkSwiper() {
@@ -72,7 +73,14 @@ export default async function ServiceImageLinkSwiper() {
         )}
       </div>
       <div className="invisible mb-0 h-0 w-fit  mx-auto xsmall:visible xsmall:w-full xsmall:h-full xsmall:mb-[0] small:pl-layout-small">
-        <ServiceSwiper data={services.data} />
+        {draftMode().isEnabled ? (
+          <ServiceSwiperPreview
+            initial={services}
+            originalContent={getServiceLinks}
+          />
+        ) : (
+          <ServiceSwiper data={services.data} />
+        )}
         <div className="relative h-[5rem] mx-[5%] small:h-[7rem] small:mx-0 small:mr-[clamp(8rem,11.1vw,16rem)]">
           <div className="services-swiper-scrollbar absolute bottom-0 left-0">
             <div

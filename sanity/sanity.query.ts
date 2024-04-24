@@ -149,6 +149,37 @@ export async function getIntro() {
     }`
   );
 }
+export const introContent = groq`*[_type == 'homepage'] {
+        _id,
+      introSection {
+        introSubheading,
+        introHeading,
+        introText,
+        aboutUsButton,
+        introImage {
+        alt,
+        "image": asset->url,
+        asset {
+          _ref
+        },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
+      }
+    }`;
+
 export async function getServicesSectionTitles() {
   return client.fetch(
     groq`*[_type == 'homepage'] {
@@ -353,6 +384,15 @@ export async function getMailingListCta() {
     }`
   );
 }
+export const mailingListCta = groq`*[_type == "homepage"]{
+      mailingListCta {
+        mailingListHeading,
+        mailingListText,
+        mailingListPlaceholder,
+        mailingListButtonText
+      }
+    }`;
+
 export async function getProjectsSection() {
   return client.fetch(
     groq`*[_type == "homepage"]{

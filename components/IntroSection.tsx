@@ -1,12 +1,12 @@
-import { getCroppedImageSrc, getIntro } from "@/sanity/sanity.query";
+// import { getCroppedImageSrc, getIntro } from "@/sanity/sanity.query";
 import type { introType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import ButtonLink from "./common/ButtonLink";
 import BgDots from "./assets/BgDots";
 import BorderedImageAbout from "./utils/BorderedImageAbout";
 
-export default async function IntroSection() {
-  const intro: introType[] = await getIntro();
+export default function IntroSection({ intro }: { intro: introType[] }) {
+  // const intro: introType[] = await getIntro();
 
   return (
     <section className="relative bg-theme-dark px-[4%] pt-[5%] pb-[5.5rem] xsmall:px-[3.9%] xsmall:pt-[3.9%]  small:py-[clamp(4rem,7.8vw,11rem)] small:pr-16 small:pl-0 text-white overflow-hidden">

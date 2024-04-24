@@ -8,13 +8,22 @@ import Testimonials from "@/components/Testimonials";
 import AwardsSection from "@/components/AwardsSection";
 import ContactSection from "@/components/ContactSection";
 import type { Metadata } from "next";
-import { getHero, heroContent } from "@/sanity/sanity.query";
-import type { heroType } from "@/types";
+import {
+  getHero,
+  getIntro,
+  getMailingListCta,
+  heroContent,
+  introContent,
+  mailingListCta,
+} from "@/sanity/sanity.query";
+import type { heroType, introType, mailingListType } from "@/types";
 import thumbnail from "./assets/Thumbnail_1280x720.png";
 import { loadQuery } from "@/sanity/lib/store";
 import { SanityDocument } from "next-sanity";
 import { draftMode } from "next/headers";
 import HeroPreview from "@/components/previewComponents/HeroPreview";
+import IntroSectionPreview from "@/components/previewComponents/IntroSectionPreview";
+import MailingListCtaPreview from "@/components/previewComponents/MailingListCtaPreview";
 
 export async function metadata() {
   const hero: heroType[] = await getHero();
@@ -40,9 +49,29 @@ export async function metadata() {
 
 export default async function Home() {
   const hero: heroType[] = await getHero();
+  const intro: introType[] = await getIntro();
+  const mailingList: mailingListType[] = await getMailingListCta();
 
   const initialHeroContent = await loadQuery<SanityDocument>(
     heroContent,
+    {},
+    {
+      // Because of Next.js, RSC and Dynamic Routes this currently
+      // cannot be set on the loadQuery function at the "top level"
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
+  const initialIntroContent = await loadQuery<SanityDocument>(
+    introContent,
+    {},
+    {
+      // Because of Next.js, RSC and Dynamic Routes this currently
+      // cannot be set on the loadQuery function at the "top level"
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
+  const initialmailingListCtaContent = await loadQuery<SanityDocument>(
+    mailingListCta,
     {},
     {
       // Because of Next.js, RSC and Dynamic Routes this currently
@@ -62,12 +91,29 @@ export default async function Home() {
         <Hero content={hero} />
       )}
       {/* <Hero /> */}
-      <IntroSection />
+      {draftMode().isEnabled ? (
+        <IntroSectionPreview
+          initial={initialIntroContent.data[0]}
+          originalContent={introContent}
+        />
+      ) : (
+        <IntroSection intro={intro} />
+      )}
+      {/* <IntroSection /> */}
       <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small ">
         <ServiceImageLinkSwiper />
       </section>
       <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
-        <MailingListCta />
+        {draftMode().isEnabled ? (
+          <MailingListCtaPreview
+            initial={initialmailingListCtaContent.data[0]}
+            originalContent={mailingListCta}
+          />
+        ) : (
+          <MailingListCta content={mailingList} />
+        )}
+
+        {/* <MailingListCta /> */}
       </section>
       <LatestProjects />
       <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">

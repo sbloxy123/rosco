@@ -72,7 +72,7 @@ export default async function faqs() {
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
-  console.log(initialFaqItems, "*** initialFaqItems ***");
+  // console.log(initialFaqItems, "*** initialFaqItems ***");
 
   return (
     <main>

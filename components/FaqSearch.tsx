@@ -25,8 +25,6 @@ export default function FaqSearch({
   const filterParam = searchParams.get("searchTerm");
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-  // console.log(filterParam);
-
   useEffect(() => {
     // Check if filterParam is not null or undefined before setting it
     if (filterParam) {

@@ -12,8 +12,9 @@ import {
   aboutPageContent,
   getAwards,
   awardList,
+  getMailingListCta,
 } from "@/sanity/sanity.query";
-import type { aboutPageType, awardsType } from "@/types";
+import type { aboutPageType, awardsType, mailingListType } from "@/types";
 import { PortableText } from "@portabletext/react";
 
 import { getTextWithLineBreaks } from "@/components/utils/getTextWithLineBreaks";
@@ -45,6 +46,7 @@ export async function metadata() {
 export default async function About() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
   const awards: awardsType[] = await getAwards();
+  const mailingList: mailingListType[] = await getMailingListCta();
 
   const initialAboutPageContent = await loadQuery<SanityDocument>(
     aboutPageContent,
@@ -267,7 +269,7 @@ export default async function About() {
           <LatestProjects />
         </section>
         <section className="mb-section-gap xsmall:mb-section-gap-xsmall small:mb-section-gap-small">
-          <MailingListCta />
+          <MailingListCta content={mailingList} />
         </section>
         <section>
           <ContactSection />

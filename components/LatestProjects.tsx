@@ -1,13 +1,31 @@
-import { getProjectsSection, getAllProjects } from "@/sanity/sanity.query";
+import {
+  getProjectsSection,
+  getAllProjects,
+  allProjects,
+} from "@/sanity/sanity.query";
 import type { projectsSectionType, projectType } from "@/types";
 import { ProjectsPaginationSwiper, ProjectsSwiper } from "./swiper/Swipers";
 import ButtonLink from "./common/ButtonLink";
 import { SwiperArrowNext, SwiperArrowPrev } from "./common/SwiperArrows";
 import BgDots from "./assets/BgDots";
+import { loadQuery } from "@sanity/react-loader";
+import { draftMode } from "next/headers";
+import { SanityDocument } from "next-sanity";
+import ProjectsSwiperPreview from "./previewComponents/ProjectsSwiperPreview";
 
 export default async function LatestProjects() {
   const projectsSection: projectsSectionType[] = await getProjectsSection();
   const projects: projectType[] = await getAllProjects();
+
+  const initialAllProjects = await loadQuery<SanityDocument>(
+    allProjects,
+    {},
+    {
+      // Because of Next.js, RSC and Dynamic Routes this currently
+      // cannot be set on the loadQuery function at the "top level"
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
 
   return (
     <section className="relative">
@@ -69,8 +87,15 @@ export default async function LatestProjects() {
           <div className="absolute bottom-0 right-0 w-full h-auto mix-blend-multiply rotate-180 xsmall:hidden">
             <BgDots />
           </div>
-
-          <ProjectsSwiper data={projects} />
+          {draftMode().isEnabled ? (
+            <ProjectsSwiperPreview
+              initial={initialAllProjects.data[0]}
+              originalContent={allProjects}
+            />
+          ) : (
+            <ProjectsSwiper data={projects} />
+          )}
+          {/* <ProjectsSwiper data={projects} /> */}
         </div>
 
         <ProjectsPaginationSwiper data={projects} />
