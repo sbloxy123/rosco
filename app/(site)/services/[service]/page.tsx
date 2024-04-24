@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { Metadata } from "next";
-import { SINGLE_SERVICE, getSingleService } from "@/sanity/sanity.query";
-import type { serviceType } from "@/types";
+import {
+  SINGLE_SERVICE,
+  getMailingListCta,
+  getSingleService,
+} from "@/sanity/sanity.query";
+import type { mailingListType, serviceType } from "@/types";
 import InnerHero from "@/components/InnerHero";
 import ServiceBanner from "@/components/ServiceBanner";
 import { getServiceLinks } from "@/sanity/sanity.query";
@@ -53,6 +57,7 @@ export default async function Service({ params }: { params: QueryParams }) {
   const allServices = await loadQuery<serviceType[]>(getServiceLinks);
   // const allServices = await client.fetch<SanityDocument[]>(getServiceLinks);
   const queryParams = { slug }; // Create a new queryParams object with the correct key
+  const mailingList: mailingListType[] = await getMailingListCta();
 
   const allServicesInitial = await loadQuery<SanityDocument[]>(
     getServiceLinks,
@@ -90,7 +95,7 @@ export default async function Service({ params }: { params: QueryParams }) {
       {/* <DetailedServiceList allServices={allServices.data} /> */}
 
       <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
-        <MailingListCta />
+        <MailingListCta content={mailingList} />
       </div>
       <ContactSection />
     </div>
