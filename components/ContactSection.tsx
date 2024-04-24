@@ -5,12 +5,14 @@ import GradientLine from "./assets/GradientLine";
 import ContactForm from "./ContactForm";
 import BgDots from "./assets/BgDots";
 
-export default async function ContactSection({
+export default function ContactSection({
   showAllSizes,
+  contactContent,
 }: {
   showAllSizes?: boolean;
+  contactContent: contactType[];
 }) {
-  const contactContent: contactType[] = await getContactContent();
+  // const contactContent: contactType[] = await getContactContent();
 
   return (
     <section className="bg-theme-dark text-white pt-[1.5rem] pb-[5.5rem] xsmall:pt-[2.5rem] small:py-[9rem] relative">

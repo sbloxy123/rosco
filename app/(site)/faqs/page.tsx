@@ -11,10 +11,11 @@ import { loadQuery } from "@/sanity/lib/store";
 import {
   faqItems,
   faqPageInitialContent,
+  getContactContent,
   getFaqPageContent,
   getFaqs,
 } from "@/sanity/sanity.query";
-import type { faqPageType } from "@/types";
+import type { contactType, faqPageType } from "@/types";
 import { SanityDocument } from "next-sanity";
 import { draftMode } from "next/headers";
 import { Suspense } from "react";
@@ -40,6 +41,7 @@ export async function metadata() {
 export default async function faqs() {
   const faqPageContent: faqPageType[] = await getFaqPageContent();
   const faqs: Faq[] = await getFaqs();
+  const contactContent: contactType[] = await getContactContent();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -58,8 +60,6 @@ export default async function faqs() {
     faqPageInitialContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -67,12 +67,9 @@ export default async function faqs() {
     faqItems,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
-  // console.log(initialFaqItems, "*** initialFaqItems ***");
 
   return (
     <main>
@@ -214,7 +211,7 @@ export default async function faqs() {
           );
         })}
         <div className="mt-[10rem] xsmall:mt-[12rem]">
-          <ContactSection />
+          <ContactSection contactContent={contactContent} />
         </div>
       </Suspense>
     </main>

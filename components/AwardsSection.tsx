@@ -1,10 +1,10 @@
 import type { awardsType } from "@/types";
-import { getAwards } from "@/sanity/sanity.query";
-import Image from "next/image";
+// import { getAwards } from "@/sanity/sanity.query";
+// import Image from "next/image";
 import { AwardsSwiper } from "./swiper/Swipers";
 
-export default async function AwardsSection() {
-  const awards: awardsType[] = await getAwards();
+export default function AwardsSection({ awards }: { awards: awardsType[] }) {
+  // const awards: awardsType[] = await getAwards();
 
   return (
     <div className="relative px-0">

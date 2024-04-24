@@ -2,10 +2,10 @@ import TotPromoPhoneGraphic from "./TotPromoPhonesGraphic";
 import TotBackgrounds from "./TotBackgrounds";
 import ToTLogo from "./assets/ToTLogo";
 import type { TotPromoType } from "@/types";
-import { getTotPromo } from "@/sanity/sanity.query";
+// import { getTotPromo } from "@/sanity/sanity.query";
 
-export default async function TotPromo() {
-  const totPromo: TotPromoType[] = await getTotPromo();
+export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
+  // const totPromo: TotPromoType[] = await getTotPromo();
   return (
     <div className="relative bg-theme-dark w-full">
       <div className="absolute top-0 left-0 w-full h-full">

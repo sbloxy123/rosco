@@ -13,8 +13,16 @@ import {
   getAwards,
   awardList,
   getMailingListCta,
+  getTotPromo,
+  getContactContent,
 } from "@/sanity/sanity.query";
-import type { aboutPageType, awardsType, mailingListType } from "@/types";
+import type {
+  aboutPageType,
+  awardsType,
+  contactType,
+  mailingListType,
+  TotPromoType,
+} from "@/types";
 import { PortableText } from "@portabletext/react";
 
 import { getTextWithLineBreaks } from "@/components/utils/getTextWithLineBreaks";
@@ -28,6 +36,7 @@ import AboutIntroTextPreview from "@/components/previewComponents/AboutIntroText
 import AboutPageContent from "@/components/AboutPageContent";
 import AboutPageContentPreview from "@/components/previewComponents/AboutPageContentPreview";
 import AboutPageAwardsPreview from "@/components/previewComponents/AboutPageAwardsPreview";
+import contact from "../contact/page";
 
 export async function metadata() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
@@ -47,6 +56,8 @@ export default async function About() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
   const awards: awardsType[] = await getAwards();
   const mailingList: mailingListType[] = await getMailingListCta();
+  const totPromo: TotPromoType[] = await getTotPromo();
+  const contactContent: contactType[] = await getContactContent();
 
   const initialAboutPageContent = await loadQuery<SanityDocument>(
     aboutPageContent,
@@ -263,7 +274,7 @@ export default async function About() {
           <ServiceImageLinkSwiper />
         </section>
         <section>
-          <TotPromo />
+          <TotPromo totPromo={totPromo} />
         </section>
         <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
           <LatestProjects />
@@ -272,7 +283,7 @@ export default async function About() {
           <MailingListCta content={mailingList} />
         </section>
         <section>
-          <ContactSection />
+          <ContactSection contactContent={contactContent} />
         </section>
       </div>
     </section>

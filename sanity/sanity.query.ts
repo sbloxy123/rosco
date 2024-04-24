@@ -593,6 +593,11 @@ export async function getTotPromo() {
     }`
   );
 }
+export const totPromoContent = groq`*[_type == "homepage"]{
+      totPromo {
+        promoMessage
+      }
+    }`;
 
 export async function getTestimonials() {
   return client.fetch(
@@ -607,6 +612,15 @@ export async function getTestimonials() {
     }`
   );
 }
+export const testimonialContent = groq`*[_type == "homepage"] {
+      testimonialsSection{
+        testimonialsSectionTitle,
+        testimonialsList[]{
+          name,
+          message
+        }
+      }
+    }`;
 export async function getAwards() {
   return client.fetch(
     groq`*[_type == "homepage"] {
@@ -622,6 +636,18 @@ export async function getAwards() {
     }`
   );
 }
+export const awardsContent = groq`*[_type == "homepage"] {
+      awardsSection{
+        awardsSectionSubTitle,
+        awardsSectionTitle,
+        awardsList[]{
+          awardDate,
+          awardTitle,
+          awardLogo {alt, "image": asset->url},
+        }
+      }
+    }`;
+
 export const awardList = groq`*[_type == "homepage"] {
       awardsSection{
         awardsSectionSubTitle,
@@ -649,6 +675,17 @@ export async function getContactContent() {
     }`
   );
 }
+export const contactUsContent = groq`*[_type == "homepage"] {
+        contactUs {
+          title,
+          message,
+          address,
+          contactNumber,
+          emailAddress,
+          phoneButtonText,
+          emailButtonText
+        }
+    }`;
 
 export async function getAboutPageContent() {
   return client.fetch(

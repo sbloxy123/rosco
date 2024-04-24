@@ -3,8 +3,12 @@ import type { testimonialsType } from "@/types";
 import { TestimonialSwiper } from "./swiper/Swipers";
 import { SwiperArrowNext, SwiperArrowPrev } from "./common/SwiperArrows";
 
-export default async function Testimonials() {
-  const testimonials: testimonialsType[] = await getTestimonials();
+export default function Testimonials({
+  testimonials,
+}: {
+  testimonials: testimonialsType[];
+}) {
+  // const testimonials: testimonialsType[] = await getTestimonials();
 
   return (
     <section className="mt-20">

@@ -4,15 +4,19 @@ import LatestProjects from "@/components/LatestProjects";
 import TotPromo from "@/components/TotPromo";
 import {
   contactPageInitialContent,
+  contactUsContent,
+  getContactContent,
   getContactUsPageContent,
+  getTotPromo,
 } from "@/sanity/sanity.query";
-import type { contactPageType } from "@/types";
+import type { contactPageType, contactType, TotPromoType } from "@/types";
 import contactMap from "../assets/images/contact_map.png";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 import InnerHeroPreview from "@/components/previewComponents/InnerHeroPreview";
 import { draftMode } from "next/headers";
 import { loadQuery } from "@/sanity/lib/store";
 import { SanityDocument } from "next-sanity";
+import ContactSectionPreview from "@/components/previewComponents/ContactSectionPreview";
 
 export async function metadata() {
   const contactPageContent: contactPageType[] = await getContactUsPageContent();
@@ -29,7 +33,9 @@ export async function metadata() {
 
 export default async function contact() {
   const contactPageContent: contactPageType[] = await getContactUsPageContent();
+  const contactContent: contactType[] = await getContactContent();
 
+  const totPromo: TotPromoType[] = await getTotPromo();
   const initialContactPageContent = await loadQuery<SanityDocument>(
     contactPageInitialContent,
     {},
@@ -39,7 +45,15 @@ export default async function contact() {
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
-
+  const initialContactContent = await loadQuery<SanityDocument>(
+    contactUsContent,
+    {},
+    {
+      // Because of Next.js, RSC and Dynamic Routes this currently
+      // cannot be set on the loadQuery function at the "top level"
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+    }
+  );
   return (
     <main>
       {draftMode().isEnabled ? (
@@ -71,12 +85,19 @@ export default async function contact() {
       })} */}
 
       <div className="my-section-gap">
-        <ContactSection showAllSizes={true} />
+        {draftMode().isEnabled ? (
+          <ContactSectionPreview
+            initial={initialContactContent.data[0]}
+            originalContent={contactUsContent}
+          />
+        ) : (
+          <ContactSection contactContent={contactContent} />
+        )}{" "}
       </div>
 
       <LatestProjects />
       <div className="my-section-gap">
-        <TotPromo />
+        <TotPromo totPromo={totPromo} />
       </div>
     </main>
   );

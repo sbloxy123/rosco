@@ -1,10 +1,11 @@
 import InnerHero from "@/components/InnerHero";
 import {
+  getContactContent,
   getCroppedImageSrc,
   getMailingListCta,
   getServicesPageContent,
 } from "@/sanity/sanity.query";
-import type { mailingListType, servicesPageType } from "@/types";
+import type { contactType, mailingListType, servicesPageType } from "@/types";
 
 import { getServiceLinks } from "@/sanity/sanity.query";
 
@@ -49,6 +50,7 @@ export default async function Services() {
     getServicesPageContent
   );
   const mailingList: mailingListType[] = await getMailingListCta();
+  const contactContent: contactType[] = await getContactContent();
 
   const initial = await loadQuery<SanityDocument[]>(
     getServiceLinks,
@@ -213,7 +215,7 @@ export default async function Services() {
         <MailingListCta content={mailingList} />
       </section>
       <section>
-        <ContactSection />
+        <ContactSection contactContent={contactContent} />
       </section>
     </>
   );

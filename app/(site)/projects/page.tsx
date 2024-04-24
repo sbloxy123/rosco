@@ -13,8 +13,16 @@ import {
   projectsPageContent,
   allProjects,
   getMailingListCta,
+  getTotPromo,
+  getContactContent,
 } from "@/sanity/sanity.query";
-import type { mailingListType, projectsPageType, projectType } from "@/types";
+import type {
+  contactType,
+  mailingListType,
+  projectsPageType,
+  projectType,
+  TotPromoType,
+} from "@/types";
 import { SanityDocument } from "next-sanity";
 import { draftMode } from "next/headers";
 import { Suspense } from "react";
@@ -36,6 +44,8 @@ export default async function Projects() {
   const projectsContent: projectsPageType[] = await getProjectsPageContent();
   const projects: projectType[] = await getAllProjects();
   const mailingList: mailingListType[] = await getMailingListCta();
+  const totPromo: TotPromoType[] = await getTotPromo();
+  const contactContent: contactType[] = await getContactContent();
 
   const initialProjectsPageContent = await loadQuery<SanityDocument>(
     projectsPageContent,
@@ -104,13 +114,13 @@ export default async function Projects() {
         </section>
 
         <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
-          <TotPromo />
+          <TotPromo totPromo={totPromo} />
         </section>
         <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
           <MailingListCta content={mailingList} />
         </section>
         <section>
-          <ContactSection />
+          <ContactSection contactContent={contactContent} />
         </section>
       </div>
     </Suspense>
