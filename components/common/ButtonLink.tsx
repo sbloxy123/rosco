@@ -60,16 +60,17 @@ const ButtonLink = ({
   return (
     <Link
       href={`${href}`}
-      className={`button__link relative block border-[2px] border-solid border-${color} rounded-sm after:bg-transparent after:absolute after:top-[-1.5px] after:left-[-2px] after:h-[calc(100%+4px)] after:w-[calc(100%+4px)] after:overflow-hidden after:-z-10 after:border-[2px] hover:after:border-[3px] hover:after:border-theme-purple after:rounded-sm after:border-theme-dark after:-translate-y-[0.3px] after:hover:duration-150 ${
+      className={`button__link relative block border-[2px] border-solid small:border-${color} rounded-sm after:bg-transparent after:absolute after:top-[-1.5px] after:left-[-2px] after:h-[calc(100%+4px)] after:w-[calc(100%+4px)] after:-z-10 after:border-[2px] hover:after:border-[3px] hover:after:border-theme-purple after:rounded-sm after:border-theme-dark after:-translate-y-[0.3px] after:hover:duration-150 active:bg-none active:text-inherit;
+      ${
         bgColor == "white"
-          ? `text-theme-purple bg-white`
+          ? `text-theme-purple bg-white active:bg-inherit`
           : bgColor == "theme-dark"
-          ? `border-theme-dark text-white hover:after:border-theme-purple`
+          ? `border-theme-dark text-white hover:after:border-theme-purple active:bg-inherit`
           : `text-${color}`
       } py-[1.1rem] w-full bg-${bgColor} transition duration-300 hover:duration-300 ${hover} group`}
     >
       <div
-        className={`flex justify-center items-center gap-6 mx-auto h-full w-full  overflow-hidden ${
+        className={`flex justify-center items-center gap-6 mx-auto h-full w-full max-w-fit ${
           ctaType == "email" || "phone" ? `px-[2.2rem]` : `px-11`
         } min-w-[176px] `}
       >

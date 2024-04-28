@@ -34,7 +34,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
             {removelineBreakCodeFromHTML(service.serviceSummary)}
           </p>
         </div>
-        <div className="w-full px-[5%] absolute bottom-[8%] left-0 right-0 mx-auto small:w-fit">
+        <div className="w-full px-[5%] absolute bottom-[5%] left-0 right-0 mx-auto small:w-fit">
           <ButtonLink
             bgColor="white"
             theme="light"
