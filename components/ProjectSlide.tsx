@@ -5,6 +5,7 @@ import ButtonLink from "./common/ButtonLink";
 import BgDots from "./assets/BgDots";
 import { SwiperArrowNext, SwiperArrowPrev } from "./common/SwiperArrows";
 import ProjectBorderedImage from "./utils/ProjectBorderedImage";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 
 type ProjectSlideProps = {
   project: projectType;
@@ -39,7 +40,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
             </p>
           </div>
           <div className="project__btn mt-[4rem] xsmall:mt-[3.2rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
-            <ButtonLink
+            <ButtonLinkNew
               destination={{
                 pathname: "/projects", // General projects page
                 query: `${project._id}`, // Pass the filter in the query string

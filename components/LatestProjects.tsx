@@ -12,6 +12,7 @@ import { loadQuery } from "@sanity/react-loader";
 import { draftMode } from "next/headers";
 import { SanityDocument } from "next-sanity";
 import ProjectsSwiperPreview from "./previewComponents/ProjectsSwiperPreview";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 
 export default async function LatestProjects() {
   const projectsSection: projectsSectionType[] = await getProjectsSection();
@@ -100,22 +101,15 @@ export default async function LatestProjects() {
 
         <ProjectsPaginationSwiper data={projects} />
 
-        {projectsSection.map((content) => {
-          return (
-            <div
-              key={content._id}
-              className="mt-20 mx-[15px] xsmall:w-fit xsmall:mx-auto small:mt-0"
-            >
-              <ButtonLink
-                text={content.projectsSection.projectsButtonText}
-                theme="dark"
-                destination="/projects"
-                ctaType="none"
-                hoverEffect="outline"
-              />
-            </div>
-          );
-        })}
+        <div className="mt-20 mx-[15px] xsmall:w-fit xsmall:mx-auto small:mt-0">
+          <ButtonLinkNew
+            text={projectsSection[0].projectsSection.projectsButtonText}
+            theme="dark"
+            destination="/projects"
+            ctaType="none"
+            hoverEffect="outline"
+          />
+        </div>
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "sanity";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 
 export default function ServiceItem({
   title,
@@ -183,7 +184,7 @@ export default function ServiceItem({
         </div>
 
         <div className="pt-[3.6rem] xsmall:w-fit" onClick={onClick}>
-          <ButtonLink
+          <ButtonLinkNew
             theme="dark"
             ctaType="general"
             text="find out more"

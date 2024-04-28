@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import ButtonLink from "./common/ButtonLink";
 import type { Metadata } from "next";
 import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 
 export default function Hero({ content }: { content: heroType[] }) {
   return (
@@ -32,13 +33,20 @@ export default function Hero({ content }: { content: heroType[] }) {
                     <PortableText value={content.heroText} />
                   </div>
                   <div className="mt-[3.5rem] w-[95%] mx-auto xsmall:w-fit xsmall:ml-0">
-                    <ButtonLink
+                    <ButtonLinkNew
                       destination="/about"
                       text={content.heroButtonText}
                       theme="dark"
                       ctaType="general"
                       hoverEffect="fill-col"
                     />
+                    {/* <ButtonLink
+                      destination="/about"
+                      text={content.heroButtonText}
+                      theme="dark"
+                      ctaType="general"
+                      hoverEffect="fill-col"
+                    /> */}
                   </div>
                 </div>
               </div>

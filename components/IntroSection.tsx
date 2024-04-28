@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import ButtonLink from "./common/ButtonLink";
 import BgDots from "./assets/BgDots";
 import BorderedImageAbout from "./utils/BorderedImageAbout";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 
 export default function IntroSection({ intro }: { intro: introType[] }) {
   // const intro: introType[] = await getIntro();
@@ -43,7 +44,7 @@ export default function IntroSection({ intro }: { intro: introType[] }) {
                 <PortableText value={content.introSection.introText} />
               </div>
               <div className="mt-[3.5rem] mx-[15px] xsmall:w-fit xsmall:ml-0">
-                <ButtonLink
+                <ButtonLinkNew
                   destination="/about"
                   text={content.introSection.aboutUsButton}
                   theme="light"

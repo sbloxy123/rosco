@@ -163,7 +163,7 @@ export default async function Home() {
       <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small ">
         <ServiceImageLinkSwiper />
       </section>
-      <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <section className="hidden xsmall:block my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         {draftMode().isEnabled ? (
           <MailingListCtaPreview
             initial={initialmailingListCtaContent.data[0]}

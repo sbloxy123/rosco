@@ -96,7 +96,7 @@ export default async function Service({ params }: { params: QueryParams }) {
       )} */}
       {/* <DetailedServiceList allServices={allServices.data} /> */}
 
-      <div className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <div className="my-section-gap hidden xsmall:block xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta content={mailingList} />
       </div>
       <ContactSection contactContent={contactContent} />

@@ -3,6 +3,7 @@
 import type { serviceType } from "@/types";
 import ButtonLink from "./common/ButtonLink";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 
 type ServiceImageLinkProps = {
   service: serviceType;
@@ -22,7 +23,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
       }
       className="relative bg-[image:var(--image-url)] bg-cover w-[90vw] xsmall:w-[359px] mx-auto xsmall:px-0 max-w-[359px] aspect-[359/464] xsmall:aspect-[340/468] overflow-hidden cursor-pointer group"
     >
-      <div className="opacity-0 transition-opacity duration-100 absolute top-0 left-0 w-full h-full bg-theme-purple group-hover:opacity-100 z-30 group-hover:ease-in">
+      <div className="opacity-0 transition-opacity duration-300 absolute top-0 left-0 w-full h-full bg-theme-purple hover:duration-300 group-hover:opacity-100 z-30 group-hover:ease-in">
         <div className="absolute top-[42%] left-1/2 transform -translate-x-1/2 text-white w-full -translate-y-[94px]">
           <p className="text-[1.6rem] tracking-[0.24em] text-center h-7 pb-[6rem] font-semibold">
             0{index + 1}
@@ -34,8 +35,8 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
             {removelineBreakCodeFromHTML(service.serviceSummary)}
           </p>
         </div>
-        <div className="w-full px-[5%] absolute bottom-[5%] left-0 right-0 mx-auto small:w-fit">
-          <ButtonLink
+        <div className="w-full px-[5%] absolute bottom-[4%] left-0 right-0 mx-auto small:w-fit">
+          <ButtonLinkNew
             bgColor="white"
             theme="light"
             text="find out more"
@@ -60,7 +61,7 @@ const ServiceImageLink: React.FC<ServiceImageLinkProps> = ({
       {/* btn */}
       <div className="button-and-gradient-container absolute bottom-0 left-0 w-full h-auto aspect-[358/94] flex justify-center items-center">
         <div className="button-position-container w-full px-[5%] xsmall:w-fit xsmall:mx-auto text-center z-20">
-          <ButtonLink
+          <ButtonLinkNew
             theme="light"
             text="find out more"
             destination={`/services/${service.slug}`}

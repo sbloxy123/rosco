@@ -427,7 +427,7 @@ function Navbar() {
       }`}
     >
       <header className="relative tracking-[0.06em]">
-        <div className="relative z-50 max-w-screen-large mx-auto py-[2.7rem] bg-[#fff]">
+        <div className="relative z-50 max-w-screen-large mx-auto py-[1.2rem] xsmall:py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[8%] xsmall:px-10 small:px-layout-small">
             <div className="w-[154px] max-w-[172px] xsmall:w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/" aria-label="home">
@@ -647,7 +647,7 @@ function Navbar() {
                   type="button"
                   className={`${
                     searchIsOpen && "hidden"
-                  } w-[3.8rem] block xsmall:w-[4rem] aspect-square items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900`}
+                  } w-[3.8rem] block xsmall:w-[4rem] aspect-square items-center justify-center p-[0.2rem] rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900`}
                   aria-controls="mobile-menu"
                   aria-expanded="false"
                 >
@@ -712,9 +712,9 @@ function Navbar() {
                 } absolute left-0 w-full h-full py-20 px-[5%] flex flex-col justify-start gap-[3rem] bg-white items-start uppercase font-normal font-sans text-[2.4rem] text-[rgba(47,48,71,90%)] z-30 small:w-fit small:h-fit small:right-0 small:left-auto small:px-[4rem] small:mr-layout-small overflow-auto`}
               >
                 {/* form in mobile view */}
-                <form className="xsmall:hidden nav-search-form relative flex justify-end flex-row w-full">
+                <form className="xsmall:hidden nav-search-form relative flex justify-end flex-row w-full ">
                   {/* search form icons */}
-                  <div className="flex items-center gap-[1rem]">
+                  <div className="flex items-center gap-[1rem] bg-red">
                     <div className="absolute top-0 left-0 h-full w-auto">
                       {/* magnifying glass button */}
                       <button

@@ -1,6 +1,7 @@
 import BgDots from "@/components/assets/BgDots";
 import GradientLine from "@/components/assets/GradientLine";
 import ButtonLink from "@/components/common/ButtonLink";
+import ButtonLinkNew from "@/components/common/ButtonLinkNew";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -96,7 +97,7 @@ export default function NotFound() {
           </h4>
 
           <div className="w-fit pt-[3rem] small:pt-[5rem]">
-            <ButtonLink
+            <ButtonLinkNew
               destination={"/"}
               text="BACK TO HOME"
               ctaType="general"

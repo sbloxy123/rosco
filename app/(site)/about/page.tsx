@@ -279,7 +279,7 @@ export default async function About() {
         <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
           <LatestProjects />
         </section>
-        <section className="mb-section-gap xsmall:mb-section-gap-xsmall small:mb-section-gap-small">
+        <section className="mb-section-gap hidden xsmall:block xsmall:mb-section-gap-xsmall small:mb-section-gap-small">
           <MailingListCta content={mailingList} />
         </section>
         <section>

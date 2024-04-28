@@ -36,7 +36,7 @@ h2 {
   letter-spacing: 0.06em;
   font-weight: bold;
   @media all and (max-width: 512px) {
-    line-height: 3rem;
+    line-height: 4.5rem;
   }
 }
 h3 {
@@ -305,7 +305,28 @@ input[type="text"]::-webkit-search-cancel-button {
   position: absolute;
   bottom: 0;
 }
+.prev-project::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: rgba(255, 255, 255, 1);
+  opacity: 0;
+}
 
+.project-swiper-nav:has(.next-project.swiper-button-disabled) {
+  .prev-project {
+    position: relative;
+  }
+  .prev-project::before {
+    opacity: 1;
+  }
+}
 .prev-project,
 .prev-service-image {
   background: rgba(255, 255, 255, 0.65) !important;

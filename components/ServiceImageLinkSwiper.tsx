@@ -16,6 +16,7 @@ import { SanityDocument } from "next-sanity";
 import { loadQuery } from "@/sanity/lib/store";
 import ServiceImageLinkPreview from "./previewComponents/ServiceImageLinkPreview";
 import ServiceSwiperPreview from "./previewComponents/ServiceSwiperPreview";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 // import { SERVICES_QUERY } from "@/sanity/lib/queries";
 
 export default async function ServiceImageLinkSwiper() {
@@ -96,7 +97,7 @@ export default async function ServiceImageLinkSwiper() {
             key={heading.servicesSection.servicesHeading}
             className="mt-[4rem] m-auto px-[5%] w-fit xsmall:px-0 xsmall:mt-[5rem] xsmall:mx-auto small:mt-[6.5rem]"
           >
-            <ButtonLink
+            <ButtonLinkNew
               theme="dark"
               text={heading.servicesSection.servicesLinkTitle}
               destination="/services"

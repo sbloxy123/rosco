@@ -116,7 +116,7 @@ export default async function Projects() {
         <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
           <TotPromo totPromo={totPromo} />
         </section>
-        <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+        <section className="my-section-gap hidden xsmall:block xsmall:my-section-gap-xsmall small:my-section-gap-small">
           <MailingListCta content={mailingList} />
         </section>
         <section>

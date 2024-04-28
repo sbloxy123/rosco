@@ -4,6 +4,7 @@ import ButtonLink from "./common/ButtonLink";
 import GradientLine from "./assets/GradientLine";
 import ContactForm from "./ContactForm";
 import BgDots from "./assets/BgDots";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 
 export default function ContactSection({
   showAllSizes,
@@ -135,7 +136,7 @@ export default function ContactSection({
                 </div>
                 <div className="flex flex-col gap-5 mt-16 xsmall:flex-row xsmall:justify-center small:justify-start small:pl-0">
                   <div className="xsmall:max-w-[176px]">
-                    <ButtonLink
+                    <ButtonLinkNew
                       theme="light"
                       destination={`tel:${content.contactUs.contactNumber}`}
                       text={content.contactUs.phoneButtonText}
@@ -144,7 +145,7 @@ export default function ContactSection({
                     />
                   </div>
                   <div className="xsmall:max-w-[176px]">
-                    <ButtonLink
+                    <ButtonLinkNew
                       theme="light"
                       destination={`mailto:${content.contactUs.emailAddress}`}
                       text={content.contactUs.emailButtonText}

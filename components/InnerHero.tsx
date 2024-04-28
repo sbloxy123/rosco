@@ -10,6 +10,7 @@ import { MapComponent } from "@/components/Map";
 import Image from "next/image";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
+import ButtonLinkNew from "./common/ButtonLinkNew";
 
 export default function InnerHero({
   title,
@@ -47,13 +48,20 @@ export default function InnerHero({
           </div>
           {pageNumber !== "06" && (
             <div className="w-full mx-auto px-[8%] xsmall:px-0 pb-[5rem] xsmall:pb-[6.5rem] xsmall:w-fit xsmall:ml-[7.5rem] small:ml-layout-small">
-              <ButtonLink
+              <ButtonLinkNew
                 theme="dark"
                 text="Get in touch"
                 destination="/contact"
                 ctaType="general"
                 hoverEffect="fill-col"
               />
+              {/* <ButtonLink
+                theme="dark"
+                text="Get in touch"
+                destination="/contact"
+                ctaType="general"
+                hoverEffect="fill-col"
+              /> */}
             </div>
           )}
         </div>
