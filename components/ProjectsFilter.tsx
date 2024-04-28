@@ -7,6 +7,7 @@ import FilterButton from "./common/FilterButton";
 import { FilterButtonSwiper } from "./swiper/Swipers";
 import { useSearchParams } from "next/navigation";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
+import { motion } from "framer-motion";
 
 export default function ProjectsFilter({
   projects,

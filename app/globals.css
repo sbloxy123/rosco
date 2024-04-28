@@ -386,7 +386,7 @@ input[type="text"]::-webkit-search-cancel-button {
       opacity: 0;
       transform: translateX(-70%);
       transition: opacity 600ms ease 300ms,
-        transform 1400ms cubic-bezier(0.75, 0.07, 0.3, 0.9) 400ms;
+        transform 800ms cubic-bezier(0.75, 0.07, 0.3, 0.9) 400ms;
       @media all and (min-width: 1024px) {
         position: relative;
         top: 13%;
@@ -399,13 +399,13 @@ input[type="text"]::-webkit-search-cancel-button {
       transform: translateY(-60%);
       opacity: 0;
       transition: opacity 600ms ease 300ms,
-        transform 1400ms cubic-bezier(0.75, 0.07, 0.3, 0.9) 400ms;
+        transform 800ms cubic-bezier(0.75, 0.07, 0.3, 0.9) 400ms;
     }
     .project__btn {
       opacity: 0;
       transform: translateY(260%);
       transition: opacity 600ms ease 300ms,
-        transform 1400ms cubic-bezier(0.75, 0.07, 0.3, 0.9) 400ms;
+        transform 800ms cubic-bezier(0.75, 0.07, 0.3, 0.9) 400ms;
     }
   }
   .no-transition {
@@ -436,7 +436,7 @@ input[type="text"]::-webkit-search-cancel-button {
     opacity: 1;
     transform: translateX(0);
     transition: opacity 600ms ease 300ms,
-      transform 1400ms cubic-bezier(0.75, 0.07, 0.3, 0.9) 400ms;
+      transform 800ms cubic-bezier(0.75, 0.07, 0.3, 0.9) 400ms;
   }
 
   .project__counter {

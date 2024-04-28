@@ -7,8 +7,6 @@ import type { Metadata } from "next";
 import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 
 export default function Hero({ content }: { content: heroType[] }) {
-  // const hero: heroType[] = await getHero();
-
   return (
     <section className="relative mt-[11rem] small:mt-0">
       {content &&

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import AccordionTemplate from "./AccordionTemplate";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { motion } from "framer-motion";
 
 interface Faq {
   _id: string;
@@ -222,13 +223,21 @@ export default function FaqSearch({
           {uniqueFilteredFaqs.map((faq, index) => {
             if (faq && index + 1 <= iteration) {
               return (
-                <div key={faq._id}>
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.5,
+                    staggerChildren: 1,
+                  }}
+                  key={faq._id}
+                >
                   <AccordionTemplate
                     question={faq.question}
                     answer={faq.answer}
                     UID={index}
                   />
-                </div>
+                </motion.div>
               );
             }
             return null;

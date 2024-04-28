@@ -235,14 +235,17 @@ export default function Footer() {
 
             <ul className="flex flex-wrap justify-center items-center tracking-[0.02em] gap-x-[1.6rem] font-sans text-[1.4rem] mx-auto mt-10 text-theme-dark font-light small:h-[4.2rem] small:items-center small:justify-start small:mx-0 ">
               <li className="py-3 small:p-0">
-                <Link href="/" className=" hover:text-purple-400 duration-300">
+                <Link
+                  href="/"
+                  className=" hover:text-theme-purple duration-300"
+                >
                   Home
                 </Link>
               </li>
               <li className="py-3 small:p-0">
                 <Link
                   href="/about"
-                  className="hover:text-purple-400 duration-300"
+                  className="hover:text-theme-purple duration-300"
                 >
                   About
                 </Link>
@@ -250,7 +253,7 @@ export default function Footer() {
               <li className="py-3 small:p-0">
                 <Link
                   href="/services"
-                  className="hover:text-purple-400 duration-300"
+                  className="hover:text-theme-purple duration-300"
                 >
                   Services
                 </Link>
@@ -258,7 +261,7 @@ export default function Footer() {
               <li className="py-3 small:p-0">
                 <Link
                   href="/projects"
-                  className="hover:text-purple-400 duration-300"
+                  className="hover:text-theme-purple duration-300"
                 >
                   Projects
                 </Link>
@@ -266,7 +269,7 @@ export default function Footer() {
               <li className="py-3 small:p-0">
                 <Link
                   href="/faqs"
-                  className="hover:text-purple-400 duration-300"
+                  className="hover:text-theme-purple duration-300"
                 >
                   FAQ's
                 </Link>
@@ -274,20 +277,20 @@ export default function Footer() {
               <li className="py-3 small:p-0">
                 <Link
                   href="/contact"
-                  className="hover:text-purple-400 duration-300"
+                  className="hover:text-theme-purple duration-300"
                 >
                   Contact
                 </Link>
               </li>
               <li className="py-3 small:p-0">
-                <Link href="/" className="hover:text-purple-400 duration-300">
+                <Link href="/" className="hover:text-theme-purple duration-300">
                   Terms of Service
                 </Link>
               </li>
               <li className="py-3 small:p-0">
                 <Link
                   href="/privacy-policy"
-                  className="hover:text-purple-400 duration-300"
+                  className="hover:text-theme-purple duration-300"
                 >
                   Privacy Policy
                 </Link>
@@ -295,7 +298,7 @@ export default function Footer() {
               {/* <li className="py-3 small:p-0">
                 <Link
                   href="/contact"
-                  className="hover:text-purple-400 duration-300"
+                  className="hover:text-theme-purple duration-300"
                 >
                   Cookies Policy
                 </Link>

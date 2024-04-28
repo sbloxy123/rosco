@@ -647,7 +647,7 @@ function Navbar() {
                   type="button"
                   className={`${
                     searchIsOpen && "hidden"
-                  } w-[3.2rem] xsmall:w-[4rem] aspect-square inline-flex items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900`}
+                  } w-[3.8rem] block xsmall:w-[4rem] aspect-square items-center justify-center p-2 rounded-md text-theme_black-900 hover:bg-theme_dark_orange-900`}
                   aria-controls="mobile-menu"
                   aria-expanded="false"
                 >
@@ -677,8 +677,6 @@ function Navbar() {
                     </svg>
                   ) : (
                     <svg
-                      width="40"
-                      height="40"
                       viewBox="0 0 40 40"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
