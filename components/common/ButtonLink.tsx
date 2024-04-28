@@ -60,7 +60,7 @@ const ButtonLink = ({
   return (
     <Link
       href={`${href}`}
-      className={`button__link relative block border-[2px] border-solid small:border-${color} rounded-sm after:bg-transparent after:absolute after:top-[-1.5px] after:left-[-2px] after:h-[calc(100%+4px)] after:w-[calc(100%+4px)] after:-z-10 after:border-[2px] hover:after:border-[3px] hover:after:border-theme-purple after:rounded-sm after:border-theme-dark after:-translate-y-[0.3px] after:hover:duration-150 active:bg-none active:text-inherit;
+      className={`button__link relative block border-[2px] border-solid small:border-${color} rounded-sm after:bg-transparent after:absolute after:top-[-1.5px] after:left-[-2px] after:h-[calc(100%+4px)] after:w-[calc(100%+4px)] after:-z-10 after:border-[2px] hover:after:border-[3px] hover:after:border-theme-purple after:rounded-[0.65rem] after:border-inherit after:-translate-y-[0.3px] after:hover:duration-150 active:bg-none active:text-inherit;
       ${
         bgColor == "white"
           ? `text-theme-purple bg-white active:bg-inherit`
