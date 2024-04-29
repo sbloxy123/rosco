@@ -223,6 +223,8 @@ const homepage = {
           name: "awardsSectionSubTitle",
           title: "Testimonials Sub Title",
           type: "string",
+          description:
+            "--add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
         },
         {
           name: "awardsSectionTitle",

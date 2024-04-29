@@ -23,8 +23,8 @@ export const ServicesBannerContent = ({
           return (
             <li key={service._id} className="pt-2 xsmall:pt-0 small:pt-[1rem]">
               <Link href={`services/${service.slug}`}>
-                <h4 className="service__list__link uppercase text-[2rem] xsmall:text-[2.2rem] font-bold tracking-[0.24em] flex items-center gap-[1.6rem]">
-                  <span className="hidden xsmall:inline pr-4">
+                <h4 className="service__list__link uppercase text-[clamp(1.5rem,4.7vw,2rem)] xsmall:text-[2.2rem] font-bold tracking-[0.24em] flex items-center gap-[1.6rem]">
+                  <span className=" xsmall:pr-4">
                     <svg
                       width="7"
                       height="10"

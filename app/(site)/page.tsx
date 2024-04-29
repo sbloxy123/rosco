@@ -194,7 +194,7 @@ export default async function Home() {
       ) : (
         <Testimonials testimonials={testimonials} />
       )}
-      <section className="mt-[10rem] my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
+      <section className="mt-[5rem] my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
         {draftMode().isEnabled ? (
           <AwardsSectionPreview
             initial={initialAwardContent.data[0]}

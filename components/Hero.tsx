@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { getCroppedImageSrc, getHero, urlFor } from "@/sanity/sanity.query";
 import type { heroType } from "@/types";
 import { PortableText } from "@portabletext/react";
-import ButtonLink from "./common/ButtonLink";
 import type { Metadata } from "next";
 import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 import ButtonLinkNew from "./common/ButtonLinkNew";
@@ -34,19 +32,12 @@ export default function Hero({ content }: { content: heroType[] }) {
                   </div>
                   <div className="mt-[3.5rem] w-[95%] mx-auto xsmall:w-fit xsmall:ml-0">
                     <ButtonLinkNew
-                      destination="/about"
+                      destination="/contact"
                       text={content.heroButtonText}
                       theme="dark"
                       ctaType="general"
                       hoverEffect="fill-col"
                     />
-                    {/* <ButtonLink
-                      destination="/about"
-                      text={content.heroButtonText}
-                      theme="dark"
-                      ctaType="general"
-                      hoverEffect="fill-col"
-                    /> */}
                   </div>
                 </div>
               </div>

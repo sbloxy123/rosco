@@ -60,7 +60,7 @@ const ButtonLinkNew = ({
   return (
     <Link
       href={`${href}`}
-      className={`button__link relative block border-[2px] border-solid rounded-sm small:border-${color} py-[1.1rem] w-full bg-${bgColor} transition duration-[350ms] hover:duration-[350ms] ${hover} group mb-[2px]
+      className={`button__link relative block border-[2px] border-solid rounded-sm small:border-${color} py-[1.1rem] max-w-[319.11px] mx-auto  w-full bg-${bgColor} transition duration-[350ms] hover:duration-[350ms] ${hover} group mb-[2px] xsmall:max-w-full
 
       ${
         bgColor == "white"

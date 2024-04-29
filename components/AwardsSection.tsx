@@ -2,7 +2,7 @@ import type { awardsType } from "@/types";
 // import { getAwards } from "@/sanity/sanity.query";
 // import Image from "next/image";
 import { AwardsSwiper } from "./swiper/Swipers";
-import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
+import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 
 export default function AwardsSection({ awards }: { awards: awardsType[] }) {
   // const awards: awardsType[] = await getAwards();
@@ -18,7 +18,7 @@ export default function AwardsSection({ awards }: { awards: awardsType[] }) {
           <div key={award._id}>
             <div className="text-center text-theme-dark px-[5%]">
               <h3 className="uppercase">
-                {removelineBreakCodeFromHTML(
+                {getTextWithLineBreaks(
                   award.awardsSection.awardsSectionSubTitle
                 )}
               </h3>

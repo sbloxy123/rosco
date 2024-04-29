@@ -36,7 +36,8 @@ h2 {
   letter-spacing: 0.06em;
   font-weight: bold;
   @media all and (max-width: 512px) {
-    line-height: 4.5rem;
+    line-height: clamp(3rem, 8.2vw, 4.5rem);
+    font-size: clamp(2.8rem, 8.2vw, 3.2rem);
   }
 }
 h3 {
@@ -131,7 +132,7 @@ input[type="text"]::-webkit-search-cancel-button {
   }
   &:hover {
     .service__list__link__item::before {
-      width: 95%;
+      width: 100%;
     }
   }
 }

@@ -14,7 +14,7 @@ export default function Testimonials({
     <section className="mt-20">
       <div className="small:px-layout-small">
         <div className="relative text-theme-dark bg-[#f8f8f8] w-full pt-[3.5rem] pb-40 px-[5%]  xsmall:pt-[5rem] xsmall:pb-32 medium:max-w-[1120px] medium:mx-auto">
-          <h2 className="xsmall:w-[95%]">
+          <h2 className="w-[95%]">
             {testimonials[0].testimonialsSection.testimonialsSectionTitle}
           </h2>
 

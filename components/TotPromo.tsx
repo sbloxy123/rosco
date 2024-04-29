@@ -54,7 +54,7 @@ export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
             </div>
 
             <div className="flex flex-col mt-[8rem] gap-14 xsmall:gap-16 xsmall:mb-[4rem] small:mb-0 small:mt-0 small:justify-start">
-              <div className="mx-auto w-[55%] pl-[1rem] pt-3 pb-10 small:pb-0 xsmall:hidden">
+              <div className="mx-auto w-[55%] pl-[1rem] pt-3 xsmall:pb-10 small:pb-0 xsmall:hidden">
                 <svg
                   viewBox="0 0 363 19"
                   fill="none"
@@ -81,7 +81,7 @@ export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
                   </defs>
                 </svg>
               </div>
-              <div className="relative z-20 w-auto h-fit pt-10 pb-5 xsmall:order-2 small:pt-0">
+              <div className="relative z-20 w-auto h-fit xsmall:pt-10 xsmall:pb-5 xsmall:order-2 small:pt-0">
                 <ToTLogo />
               </div>
               <div className="relative z-1 xsmall:order-3">
@@ -110,7 +110,7 @@ export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
                   );
                 })}
               </div>
-              <p className="z-10 mb-[10rem] text-[2.4rem] tracking-[0.06em] font-bold text-center uppercase text-white xsmall:order-1 xsmall:-mb-[3rem] small:hidden">
+              <p className="z-10 mb-[10rem] text-[2.4rem] tracking-[0.06em] mt-[1rem] font-bold text-center uppercase text-white xsmall:order-1 xsmall:-mb-[3rem] small:hidden">
                 coming soon
               </p>
             </div>

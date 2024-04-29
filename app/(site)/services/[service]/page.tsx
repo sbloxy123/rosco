@@ -7,8 +7,6 @@ import {
   getSingleService,
 } from "@/sanity/sanity.query";
 import type { contactType, mailingListType, serviceType } from "@/types";
-import InnerHero from "@/components/InnerHero";
-import ServiceBanner from "@/components/ServiceBanner";
 import { getServiceLinks } from "@/sanity/sanity.query";
 import MailingListCta from "@/components/MailingListCta";
 import ContactSection from "@/components/ContactSection";
@@ -54,9 +52,7 @@ export async function generateStaticParams() {
 
 export default async function Service({ params }: { params: QueryParams }) {
   const slug = params.service;
-  // const service: serviceType = await getSingleService(slug);
   const allServices = await loadQuery<serviceType[]>(getServiceLinks);
-  // const allServices = await client.fetch<SanityDocument[]>(getServiceLinks);
   const queryParams = { slug }; // Create a new queryParams object with the correct key
   const mailingList: mailingListType[] = await getMailingListCta();
   const contactContent: contactType[] = await getContactContent();
@@ -88,13 +84,6 @@ export default async function Service({ params }: { params: QueryParams }) {
           <DetailedServiceList allServices={allServices.data} />
         </>
       )}
-
-      {/* {draftMode().isEnabled ? (
-        <DetailedServiceListPreview initial={allServicesInitial} />
-      ) : (
-        <DetailedServiceList allServices={allServices.data} />
-      )} */}
-      {/* <DetailedServiceList allServices={allServices.data} /> */}
 
       <div className="my-section-gap hidden xsmall:block xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta content={mailingList} />
