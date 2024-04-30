@@ -87,20 +87,6 @@ export default async function Projects() {
           />
         )}
 
-        {/* {projectsContent.map((content) => {
-          return (
-            <div key={content._id}>
-              <InnerHero
-                title={content.ProjectsPage.pageHeading}
-                image={content.ProjectsPage.pageImage}
-                sectionTitle="projects"
-                imageAltText={content.ProjectsPage.pageImage.alt}
-                pageNumber="04"
-              />
-            </div>
-          );
-        })} */}
-
         <section className="my-section-gap">
           {draftMode().isEnabled ? (
             <ProjectsFilterPreview

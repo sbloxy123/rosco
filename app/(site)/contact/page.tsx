@@ -40,8 +40,6 @@ export default async function contact() {
     contactPageInitialContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -49,8 +47,6 @@ export default async function contact() {
     contactUsContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -73,18 +69,6 @@ export default async function contact() {
           imageAltText={contactPageContent[0].ContactPage.pageImage.alt}
         />
       )}
-
-      {/* {contactPageContent.map((content) => {
-        return (
-          <section key={content.ContactPage._id}>
-            <InnerHero
-              sectionTitle="contact us"
-              title={content.ContactPage.pageHeading}
-              pageNumber="06"
-            />
-          </section>
-        );
-      })} */}
 
       <div className="my-section-gap">
         {draftMode().isEnabled ? (

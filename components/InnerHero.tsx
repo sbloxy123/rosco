@@ -55,13 +55,6 @@ export default function InnerHero({
                 ctaType="general"
                 hoverEffect="fill-col"
               />
-              {/* <ButtonLink
-                theme="dark"
-                text="Get in touch"
-                destination="/contact"
-                ctaType="general"
-                hoverEffect="fill-col"
-              /> */}
             </div>
           )}
         </div>

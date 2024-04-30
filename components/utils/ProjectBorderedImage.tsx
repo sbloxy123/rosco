@@ -223,34 +223,3 @@ export default function ProjectBorderedImage({
     </div>
   );
 }
-
-{
-  /* <svg
-            viewBox="0 0 389 412"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="absolute w-full top-0 left-0 -z-10 xsmall:hidden mix-blend-color-dodge"
-          >
-            <path
-              stroke="url(#projBorderMob-back)"
-              strokeOpacity=".5"
-              strokeWidth="40"
-              d="M20 20.5h349v372H20z"
-            />
-            <defs>
-              <linearGradient
-                id="projBorderMob-back"
-                x1="383.689"
-                y1="9.608"
-                x2="-41.21"
-                y2="215.121"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset=".162" stopColor="#4804F8" />
-                <stop offset=".375" stopColor="#FF4A1D" />
-                <stop offset=".635" stopColor="#F9BA17" />
-                <stop offset=".978" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg> */
-}
