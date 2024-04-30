@@ -145,7 +145,7 @@ export default async function Services() {
       <section className="my-section-gap hidden xsmall:block xsmall:my-section-gap-xsmall small:my-section-gap-small">
         <MailingListCta content={mailingList} />
       </section>
-      <section>
+      <section className="my-section-gap xsmall:my-0">
         <ContactSection contactContent={contactContent} />
       </section>
     </>

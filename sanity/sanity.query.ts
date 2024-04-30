@@ -1050,6 +1050,27 @@ export async function getContactUsPageContent() {
        _id,
       ContactPage {
         pageHeading,
+        pageImage {
+          alt,
+        "image": asset->url,
+        asset {
+          _ref
+        },
+        crop {
+          _type,
+          bottom,
+          left,
+          top,
+          right
+        },
+        hotspot {
+          _type,
+          height,
+          width,
+          x,
+          y
+        }
+      },
       }
     }
     `

@@ -26,11 +26,11 @@ export default function CookieBanner() {
   }, [cookieConsent]);
   return (
     <div
-      className={`w-screen fixed bottom-0 left-0 right-0 bg-[#fff] z-50 ${
+      className={`w-screen fixed bottom-0 left-0 right-0 bg-gray-100 z-50 ${
         cookieConsent !== null ? "hidden" : "flex"
       }`}
     >
-      <div className="flex px-0 py-[1rem] xsmall:px-[5%] small:py-[3rem] justify-between text-center items-center flex-col gap-4 small:flex-row small:text-left w-full small:max-w-[1120px] small:px-[1%] mx-auto">
+      <div className="flex px-0 py-[1rem] xsmall:px-[5%] small:py-[3rem] small:px-0 justify-between text-center items-center flex-col gap-4 small:flex-row small:text-left w-full small:max-w-[1120px] mx-auto">
         <div className="text-theme-dark pb-[0.5rem] w-full small:max-w-[647px] small:pb-0">
           {/* <Link href="/info/cookies"> */}
           <h4 className="font-bold pb-0 mt-0 text-[clamp(1.4rem,5vw,1.6rem)] small:pb-[1rem] tracking-[0.06em]">
@@ -51,7 +51,7 @@ export default function CookieBanner() {
           <button
             aria-label="decline cookies"
             onClick={() => setCookieConsent(false)}
-            className="relative block border-[2px] border-solid border-theme-dark rounded-sm text-theme-dark hover:text-white hover:bg-theme-purple hover:border-theme-purple transition duration-300 hover:duration-300 group"
+            className="relative block border-[2px] border-solid border-theme-dark rounded-sm text-theme-dark bg-white hover:text-white hover:bg-theme-purple hover:border-theme-purple transition duration-300 hover:duration-300 group"
           >
             <div className="flex justify-center items-center gap-6 mx-auto w-full px-8 xsmall:px-11 min-w-[140px] xsmall:h-[4.2rem] xsmall:min-w-[174px]">
               <General fill="fill-[#2F3047]" hover="group-hover:fill-white" />

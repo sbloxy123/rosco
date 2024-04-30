@@ -250,6 +250,22 @@ const innerPageContent = {
             "Heading for the Contact Page. --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "string",
         },
+        {
+          name: "pageImage",
+          title: "Contact Page Hero Image",
+          type: "image",
+          description: "Upload a Contact Hero image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              description:
+                "describe what is in the image let search engines know what is being shown",
+            },
+          ],
+        },
       ],
     },
   ],
