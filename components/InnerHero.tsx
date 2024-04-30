@@ -66,7 +66,7 @@ export default function InnerHero({
           )}
         </div>
         <div className="relative w-full mx-[390/408] aspect-square xsmall:px-0 xsmall:aspect-[744/408] small:aspect-[704/480] small:w-full small:h-auto small:max-w-[704px] small:mr-0">
-          {image ? (
+          {image && (
             <Image
               src={getCroppedImageSrc(image)}
               alt={image.alt}
@@ -77,11 +77,10 @@ export default function InnerHero({
                 objectPosition: `${getPositionFromHotspot(image?.hotspot)}`,
               }}
             />
-          ) : (
-            <MapProvider>
-              <MapComponent />
-            </MapProvider>
           )}
+          {/* <MapProvider>
+              <MapComponent />
+            </MapProvider> */}
           <div className="absolute top-0 left-0 w-full h-[1.7rem]">
             <GradientLineThick />
           </div>
