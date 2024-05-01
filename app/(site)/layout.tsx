@@ -10,7 +10,6 @@ import thumbnail from "./assets/Thumbnail_1280x720.png";
 import { removelineBreakCodeFromHTML } from "@/components/utils/lineBreaks";
 import GoogleAnalytics from "@/components/utils/GoogleAnalytics";
 import CookieBanner from "@/components/CookieBanner";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { draftMode } from "next/headers";
 import LiveVisualEditing from "@/components/LiveVisualEditing";
 
@@ -90,7 +89,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <GoogleAnalytics GA_MEASUREMENT_ID="G-4D66S7T7SN" />
-      <SpeedInsights />
+
       <body
         className={` ${opensans.variable}  ${raleway.variable} ${montserrat.variable}`}
       >
