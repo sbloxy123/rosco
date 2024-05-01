@@ -15,7 +15,8 @@ h6 {
   font-family: var(--font-raleway);
 }
 h1 {
-  font-size: clamp(3.2rem, 5.7vw, 4rem);
+  /* font-size: clamp(3.2rem, 5.7vw, 4rem); */
+  font-size: clamp(2.8rem, 7vw, 4rem);
   font-weight: 600;
   letter-spacing: 0.06em;
   line-height: 1.25;
@@ -407,7 +408,9 @@ input[type="text"]::-webkit-search-cancel-button {
     .project__counter {
       opacity: 0;
       transform: translateX(-70%);
-      transition: opacity 2000ms ease 200ms, transform 1000ms ease 00ms;
+      transition:
+        opacity 2000ms ease 200ms,
+        transform 1000ms ease 00ms;
       @media all and (min-width: 1024px) {
         position: relative;
         top: 13%;
@@ -419,12 +422,16 @@ input[type="text"]::-webkit-search-cancel-button {
     .project__text {
       transform: translateY(-60%);
       opacity: 0;
-      transition: opacity 2000ms ease 300ms, transform 600ms ease 275ms;
+      transition:
+        opacity 2000ms ease 300ms,
+        transform 600ms ease 275ms;
     }
     .project__btn {
       opacity: 0;
       transform: translateY(260%);
-      transition: opacity 2000ms ease 300ms, transform 700ms ease 275ms;
+      transition:
+        opacity 2000ms ease 300ms,
+        transform 700ms ease 275ms;
     }
   }
   .no-transition {
@@ -455,7 +462,9 @@ input[type="text"]::-webkit-search-cancel-button {
   .project__image {
     opacity: 1;
     transform: translateX(0);
-    transition: opacity 2000ms ease 100ms, transform 700ms ease 200ms;
+    transition:
+      opacity 2000ms ease 100ms,
+      transform 700ms ease 200ms;
   }
 
   .project__counter {
