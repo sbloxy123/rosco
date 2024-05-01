@@ -154,10 +154,14 @@ export default function ProjectsFilter({
             Latest Projects
           </h2>
 
-          <div className="uppercase  font-semibold tracking[0.06em] opacity-60 text-white flex justify-between pt-[3.5rem] pb-[3.3rem] xsmall:pt-[5rem] xsmall:px-[5%] small:px-0 small:pt-[6rem] small:pb-[4rem]">
-            <p className="text-[1.4rem] xsmall:text-[1.6rem]">Filter by</p>
+          <div className="uppercase  font-semibold tracking[0.06em]  text-white flex justify-between pt-[3.5rem] pb-[3.3rem] xsmall:pt-[5rem] xsmall:px-[5%] small:px-0 small:pt-[6rem] small:pb-[4rem]">
+            <p className="text-[1.4rem] opacity-60 xsmall:opacity-100 xsmall:text-[1.6rem]">
+              Filter by
+            </p>
             <div className="flex gap-[1.5rem] items-center">
-              <p className=" text-[1.4rem] xsmall:text-[1.6rem]">view all</p>
+              <p className=" text-[1.4rem] opacity-60 xsmall:opacity-100 xsmall:text-[1.6rem]">
+                view all
+              </p>
 
               <div
                 className="bg-white rounded-full w-[56px] h-[28px] relative flex justify-start items-center px-[2px] cursor-pointer"

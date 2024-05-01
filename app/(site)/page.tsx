@@ -80,8 +80,6 @@ export default async function Home() {
     heroContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -89,8 +87,6 @@ export default async function Home() {
     introContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -98,8 +94,6 @@ export default async function Home() {
     mailingListCta,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -107,8 +101,6 @@ export default async function Home() {
     totPromoContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -116,8 +108,6 @@ export default async function Home() {
     testimonialContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -125,8 +115,6 @@ export default async function Home() {
     awardsContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -134,8 +122,6 @@ export default async function Home() {
     contactUsContent,
     {},
     {
-      // Because of Next.js, RSC and Dynamic Routes this currently
-      // cannot be set on the loadQuery function at the "top level"
       perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
@@ -150,7 +136,6 @@ export default async function Home() {
       ) : (
         <Hero content={hero} />
       )}
-      {/* <Hero /> */}
       {draftMode().isEnabled ? (
         <IntroSectionPreview
           initial={initialIntroContent.data[0]}
@@ -159,7 +144,6 @@ export default async function Home() {
       ) : (
         <IntroSection intro={intro} />
       )}
-      {/* <IntroSection /> */}
       <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small ">
         <ServiceImageLinkSwiper />
       </section>
@@ -172,8 +156,6 @@ export default async function Home() {
         ) : (
           <MailingListCta content={mailingList} />
         )}
-
-        {/* <MailingListCta /> */}
       </section>
       <LatestProjects />
       <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
