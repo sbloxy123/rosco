@@ -1,8 +1,6 @@
 // component for service images that order in row / row reverse fown the page.
 "use client";
-import type { serviceType } from "@/types";
 import Image from "next/image";
-import ButtonLink from "./common/ButtonLink";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "sanity";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";

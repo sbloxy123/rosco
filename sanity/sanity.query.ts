@@ -200,7 +200,7 @@ export const getServiceLinks = groq`*[_type == "service"]{
       servicePageImage {alt, "image": asset->url},
       serviceAsideList,
       additionalInfo,
-      description ->,
+      description,
       serviceSummary,
       serviceSummaryBodyVersion,
     }`;
