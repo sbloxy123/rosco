@@ -1,5 +1,5 @@
 import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
+import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schemas";
 import { presentationTool } from "sanity/presentation";
@@ -13,7 +13,7 @@ export default defineConfig({
   basePath: "/studio",
   CORS: ["https://rosco-liard.vercel.app"],
   plugins: [
-    deskTool(),
+    structureTool(),
     visionTool(),
     presentationTool({
       previewUrl: {
