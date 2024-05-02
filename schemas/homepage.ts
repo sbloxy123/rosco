@@ -172,7 +172,7 @@ const homepage = {
           name: "promoMessage",
           title: "Promotion Message",
           description:
-            "add '\\n' to the text where you want text to return on a new line.  *NOTE - this only applies to desktop screen sizes",
+            "--add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "string",
         },
       ],

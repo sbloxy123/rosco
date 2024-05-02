@@ -6,6 +6,7 @@ import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 import ButtonLinkNew from "./common/ButtonLinkNew";
 
 export default function Hero({ content }: { content: heroType[] }) {
+  console.log(content[0].heroText)
   return (
     <section className="relative mt-[11rem] small:mt-0">
       <div className="hero__content grid grid-cols-1 small:grid-cols-2 align-middle items-center gap-10 justify-between small:pt-[6rem] mb-[6rem] max-w-screen-large small:mx-auto text-theme-dark small:mt-[90px]">
