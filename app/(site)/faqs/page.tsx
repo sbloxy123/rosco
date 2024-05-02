@@ -96,18 +96,10 @@ export default async function faqs() {
           />
         )}
 
-        {faqPageContent.map((content) => {
-          const messageWithLineBreaks = content.FaqPage.introMessage.replace(
-            /\\n/g,
-            "\n"
-          );
-          const messageWithoutLineBreaks = content.FaqPage.introMessage.replace(
-            /\\n/g,
-            " "
-          );
+
 
           return (
-            <div key={content.FaqPage._id}>
+            <div >
               {/* <InnerHero
                 title={content.FaqPage.pageHeading}
                 image={content.FaqPage.pageImage}
@@ -157,9 +149,8 @@ export default async function faqs() {
                   />
                 ) : (
                   <FaqIntro
-                    messageWithLineBreaks={messageWithLineBreaks}
-                    messageWithoutLineBreaks={messageWithoutLineBreaks}
-                    introTitle={content.FaqPage.introTitle}
+                    messageWithLineBreaks={faqPageContent[0].FaqPage.introMessage}
+                    introTitle={faqPageContent[0].FaqPage.introTitle}
                   />
                 )}
 
@@ -193,12 +184,12 @@ export default async function faqs() {
 
               {draftMode().isEnabled ? (
                 <FaqSearchPreview
-                  placeholder={content.FaqPage.formPlaceholder}
+                  placeholder={faqPageContent[0].FaqPage.formPlaceholder}
                   initial={initialFaqItems.data[0]}
                 />
               ) : (
                 <FaqSearch
-                  placeholder={content.FaqPage.formPlaceholder}
+                  placeholder={faqPageContent[0].FaqPage.formPlaceholder}
                   faqs={faqs}
                 />
               )}
@@ -209,7 +200,7 @@ export default async function faqs() {
               /> */}
             </div>
           );
-        })}
+
         <div className="mt-[10rem] xsmall:mt-[12rem]">
           <ContactSection contactContent={contactContent} />
         </div>

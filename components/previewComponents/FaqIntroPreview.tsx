@@ -19,21 +19,11 @@ export default function FaqIntroPreview({
   );
 
   if (data) {
-    const messageWithLineBreaks = data[0]?.FaqPage.introMessage.replace(
-      /\\n/g,
-      "\n"
-    );
-    const messageWithoutLineBreaks = data[0]?.FaqPage.introMessage.replace(
-      /\\n/g,
-      " "
-    );
-
     return (
       <div>
         <FaqIntro
           introTitle={data[0].FaqPage.introTitle}
-          messageWithLineBreaks={messageWithLineBreaks}
-          messageWithoutLineBreaks={messageWithoutLineBreaks}
+          messageWithLineBreaks={data[0].FaqPage.introMessage}
         />
       </div>
     );
