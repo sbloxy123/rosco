@@ -15,7 +15,7 @@ export default function DetailedServiceList({
   return (
     <div>
       {services.map((service, index) => {
-        console.log(service);
+        // console.log(service);
 
         return (
           <div key={service._id}>
