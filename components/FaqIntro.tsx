@@ -8,12 +8,12 @@ const FaqIntro = ({
   messageWithLineBreaks: string;
   introTitle: string;
 }) => {
+
   return (
     <div className="relative small:max-w-[1120px] small:mx-auto">
       <h2 className="text-white leading-[4.3rem]">{introTitle}</h2>
 
-      {/* mobile only: */}
-      <div className="xsmall:hidden pt-[3.5rem] pr-[10%] xsmall:pt-[5rem] xsmall:pr-0 xsmall:max-w-[59.4rem] small:max-w-[101.5rem]">
+      <div className="pt-[3.5rem] pr-[10%] xsmall:pt-[5rem] xsmall:pr-0 xsmall:max-w-[59.4rem] small:max-w-[101.5rem]">
             <p className="text-white font-[500]">
               {getTextWithLineBreaks(messageWithLineBreaks)}
             </p>
