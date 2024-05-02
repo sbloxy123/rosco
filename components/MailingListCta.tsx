@@ -29,7 +29,7 @@ export default function MailingListCta({
                 <h3 className="text-white uppercase pb-[1.5rem] small:pb-6">
                   {mailingListHeading}
                 </h3>
-                <p className="text-white pb-[1.8rem] small:pb-0 font-light small:pr-[1rem]">
+                <p className="text-white pb-[1.8rem] small:pb-0 font-light small:pr-[3rem]">
                   {mailingListText}
                 </p>
               </div>

@@ -127,7 +127,7 @@ const innerPageContent = {
           name: "introHeading",
           title: "Heading",
           description:
-            "Heading for introduction on Services Page ('Who we are')",
+            "Heading for introduction on Services Page ('Who we are') --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "string",
         },
         {

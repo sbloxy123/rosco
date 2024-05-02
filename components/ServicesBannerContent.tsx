@@ -2,6 +2,7 @@ import React from "react";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 import Link from "next/link";
 import type { serviceType } from "@/types";
+import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 
 export const ServicesBannerContent = ({
   servicePageContent,
@@ -14,7 +15,7 @@ export const ServicesBannerContent = ({
     <div className="relative text-white pt-[4rem] pb-[6.5rem] px-[5%] xsmall:pt-[6rem] small:flex small:flex-row small:gap-10  small:pt-[9.4rem] small:pb-[12rem] medium:max-w-[1120px] medium:px-0 mx-auto">
       <div className="small:max-w-[488px] small:mx-auto medium:ml-0">
         <h2 className="pb-[1.5rem]">
-          {servicePageContent[0].ServicesPage.introHeading}
+          {getTextWithLineBreaks(servicePageContent[0].ServicesPage.introHeading)}
         </h2>
         <p className="pt-10">{servicePageContent[0].ServicesPage.introText}</p>
       </div>
