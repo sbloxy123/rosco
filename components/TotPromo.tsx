@@ -94,7 +94,7 @@ export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
 
                   return ( */}
                     <h3
-                      className="font-[600] tracking-[0.06em] text-[2rem] text-white text-center px-[5%] xsmall:text-[2.4rem] xsmall:w-[70%] xsmall:max-w-[500px] xsmall:mx-auto small:max-w-full small:text-left small:ml-0 small:px-0 small:w-[90%]"
+                      className="font-[600] tracking-[0.06em] text-[2rem] text-white text-center px-[5%] xsmall:text-[2.4rem] xsmall:w-[70%] xsmall:max-w-[500px] xsmall:mx-auto small:max-w-full small:text-left small:ml-0 small:px-0 small:w-full"
                     >
                       <span className="small:pr-[3rem]">
                         {getTextWithLineBreaks(totPromo[0].totPromo.promoMessage)}
