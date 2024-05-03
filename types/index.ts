@@ -398,7 +398,7 @@ export type aboutPageType = {
       };
     };
     introHeading: string;
-    introText: any[]; // Adjust the type based on your actual data structure
+    introText: string[]; // Adjust the type based on your actual data structure
     introBgImage: {
       alt: string;
       image: string;
@@ -421,7 +421,7 @@ export type aboutPageType = {
       };
     };
     featureText: string;
-    contentArea: any[]; // Adjust the type based on your actual data structure
+    contentArea: string[]; // Adjust the type based on your actual data structure
   };
 };
 

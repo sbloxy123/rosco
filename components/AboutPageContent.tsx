@@ -7,8 +7,10 @@ const AboutPageContent = ({
   contentArea,
 }: {
   featureText: string;
-  contentArea: any[];
+  contentArea: string[];
 }) => {
+  console.log(contentArea, "about content *****");
+
   return (
     <>
       <div className="relative mb-[-7.6rem] xsmall:mb-[-7.2rem] small:mb-[-10rem] py-[4rem] xsmall:py-[4rem] xsmall:w-[95%] xsmall:mx-auto small:py-[6rem] after:absolute after:content-[''] after:w-full after:h-full after:bg-white after:top-0 after:left-0 after:z-10">
@@ -113,7 +115,16 @@ const AboutPageContent = ({
 
       <div className="relative px-[5%] z-40 text-theme-dark mx-auto small:max-w-[1065px] small:px-5 -mt-[13.2em] xsmall:-mt-[12.8rem] small:-mt-[15.6rem]">
         {/* <PortableText value={aboutContent[0].aboutPage.contentArea} /> */}
-        <PortableText value={contentArea} />
+        {
+
+        contentArea.map((str) => {
+          return(
+            <p className="pb-4">{getTextWithLineBreaks(str)}</p>
+            )}
+        )
+        }
+
+        {/* <PortableText value={contentArea} /> */}
       </div>
     </>
   );

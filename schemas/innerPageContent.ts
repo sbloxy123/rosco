@@ -43,9 +43,17 @@ const innerPageContent = {
         {
           name: "introText",
           title: "Introduction Text",
-          description: "Introduction text on About Page ('Who we are')",
+          description: "Introduction text on About Page ('Who we are') --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "array",
-          of: [{ type: "block" }],
+          of: [
+
+                {
+                  name: "paragraph",
+                  title: "Paragraph",
+                  type: "text",
+                },
+
+          ],
         },
         {
           name: "introBgImage",
@@ -73,8 +81,17 @@ const innerPageContent = {
         {
           name: "contentArea",
           title: "Content Area Text",
+          description: "--add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "array",
-          of: [{ type: "block" }],
+          of: [
+
+                {
+                  name: "paragraph",
+                  title: "Paragraph",
+                  type: "text",
+                },
+
+          ],
         },
       ],
       extends: "page",
