@@ -9,7 +9,6 @@ const AboutPageContent = ({
   featureText: string;
   contentArea: string[];
 }) => {
-  console.log(contentArea, "about content *****");
 
   return (
     <>
@@ -119,7 +118,7 @@ const AboutPageContent = ({
 
         contentArea.map((str) => {
           return(
-            <p className="pb-4">{getTextWithLineBreaks(str)}</p>
+            <p className="pb-10 last:pb-0">{getTextWithLineBreaks(str)}</p>
             )}
         )
         }

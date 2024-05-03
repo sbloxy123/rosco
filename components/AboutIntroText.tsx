@@ -10,7 +10,6 @@ const AboutIntroText = ({
   text: string[];
 
 }) => {
-  console.log(text, "intro text ******");
 
   return (
     <div className="relative px-[5%] pb-[16.6rem] xsmall:pb-[15rem] small:pb-[22.7rem] text-white max-w-[1147px] mx-auto small:px-5 z-10">
@@ -19,10 +18,7 @@ const AboutIntroText = ({
       </h3>
       <div className="small:w-[87%]">
         {text.map(str => (
-          <>
-          <p className="pb-4">{getTextWithLineBreaks(str)}</p>
-          <p>hello</p>
-          </>
+          <p className="pb-10 last:pb-0">{getTextWithLineBreaks(str)}</p>
         ))}
         {/* <PortableText value={text} /> */}
       </div>
