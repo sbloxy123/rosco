@@ -173,7 +173,7 @@ export default function ServiceItem({
             : "small:pl-layout-small small:pr-[3.5rem]"
         }`}
       >
-        <h2 className="text-theme-dark w-full text-[clamp(2.5rem,6vw,3.2rem)] xsmall:text-[3.2rem] xsmall:leading-[3.6rem] small:text-[clamp(2.6rem,2.1vw,3.2rem)]">
+        <h2 className="text-theme-dark text-center w-full text-[clamp(2.5rem,6vw,3.2rem)] xsmall:text-[3.2rem] xsmall:text-left xsmall:leading-[3.6rem] small:text-[clamp(2.6rem,2.1vw,3.2rem)]">
           {headingListBody && getTextWithLineBreaks(headingListBody)}
         </h2>
 

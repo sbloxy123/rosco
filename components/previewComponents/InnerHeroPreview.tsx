@@ -39,7 +39,7 @@ export default function InnerHeroPreview({
     if (data) {
       setHeroData(data[0]);
     }
-    console.log(heroData);
+    // console.log(heroData);
   }, [data]);
 
   // title={data[0]?.ServicesPage.pageHeading}
