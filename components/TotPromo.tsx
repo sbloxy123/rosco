@@ -86,34 +86,13 @@ export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
                 <ToTLogo />
               </div>
               <div className="relative z-1 xsmall:order-3">
-                {/* {totPromo.map((content, index) => {
-                  const textWithLineBreaks =
-                    content.totPromo.promoMessage.replace(/\\n/g, "\n");
-                  const textWithoutLineBreaks =
-                    content.totPromo.promoMessage.replace(/\\n/g, " ");
-
-                  return ( */}
                     <h3
                       className="font-[600] tracking-[0.06em] text-[2rem] text-white text-center px-[5%] xsmall:text-[2.4rem] xsmall:w-[70%] xsmall:max-w-[500px] xsmall:mx-auto small:max-w-full small:text-left small:ml-0 small:px-0 small:w-full"
                     >
                       <span className="small:pr-[3rem]">
                         {getTextWithLineBreaks(totPromo[0].totPromo.promoMessage)}
                       </span>
-
-
-                      {/* <span className="hidden small:block pr-[3rem]">
-                        {textWithLineBreaks.split("\n").map((line, index) => (
-                          <span key={index}>
-                            {line} <br />
-                          </span>
-                        ))}
-                      </span>
-                      <span className="block small:hidden">
-                        {textWithoutLineBreaks}
-                      </span> */}
                     </h3>
-                  {/* );
-                })} */}
               </div>
               <p className="z-10 mb-[10rem] text-[2.4rem] tracking-[0.06em] mt-[1rem] font-bold text-center uppercase text-white xsmall:order-1 xsmall:-mb-[3rem] small:hidden">
                 coming soon
