@@ -373,7 +373,7 @@ export default function ProjectsImageSwiper({
         allowTouchMove={false}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="aspect-[357/383] xsmall:aspect-[678.8/382.65] small:aspect-[929/522]"
+        className="aspect-[929/522]"
       >
         <SwiperSlide>
           <ImageSlider before={beforeImage} after={afterImage} />
@@ -394,13 +394,18 @@ export default function ProjectsImageSwiper({
 
       <Swiper
         onSwiper={(swiper) => setThumbsSwiper(swiper)}
-        spaceBetween={0}
-        slidesPerView={10}
+        spaceBetween={10}
         freeMode={true}
+        mousewheel={{
+          forceToAxis: true,
+          sensitivity: 1,
+          releaseOnEdges: true,
+        }}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
+        slidesPerView="auto"
         className="thumbMiniSwiper mt-[2rem]"
-        wrapperClass="justify-start xsmall:justify-end gap-[1rem]"
+        wrapperClass=""
       >
         <SwiperSlide>
           <div className="relative w-[52px] h-[52px] aspect-square cursor-pointer">

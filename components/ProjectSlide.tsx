@@ -34,7 +34,9 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
 
         <div className="px-[15px] pb-[5.4rem] small:pb-0 xsmall:px-0 small:w-[365px] small:pr-[clamp(20px,0vw,50px)]">
           <div className="project__text">
-            <h2 className="pb-[2.5rem]">{project.projectTitle}</h2>
+            <h2 className="pb-[2.5rem] leading-[3.6rem]">
+              {project.projectTitle}
+            </h2>
             <p className="line-clamp-3 xsmall:line-clamp-2 small:line-clamp-3">
               {project.projectSummary}
             </p>
