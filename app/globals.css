@@ -371,7 +371,25 @@ input[type="text"]::-webkit-search-cancel-button {
 
 .phones-container {
   aspect-ratio: 887 / 583;
+  /* &::before {
+    float: left;
+    padding-top: 86.25%;
+    content: "";
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  } */
 }
+/* .phones-container::after{
+  content: "";
+  display: block;
+  height: auto;
+  width: 100%;
+  position: relative;
+} */
 
 .dots_g {
   opacity: 5e-2;

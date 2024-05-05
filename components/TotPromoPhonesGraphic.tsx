@@ -15,7 +15,7 @@ const PhoneGraphic = () => {
       <Image
         src={flashGraphic}
         alt="graphic showing a flash"
-        className="flash-img absolute -top-[50%] left-[50%] object-center mix-blend-plus-lighter w-[95%] h-auto -translate-x-[49%] -translate-y-[8%]"
+        className="flash-img absolute -top-[50%] left-[50%] object-center mix-blend-plus-lighter w-[95%] h-auto -translate-x-[49%] -translate-y-[8%] z-10"
       />
       <div className="absolute top-[50%] left-[50%] w-[24%] h-auto -translate-x-[50%] translate-y-[175%]">
         <GraphicLogo />

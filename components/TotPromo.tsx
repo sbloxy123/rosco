@@ -8,13 +8,14 @@ import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
   // const totPromo: TotPromoType[] = await getTotPromo();
   return (
-    <div className="relative bg-theme-dark w-full">
-      <div className="absolute top-0 left-0 w-full h-full">
+
+    <div className="relative bg-transparent small:bg-theme-dark w-full">
+      <div className="absolute top-0 left-0 w-full h-full bg-theme-dark -z-10 small:z-0">
         <TotBackgrounds />
       </div>
       <div className="small:max-w-[1120px] small:mx-auto ">
         <div className="relative h-full w-auto text-[#000] overflow-hidden py-[2.3rem]">
-          <div className="px-[5%] overSmall:px-0 small:flex flex-row-reverse small:items-center small:justify-between small:my-[2rem]">
+          <div className=" px-[5%] overSmall:px-0 small:flex flex-row-reverse small:items-center small:justify-between small:my-[2rem]">
             <div className="">
               <div className="relative phones-container h-[78%] mt-[10rem] mx-auto xsmall:w-fit xsmall:h-auto small:mt-0">
                 <TotPromoPhoneGraphic />
