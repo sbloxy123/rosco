@@ -12,7 +12,7 @@ export const ImageSlider = ({
   after: string;
   thumbnail?: boolean;
 }) => {
-  const [sliderPosition, setSliderPosition] = useState(50);
+  const [sliderPosition, setSliderPosition] = useState(10);
   const [isDragging, setIsDragging] = useState(false);
 
   const handleMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

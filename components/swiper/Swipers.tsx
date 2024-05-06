@@ -404,7 +404,7 @@ export default function ProjectsImageSwiper({
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
         slidesPerView="auto"
-        className="thumbMiniSwiper mt-[2rem]"
+        className="thumbMiniSwiper mt-[2rem] xsmall:w-fit xsmall:max-w-[65%] xsmall:ml-auto xsmall:mr-0"
         wrapperClass=""
       >
         <SwiperSlide>

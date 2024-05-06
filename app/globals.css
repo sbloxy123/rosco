@@ -523,6 +523,12 @@ input[type="text"]::-webkit-search-cancel-button {
     .swiper-slide {
       width: fit-content !important;
     }
+    .swiper-slide:last-child() {
+      /* margin-right: 0px !important; */
+    }
+  }
+  @media all and (min-width: 512px) {
+    margin-right: -0px !important;
   }
 }
 

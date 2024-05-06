@@ -13,18 +13,12 @@ type ProjectSlideProps = {
 };
 
 const ProjectSlide: React.FC<ProjectSlideProps> = ({ project, index }) => {
-  // const imageUrl = "your-image-url";
-  // const customStyle = { "--image-url": imageUrl } as React.CSSProperties;
-
   return (
     <div
       key={project._id}
       className="project__container relative text-white z-20 small:flex small:items-center"
     >
       <ProjectBorderedImage image={project.image} />
-
-      {/* <p>here is the image url: {project.image.image}</p> */}
-      {/* <Image src={project.image?.image} alt={project.image?.alt} /> */}
       <div className="relative small:flex small:justify-between xsmall:px-[8%] small:pl-[clamp(2rem,3vw,5rem)] small:w-[clamp(358px,36vw,648px)] small:pr-[1.5rem] order-0 small-min-h-[400px]">
         <div className="counter__container small:min-w-[60px]">
           <h3 className="project__counter uppercase px-[15px] font-body tracking-[0.12em] pt-[2.7rem] mb-8 xsmall:px-0 small:absolute small:top-[65px] small:-left-0 small:rotate-90 small:whitespace-nowrap small:pt-0 small:mb-0 small:px-0 small:ml-[-3%]">
