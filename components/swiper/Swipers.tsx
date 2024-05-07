@@ -578,19 +578,6 @@ export const ServiceExtrasSwiper = ({
         wrapperClass="filterBtn__swiper filterBtn__swiper--service-extras"
         className="flex flex-row mt-[7rem] "
       >
-        <SwiperSlide
-          className={`w-fit mr-[1.5rem] min-w-[27.8rem] small:min-w-[25.8rem] ${
-            activeButtonIndex === 100 ? "hidden--slide" : ""
-          }`}
-        >
-          <FilterButton
-            key="001"
-            // text={primaryOverviewTitle}
-            text="back to overview"
-            serviceSubFilter
-            onClick={() => handleButtonClick(100)}
-          />
-        </SwiperSlide>
         {additionalInfo?.map((category, index) => {
           return (
             <SwiperSlide
@@ -608,6 +595,19 @@ export const ServiceExtrasSwiper = ({
             </SwiperSlide>
           );
         })}
+        <SwiperSlide
+          className={`w-fit mr-[1.5rem] min-w-[27.8rem] small:min-w-[25.8rem] ${
+            activeButtonIndex === 100 ? "hidden--slide" : ""
+          }`}
+        >
+          <FilterButton
+            key="001"
+            // text={primaryOverviewTitle}
+            text="back to overview"
+            serviceSubFilter
+            onClick={() => handleButtonClick(100)}
+          />
+        </SwiperSlide>
       </Swiper>
     </div>
   );
