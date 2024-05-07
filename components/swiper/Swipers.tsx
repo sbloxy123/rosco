@@ -491,7 +491,7 @@ export const ServiceExtrasSwiper = ({
       setActiveButtonIndex(index);
     } else {
       // Otherwise, set the clicked button as active
-      setActiveButtonIndex(index);
+      setActiveButtonIndex(1000);
     }
   };
 
@@ -580,7 +580,7 @@ export const ServiceExtrasSwiper = ({
       >
         <SwiperSlide
           className={`w-fit mr-[1.5rem] min-w-[27.8rem] small:min-w-[25.8rem] ${
-            activeButtonIndex === 1000 ? "hidden--slide" : ""
+            activeButtonIndex === 100 ? "hidden--slide" : ""
           }`}
         >
           <FilterButton
@@ -588,7 +588,7 @@ export const ServiceExtrasSwiper = ({
             // text={primaryOverviewTitle}
             text="back to overview"
             serviceSubFilter
-            onClick={() => handleButtonClick(1000)}
+            onClick={() => handleButtonClick(100)}
           />
         </SwiperSlide>
         {additionalInfo?.map((category, index) => {
@@ -683,7 +683,7 @@ export const ServiceGallerySwiper = ({
         );
       })}
 
-      <div className="absolute flex gap-4 right-[5%] bottom-[10%] z-20">
+      <div className="service-image-swiper-nav absolute flex gap-4 right-[5%] bottom-[10%] z-20">
         <SwiperArrowPrev swiperDivName="prev-service-image" />
         <SwiperArrowNext swiperDivName="next-service-image" />
       </div>

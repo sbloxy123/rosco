@@ -428,7 +428,7 @@ function Navbar() {
     >
       <header className="relative tracking-[0.06em]">
         <div className="relative z-50 max-w-screen-large mx-auto py-[1.2rem] xsmall:py-[2.7rem] bg-[#fff]">
-          <div className="flex items-center justify-between h-20 px-[8%] xsmall:px-10 small:px-layout-small">
+          <div className="flex items-center justify-between h-20 px-[5%] xsmall:px-10 small:px-layout-small">
             <div className="w-[154px] max-w-[172px] xsmall:w-[clamp(120px, 8vw, 172px)] xsmall:w-full">
               <Link href="/" aria-label="home">
                 {/* header-logo */}
@@ -745,7 +745,7 @@ function Navbar() {
                     <div className="absolute top-0 bottom-0 right-[7%] h-full w-auto my-auto">
                       {/* close search button */}
                       <button
-                        className="h-full aspect-square flex justify-center items-center"
+                        className=" hidden h-full aspect-square flex justify-center items-center"
                         onClick={(event) => {
                           event.preventDefault();
                           setSearchIsOpen(!searchIsOpen);
