@@ -1,3 +1,5 @@
+"use client";
+
 import type { serviceType } from "@/types";
 import ContactSection from "./ContactSection";
 import MailingListCta from "./MailingListCta";
