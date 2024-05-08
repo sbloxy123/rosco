@@ -338,6 +338,7 @@ export type testimonialsType = {
     testimonialsSectionTitle: string;
     testimonialsList: Array<{
       name: string;
+      position: string;
       message: string;
     }>;
   };

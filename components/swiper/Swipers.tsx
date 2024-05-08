@@ -190,7 +190,11 @@ export const TestimonialSwiper = ({ data }: { data: testimonialsType[] }) => {
             (content, innerIndex) => (
               <SwiperSlide key={innerIndex}>
                 <p>{content.message}</p>
-                <p className="pt-7">{content.name}</p>
+                <p className="pt-7">
+                  <span className="font-[600]">{content.name}</span>
+                  {content.position && " - "}
+                  {content.position}
+                </p>
               </SwiperSlide>
             )
           )}

@@ -203,6 +203,11 @@ const homepage = {
                   type: "string",
                 },
                 {
+                  name: "position",
+                  title: "position",
+                  type: "string",
+                },
+                {
                   name: "message",
                   title: "Message",
                   type: "text",
