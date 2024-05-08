@@ -25,7 +25,10 @@ export default function AwardsSection({ awards }: { awards: awardsType[] }) {
               <div className="block xsmall:hidden pt-[2.8rem] pb-[3rem]">
                 {titleWithLineBreaks.split("\n").map((line, index) => {
                   return (
-                    <h2 key={index} className="">
+                    <h2
+                      key={index}
+                      className="leading-[clamp(3rem,9vw,4.5rem)]"
+                    >
                       {line}
                     </h2>
                   );

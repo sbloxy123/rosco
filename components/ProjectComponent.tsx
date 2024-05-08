@@ -100,7 +100,7 @@ export default function ProjectsComponent({
             {/* lg - project location and timeframe */}
             <div className="uppercase tracking-[0.06em] hidden small:block absolute top-[0rem] -right-[0rem] rotate-90 text-theme-dark translate-x-[clamp(117px,12vw,151px)] translate-y-[100%] ">
               <p className="text-[1.4rem]">{project.completionTimeframe}</p>
-              <p className="pt-[0.4rem] text-[1.4rem]">
+              <p className="pt-[0.4rem] text-[1.4rem] capitalize">
                 {project.projectLocation}
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function ProjectsComponent({
           {/* location and timeframe */}
           <div className="project-time-address order-4 pt-[3.5rem] uppercase xsmall:order-1 tracking-[0.06em] small:hidden">
             <p className="text-[1.4rem]">{project.completionTimeframe}</p>
-            <p className="pt-[0.4rem] text-[1.4rem]">
+            <p className="pt-[0.4rem] text-[1.4rem] capitalize">
               {project.projectLocation}
             </p>
           </div>
