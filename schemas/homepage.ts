@@ -204,7 +204,7 @@ const homepage = {
                 },
                 {
                   name: "position",
-                  title: "position",
+                  title: "Company",
                   type: "string",
                 },
                 {

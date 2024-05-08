@@ -606,6 +606,7 @@ export async function getTestimonials() {
         testimonialsSectionTitle,
         testimonialsList[]{
           name,
+          position,
           message
         }
       }
@@ -617,6 +618,7 @@ export const testimonialContent = groq`*[_type == "homepage"] {
         testimonialsSectionTitle,
         testimonialsList[]{
           name,
+          position,
           message
         }
       }
