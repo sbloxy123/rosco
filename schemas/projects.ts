@@ -131,6 +131,73 @@ const projects = {
         },
       ],
     },
+    {
+      name: "beforeAfterMobile",
+      title: "MOBILE Before / After Images",
+      type: "document",
+      fields: [
+        {
+          name: "beforeImage",
+          title: "Before image",
+          type: "image",
+          description: "Upload a BEFORE image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            },
+          ],
+        },
+        {
+          name: "afterImage",
+          title: "After image",
+          type: "image",
+          description: "Upload an AFTER image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "galleryMobile",
+      type: "object",
+      title: "MOBILE Gallery",
+      fields: [
+        {
+          name: "images",
+          type: "array",
+          title: "Images",
+          of: [
+            {
+              name: "image",
+              type: "image",
+              title: "Image",
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: "alt",
+                  type: "string",
+                  title: "Alternative text",
+                },
+              ],
+            },
+          ],
+          options: {
+            layout: "grid",
+          },
+        },
+      ],
+    },
   ],
 };
 

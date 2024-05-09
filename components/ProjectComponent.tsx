@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { getCroppedImageSrc } from "@/sanity/sanity.query";
 import type { projectType } from "@/types";
-import ProjectsImageSwiper from "./swiper/Swipers";
+import ProjectsImageSwiper, {
+  ProjectsImageSwiperMobile,
+} from "./swiper/Swipers";
 import { useSearchParams } from "next/navigation";
 import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 
@@ -92,11 +94,21 @@ export default function ProjectsComponent({
 
           {/* image/s */}
           <div className="relative order-2 xsmall:pt-[3.4rem] small:order-1 small:-mt-[27rem] small:pt-0">
-            <ProjectsImageSwiper
-              images={project.gallery?.images}
-              beforeImage={project.beforeAfter.beforeImage.image}
-              afterImage={project.beforeAfter.afterImage.image}
-            />
+            <div className="hidden xsmall:block">
+              <ProjectsImageSwiper
+                images={project.gallery?.images}
+                beforeImage={project.beforeAfter?.beforeImage?.image}
+                afterImage={project.beforeAfter?.afterImage?.image}
+              />
+            </div>
+
+            <div className="block xsmall:hidden">
+              <ProjectsImageSwiperMobile
+                images={project.galleryMobile?.images}
+                beforeImage={project.beforeAfterMobile?.beforeImage?.image}
+                afterImage={project.beforeAfterMobile?.afterImage?.image}
+              />
+            </div>
             {/* lg - project location and timeframe */}
             <div className="uppercase tracking-[0.06em] hidden small:block absolute top-[0rem] -right-[0rem] rotate-90 text-theme-dark translate-x-[clamp(117px,12vw,151px)] translate-y-[100%] ">
               <p className="text-[1.4rem]">{project.completionTimeframe}</p>

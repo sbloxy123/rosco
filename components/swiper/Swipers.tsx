@@ -382,7 +382,7 @@ export default function ProjectsImageSwiper({
         <SwiperSlide>
           <ImageSlider before={beforeImage} after={afterImage} />
         </SwiperSlide>
-        {images.map((image, index) => {
+        {images?.map((image, index) => {
           return (
             <SwiperSlide key={index}>
               <Image
@@ -443,7 +443,7 @@ export default function ProjectsImageSwiper({
             />
           </div>
         </SwiperSlide>
-        {images.map((image, index) => {
+        {images?.map((image, index) => {
           return (
             <SwiperSlide key={index}>
               <div className="relative min-w-[52px] min-h-[52px] aspect-square cursor-pointer">
@@ -461,6 +461,136 @@ export default function ProjectsImageSwiper({
     </>
   );
 }
+
+// ============= mobile project swiper ============== //
+
+// Projects page gallery swiper with before/after slider and thumbnail swiper for controls
+export function ProjectsImageSwiperMobile({
+  images,
+  beforeImage,
+  afterImage,
+}: {
+  beforeImage: string;
+  afterImage: string;
+  images: {
+    alt: string;
+    image: string;
+    asset: {
+      _ref: string;
+    };
+    crop: {
+      _type: "sanity.imageCrop";
+      bottom: number;
+      left: number;
+      right: number;
+      top: number;
+    };
+    hotspot: {
+      _type: "sanity.imageHotspot";
+      height: number;
+      width: number;
+      x: number;
+      y: number;
+    };
+  }[];
+}) {
+  const [mobThumbsSwiper, setMobThumbsSwiper] = useState<SwiperType | null>(
+    null
+  );
+
+  return (
+    <>
+      <Swiper
+        spaceBetween={10}
+        allowTouchMove={false}
+        thumbs={{ swiper: mobThumbsSwiper }}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="aspect-[357/383]"
+      >
+        <SwiperSlide>
+          <ImageSlider before={beforeImage} after={afterImage} />
+        </SwiperSlide>
+        {images?.map((image, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <Image
+                src={image.image}
+                fill={true}
+                alt={image.alt}
+                className="object-cover"
+              />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+
+      <Swiper
+        onSwiper={(swiper) => setMobThumbsSwiper(swiper)}
+        spaceBetween={10}
+        freeMode={true}
+        mousewheel={{
+          forceToAxis: true,
+          sensitivity: 1,
+          releaseOnEdges: true,
+        }}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        slidesPerView="auto"
+        className="thumbMiniSwiper mt-[2rem] xsmall:w-fit xsmall:max-w-[65%] xsmall:ml-auto xsmall:mr-0"
+        wrapperClass=""
+      >
+        <SwiperSlide>
+          <div className="relative w-[52px] h-[52px] aspect-square cursor-pointer">
+            <div className="absolute top-0 bottom-0 right-0 left-0 m-auto w-[80%] h-[80%] z-10 opacity-80">
+              <svg
+                viewBox="0 0 44 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="21.7402"
+                  cy="21.7402"
+                  r="19.7402"
+                  stroke="white"
+                  strokeWidth="3"
+                />
+                <path
+                  d="M28.8242 21.9836L22.9617 27.8462L22.9617 16.1211L28.8242 21.9836Z"
+                  fill="white"
+                />
+                <path
+                  d="M14.168 21.9836L20.0305 27.8462L20.0305 16.1211L14.168 21.9836Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <ImageSlider
+              before={beforeImage}
+              after={afterImage}
+              thumbnail={true}
+            />
+          </div>
+        </SwiperSlide>
+        {images?.map((image, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <div className="relative min-w-[52px] min-h-[52px] aspect-square cursor-pointer">
+                <Image
+                  src={image.image}
+                  fill={true}
+                  alt={image.alt}
+                  className=""
+                />
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </>
+  );
+}
+
+// =========================== //
 
 interface AdditionalInfoItem {
   listItem: string;

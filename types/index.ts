@@ -302,7 +302,31 @@ export type projectType = {
   categories: ServiceCategory[];
 
   beforeAfter: BeforeAfter;
+  beforeAfterMobile: BeforeAfter;
   gallery: {
+    images: {
+      alt: string;
+      image: string;
+      asset: {
+        _ref: string;
+      };
+      crop: {
+        _type: "sanity.imageCrop";
+        bottom: number;
+        left: number;
+        right: number;
+        top: number;
+      };
+      hotspot: {
+        _type: "sanity.imageHotspot";
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+      };
+    }[];
+  };
+  galleryMobile: {
     images: {
       alt: string;
       image: string;

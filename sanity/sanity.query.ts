@@ -471,7 +471,41 @@ export async function getAllProjects() {
         },
 
       },
+      beforeAfterMobile {
+        beforeImage {
+          alt,
+          "image": asset->url,
+          asset->{_ref},
+        },
+        afterImage {
+          alt,
+          "image": asset->url,
+          asset->{_ref},
+        },
+
+      },
       gallery {
+          images[] {
+            alt,
+            "image": asset->url,
+            asset->{_ref},
+            crop {
+              _type,
+              bottom,
+              left,
+              top,
+              right
+            },
+            hotspot {
+              _type,
+              height,
+              width,
+              x,
+              y
+            }
+          }
+        },
+      galleryMobile {
           images[] {
             alt,
             "image": asset->url,

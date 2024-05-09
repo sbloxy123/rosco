@@ -52,7 +52,9 @@ export const ImageSlider = ({
     >
       <div
         className={`relative object-cover w-full overflow-hidden select-none ${
-          thumbnail ? "aspect-square" : "aspect-[929/522]"
+          thumbnail
+            ? "aspect-square"
+            : "aspect-[357/383] xsmall:aspect-[929/522]"
         }`}
         onMouseMove={handleMove}
         onTouchMove={handleTouchMove}
@@ -70,7 +72,9 @@ export const ImageSlider = ({
 
         <div
           className={`absolute object-cover top-0 left-0 right-0 w-full ${
-            thumbnail ? "aspect-square" : "aspect-[929/522]"
+            thumbnail
+              ? "aspect-square"
+              : "aspect-[357/383] xsmall:aspect-[929/522]"
           } overflow-hidden select-none`}
           style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
         >
