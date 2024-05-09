@@ -614,6 +614,40 @@ export const allProjects = groq`*[_type == "projects"] {
               y
             }
           }
+        },
+        beforeAfterMobile {
+        beforeImage {
+          alt,
+          "image": asset->url,
+          asset->{_ref},
+        },
+        afterImage {
+          alt,
+          "image": asset->url,
+          asset->{_ref},
+        },
+
+      },
+        galleryMobile {
+          images[] {
+            alt,
+            "image": asset->url,
+            asset->{_ref},
+            crop {
+              _type,
+              bottom,
+              left,
+              top,
+              right
+            },
+            hotspot {
+              _type,
+              height,
+              width,
+              x,
+              y
+            }
+          }
         }
     }
         `;
