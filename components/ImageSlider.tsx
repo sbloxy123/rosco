@@ -6,10 +6,12 @@ import { useState } from "react";
 export const ImageSlider = ({
   before,
   after,
+  linearId,
   thumbnail,
 }: {
   before: string;
   after: string;
+  linearId?: string;
   thumbnail?: boolean;
 }) => {
   const [sliderPosition, setSliderPosition] = useState(10);
@@ -110,11 +112,11 @@ export const ImageSlider = ({
                 height="21.2583"
                 x="21.2583"
                 transform="rotate(90 21.2583 0)"
-                fill="url(#paint0_linear_519_11280)"
+                fill={`url(#${linearId})`}
               />
               <defs>
                 <linearGradient
-                  id="paint0_linear_519_11280"
+                  id={`${linearId}`}
                   x1="403.908"
                   y1="21.2575"
                   x2="21.2583"

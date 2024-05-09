@@ -379,9 +379,15 @@ export default function ProjectsImageSwiper({
         modules={[FreeMode, Navigation, Thumbs]}
         className="aspect-[929/522]"
       >
-        <SwiperSlide>
-          <ImageSlider before={beforeImage} after={afterImage} />
-        </SwiperSlide>
+        {beforeImage && (
+          <SwiperSlide>
+            <ImageSlider
+              linearId="linearDesktop"
+              before={beforeImage}
+              after={afterImage}
+            />
+          </SwiperSlide>
+        )}
         {images?.map((image, index) => {
           return (
             <SwiperSlide key={index}>
@@ -411,38 +417,40 @@ export default function ProjectsImageSwiper({
         className="thumbMiniSwiper mt-[2rem] xsmall:w-fit xsmall:max-w-[65%] xsmall:ml-auto xsmall:mr-0"
         wrapperClass=""
       >
-        <SwiperSlide>
-          <div className="relative w-[52px] h-[52px] aspect-square cursor-pointer">
-            <div className="absolute top-0 bottom-0 right-0 left-0 m-auto w-[80%] h-[80%] z-10 opacity-80">
-              <svg
-                viewBox="0 0 44 44"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="21.7402"
-                  cy="21.7402"
-                  r="19.7402"
-                  stroke="white"
-                  strokeWidth="3"
-                />
-                <path
-                  d="M28.8242 21.9836L22.9617 27.8462L22.9617 16.1211L28.8242 21.9836Z"
-                  fill="white"
-                />
-                <path
-                  d="M14.168 21.9836L20.0305 27.8462L20.0305 16.1211L14.168 21.9836Z"
-                  fill="white"
-                />
-              </svg>
+        {beforeImage && (
+          <SwiperSlide>
+            <div className="relative w-[52px] h-[52px] aspect-square cursor-pointer">
+              <div className="absolute top-0 bottom-0 right-0 left-0 m-auto w-[80%] h-[80%] z-10 opacity-80">
+                <svg
+                  viewBox="0 0 44 44"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="21.7402"
+                    cy="21.7402"
+                    r="19.7402"
+                    stroke="white"
+                    strokeWidth="3"
+                  />
+                  <path
+                    d="M28.8242 21.9836L22.9617 27.8462L22.9617 16.1211L28.8242 21.9836Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M14.168 21.9836L20.0305 27.8462L20.0305 16.1211L14.168 21.9836Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+              <ImageSlider
+                before={beforeImage}
+                after={afterImage}
+                thumbnail={true}
+              />
             </div>
-            <ImageSlider
-              before={beforeImage}
-              after={afterImage}
-              thumbnail={true}
-            />
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        )}
         {images?.map((image, index) => {
           return (
             <SwiperSlide key={index}>
@@ -507,9 +515,15 @@ export function ProjectsImageSwiperMobile({
         modules={[FreeMode, Navigation, Thumbs]}
         className="aspect-[357/383]"
       >
-        <SwiperSlide>
-          <ImageSlider before={beforeImage} after={afterImage} />
-        </SwiperSlide>
+        {beforeImage && (
+          <SwiperSlide>
+            <ImageSlider
+              linearId="linearMobile"
+              before={beforeImage}
+              after={afterImage}
+            />
+          </SwiperSlide>
+        )}
         {images?.map((image, index) => {
           return (
             <SwiperSlide key={index}>
@@ -539,38 +553,40 @@ export function ProjectsImageSwiperMobile({
         className="thumbMiniSwiper mt-[2rem] xsmall:w-fit xsmall:max-w-[65%] xsmall:ml-auto xsmall:mr-0"
         wrapperClass=""
       >
-        <SwiperSlide>
-          <div className="relative w-[52px] h-[52px] aspect-square cursor-pointer">
-            <div className="absolute top-0 bottom-0 right-0 left-0 m-auto w-[80%] h-[80%] z-10 opacity-80">
-              <svg
-                viewBox="0 0 44 44"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="21.7402"
-                  cy="21.7402"
-                  r="19.7402"
-                  stroke="white"
-                  strokeWidth="3"
-                />
-                <path
-                  d="M28.8242 21.9836L22.9617 27.8462L22.9617 16.1211L28.8242 21.9836Z"
-                  fill="white"
-                />
-                <path
-                  d="M14.168 21.9836L20.0305 27.8462L20.0305 16.1211L14.168 21.9836Z"
-                  fill="white"
-                />
-              </svg>
+        {beforeImage && (
+          <SwiperSlide>
+            <div className="relative w-[52px] h-[52px] aspect-square cursor-pointer">
+              <div className="absolute top-0 bottom-0 right-0 left-0 m-auto w-[80%] h-[80%] z-10 opacity-80">
+                <svg
+                  viewBox="0 0 44 44"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="21.7402"
+                    cy="21.7402"
+                    r="19.7402"
+                    stroke="white"
+                    strokeWidth="3"
+                  />
+                  <path
+                    d="M28.8242 21.9836L22.9617 27.8462L22.9617 16.1211L28.8242 21.9836Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M14.168 21.9836L20.0305 27.8462L20.0305 16.1211L14.168 21.9836Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+              <ImageSlider
+                before={beforeImage}
+                after={afterImage}
+                thumbnail={true}
+              />
             </div>
-            <ImageSlider
-              before={beforeImage}
-              after={afterImage}
-              thumbnail={true}
-            />
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        )}
         {images?.map((image, index) => {
           return (
             <SwiperSlide key={index}>
