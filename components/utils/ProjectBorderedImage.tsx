@@ -211,7 +211,7 @@ export default function ProjectBorderedImage({
         <div className="absolute overflow-hidden aspect-[349/372] top-[-0.1%] left-[-0.5%] w-[100.3%] mt-[5.6%] xsmall:left-0 xsmall:w-full xsmall:aspect-[691/388] xsmall:top-0 xsmall:mt-[3.5%] small:mt-[0.9%] small:aspect-[567/456] small:w-[95.4%] small:h-[98.4%] small:right-0 small:ml-[3.7%] small:z-10">
           <Image
             src={getCroppedImageSrc(image)}
-            alt={image.alt}
+            alt={image?.alt}
             fill
             className="-z-10 object-cover"
             style={{
