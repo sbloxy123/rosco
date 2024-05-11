@@ -679,22 +679,6 @@ export const ServiceExtrasSwiper = ({
         effect={"fade"}
         className="service-subcategory--swiper-container"
       >
-        <SwiperSlide className="w-full pr-[5%] pl-[8%] xsmall:px-[5%] small:px-0">
-          <h2 className="pb-[1.5rem]">
-            {removelineBreakCodeFromHTML(primaryOverviewTitle)}
-          </h2>
-          <div className="scrollbar-and-text-container">
-            <div
-              ref={(ref) => {
-                overflowRefs.current[0] = ref;
-              }} // Adjusted
-              className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto small:max-h-[145px]"
-            >
-              <PortableText value={primaryOverviewText} />
-            </div>
-            {scrollbarStates[0] && <div className="your-after-element"></div>}
-          </div>
-        </SwiperSlide>
         {additionalInfo.map((text, index) => {
           return (
             <SwiperSlide
@@ -718,6 +702,22 @@ export const ServiceExtrasSwiper = ({
             </SwiperSlide>
           );
         })}
+        <SwiperSlide className="w-full pr-[5%] pl-[8%] xsmall:px-[5%] small:px-0">
+          <h2 className="pb-[1.5rem]">
+            {removelineBreakCodeFromHTML(primaryOverviewTitle)}
+          </h2>
+          <div className="scrollbar-and-text-container">
+            <div
+              ref={(ref) => {
+                overflowRefs.current[0] = ref;
+              }} // Adjusted
+              className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto small:max-h-[145px]"
+            >
+              <PortableText value={primaryOverviewText} />
+            </div>
+            {scrollbarStates[0] && <div className="your-after-element"></div>}
+          </div>
+        </SwiperSlide>
       </Swiper>
 
       <Swiper

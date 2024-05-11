@@ -564,7 +564,11 @@ input[type="text"]::-webkit-search-cancel-button {
 .filterBtn__swiper--service-extras {
   .swiper-slide {
     width: fit-content !important;
+    display: block;
     /* min-width: 27.8rem !important; */
+  }
+  .swiper-slide-thumb-active {
+    display: none;
   }
 }
 .scrollbar-and-text-container {

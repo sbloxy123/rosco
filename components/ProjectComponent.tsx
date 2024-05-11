@@ -76,12 +76,18 @@ export default function ProjectsComponent({
         <div className="small:w-[clamp(720px,64vw,930px)] mx-auto flex flex-col">
           {/* categories and title */}
           <div className="order-1 xsmall:order-3 small:order-2">
-            <div className="flex gap-[5rem] flex-wrap">
+            <div className="flex gap-[2rem] flex-wrap">
               {project.categories.map((category, index) => {
                 return (
-                  <div key={index}>
-                    <h3 key={index} className="uppercase pb-[2rem]">
+                  <div
+                    key={index}
+                    className="mb-[2rem] xsmall:mt-[2rem] pr-[2rem] border-r border-1 border-white last:border-0"
+                  >
+                    <h3 key={index} className="uppercase ">
                       {removelineBreakCodeFromHTML(category.serviceTitle)}{" "}
+                      {/* <span className="hidden xsmall:inline-block pl-[1.8rem] last:hidden">
+                        |
+                      </span> */}
                     </h3>
                   </div>
                 );
