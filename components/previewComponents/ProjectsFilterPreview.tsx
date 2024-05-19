@@ -14,15 +14,22 @@ export default function ProjectsFilterPreview({
   originalContent: any;
   assets: any;
 }) {
+  function compareByPostition(a: projectType, b: projectType) {
+    return a.orderPosition - b.orderPosition;
+  }
+
   const { data } = useQuery<projectType[] | null>(
     originalContent,
     {},
     { initial }
   );
 
-  return data ? (
+  const sortedData = data?.sort(compareByPostition);
+
+  // constg sortedData = data.
+  return sortedData ? (
     <div>
-      <ProjectsFilter projects={data} assets={assets} />
+      <ProjectsFilter projects={sortedData} assets={assets} />
     </div>
   ) : (
     <div className="bg-red-100">No posts found</div>

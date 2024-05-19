@@ -24,6 +24,8 @@ export default function ProjectsFilter({
   const allProjects = [...projects];
   const [iteration, setIteration] = useState(4);
 
+  // console.log(allProjects, "this is all the projects");
+
   useEffect(() => {
     // Check if there is a filterParam in the URL
     if (filterParam) {
@@ -224,13 +226,6 @@ export default function ProjectsFilter({
                   : true
               )
               .map((filteredProject, index) => {
-                console.log(
-                  filteredProject,
-                  "*** filtered project ****",
-                  index,
-                  filteredProject.projectTitle
-                );
-
                 if (filteredProject && index + 1 <= iteration) {
                   return (
                     <div

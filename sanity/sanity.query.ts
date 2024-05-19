@@ -407,7 +407,7 @@ export async function getProjectsSection() {
 
 export async function getAllProjects() {
   return client.fetch(
-    groq`*[_type == "projects"] {
+    groq`*[_type == "projects"] | order(orderPosition asc)    {
       _id,
       projectTitle,
       orderPosition,
@@ -531,7 +531,7 @@ export async function getAllProjects() {
         `
   );
 }
-export const allProjects = groq`*[_type == "projects"] {
+export const allProjects = groq`*[_type == "projects"] | order(orderPosition asc){
       _id,
       projectTitle,
       orderPosition,
