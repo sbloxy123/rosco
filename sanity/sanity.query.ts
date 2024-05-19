@@ -410,6 +410,7 @@ export async function getAllProjects() {
     groq`*[_type == "projects"] {
       _id,
       projectTitle,
+      orderPosition,
       "slug": slug.current,
       projectSummary,
       completionTimeframe,
@@ -533,6 +534,7 @@ export async function getAllProjects() {
 export const allProjects = groq`*[_type == "projects"] {
       _id,
       projectTitle,
+      orderPosition,
       "slug": slug.current,
       projectSummary,
       completionTimeframe,

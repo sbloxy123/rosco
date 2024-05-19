@@ -273,6 +273,7 @@ interface ServiceCategory {
 export type projectType = {
   _id: string;
   projectTitle: string;
+  orderPosition: number;
   slug: string;
   projectSummary: string;
   completionTimeframe: string;

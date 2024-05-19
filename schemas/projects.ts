@@ -14,6 +14,12 @@ const projects = {
       type: "string",
       description: "Enter the title of the project",
     },
+    {
+      name: "orderPosition",
+      title: "Position",
+      type: "number",
+      description: "Choose a position of this project",
+    },
     defineField({
       name: "slug",
       title: "Slug",
@@ -197,6 +203,13 @@ const projects = {
           },
         },
       ],
+    },
+  ],
+  orderings: [
+    {
+      title: "Position on Website",
+      name: "listPosition",
+      by: [{ field: "orderPosition", direction: "asc" }],
     },
   ],
 };

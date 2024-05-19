@@ -224,6 +224,13 @@ export default function ProjectsFilter({
                   : true
               )
               .map((filteredProject, index) => {
+                console.log(
+                  filteredProject,
+                  "*** filtered project ****",
+                  index,
+                  filteredProject.projectTitle
+                );
+
                 if (filteredProject && index + 1 <= iteration) {
                   return (
                     <div
