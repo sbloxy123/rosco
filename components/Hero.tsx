@@ -35,7 +35,7 @@ export default function Hero({ content }: { content: heroType[] }) {
             </div>
           </div>
         </div>
-        <div className="hero-image relative object-cover max-w-[645px] mx-auto small:mx-0">
+        <div className="hero-image relative object-cover max-w-[645px] mx-auto w-[94%] small:w-full small:mx-0">
           <Image
             src={content[0].heroImage.image}
             fill
