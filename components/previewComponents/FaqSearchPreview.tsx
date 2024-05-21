@@ -15,10 +15,10 @@ export default function FaqSearchPreview({
   initial,
   placeholder,
 }: {
-  initial: QueryResponseInitial<Faq[]>;
+  initial: QueryResponseInitial<any[]>;
   placeholder: string;
 }) {
-  const { data } = useQuery<Faq[] | null>(faqItems, {}, { initial });
+  const { data } = useQuery<any[] | null>(faqItems, {}, { initial });
 
   return data ? (
     <div>

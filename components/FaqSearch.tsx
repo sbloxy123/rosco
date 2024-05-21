@@ -18,7 +18,7 @@ export default function FaqSearch({
   faqs,
 }: {
   placeholder: string;
-  faqs: Faq[];
+  faqs: any[];
 }) {
   const [query, setQuery] = useState("");
   const [iteration, setIteration] = useState(8);
