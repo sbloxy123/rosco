@@ -15,7 +15,8 @@ const faqs = {
     {
       name: "answer",
       title: "Answer",
-      type: "text",
+      type: "array",
+      of: [{ type: "block" }],
     },
   ],
 };

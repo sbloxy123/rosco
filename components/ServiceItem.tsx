@@ -160,7 +160,7 @@ export default function ServiceItem({
           width={609}
           height={740}
           alt={image.alt}
-          className="absolute top-0 left-0 w-full h-full -z-10 object-cover"
+          className="absolute top-0 left-0 w-full h-full -z-10 object-cover bg-[#000]"
         />
         <h1 className="relative h-full w-full text-white p-[3rem] pl-[15%] pr-[41%] flex items-center small:w-[48%] small:pl-layout-small">
           {removelineBreakCodeFromHTML(title)}

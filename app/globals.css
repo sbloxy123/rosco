@@ -230,6 +230,7 @@ input[type="text"]::-webkit-search-cancel-button {
     border: 1.45px solid #fff;
     transform: scale(1) !important;
     border-radius: 50%;
+    opacity: 0 !important;
   }
   .swiper-pagination-bullet-active-next-next.swiper-pagination-bullet,
   .swiper-pagination-bullet-active-prev-prev.swiper-pagination-bullet {
@@ -641,4 +642,24 @@ input[type="text"]::-webkit-search-cancel-button {
 /* move google maps zoom controls */
 .gmnoprint {
   margin-left: -2rem;
+}
+
+.faq__accord {
+  ol {
+    li {
+      list-style: circle;
+      margin-left: 4rem;
+      padding-left: 1rem;
+    }
+  }
+  ul {
+    li {
+      list-style: disc;
+      margin-left: 4rem;
+      padding-left: 1rem;
+    }
+  }
+  p {
+    margin: 1em 0;
+  }
 }

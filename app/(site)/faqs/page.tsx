@@ -2,6 +2,8 @@ import ContactSection from "@/components/ContactSection";
 import FaqIntro from "@/components/FaqIntro";
 import FaqSearch from "@/components/FaqSearch";
 import InnerHero from "@/components/InnerHero";
+import { PortableText } from "@portabletext/react";
+import { PortableTextBlock } from "sanity";
 import BgDots from "@/components/assets/BgDots";
 import FaqIntroPreview from "@/components/previewComponents/FaqIntroPreview";
 import FaqSearchPreview from "@/components/previewComponents/FaqSearchPreview";
@@ -22,7 +24,7 @@ import { Suspense } from "react";
 interface Faq {
   _id: string;
   question: string;
-  answer: string;
+  answer: PortableTextBlock[];
 }
 
 export async function metadata() {
@@ -95,100 +97,72 @@ export default async function faqs() {
             pageNumber="05"
           />
         )}
-            <div >
-              <div className="relative bg-theme-dark overflow-hidden pt-[5rem] pb-[16rem] px-[5%] xsmall:pt-[5.2rem] xsmall:pb-[10rem] small:pt-[9rem] small:pb-[20rem] small:px-layout-small mt-section-gap">
-                {/* top right */}
-                <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
-                  <BgDots />
-                </div>
-                <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
-                  <BgDots />
-                </div>
-                <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
-                  <BgDots />
-                </div>
-                <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
-                  <BgDots />
-                </div>
-                <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
-                  <BgDots />
-                </div>
+        <div>
+          <div className="relative bg-theme-dark overflow-hidden pt-[5rem] pb-[16rem] px-[5%] xsmall:pt-[5.2rem] xsmall:pb-[10rem] small:pt-[9rem] small:pb-[20rem] small:px-layout-small mt-section-gap">
+            {/* top right */}
+            <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
+              <BgDots />
+            </div>
+            <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
+              <BgDots />
+            </div>
+            <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
+              <BgDots />
+            </div>
+            <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
+              <BgDots />
+            </div>
+            <div className="hidden xsmall:block absolute top-0 right-0 h-[140%] w-auto mix-blend-multiply rotate-180 scale-y-[-1]">
+              <BgDots />
+            </div>
 
-                {/* top left */}
-                <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
-                  <BgDots />
-                </div>
-                <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
-                  <BgDots />
-                </div>
-                <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
-                  <BgDots />
-                </div>
-                <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
-                  <BgDots />
-                </div>
-                <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
-                  <BgDots />
-                </div>
+            {/* top left */}
+            <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
+              <BgDots />
+            </div>
+            <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
+              <BgDots />
+            </div>
+            <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
+              <BgDots />
+            </div>
+            <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
+              <BgDots />
+            </div>
+            <div className="hidden small:block absolute top-0 left-0 h-[140%] w-auto mix-blend-multiply">
+              <BgDots />
+            </div>
 
+            {draftMode().isEnabled ? (
+              <FaqIntroPreview
+                initial={initialFaqPageContent.data[0]}
+                originalContent={faqPageInitialContent}
+              />
+            ) : (
+              <FaqIntro
+                messageWithLineBreaks={faqPageContent[0].FaqPage.introMessage}
+                introTitle={faqPageContent[0].FaqPage.introTitle}
+              />
+            )}
+          </div>
 
-                {draftMode().isEnabled ? (
-                  <FaqIntroPreview
-                    initial={initialFaqPageContent.data[0]}
-                    originalContent={faqPageInitialContent}
-                  />
-                ) : (
-                  <FaqIntro
-                    messageWithLineBreaks={faqPageContent[0].FaqPage.introMessage}
-                    introTitle={faqPageContent[0].FaqPage.introTitle}
-                  />
-                )}
+          {draftMode().isEnabled ? (
+            <FaqSearchPreview
+              placeholder={faqPageContent[0].FaqPage.formPlaceholder}
+              initial={initialFaqItems.data[0]}
+            />
+          ) : (
+            <FaqSearch
+              placeholder={faqPageContent[0].FaqPage.formPlaceholder}
+              faqs={faqs}
+            />
+          )}
 
-                {/* <div className="relative small:max-w-[1120px] small:mx-auto">
-                  <h2 className="text-white leading-[4.3rem]">
-                    {content.FaqPage.introTitle}
-                  </h2> */}
-
-                {/* mobile only: */}
-                {/* <div className="xsmall:hidden pt-[3.5rem] pr-[10%]">
-                    {messageWithLineBreaks.split("\n").map((line, index) => {
-                      return (
-                        <p key={index} className="text-white font-[500]">
-                          {line}
-                        </p>
-                      );
-                    })}
-                  </div> */}
-                {/* tablet +  */}
-                {/* <div className="hidden xsmall:block pt-[5rem] pr-0 xsmall:max-w-[59.4rem] small:max-w-[101.5rem] ">
-                    {messageWithoutLineBreaks.split("\n").map((line, index) => {
-                      return (
-                        <p key={index} className="text-white font-[500]">
-                          {line}
-                        </p>
-                      );
-                    })}
-                  </div> */}
-                {/* </div> */}
-              </div>
-
-              {draftMode().isEnabled ? (
-                <FaqSearchPreview
-                  placeholder={faqPageContent[0].FaqPage.formPlaceholder}
-                  initial={initialFaqItems.data[0]}
-                />
-              ) : (
-                <FaqSearch
-                  placeholder={faqPageContent[0].FaqPage.formPlaceholder}
-                  faqs={faqs}
-                />
-              )}
-
-              {/* <FaqSearch
+          {/* <FaqSearch
                 placeholder={content.FaqPage.formPlaceholder}
                 faqs={faqs}
               /> */}
-            </div>
+        </div>
         <div className="mt-[10rem] xsmall:mt-[12rem]">
           <ContactSection contactContent={contactContent} />
         </div>

@@ -39,7 +39,10 @@ export const ImageSlider = ({
   };
 
   const handleMouseDown = () => {
-    setIsDragging(true);
+    setTimeout(() => {
+      setIsDragging(true);
+    }, 450);
+    setIsDragging(false);
   };
 
   const handleMouseUp = () => {

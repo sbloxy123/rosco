@@ -6,6 +6,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
+import { PortableText } from "@portabletext/react";
 
 export default function AccordionTemplate({ question, answer, UID }) {
   const [open, setOpen] = useState(0);
@@ -58,7 +59,7 @@ export default function AccordionTemplate({ question, answer, UID }) {
       <Accordion
         open={open === UID + 1}
         icon={<Icon id={UID + 1} open={open} />}
-        className="border-b-[1px] border-[#D4DBDE] py-[2rem]"
+        className="faq__accord border-b-[1px] border-[#D4DBDE] py-[2rem]"
       >
         <AccordionHeader
           onClick={() => handleOpen(UID + 1)}
@@ -70,7 +71,9 @@ export default function AccordionTemplate({ question, answer, UID }) {
         >
           <h2 className="text-[1.8rem]">{question}</h2>
         </AccordionHeader>
-        <AccordionBody className="text-[1.6rem]">{answer}</AccordionBody>
+        <AccordionBody className="text-[1.6rem]">
+          <PortableText value={answer} />
+        </AccordionBody>
       </Accordion>
     </>
   );

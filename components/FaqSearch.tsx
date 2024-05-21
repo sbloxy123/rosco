@@ -5,11 +5,12 @@ import AccordionTemplate from "./AccordionTemplate";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { motion } from "framer-motion";
+import { PortableTextBlock } from "sanity";
 
 interface Faq {
   _id: string;
   question: string;
-  answer: string;
+  answer: PortableTextBlock[];
 }
 
 export default function FaqSearch({
@@ -49,11 +50,13 @@ export default function FaqSearch({
   }, []);
 
   useEffect(() => {
-    const searchFilter = (array: Faq[]) => {
+    const searchFilter = (array: any[]) => {
       return array.filter(
         (el) =>
           el.question.toLowerCase().includes(query.toLowerCase()) ||
-          el.answer.toLowerCase().includes(query.toLowerCase())
+          el.answer[0].children[0].text
+            .toLowerCase()
+            .includes(query.toLowerCase())
       );
     };
 
