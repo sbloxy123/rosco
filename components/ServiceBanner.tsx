@@ -94,10 +94,14 @@ export default function ServiceBanner({
         <BgDots />
       </div>
 
-      <div className="relative text-white pt-[4rem] pb-[6.5rem] xsmall:pt-[6rem] small:flex small:flex-row small:justify-between small:gap-10 small:pt-[12rem] small:pb-[12rem] medium:max-w-[1120px] medium:mx-auto">
+      <div className="relative text-white pt-[4rem] pb-[6.5rem] xsmall:pt-[6rem] small:flex small:flex-row small:items-center small:justify-between small:gap-10 small:pt-[12rem] small:pb-[12rem] medium:max-w-[1120px] medium:mx-auto">
         <div
           className={`${
-            asideList ? "small:w-[84%]" : "small:w-[72%]"
+            asideList && awardHighlight
+              ? "small:w-[50%]"
+              : asideList
+                ? "small:w-[84%]"
+                : "small:w-[72%]"
           } small:pl-layout-small medium:pl-0`}
         >
           {additionalInfo ? (
@@ -117,7 +121,9 @@ export default function ServiceBanner({
           )}
         </div>
         {awardHighlight ? (
-          <div className="hidden small:flex aspect-[255/345] w-auto xsmall:w-auto max-w-[255px] justify-center items-center flex-col gap-8 bg-transparent text-white text-center my-4 mr-layout-small medium:mr-0">
+          <div
+            className={`${asideList && "order-3"} hidden small:flex aspect-[255/345] w-auto xsmall:w-auto max-w-[255px] justify-center items-center flex-col gap-8 bg-transparent text-white text-center my-4 mr-layout-small medium:mr-0`}
+          >
             <div className="relative h-[150px] w-full mb-4">
               <Image
                 src={awardHighlight?.awardLogo.image}
@@ -145,7 +151,9 @@ export default function ServiceBanner({
         ) : null}
 
         {asideList ? (
-          <div className="hidden small:block mr-layout-small text-[1.6rem] font-body font-bold w-[clamp(25rem,27vw,39.3rem)] medium:mr-0">
+          <div
+            className={`hidden small:block mr-layout-small text-[1.6rem] font-body font-bold ${awardHighlight ? "w-[clamp(25rem,23vw,39.3rem)]" : "w-[clamp(25rem,27vw,39.3rem)]"} medium:mr-0`}
+          >
             <h4 className="pb-[1.5rem] font-body">{asideList.listIntro}</h4>
             <ul className="flex flex-col gap-[1.5rem]">
               {asideList.summaryList?.map((listItem, index) => {
