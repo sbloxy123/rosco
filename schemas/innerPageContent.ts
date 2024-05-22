@@ -43,16 +43,15 @@ const innerPageContent = {
         {
           name: "introText",
           title: "Introduction Text",
-          description: "Introduction text on About Page ('Who we are') --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
+          description:
+            "Introduction text on About Page ('Who we are') --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "array",
           of: [
-
-                {
-                  name: "paragraph",
-                  title: "Paragraph",
-                  type: "text",
-                },
-
+            {
+              name: "paragraph",
+              title: "Paragraph",
+              type: "text",
+            },
           ],
         },
         {
@@ -81,16 +80,15 @@ const innerPageContent = {
         {
           name: "contentArea",
           title: "Content Area Text",
-          description: "--add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
+          description:
+            "--add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "array",
           of: [
-
-                {
-                  name: "paragraph",
-                  title: "Paragraph",
-                  type: "text",
-                },
-
+            {
+              name: "paragraph",
+              title: "Paragraph",
+              type: "text",
+            },
           ],
         },
       ],
@@ -150,7 +148,8 @@ const innerPageContent = {
         {
           name: "introText",
           title: "Introduction Text",
-          description: "Introduction text on Services Page (in purple banner) --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line." ,
+          description:
+            "Introduction text on Services Page (in purple banner) --add '\\n'(desktop), '\\tabletn' or '\\mobilen' to the text where you want text to return on a new line.",
           type: "text",
         },
       ],
@@ -282,6 +281,12 @@ const innerPageContent = {
                 "describe what is in the image let search engines know what is being shown",
             },
           ],
+        },
+        {
+          name: "serviceAreas",
+          title: "Service Areas",
+          description: "Text under map",
+          type: "string",
         },
       ],
     },

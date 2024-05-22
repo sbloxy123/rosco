@@ -8,7 +8,6 @@ import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
   // const totPromo: TotPromoType[] = await getTotPromo();
   return (
-
     <div className="relative bg-transparent small:bg-theme-dark w-full">
       <div className="absolute top-0 left-0 w-full h-full bg-theme-dark -z-10 small:z-0">
         <TotBackgrounds />
@@ -55,7 +54,7 @@ export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
               </p>
             </div>
 
-            <div className="flex flex-col mt-[8rem] gap-14 xsmall:gap-16 xsmall:mb-[4rem] small:mb-0 small:mt-0 small:justify-start">
+            <div className="flex flex-col mt-[8rem] xsmall:mt-[1rem] gap-14 xsmall:gap-16 xsmall:mb-[6rem] small:mb-0 small:mt-0 small:justify-start">
               <div className="mx-auto w-[55%] pl-[1rem] pt-3 xsmall:pb-10 small:pb-0 xsmall:hidden">
                 <svg
                   viewBox="0 0 363 19"
@@ -87,13 +86,11 @@ export default function TotPromo({ totPromo }: { totPromo: TotPromoType[] }) {
                 <ToTLogo />
               </div>
               <div className="relative z-1 xsmall:order-3">
-                    <h3
-                      className="font-[600] tracking-[0.06em] text-[2rem] text-white text-center px-[5%] xsmall:text-[2.4rem] xsmall:w-[70%] xsmall:max-w-[500px] xsmall:mx-auto small:max-w-full small:text-left small:ml-0 small:px-0 small:w-full"
-                    >
-                      <span className="small:pr-[3rem]">
-                        {getTextWithLineBreaks(totPromo[0].totPromo.promoMessage)}
-                      </span>
-                    </h3>
+                <h3 className="font-[600] tracking-[0.06em] text-[2rem] text-white text-center px-[5%] xsmall:text-[2.4rem] xsmall:px-[1rem] xsmall:w-[70%] xsmall:max-w-[500px] xsmall:mx-auto small:max-w-full small:text-left small:ml-0 small:px-0 small:w-full">
+                  <span className="small:pr-[3rem]">
+                    {getTextWithLineBreaks(totPromo[0].totPromo.promoMessage)}
+                  </span>
+                </h3>
               </div>
               <p className="z-10 mb-[10rem] text-[2.4rem] tracking-[0.06em] mt-[1rem] font-bold text-center uppercase text-white xsmall:order-1 xsmall:-mb-[3rem] small:hidden">
                 coming soon

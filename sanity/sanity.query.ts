@@ -1143,6 +1143,7 @@ export async function getContactUsPageContent() {
           y
         }
       },
+      serviceAreas,
       }
     }
     `
@@ -1152,6 +1153,7 @@ export const contactPageInitialContent = groq`*[_type == "innerPage"] {
        _id,
       ContactPage {
         pageHeading,
+        serviceAreas,
       }
     }
     `;

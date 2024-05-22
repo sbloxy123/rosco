@@ -7,9 +7,11 @@ export default async function privacyPolicy() {
   const data: policiesPageType[] = await getPoliciesPageData();
 
   return (
-    <main className="mt-[10rem] px-[5%]">
-      <section className="max-w-[1120px] mx-auto">
-        <h1 className="pt-[4rem] text-center">{data[0].policies.pageTitle}</h1>
+    <main className="mt-[10rem] max-w-[1120px] mx-auto px-[5%] small:px-layout-small">
+      <section className="max-w-[1120px] mx-auto pt-[4rem] small:pt-[7rem]">
+        <h1 className="text-center xsmall:max-w-[80%] mx-auto">
+          {data[0].policies.pageTitle}
+        </h1>
         <div className="rich-text-container pt-[4rem]">
           <PortableText value={data[0].policies.policies} />
         </div>

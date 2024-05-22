@@ -638,6 +638,7 @@ export type contactPageType = {
         y: number;
       };
     };
+    serviceAreas: string;
   };
 };
 
