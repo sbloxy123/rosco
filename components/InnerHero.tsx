@@ -29,7 +29,9 @@ export default function InnerHero({
   imageCaptionText?: string;
 }) {
   return (
-    <section className="mt-[7rem] xsmall:mt-[10rem] small:mt-0">
+    <section
+      className={`mt-[7rem] xsmall:mt-[10rem] small:mt-0 ${imageCaptionText && "pb-[2rem] small:pb-0"}`}
+    >
       <div className="gap-10 max-w-[1440px] small:flex small:justify-between small:mr-0 small:ml-auto  small:mt-[104px] small:gap-0 medium:mx-auto small:pt-[3rem]">
         <div className="text-theme-dark text-center pt-[5.5rem] mx-auto xsmall:ml-0 xsmall:pt-[4rem] small:text-left small:pt-0 small:mt-[6rem] small:max-w-full ">
           {/* xsmall:text-left */}
@@ -127,7 +129,7 @@ export default function InnerHero({
                   objectPosition: `${getPositionFromHotspot(image?.hotspot)}`,
                 }}
               />
-              <p className="absolute top-[100%] mb-[-2rem]">
+              <p className="absolute text-[clamp(1.4rem,5vw,1.6rem)] text-center leading-normal left-[5%] right-[5%] w-fit mx-auto small:text-left small:ml-0 small:left-0 small:right-0 top-[102%] ">
                 {imageCaptionText}
               </p>
             </div>

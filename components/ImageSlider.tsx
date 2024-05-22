@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const ImageSlider = ({
   before,
@@ -42,6 +42,7 @@ export const ImageSlider = ({
     setTimeout(() => {
       setIsDragging(true);
     }, 250);
+
     setIsDragging(false);
   };
 
