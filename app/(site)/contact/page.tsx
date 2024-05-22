@@ -58,7 +58,6 @@ export default async function contact() {
           initial={initialContactPageContent.data[0]}
           sectionTitle="contact us"
           pageNumber="06"
-          imageCaptionText={contactPageContent[0].ContactPage.serviceAreas}
           originalContent={contactPageInitialContent}
         />
       ) : (

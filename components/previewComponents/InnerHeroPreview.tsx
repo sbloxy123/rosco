@@ -20,14 +20,12 @@ export default function InnerHeroPreview({
   pageNumber,
   originalContent,
   pageVariable,
-  imageCaptionText,
 }: {
   initial: QueryResponseInitial<SanityDocument>;
   sectionTitle: string;
   pageNumber: string;
   originalContent: any;
   pageVariable: string;
-  imageCaptionText: string;
 }) {
   const { data } = useQuery<SanityDocument | null>(
     originalContent,
@@ -56,7 +54,7 @@ export default function InnerHeroPreview({
         sectionTitle={sectionTitle}
         imageAltText={heroData?.[pageVariable]?.pageImage?.alt}
         pageNumber={pageNumber}
-        imageCaptionText={imageCaptionText}
+        imageCaptionText={heroData?.[pageVariable]?.serviceAreas}
       />
     </div>
   ) : (
