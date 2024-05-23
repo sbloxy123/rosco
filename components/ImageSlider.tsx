@@ -41,7 +41,7 @@ export const ImageSlider = ({
   const handleMouseDown = () => {
     setTimeout(() => {
       setIsDragging(true);
-    }, 250);
+    }, 0);
 
     setIsDragging(false);
   };
@@ -64,8 +64,8 @@ export const ImageSlider = ({
         }`}
         onMouseMove={handleMove}
         onTouchMove={handleTouchMove}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
+        // onMouseDown={handleMouseDown}
+        // onTouchStart={handleMouseDown}
       >
         <Image
           alt="before Image"
@@ -100,6 +100,8 @@ export const ImageSlider = ({
           style={{
             left: `calc(${sliderPosition}% - 1px)`,
           }}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleMouseDown}
         >
           <div className="absolute top-0 left-0 h-full w-[22px] -translate-x-[39%] ">
             <svg

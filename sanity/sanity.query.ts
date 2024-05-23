@@ -1198,3 +1198,14 @@ export async function getPoliciesPageData() {
     `
   );
 }
+export async function getTermsPageData() {
+  return client.fetch(
+    groq`*[_type == "metadata"]{
+      terms {
+        pageTitle,
+        terms,
+      }
+    }
+    `
+  );
+}

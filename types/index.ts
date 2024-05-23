@@ -681,3 +681,9 @@ export type policiesPageType = {
     policies: PortableTextBlock[];
   };
 };
+export type termsPageType = {
+  terms: {
+    pageTitle: string;
+    terms: PortableTextBlock[];
+  };
+};

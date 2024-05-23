@@ -282,11 +282,14 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
-              {/* <li className="py-3 small:p-0">
-                <Link href="/" className="hover:text-theme-purple duration-300">
+              <li className="py-3 small:p-0">
+                <Link
+                  href="/terms-of-service"
+                  className="hover:text-theme-purple duration-300"
+                >
                   Terms of Service
                 </Link>
-              </li> */}
+              </li>
               <li className="py-3 small:p-0">
                 <Link
                   href="/privacy-policy"

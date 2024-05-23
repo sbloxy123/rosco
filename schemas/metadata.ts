@@ -125,6 +125,24 @@ const metadata = {
         },
       ],
     },
+    {
+      name: "terms",
+      title: "Terms and Conditions",
+      type: "document",
+      fields: [
+        {
+          name: "pageTitle",
+          title: "Page Title",
+          type: "string",
+        },
+        {
+          name: "terms",
+          title: "Terms and Conditions",
+          type: "array",
+          of: [{ type: "block" }],
+        },
+      ],
+    },
   ],
 
   preview: {
