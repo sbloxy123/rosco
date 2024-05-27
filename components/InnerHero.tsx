@@ -12,6 +12,7 @@ import { removelineBreakCodeFromHTML } from "./utils/lineBreaks";
 import { getTextWithLineBreaks } from "./utils/getTextWithLineBreaks";
 import ButtonLinkNew from "./common/ButtonLinkNew";
 import mapMarker from "../app/(site)/assets/images/marker.png";
+import { PortableText } from "@portabletext/react";
 
 export default function InnerHero({
   title,
@@ -26,7 +27,7 @@ export default function InnerHero({
   imageAltText?: string;
   image?: SanityImageQueryResult | undefined;
   pageNumber?: string;
-  imageCaptionText?: string;
+  imageCaptionText?: any;
 }) {
   return (
     <section
@@ -129,9 +130,12 @@ export default function InnerHero({
                   objectPosition: `${getPositionFromHotspot(image?.hotspot)}`,
                 }}
               />
-              <p className="absolute text-[clamp(1.4rem,5vw,1.6rem)] text-center leading-normal left-[5%] right-[5%] w-fit mx-auto small:text-left small:ml-0 small:left-0 small:right-0 top-[102%] ">
-                {imageCaptionText}
-              </p>
+
+              <div className="absolute text-[clamp(1.4rem,5vw,1.4rem)] text-center leading-normal left-[5%] right-[5%] w-fit mx-auto small:text-left small:ml-0 small:left-0 small:right-0 top-[102%] ">
+                <PortableText value={imageCaptionText} />
+
+                {/* {imageCaptionText} */}
+              </div>
             </div>
           )}
 
