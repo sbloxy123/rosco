@@ -28,6 +28,10 @@
     font-size: 2.8rem; /* 28px */
     margin-top: 2em;
     margin-bottom: 1em;
+
+    font-size: 1.8rem;
+    letter-spacing: 0.12em;
+    font-weight: 500;
   }
 
   h4 {
