@@ -1,4 +1,5 @@
 "use client";
+import { usePost } from "@/app/hooks/usePost";
 import { useState } from "react";
 
 export default function MailingListForm({
@@ -12,6 +13,9 @@ export default function MailingListForm({
 }) {
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const [fromEmail, setFromEmail] = useState("");
+  const { postRequest } = usePost();
+  const [formSent, setFormSent] = useState("");
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value);
@@ -24,8 +28,38 @@ export default function MailingListForm({
       setIsEmailValid(false);
     } else {
       setIsEmailValid(true);
-      alert(`Thank you for subscribing with ${email}`);
+      // alert(`Thank you for subscribing with ${email}`);
       setEmail("");
+
+      const sendForm = async () => {
+        try {
+          const formData = {
+            to: "stuart@bloxywebservices.co.uk", // Change to your recipient
+            from: "stuart@bloxywebservices.co.uk", // Change to your verified sender
+            subject: `Newsletter signup`,
+            email: fromEmail,
+            html: `
+              NEW NEWSLETTER SUBSCRIBER!!!,
+              <br /><br />
+              Subscriber with email ${fromEmail} has subscribed to receive newsletters from you.  Please add them to your mailing list
+              `,
+          };
+          // Local developer testing API Route
+          postRequest("http://localhost:3000/api/sendgrid", formData);
+          const formMessageText = new Promise((resolve, reject) => {
+            setTimeout(() => {
+              setFormSent("You're subscribed!");
+              setTimeout(() => {
+                setFormSent("");
+                setFromEmail("");
+              }, 5000);
+            }, 0);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      sendForm();
     }
   }
   return (
@@ -44,7 +78,7 @@ export default function MailingListForm({
           theme == "dark"
             ? "bg-theme-dark bg-opacity-[6%] placeholder:text-theme-dark placeholder:text-opacity-80 placeholder:font-[400]"
             : "bg-white bg-opacity-20 placeholder:text-white focus:text-theme-purple"
-        }   rounded-sm w-full uppercase font-headings text-[14.5px] tracking-[0.06em] xsmall:w-[290px]  placeholder:font-[500] placeholder:text-center xsmall:text-left xsmall:placeholder:text-left xsmall:placeholder:pl-[1rem] h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out`}
+        }   rounded-sm w-full placeholder:uppercase font-headings text-[14.5px] tracking-[0.06em] xsmall:w-[290px]  placeholder:font-[500] placeholder:text-center xsmall:text-left xsmall:placeholder:text-left xsmall:placeholder:pl-[1rem] h-[4.8rem] focus:bg-white border-0 focus:ring-0 focus:outline-none transition duration-300 ease-out`}
         style={{}}
       />
       <button
@@ -57,6 +91,14 @@ export default function MailingListForm({
       >
         {buttonText}
       </button>
+      {/* <p className="text-white text-center mt-2 absolute top-0 left-0 w-full h-full bg-theme-dark bg-opacity-30">
+        {formSent}
+      </p> */}
+      <p
+        className={`${formSent ? "block" : "hidden"} text-white text-center absolute top-0 left-0 w-full h-full bg-theme-dark bg-opacity-70 flex justify-center items-center`}
+      >
+        {formSent}
+      </p>
     </form>
   );
 }

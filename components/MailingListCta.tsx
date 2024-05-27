@@ -24,7 +24,7 @@ export default function MailingListCta({
             key={content.mailingListCta._id}
             className=" small:px-layout-small small:mx-auto"
           >
-            <div className="bg-theme-purple px-10 py-[4.5rem] flex flex-col items-center justify-center text-center xsmall:py-[4rem] small:flex-row small:justify-between small:text-left small:px-[64px] small:max-w-[1121px] small:mx-auto">
+            <div className="bg-theme-purple relative px-10 py-[4.5rem] flex flex-col items-center justify-center text-center xsmall:py-[4rem] small:flex-row small:justify-between small:text-left small:px-[64px] small:max-w-[1121px] small:mx-auto">
               <div className="small:w-[356px]">
                 <h3 className="text-white uppercase pb-[1.5rem] small:pb-6">
                   {mailingListHeading}
