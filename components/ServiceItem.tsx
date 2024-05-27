@@ -39,7 +39,7 @@ export default function ServiceItem({
         <div className="absolute top-0 left-0 bg-theme-dark opacity-50  w-full h-full"></div>
         <div className="absolute top-0 left-0 bg-theme-dark mix-blend-color-dodge  w-full h-full"></div>
         <div className="absolute top-0 left-0 bg-theme-dark mix-blend-hard-light saturate-100 w-full h-full"></div>
-        <div className="absolute top-0 left-0 right-0 bottom-0 aspect-[341/233] m-auto w-[92%] xsmall:aspect-[507/304] xsmall:w-[62.7%] xsmall:ml-[5%] xsmall:my-auto small:w-[71.3%] small:ml-[10%] small:aspect-[527/346] ">
+        <div className="absolute top-0 left-0 right-0 bottom-0 aspect-[341/233] m-auto w-[92%] xsmall:aspect-[507/304] xsmall:w-[75%] xsmall:ml-[5%] xsmall:my-auto small:w-[71.3%] small:ml-[10%] small:aspect-[527/346] ">
           <svg
             viewBox="0 0 523 320"
             fill="none"
@@ -97,7 +97,7 @@ export default function ServiceItem({
             </defs>
           </svg>
         </div>
-        <div className="absolute top-0 left-0 right-0 bottom-0 aspect-[341/233] m-auto w-[92%] xsmall:aspect-[507/304] xsmall:w-[62.7%] xsmall:ml-[5%] xsmall:my-auto small:w-[71.3%] small:ml-[10%] small:aspect-[527/346] ">
+        <div className="absolute top-0 left-0 right-0 bottom-0 aspect-[341/233] m-auto w-[92%] xsmall:aspect-[507/304] xsmall:w-[75%] xsmall:ml-[5%] xsmall:my-auto small:w-[71.3%] small:ml-[10%] small:aspect-[527/346] ">
           <svg
             viewBox="0 0 523 320"
             fill="none"

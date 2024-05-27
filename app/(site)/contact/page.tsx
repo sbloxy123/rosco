@@ -83,7 +83,7 @@ export default async function contact() {
       </div>
 
       <LatestProjects />
-      <div className="my-section-gap">
+      <div className="my-section-gap mb-0">
         <TotPromo totPromo={totPromo} />
       </div>
     </main>

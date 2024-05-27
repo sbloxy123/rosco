@@ -133,6 +133,9 @@ export default function ContactSection({
                   <p className="font-semibold font-headings text-[1.8rem] pt-2">
                     {content.contactUs.contactNumber}
                   </p>
+                  <p className="font-semibold font-headings text-[1.8rem] pt-2">
+                    {content.contactUs.emailAddress}
+                  </p>
                 </div>
                 <div className="flex flex-col gap-5 mt-16 xsmall:flex-row xsmall:justify-center small:justify-start small:pl-0">
                   <div className="xsmall:max-w-[176px]">
