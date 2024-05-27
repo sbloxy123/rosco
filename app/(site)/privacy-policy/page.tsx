@@ -9,10 +9,10 @@ export default async function privacyPolicy() {
   return (
     <main className="mt-[10rem] max-w-[1120px] mx-auto px-[5%] small:px-layout-small">
       <section className="max-w-[1120px] mx-auto pt-[4rem] small:pt-[7rem]">
-        <h2 className="text-center xsmall:max-w-[80%] mx-auto text-[3rem]">
+        <h3 className="text-center xsmall:max-w-[80%] mx-auto text-[1.8rem] uppercase">
           {data[0].policies.pageTitle}
-        </h2>
-        <div className="rich-text-container pt-[4rem]">
+        </h3>
+        <div className="rich-text-container pt-[1rem]">
           <PortableText value={data[0].policies.policies} />
         </div>
       </section>

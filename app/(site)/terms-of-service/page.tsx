@@ -12,7 +12,7 @@ export default async function termsOfService() {
         <h3 className="text-center xsmall:max-w-[80%] mx-auto  uppercase text-[1.8rem]">
           {data[0]?.terms?.pageTitle}
         </h3>
-        <div className="rich-text-container pt-[4rem]">
+        <div className="rich-text-container pt-[1rem]">
           <PortableText value={data[0]?.terms?.terms} />
         </div>
       </section>
