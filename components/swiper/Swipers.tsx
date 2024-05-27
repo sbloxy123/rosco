@@ -124,7 +124,7 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
 
           <div className="project-pagination h-[5.6rem] w-[40%] pb-[3rem] z-30 flex gap-1 items-center xsmall:absolute xsmall:right-0 xsmall:bottom-0 xsmall:mb-[11%] xsmall:pl-[2.5%] xsmall:w-fit xsmall:justify-start xsmall:mx-[5%] small:w-1/3 small:justify-center small:mb-0 small:mx-0 small:px-0 small:hidden visible"></div>
 
-          <div className="project-swiper-nav relative flex gap-4 pb-[3.1rem] pr-[1.5rem] xsmall:pb-0 xsmall:pr-0 xsmall:-rotate-90 xsmall:absolute xsmall:right-0 xsmall:mr-[3%] xsmall:mb-[7%] small:pr-[5.5rem] small:pb-[5%] small:rotate-0 small:w-1/3 small:justify-end visible">
+          <div className="project-swiper-nav relative flex gap-4 pb-[3.1rem] pr-[1.5rem] xsmall:pb-0 xsmall:pr-0 xsmall:absolute xsmall:right-0 xsmall:mr-[8%] xsmall:mb-[-28%] small:mr-[3%] small:mb-[7%] small:pr-[5.5rem] small:pb-[5%] small:rotate-0 small:w-1/3 small:justify-end visible z-50">
             <SwiperArrowPrev swiperDivName="prev-project" />
             <SwiperArrowNext swiperDivName="next-project" />
           </div>

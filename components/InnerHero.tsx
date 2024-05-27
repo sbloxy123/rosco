@@ -131,7 +131,7 @@ export default function InnerHero({
                 }}
               />
 
-              <div className="absolute text-[clamp(1.4rem,5vw,1.4rem)] text-center leading-normal left-[5%] right-[5%] w-fit mx-auto small:text-left small:ml-0 small:left-0 small:right-0 top-[102%] ">
+              <div className="map__caption__text absolute text-[clamp(1.4rem,5vw,1.4rem)] text-center leading-normal left-0 right-0 px-[2%] xsmall:px-0 w-fit mx-auto small:text-left small:ml-0 small:left-0 small:right-0 top-[102%] ">
                 <PortableText value={imageCaptionText} />
 
                 {/* {imageCaptionText} */}

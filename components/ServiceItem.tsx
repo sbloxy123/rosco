@@ -177,7 +177,7 @@ export default function ServiceItem({
           {headingListBody && getTextWithLineBreaks(headingListBody)}
         </h2>
 
-        <div className="service-component-text hidden xsmall:block pt-[4.5rem]">
+        <div className="service-component-text hidden xsmall:block pt-[4.5rem] w-[93%]">
           <PortableText value={text} />
         </div>
 

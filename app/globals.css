@@ -73,6 +73,13 @@ input[type="text"]::-webkit-search-cancel-button {
   appearance: none;
 }
 
+.map__caption__text {
+  p {
+    font-size: 1.35rem;
+    line-height: 1.6em;
+  }
+}
+
 .nav__item__link {
   position: relative;
   span {
