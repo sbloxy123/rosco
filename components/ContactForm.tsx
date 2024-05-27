@@ -51,10 +51,7 @@ export default function ContactForm({
                 `,
             };
             // Local developer testing API Route
-            await postRequest(
-              "http://rosco-liard.vercel.app/api/sendgrid",
-              formData
-            );
+            postRequest("http://localhost:3000/api/sendgrid", formData);
             const formMessageText = new Promise((resolve, reject) => {
               setTimeout(() => {
                 setFormSent("Message Sent!");
