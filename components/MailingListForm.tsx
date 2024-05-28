@@ -1,6 +1,7 @@
 "use client";
 import { usePost } from "@/app/hooks/usePost";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function MailingListForm({
   placeholder,
@@ -21,53 +22,91 @@ export default function MailingListForm({
     setEmail(event.target.value);
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  //   event.preventDefault();
 
-    if (email === "" || !/\S+@\S+\.\S+/.test(email)) {
-      setIsEmailValid(false);
-    } else {
-      setIsEmailValid(true);
-      // alert(`Thank you for subscribing with ${email}`);
-      setEmail("");
+  //   if (email === "" || !/\S+@\S+\.\S+/.test(email)) {
+  //     setIsEmailValid(false);
+  //   } else {
+  //     setIsEmailValid(true);
+  //     // alert(`Thank you for subscribing with ${email}`);
+  //     setEmail("");
 
-      const sendForm = async () => {
-        try {
-          const formData = {
-            to: "sbloxy123@gmail.com", // Change to your recipient
-            from: "sbloxy123@gmail.com", // Change to your verified sender
-            subject: `Newsletter signup`,
-            email: fromEmail,
-            html: `
-              NEW NEWSLETTER SUBSCRIBER!
-              <br /><br />
-              A subscriber with email ${fromEmail} has subscribed to receive newsletters from you.  Please add them to your mailing list
-              `,
-          };
-          // Local developer testing API Route
-          await postRequest("/api/sendgrid", formData);
-          const formMessageText = new Promise((resolve, reject) => {
-            setTimeout(() => {
-              setFormSent("You're subscribed!");
-              setTimeout(() => {
-                setFormSent("");
-                setFromEmail("");
-              }, 5000);
-            }, 0);
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      sendForm();
-    }
-  }
+  //     const sendForm = async () => {
+  //       try {
+  //         const formData = {
+  //           to: "sbloxy123@gmail.com", // Change to your recipient
+  //           from: "sbloxy123@gmail.com", // Change to your verified sender
+  //           subject: `Newsletter signup`,
+  //           email: fromEmail,
+  //           html: `
+  //             NEW NEWSLETTER SUBSCRIBER!
+  //             <br /><br />
+  //             A subscriber with email ${fromEmail} has subscribed to receive newsletters from you.  Please add them to your mailing list
+  //             `,
+  //         };
+  //         // Local developer testing API Route
+  //         await postRequest("/api/sendgrid", formData);
+  //         const formMessageText = new Promise((resolve, reject) => {
+  //           setTimeout(() => {
+  //             setFormSent("You're subscribed!");
+  //             setTimeout(() => {
+  //               setFormSent("");
+  //               setFromEmail("");
+  //             }, 5000);
+  //           }, 0);
+  //         });
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     };
+  //     sendForm();
+  //   }
+  // }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   return (
     <form
       className={` ${
         theme == "dark" && "small:mx-auto"
       } flex flex-col justify-center w-full gap-8 xsmall:gap-4 xsmall:flex-row small:w-fit`}
-      onSubmit={handleSubmit}
+      // onSubmit={handleSubmit}
+      onSubmit={handleSubmit(() => {
+        const sendForm = async () => {
+          try {
+            const formData = {
+              to: "sbloxy123@gmail.com", // Change to your recipient
+              from: "sbloxy123@gmail.com", // Change to your verified sender
+              subject: `Newsletter signup`,
+              email: fromEmail,
+              html: `
+              NEW NEWSLETTER SUBSCRIBER!
+              <br /><br />
+              A subscriber with email ${fromEmail} has subscribed to receive newsletters from you.  Please add them to your mailing list
+              `,
+            };
+            // Local developer testing API Route
+            await postRequest("/api/sendgrid", formData);
+            const formMessageText = new Promise((resolve, reject) => {
+              setTimeout(() => {
+                setFormSent("Message Sent!");
+                setTimeout(() => {
+                  setFormSent("");
+                  setFromEmail("");
+                }, 5000);
+              }, 0);
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        sendForm();
+      })}
     >
       <input
         type="email"
