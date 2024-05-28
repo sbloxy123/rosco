@@ -21,6 +21,7 @@ export const ServicesBannerContent = ({
           {getTextWithLineBreaks(servicePageContent[0].ServicesPage.introText)}
         </p>
       </div>
+
       <ul className="pt-[3rem] small:max-w-[500px] mx-auto">
         {allServices.map((service, index) => {
           return (
