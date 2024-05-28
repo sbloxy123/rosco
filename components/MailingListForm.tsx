@@ -34,8 +34,8 @@ export default function MailingListForm({
       const sendForm = async () => {
         try {
           const formData = {
-            to: "stuart@bloxywebservices.co.uk", // Change to your recipient
-            from: "stuart@bloxywebservices.co.uk", // Change to your verified sender
+            to: "sbloxy123@gmail.com", // Change to your recipient
+            from: "sbloxy123@gmail.com", // Change to your verified sender
             subject: `Newsletter signup`,
             email: fromEmail,
             html: `
