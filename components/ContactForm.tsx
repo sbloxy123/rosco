@@ -33,15 +33,13 @@ export default function ContactForm({
         const sendForm = async () => {
           try {
             const formData = {
-              to: "sbloxy123@gmail.com", // Change to your recipient
-              from: "sbloxy123@gmail.com", // Change to your verified sender
+              to: "enquiries@roscoandperlini.co.uk", // Change to your recipient
+              from: "enquiries@roscoandperlini.co.uk", // Change to your verified sender
               subject: `Email enquiry from ${fromName}`,
               text: message,
               phone: phone,
               email: fromEmail,
               html: `
-                Hello there!!!,
-                <br /><br />
                 You got a new message from ${fromName}.
                 <br /><br />
                 Message: ${message}

@@ -39,13 +39,13 @@ export default function MailingListForm({
             subject: `Newsletter signup`,
             email: fromEmail,
             html: `
-              NEW NEWSLETTER SUBSCRIBER!!!,
+              NEW NEWSLETTER SUBSCRIBER!
               <br /><br />
-              Subscriber with email ${fromEmail} has subscribed to receive newsletters from you.  Please add them to your mailing list
+              A subscriber with email ${fromEmail} has subscribed to receive newsletters from you.  Please add them to your mailing list
               `,
           };
           // Local developer testing API Route
-          postRequest("https://rosco-liard.vercel.app/api/sendgrid", formData);
+          await postRequest("/api/sendgrid", formData);
           const formMessageText = new Promise((resolve, reject) => {
             setTimeout(() => {
               setFormSent("You're subscribed!");
