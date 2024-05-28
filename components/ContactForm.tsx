@@ -52,7 +52,7 @@ export default function ContactForm({
             };
             // Local developer testing API Route
             postRequest(
-              "https://rosco-liard.vercel.app//api/sendgrid",
+              "https://rosco-liard.vercel.app/api/sendgrid",
               formData
             );
             const formMessageText = new Promise((resolve, reject) => {
