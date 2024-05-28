@@ -1,5 +1,7 @@
 import sgMail from "@sendgrid/mail";
+
 sgMail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY);
+
 export async function POST(req) {
   try {
     const { to, from, subject, text, html } = await req.json();
@@ -12,9 +14,13 @@ export async function POST(req) {
       html: html,
     };
     await sgMail.send(msg);
-    return Response.json({ message: "Email sent" });
+    return new Response(JSON.stringify({ message: "Email sent" }), {
+      status: 200,
+    });
   } catch (error) {
     console.error(error);
-    return Response.json({ error: error.message });
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+    });
   }
 }
