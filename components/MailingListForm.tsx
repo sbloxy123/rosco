@@ -18,9 +18,9 @@ export default function MailingListForm({
   const { postRequest } = usePost();
   const [formSent, setFormSent] = useState("");
 
-  function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
-    setEmail(event.target.value);
-  }
+  // function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
+  //   setEmail(event.target.value);
+  // }
 
   // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
   //   event.preventDefault();
@@ -109,10 +109,16 @@ export default function MailingListForm({
       })}
     >
       <input
+        id="email"
         type="email"
+        aria-invalid={errors.email ? "true" : "false"}
+        {...register("email", {
+          required: true,
+          pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+        })}
         placeholder={placeholder}
-        value={email}
-        onChange={handleInput}
+        value={fromEmail}
+        onChange={(e) => setFromEmail(e.target.value)}
         className={`p-4 ${
           theme == "dark"
             ? "bg-theme-dark bg-opacity-[6%] placeholder:text-theme-dark placeholder:text-opacity-80 placeholder:font-[400]"
@@ -130,9 +136,6 @@ export default function MailingListForm({
       >
         {buttonText}
       </button>
-      {/* <p className="text-white text-center mt-2 absolute top-0 left-0 w-full h-full bg-theme-dark bg-opacity-30">
-        {formSent}
-      </p> */}
       <p
         className={`${formSent ? "block" : "hidden"} text-white text-center absolute top-0 left-0 w-full h-full bg-theme-dark bg-opacity-70 flex justify-center items-center`}
       >
