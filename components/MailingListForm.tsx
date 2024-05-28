@@ -80,8 +80,8 @@ export default function MailingListForm({
         const sendForm = async () => {
           try {
             const formData = {
-              to: "sbloxy123@gmail.com", // Change to your recipient
-              from: "sbloxy123@gmail.com", // Change to your verified sender
+              to: "enquiries@roscoandperlini.co.uk", // Change to your recipient
+              from: "enquiries@roscoandperlini.co.uk", // Change to your verified sender
               subject: `Newsletter signup`,
               email: fromEmail,
               html: `
