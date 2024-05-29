@@ -11,14 +11,14 @@ export default defineConfig({
   projectId: "vjrrsvsn",
   dataset: "production",
   basePath: "/studio",
-  CORS: ["https://rosco-liard.vercel.app"],
+  CORS: ["https://roscoandperlini.co.uk"],
   plugins: [
     structureTool(),
     visionTool(),
     presentationTool({
       previewUrl: {
         // origin: "http://localhost:3000",
-        origin: "https://rosco-liard.vercel.app/",
+        origin: "https://roscoandperlini.co.uk/",
         draftMode: {
           enable: "/api/draft",
         },
