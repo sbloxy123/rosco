@@ -36,6 +36,7 @@ h2 {
   font-size: 3.2rem;
   letter-spacing: 0.06em;
   font-weight: bold;
+
   @media all and (max-width: 512px) {
     line-height: clamp(3rem, 8.2vw, 4.5rem);
     font-size: clamp(2.8rem, 8.2vw, 3.2rem);
@@ -180,6 +181,25 @@ input[type="text"]::-webkit-search-cancel-button {
     }
   }
 }
+.award-swiper--main,
+.service-swiper--main {
+  @media all and (min-width: 1024px) {
+    /* padding-right: clamp(8rem, 11.1vw, 16rem) !important; */
+  }
+  padding-right: 7% !important;
+  @media all and (min-width: 512px) {
+    padding-right: 0% !important;
+  }
+  @media all and (min-width: 1024px) {
+    padding-right: 2% !important;
+  }
+}
+.award-swiper--main {
+  @media all and (min-width: 512px) {
+    padding-right: 9vw !important;
+  }
+}
+
 .award-swiper {
   .swiper-slide {
     width: 255px;
@@ -673,7 +693,7 @@ input[type="text"]::-webkit-search-cancel-button {
 }
 
 /* manual positioning required as image shrinks as container increases. absolute positioned */
-.project-swiper-nav {
+/* .project-swiper-nav {
   @media all and (min-width: 1024px) {
     padding-bottom: 0;
   }
@@ -683,4 +703,4 @@ input[type="text"]::-webkit-search-cancel-button {
   @media all and (min-width: 1354px) {
     padding-bottom: 4% !important;
   }
-}
+} */

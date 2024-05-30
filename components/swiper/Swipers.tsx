@@ -39,6 +39,7 @@ export const ServiceSwiper = ({ data }: { data: serviceType[] }) => {
       spaceBetween={10}
       slidesPerView="auto"
       direction="vertical"
+      className="service-swiper--main"
       wrapperClass="service-swiper"
       modules={[Scrollbar, Mousewheel, FreeMode]}
       mousewheel={{
@@ -118,13 +119,13 @@ export const ProjectsSwiper = ({ data }: { data: projectType[] }) => {
         );
       })}
 
-      <div className="absolute top-0 left-0 w-full aspect-square xsmall:aspect-[690/451] small:aspect-[567/456] small:min-w-[522px] invisible">
-        <div className="absolute w-full h-fit top-auto bottom-0 left-0 z-20 px-[4rem] flex justify-between items-center xsmall:h-full invisible">
+      <div className="absolute top-0 left-0 w-full aspect-square xsmall:aspect-[690/451] small:aspect-[567/456] small:min-w-[522px] invisible small:h-full">
+        <div className="absolute w-full h-fit top-auto bottom-0 left-0 z-20 px-[4rem] flex justify-between items-center xsmall:h-full invisible small:h-full small:bottom-0 small:max-h-[534px] ">
           <div className="w-0 small:w-1/3 invisible"></div>
 
           <div className="project-pagination h-[5.6rem] w-[40%] pb-[3rem] z-30 flex gap-1 items-center xsmall:absolute xsmall:right-0 xsmall:bottom-0 xsmall:mb-[11%] xsmall:pl-[2.5%] xsmall:w-fit xsmall:justify-start xsmall:mx-[5%] small:w-1/3 small:justify-center small:mb-0 small:mx-0 small:px-0 small:hidden visible"></div>
 
-          <div className="project-swiper-nav relative flex gap-4 pb-[3.1rem] pr-[1.5rem] xsmall:pb-0 xsmall:pr-0 xsmall:absolute xsmall:right-0 xsmall:mr-[8%] xsmall:mb-[-28%] small:mr-[3%] small:mb-[7%] small:pr-[5.5rem] small:rotate-0 small:w-1/3 small:justify-end visible z-50">
+          <div className="project-swiper-nav relative flex gap-4 pb-[3.1rem] pr-[1.5rem] xsmall:pb-0 xsmall:pr-0 xsmall:absolute xsmall:right-0 xsmall:mr-[8%] xsmall:mb-[-28%] small:mr-[3%] small:mb-[7%] small:pr-[4.2%] small:rotate-0 small:w-1/3 small:justify-end visible z-50 small:bottom-0">
             <SwiperArrowPrev swiperDivName="prev-project" />
             <SwiperArrowNext swiperDivName="next-project" />
           </div>
@@ -208,8 +209,9 @@ export const TestimonialSwiper = ({ data }: { data: testimonialsType[] }) => {
 export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
   return (
     <Swiper
-      spaceBetween={18}
+      spaceBetween={10}
       slidesPerView="auto"
+      className="award-swiper--main"
       wrapperClass="award-swiper pl-[5%] pb-[5rem] xsmall:pb-[4.5rem] small:pb-[7rem] small:pl-0"
       modules={[Scrollbar, Mousewheel, FreeMode]}
       mousewheel={{
@@ -225,7 +227,7 @@ export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
       }}
       breakpoints={{
         1024: {
-          spaceBetween: 18,
+          spaceBetween: 10,
           slidesPerView: "auto",
         },
       }}
