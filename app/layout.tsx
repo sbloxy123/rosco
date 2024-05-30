@@ -35,6 +35,12 @@ export async function metadata() {
     openGraph: {
       images: thumbnail.src,
     },
+    twitter: {
+      card: "summary_large_image", // Or "summary" depending on your preferred card type
+      title: "Rosco & Perlini",
+      description: titleWithLineBreaks,
+      image: thumbnail.src,
+    },
   };
 }
 
