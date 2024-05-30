@@ -348,19 +348,6 @@ input[type="text"]::-webkit-search-cancel-button {
   }
 }
 
-/* manual positioning required as image shrinks as container increases. absolute positioned */
-.project-swiper-nav {
-  @media all and (min-width: 1024px) {
-    padding-bottom: 0;
-  }
-  @media all and (min-width: 1314px) {
-    padding-bottom: 2% !important;
-  }
-  @media all and (min-width: 1354px) {
-    padding-bottom: 4% !important;
-  }
-}
-
 .prev-project,
 .prev-service-image {
   background: rgba(255, 255, 255, 0.65) !important;
@@ -682,5 +669,18 @@ input[type="text"]::-webkit-search-cancel-button {
   }
   p {
     margin: 1em 0;
+  }
+}
+
+/* manual positioning required as image shrinks as container increases. absolute positioned */
+.project-swiper-nav {
+  @media all and (min-width: 1024px) {
+    padding-bottom: 0;
+  }
+  @media all and (min-width: 1314px) {
+    padding-bottom: 2% !important;
+  }
+  @media all and (min-width: 1354px) {
+    padding-bottom: 4% !important;
   }
 }

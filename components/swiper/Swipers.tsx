@@ -208,7 +208,7 @@ export const TestimonialSwiper = ({ data }: { data: testimonialsType[] }) => {
 export const AwardsSwiper = ({ data }: { data: awardsType[] }) => {
   return (
     <Swiper
-      spaceBetween={36}
+      spaceBetween={18}
       slidesPerView="auto"
       wrapperClass="award-swiper pl-[5%] pb-[5rem] xsmall:pb-[4.5rem] small:pb-[7rem] small:pl-0"
       modules={[Scrollbar, Mousewheel, FreeMode]}
@@ -691,7 +691,7 @@ export const ServiceExtrasSwiper = ({
                   ref={(ref) => {
                     overflowRefs.current[index + 1] = ref;
                   }} // Adjusted
-                  className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto small:max-h-[145px]"
+                  className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-scroll small:max-h-[145px]"
                 >
                   <p>{text.listItemDetails}</p>
                 </div>
@@ -711,7 +711,7 @@ export const ServiceExtrasSwiper = ({
               ref={(ref) => {
                 overflowRefs.current[0] = ref;
               }} // Adjusted
-              className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-auto small:max-h-[145px]"
+              className="portable--overflow mt-10 max-h-[300px] pr-[10.5%] font-[300] overflow-y-scroll small:max-h-[145px]"
             >
               <PortableText value={primaryOverviewText} />
             </div>
