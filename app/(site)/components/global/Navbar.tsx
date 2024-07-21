@@ -7,6 +7,7 @@ import { groq } from "next-sanity";
 import { client } from "../../../../sanity/sanity.client";
 import { useRecordVoice } from "../../../../components/useRecordVoice";
 import { usePathname } from "next/navigation";
+// import { supportsAspectRatio } from "@/utils/checkAspectRatioSupport";
 
 const backgroundVariants = {
   open: {
@@ -317,6 +318,17 @@ function Navbar() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  // useEffect(() => {
+  //   if (!supportsAspectRatio()) {
+  //     const banner = document.createElement("div");
+  //     banner.className =
+  //       "bg-red-500 text-white text-[1.4rem] p-2 text-center fixed w-full top-0 left-0 z-50";
+  //     banner.textContent =
+  //       "For an enhanced user experience, please consider using a more up-to-date device.";
+  //     document.body.appendChild(banner);
+  //   }
+  // }, []);
+
   const {
     recording,
     startRecording,
@@ -422,11 +434,11 @@ function Navbar() {
 
   return (
     <div
-      className={` z-50 small:fixed top-0 left-0 w-full bg-white ${
+      className={`main__navbar z-50 small:fixed top-0 left-0 w-full bg-white ${
         searchIsOpen || isOpen ? "fixed" : "fixed"
       }`}
     >
-      <header className="relative tracking-[0.06em]">
+      <header className=" relative tracking-[0.06em]">
         <div className="relative z-50 max-w-screen-large mx-auto py-[1.2rem] xsmall:py-[2.7rem] bg-[#fff]">
           <div className="flex items-center justify-between h-20 px-[5%] small:px-layout-small">
             <div className="w-[154px] max-w-[172px] xsmall:w-[clamp(120px, 8vw, 172px)] xsmall:w-full">

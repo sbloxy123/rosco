@@ -1,15 +1,14 @@
-// AspectRatioWrapper.tsx
-import React, { useEffect } from "react";
-import { applyAspectRatioFallback } from "./applyAspectRatioFallback";
+// import React, { useEffect } from "react";
+// import { applyAspectRatioFallback } from "./applyAspectRatioFallback";
 
-const AspectRatioWrapper: React.FC<React.PropsWithChildren<{}>> = ({
-  children,
-}) => {
-  useEffect(() => {
-    applyAspectRatioFallback();
-  }, []);
+// const AspectRatioWrapper: React.FC<React.PropsWithChildren<{}>> = ({
+//   children,
+// }) => {
+//   useEffect(() => {
+//     applyAspectRatioFallback();
+//   }, []);
 
-  return <div>{children}</div>;
-};
+//   return <div>{children}</div>;
+// };
 
-export default AspectRatioWrapper;
+// export default AspectRatioWrapper;
