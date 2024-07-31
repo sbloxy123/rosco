@@ -30,10 +30,11 @@ interface Faq {
 export async function metadata() {
   const faqPageContent: faqPageType[] = await getFaqPageContent();
   return {
-    title: "Rosco & Perlini | FAQs",
-    description: removelineBreakCodeFromHTML(
-      faqPageContent[0].FaqPage.pageHeading
-    ),
+    title: `Rosco & Perlini | ${faqPageContent[0]?.FaqPage?.pageMetadata?.pageTitle} || "FAQ's page"`,
+
+    description:
+      faqPageContent[0]?.FaqPage?.pageMetadata?.pageDescription ||
+      removelineBreakCodeFromHTML(faqPageContent[0].FaqPage.pageHeading),
     openGraph: {
       images: faqPageContent[0].FaqPage.pageImage.image,
     },

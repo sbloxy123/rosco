@@ -59,8 +59,8 @@ export async function metadata() {
   });
 
   return {
-    title: "Rosco & Perlini",
-    description: titleWithLineBreaks,
+    title: `Rosco & Perlini | ${hero[0]?.pageMetadata?.pageTitle || "Homepage"}`,
+    description: hero[0].pageMetadata?.pageDescription || titleWithLineBreaks,
     openGraph: {
       images: thumbnail.src,
     },

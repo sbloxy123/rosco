@@ -60,6 +60,10 @@ export async function getHero() {
   return client.fetch(
     groq`*[_type == "homepage"]{
       _id,
+      pageMetadata {
+          pageTitle,
+          pageDescription
+        },
       heroHeading,
       heroText,
       heroButtonText,
@@ -213,6 +217,10 @@ export async function getSingleService(slug: string) {
       "slug": slug.current,
       serviceSummary,
       serviceSummaryBodyVersion,
+      pageMetadata {
+          pageTitle,
+          pageDescription
+        },
       coverImage {alt, "image": asset->url},
       servicePageImage {
         alt,
@@ -864,6 +872,10 @@ export const getServicesPageContent = groq`*[_type == "innerPage" && defined(Ser
       ServicesPage {
         // _id,
         pageHeading,
+        pageMetadata {
+          pageTitle,
+          pageDescription
+        },
         pageImage {
               alt,
             "image": asset->url,
@@ -917,6 +929,10 @@ export async function getProjectsPageContent() {
     groq`*[_type == "innerPage"] {
        _id,
       title,
+      pageMetadata {
+          pageTitle,
+          pageDescription
+        },
       ProjectsPage {
         _id,
         pageHeading,
@@ -1004,6 +1020,10 @@ export async function getFaqPageContent() {
        _id,
       FaqPage {
         pageHeading,
+        pageMetadata {
+          pageTitle,
+          pageDescription
+        },
         pageImage {
             alt,
           "image": asset->url,
@@ -1128,6 +1148,10 @@ export async function getContactUsPageContent() {
        _id,
       ContactPage {
         pageHeading,
+        pageMetadata {
+          pageTitle,
+          pageDescription
+        },
         pageImage {
           alt,
         "image": asset->url,

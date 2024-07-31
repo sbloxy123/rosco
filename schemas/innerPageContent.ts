@@ -121,6 +121,26 @@ const innerPageContent = {
       type: "document",
       fields: [
         {
+          name: "pageMetadata",
+          title: "📈 Services Page Metadata",
+          type: "document",
+          fields: [
+            {
+              name: "pageTitle",
+              title: "Services Page Title",
+              description:
+                "Add title for to add text to the tab on the browser and for SEO purposes",
+              type: "string",
+            },
+            {
+              name: "pageDescription",
+              title: "Services Page Description",
+              description: "Add a page description for SEO purposes",
+              type: "string",
+            },
+          ],
+        },
+        {
           name: "pageHeading",
           title: "Services Page Hero Heading",
           description: "Heading for the Service Page",
@@ -183,6 +203,26 @@ const innerPageContent = {
       type: "document",
       fields: [
         {
+          name: "pageMetadata",
+          title: "📈 Projects Page Metadata",
+          type: "document",
+          fields: [
+            {
+              name: "pageTitle",
+              title: "Projects Page Title",
+              description:
+                "Add title for to add text to the tab on the browser and for SEO purposes",
+              type: "string",
+            },
+            {
+              name: "pageDescription",
+              title: "Projects Page Description",
+              description: "Add a page description for SEO purposes",
+              type: "string",
+            },
+          ],
+        },
+        {
           name: "pageHeading",
           title: "Projects Page Hero Heading",
           description:
@@ -229,6 +269,26 @@ const innerPageContent = {
       title: "FAQ Page Content",
       type: "document",
       fields: [
+        {
+          name: "pageMetadata",
+          title: "📈 FAQ Page Metadata",
+          type: "document",
+          fields: [
+            {
+              name: "pageTitle",
+              title: "FAQ Page Title",
+              description:
+                "Add title for to add text to the tab on the browser and for SEO purposes",
+              type: "string",
+            },
+            {
+              name: "pageDescription",
+              title: "FAQ Page Description",
+              description: "Add a page description for SEO purposes",
+              type: "string",
+            },
+          ],
+        },
         {
           name: "pageHeading",
           title: "FAQ Page Hero Heading",
@@ -279,6 +339,26 @@ const innerPageContent = {
       title: "Contact Page Content",
       type: "document",
       fields: [
+        {
+          name: "pageMetadata",
+          title: "📈 Contact Page Metadata",
+          type: "document",
+          fields: [
+            {
+              name: "pageTitle",
+              title: "Contact Page Title",
+              description:
+                "Add title for to add text to the tab on the browser and for SEO purposes",
+              type: "string",
+            },
+            {
+              name: "pageDescription",
+              title: "Contact Page Description",
+              description: "Add a page description for SEO purposes",
+              type: "string",
+            },
+          ],
+        },
         {
           name: "pageHeading",
           title: "Contact Page Hero Heading",

@@ -30,10 +30,13 @@ export async function metadata() {
     getServicesPageContent
   );
   return {
-    title: "Rosco & Perlini | Services",
-    description: removelineBreakCodeFromHTML(
-      servicesContent[0].ServicesPage.pageHeading
-    ),
+    title: `Rosco & Perlini | ${servicesContent[0]?.ServicesPage?.pageMetadata?.pageTitle || "Services"}`,
+    // description: removelineBreakCodeFromHTML(
+    //   servicesContent[0].ServicesPage.pageHeading
+    // ),
+    description:
+      servicesContent[0]?.ServicesPage?.pageMetadata?.pageDescription ||
+      removelineBreakCodeFromHTML(servicesContent[0].ServicesPage.pageHeading),
     openGraph: {
       images: servicesContent[0].ServicesPage.pageImage.image,
     },

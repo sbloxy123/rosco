@@ -32,8 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service: serviceType = await getSingleService(slug);
 
   return {
-    title: `Service | ${removelineBreakCodeFromHTML(service?.serviceTitle)}`,
-    description: removelineBreakCodeFromHTML(service?.serviceSummary),
+    title: `Service | ${service?.pageMetadata?.pageTitle || removelineBreakCodeFromHTML(service?.serviceTitle)}`,
+    description:
+      service?.pageMetadata?.pageDescription ||
+      removelineBreakCodeFromHTML(service?.serviceSummary),
     openGraph: {
       images: service?.coverImage?.image || "add-a-fallback-project-image-here",
       title: removelineBreakCodeFromHTML(service?.serviceTitle),

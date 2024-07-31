@@ -30,10 +30,10 @@ import { Suspense } from "react";
 export async function metadata() {
   const projectsContent: projectsPageType[] = await getProjectsPageContent();
   return {
-    title: "Rosco & Perlini | Projects",
-    description: removelineBreakCodeFromHTML(
-      projectsContent[0].ProjectsPage.pageHeading
-    ),
+    title: `Rosco & Perlini | ${projectsContent[0]?.ProjectsPage?.pageMetadata?.pageTitle || "Projects"}`,
+    description:
+      projectsContent[0]?.ProjectsPage?.pageMetadata?.pageDescription ||
+      removelineBreakCodeFromHTML(projectsContent[0].ProjectsPage.pageHeading),
     openGraph: {
       images: projectsContent[0].ProjectsPage.pageImage.image,
     },

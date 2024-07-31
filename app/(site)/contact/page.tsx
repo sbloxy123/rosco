@@ -21,10 +21,12 @@ import ContactSectionPreview from "@/components/previewComponents/ContactSection
 export async function metadata() {
   const contactPageContent: contactPageType[] = await getContactUsPageContent();
   return {
-    title: "Rosco & Perlini | Contact Us",
-    description: removelineBreakCodeFromHTML(
-      contactPageContent[0].ContactPage.pageHeading
-    ),
+    title: `Rosco & Perlini | ${contactPageContent[0]?.ContactPage?.pageMetadata?.pageTitle || "Contact Us"}`,
+    description:
+      contactPageContent[0]?.ContactPage?.pageMetadata?.pageDescription ||
+      removelineBreakCodeFromHTML(
+        contactPageContent[0].ContactPage.pageHeading
+      ),
     openGraph: {
       images: contactMap,
     },

@@ -9,6 +9,26 @@ const service = {
   icon: BiPackage,
   fields: [
     {
+      name: "pageMetadata",
+      title: "📈 Service Page Metadata",
+      type: "document",
+      fields: [
+        {
+          name: "pageTitle",
+          title: "Service Page Title",
+          description:
+            "Add title for to add text to the tab on the browser and for SEO purposes",
+          type: "string",
+        },
+        {
+          name: "pageDescription",
+          title: "Service Page Description",
+          description: "Add a page description for SEO purposes",
+          type: "string",
+        },
+      ],
+    },
+    {
       name: "serviceTitle",
       title: "Service Title",
       type: "string",

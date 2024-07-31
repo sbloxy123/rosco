@@ -12,8 +12,8 @@ import GoogleAnalytics from "@/components/utils/GoogleAnalytics";
 import CookieBanner from "@/components/CookieBanner";
 import { draftMode } from "next/headers";
 import LiveVisualEditing from "@/components/LiveVisualEditing";
-// export const revalidate = 6000;
-export const revalidate = 60;
+export const revalidate = 6000;
+// export const revalidate = 60;
 
 const montserrat = Montserrat({
   subsets: ["latin"],

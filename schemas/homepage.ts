@@ -7,6 +7,26 @@ const homepage = {
   icon: FaHome,
   fields: [
     {
+      name: "pageMetadata",
+      title: "📈 Homepage Metadata",
+      type: "document",
+      fields: [
+        {
+          name: "pageTitle",
+          title: "Homepage Title",
+          description:
+            "Add title for to add text to the tab on the browser and for SEO purposes",
+          type: "string",
+        },
+        {
+          name: "pageDescription",
+          title: "Homepage Description",
+          description: "Add a page description for SEO purposes",
+          type: "string",
+        },
+      ],
+    },
+    {
       name: "heroHeading",
       title: "Hero Heading",
       type: "string",

@@ -42,10 +42,11 @@ export async function metadata() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
 
   return {
-    title: `Rosco & Perlini | ${aboutContent[0].aboutPage.pageMetadata.pageTitle}`,
-    description: removelineBreakCodeFromHTML(
-      aboutContent[0].aboutPage.pageHeading
-    ),
+    title: `Rosco & Perlini | ${aboutContent[0]?.aboutPage?.pageMetadata?.pageTitle || "About Us"}`,
+
+    description:
+      aboutContent[0]?.aboutPage?.pageMetadata?.pageDescription ||
+      removelineBreakCodeFromHTML(aboutContent[0].aboutPage.pageHeading),
     openGraph: {
       images: aboutContent[0].aboutPage.pageImage.image,
     },

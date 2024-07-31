@@ -28,6 +28,7 @@ export type SanityImageQueryResult = {
 // hero
 export type heroType = {
   _id: string;
+  pageMetadata: PageMetadata;
   heroHeading: string;
   heroText: PortableTextBlock[];
   heroButtonText: string;
@@ -105,6 +106,7 @@ export type serviceType = {
   slug: string;
   serviceSummary: string;
   serviceSummaryBodyVersion: string;
+  pageMetadata: PageMetadata;
   description: PortableTextBlock;
   coverImage: {
     alt: string;
@@ -398,14 +400,17 @@ export type contactType = {
 interface Asset {
   url: string;
 }
+
+interface PageMetadata {
+  pageTitle: string;
+  pageDescription: string;
+}
+
 export type aboutPageType = {
   aboutPage: {
     _id: string;
     pageHeading: string;
-    pageMetadata: {
-      pageTitle: string;
-      pageDescription: string;
-    };
+    pageMetadata: PageMetadata;
     pageImage: {
       alt: string;
       image: string;
@@ -489,6 +494,7 @@ export type servicesPageType = {
   ServicesPage: {
     // _id: string;
     pageHeading: string;
+    pageMetadata: PageMetadata;
     pageImage: {
       alt: string;
       image: string;
@@ -541,6 +547,7 @@ export type projectsPageType = {
   ProjectsPage: {
     _id: string;
     pageHeading: string;
+    pageMetadata: PageMetadata;
     pageImage: {
       alt: string;
       image: string;
@@ -590,6 +597,7 @@ export type faqPageType = {
   FaqPage: {
     _id: string;
     pageHeading: string;
+    pageMetadata: PageMetadata;
     pageImage: {
       alt: string;
       image: string;
@@ -621,6 +629,7 @@ export type contactPageType = {
   ContactPage: {
     _id: string;
     pageHeading: string;
+    pageMetadata: PageMetadata;
     pageImage: {
       alt: string;
       image: string;
