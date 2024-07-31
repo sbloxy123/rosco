@@ -767,6 +767,12 @@ export async function getAboutPageContent() {
       aboutPage {
         _id,
         pageHeading,
+
+        pageMetadata {
+          pageTitle,
+          pageDescription
+        },
+
         pageImage {
           alt,
         "image": asset->url,
@@ -1199,6 +1205,17 @@ export async function getPoliciesPageData() {
   );
 }
 export async function getTermsPageData() {
+  return client.fetch(
+    groq`*[_type == "metadata"]{
+      terms {
+        pageTitle,
+        terms,
+      }
+    }
+    `
+  );
+}
+export async function getServicePageMetadata() {
   return client.fetch(
     groq`*[_type == "metadata"]{
       terms {

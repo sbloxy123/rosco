@@ -12,6 +12,26 @@ const innerPageContent = {
       type: "document",
       fields: [
         {
+          name: "pageMetadata",
+          title: "📈 About Page Metadata",
+          type: "document",
+          fields: [
+            {
+              name: "pageTitle",
+              title: "About Page Title",
+              description:
+                "Add title for to add text to the tab on the browser and for SEO purposes",
+              type: "string",
+            },
+            {
+              name: "pageDescription",
+              title: "About Page Description",
+              description: "Add a page description for SEO purposes",
+              type: "string",
+            },
+          ],
+        },
+        {
           name: "pageHeading",
           title: "About Page Hero Heading",
           description:

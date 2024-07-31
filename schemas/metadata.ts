@@ -107,6 +107,7 @@ const metadata = {
       title: "Areas Served",
       type: "string",
     },
+
     {
       name: "policies",
       title: "Policies",

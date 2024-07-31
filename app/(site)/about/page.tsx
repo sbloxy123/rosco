@@ -42,7 +42,7 @@ export async function metadata() {
   const aboutContent: aboutPageType[] = await getAboutPageContent();
 
   return {
-    title: "Rosco & Perlini | About",
+    title: `Rosco & Perlini | ${aboutContent[0].aboutPage.pageMetadata.pageTitle}`,
     description: removelineBreakCodeFromHTML(
       aboutContent[0].aboutPage.pageHeading
     ),
@@ -143,7 +143,6 @@ export default async function About() {
               featureText={aboutContent[0]?.aboutPage?.featureText}
             />
           )}
-
 
           <section className="my-section-gap xsmall:my-section-gap-xsmall small:my-section-gap-small">
             {draftMode().isEnabled ? (

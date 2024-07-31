@@ -402,6 +402,10 @@ export type aboutPageType = {
   aboutPage: {
     _id: string;
     pageHeading: string;
+    pageMetadata: {
+      pageTitle: string;
+      pageDescription: string;
+    };
     pageImage: {
       alt: string;
       image: string;
