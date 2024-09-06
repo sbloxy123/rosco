@@ -64,7 +64,9 @@ export async function metadata() {
     openGraph: {
       images: thumbnail.src,
     },
-    "google-site-verification": "pJ6hCjP-edDQAgJI7h91e3_qGjKJl9SFxrJY1hhLk0M",
+    other: {
+      "google-site-verification": "pJ6hCjP-edDQAgJI7h91e3_qGjKJl9SFxrJY1hhLk0M",
+    },
   };
 }
 
