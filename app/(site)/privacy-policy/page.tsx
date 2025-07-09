@@ -15,7 +15,6 @@ export default async function privacyPolicy() {
         <div className="rich-text-container pt-[1rem]">
           <PortableText value={data[0].policies.policies} />
         </div>
-        <sup>1</sup>
       </section>
     </main>
   );
