@@ -17,11 +17,14 @@ export default defineConfig({
     visionTool(),
     presentationTool({
       previewUrl: {
-        // origin: "http://localhost:3000",
-        origin: "https://roscoandperlini.co.uk",
-        draftMode: {
-          enable: "/api/draft",
-        },
+        origin:
+          // In Vercel: https://<deployment>.vercel.app
+          process.env.NEXT_PUBLIC_SITE_URL ||
+          // Fallback when env-var isn’t set (local dev / prod)
+          (process.env.VERCEL_ENV === "preview"
+            ? `https://${process.env.VERCEL_URL}`
+            : "https://roscoandperlini.co.uk"),
+        draftMode: { enable: "/api/draft" }, // same as now
       },
     }),
   ],
