@@ -56,7 +56,7 @@ export default async function Services() {
     getServiceLinks,
     {},
     {
-      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+      perspective: draftMode().isEnabled ? "drafts" : "published",
     }
   );
 
@@ -67,7 +67,7 @@ export default async function Services() {
     {
       // Because of Next.js, RSC and Dynamic Routes this currently
       // cannot be set on the loadQuery function at the "top level"
-      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+      perspective: draftMode().isEnabled ? "drafts" : "published",
     }
   );
 

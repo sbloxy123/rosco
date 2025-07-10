@@ -63,14 +63,14 @@ export default async function faqs() {
     faqPageInitialContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+      perspective: draftMode().isEnabled ? "drafts" : "published",
     }
   );
   const initialFaqItems = await loadQuery<SanityDocument>(
     faqItems,
     {},
     {
-      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
+      perspective: draftMode().isEnabled ? "drafts" : "published",
     }
   );
 

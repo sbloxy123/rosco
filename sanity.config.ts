@@ -17,11 +17,12 @@ export default defineConfig({
     visionTool(),
     presentationTool({
       previewUrl: {
-        // origin: "http://localhost:3000",
-        origin: "https://roscoandperlini.co.uk",
-        draftMode: {
-          enable: "/api/draft",
-        },
+        // ① use NEXT_PUBLIC_SITE_URL when present …
+        origin:
+          process.env.NEXT_PUBLIC_SITE_URL ||
+          // ② …otherwise fall back to localhost for dev
+          "http://localhost:3000",
+        draftMode: { enable: "/api/draft" },
       },
     }),
   ],
