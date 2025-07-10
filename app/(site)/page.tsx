@@ -132,10 +132,15 @@ export default async function Home() {
   return (
     <main>
       {draftMode().isEnabled ? (
-        <HeroPreview
-          initial={initialHeroContent.data[0]}
-          originalContent={heroContent}
-        />
+        <div>
+          <h3 className="text-red-900 z-50 absolute top-[100px]">
+            DRAFT MODE IS ON
+          </h3>
+          <HeroPreview
+            initial={initialHeroContent.data[0]}
+            originalContent={heroContent}
+          />
+        </div>
       ) : (
         <Hero content={hero} />
       )}
