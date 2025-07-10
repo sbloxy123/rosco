@@ -42,14 +42,14 @@ export default async function contact() {
     contactPageInitialContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
   const initialContactContent = await loadQuery<SanityDocument>(
     contactUsContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
   return (

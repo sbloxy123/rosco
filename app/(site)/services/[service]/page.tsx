@@ -63,14 +63,14 @@ export default async function Service({ params }: { params: QueryParams }) {
     getServiceLinks,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
 
   const initial = await loadQuery<SanityDocument>(SINGLE_SERVICE, queryParams, {
     // Because of Next.js, RSC and Dynamic Routes this currently
     // cannot be set on the loadQuery function at the "top level"
-    perspective: draftMode().isEnabled ? "drafts" : "published",
+    perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   });
 
   return (

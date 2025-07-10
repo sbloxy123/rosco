@@ -83,49 +83,49 @@ export default async function Home() {
     heroContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
   const initialIntroContent = await loadQuery<SanityDocument>(
     introContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
   const initialmailingListCtaContent = await loadQuery<SanityDocument>(
     mailingListCta,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
   const initialTotPromo = await loadQuery<SanityDocument>(
     totPromoContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
   const initialTestimonialContent = await loadQuery<SanityDocument>(
     testimonialContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
   const initialAwardContent = await loadQuery<SanityDocument>(
     awardsContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
   const initialContactContent = await loadQuery<SanityDocument>(
     contactUsContent,
     {},
     {
-      perspective: draftMode().isEnabled ? "drafts" : "published",
+      perspective: draftMode().isEnabled ? "previewDrafts" : "published",
     }
   );
 
