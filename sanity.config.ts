@@ -17,8 +17,8 @@ export default defineConfig({
     visionTool(),
     presentationTool({
       previewUrl: {
-        // origin: "http://localhost:3000",
-        origin: "https://roscoandperlini.co.uk",
+        origin: "http://localhost:3000",
+        // origin: "https://roscoandperlini.co.uk",
         draftMode: {
           enable: "/api/draft",
         },
